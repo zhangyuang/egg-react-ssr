@@ -17,6 +17,8 @@ $ open http://localhost:7001
 
 # 功能/特性
 
+## 已完成
+
 - 基于cra脚手架开发，由cra开发的React App可无缝迁移，如果你熟悉cra的配置，上手成本几乎为0
 - 小而美，相比于beidou，next.js这样的高度封装方案，我们的实现原理和开发模式一目了然
 - 同时支持SSR以及CSR两种开发模式
@@ -24,7 +26,11 @@ $ open http://localhost:7001
 - 支持切换路由时自动获取数据
 - 支持本地开发HMR
 - 稳定性经过线上大规模应用验证，可提供性能优化方案
+
+## 开发中
+
 - 配套[TypeScript](https://github.com/ykfe/egg-react-ssr-typescript)版本的实现
+- 配套serverless版本的实现
 
 
 # 获取数据
@@ -62,7 +68,7 @@ Router Props: 路由信息，包括pathname以及Router params等信息，详细
 │   ├── webpack.config.base.js // 通用的webpack配置
 │   ├── webpack.config.client.js // webpack客户端打包配置
 │   └── webpack.config.server.js // webpack服务端打包配置
-├── config // egg config
+├── config // egg 配置文件目录
 │   ├── config.daily.js
 │   ├── config.default.js
 │   ├── config.local.js
@@ -70,10 +76,10 @@ Router Props: 路由信息，包括pathname以及Router params等信息，详细
 │   ├── config.staging.js
 │   ├── plugin.js
 │   └── plugin.local.js
-├── dist // build生成静态资源目录
+├── dist // build生成静态资源文件目录
 │   ├── Page.server.js // 服务端打包后文件(即打包后的serverRender方法)
 │   └── static // 前端打包后静态资源目录
-└── web
+└── web // 前端文件目录
     ├── assets
     │   └── common.less
     ├── entry.js // webpack打包入口文件，分环境导出不同配置
