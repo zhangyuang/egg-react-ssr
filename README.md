@@ -102,7 +102,7 @@ $ npm run ssr // 启动监听7001端口，只启动服务端渲染，此时仅�
 $ npm run csr // 启动监听8000端口，只启动客户端渲染，相当于传统的cra脚手架开发模式
 $ npm run prod // 模拟SSR应用生产环境
 $ npm run build // 打包服务端以及客户端资源文件
-$ npm run ananlyze // 可视化分析客户端打包的资源详情
+$ npm run analyze // 可视化分析客户端打包的资源详情
 
 ```
 
