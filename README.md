@@ -5,14 +5,12 @@
 这里我们提供了一个脚手架来方便你创建项目
 
 ```
-
 $ npm install yk-cli -g
 $ ykcli init <Your Project Name>
 $ cd <Your Project Name>
 $ npm i
 $ npm start
 $ open http://localhost:7001
-
 ```
 
 # 功能/特性
@@ -32,7 +30,6 @@ $ open http://localhost:7001
 - 配套[TypeScript](https://github.com/ykfe/egg-react-ssr-typescript)版本的实现
 - 配套serverless版本的实现
 
-
 # 获取数据
 
 定义组件的静态方法getInitialProps，获取数据的逻辑将统一在这个方法中执行。
@@ -47,12 +44,9 @@ ctx: Node应用请求的上下文(仅在SSR阶段可以获取)
 
 Router Props: 路由信息，包括pathname以及Router params等信息，详细信息参考react-router文档(需使用withRouter高阶组件)
 
-
 # 目录结构
   
 ```
-
-.
 ├── README.md
 ├── app // egg核心目录
 │   ├── controller
@@ -90,28 +84,24 @@ Router Props: 路由信息，包括pathname以及Router params等信息，详细
     └── page
         ├── index
         └── news
-
 ```
 
 # npm scripts
 
 ```
-
 $ npm start // 启动监听7001端口，建议使用方式，同时启动服务端渲染 + 客户端水合
 $ npm run ssr // 启动监听7001端口，只启动服务端渲染，此时仅服务端直出html，没有与客户端混合的步骤
 $ npm run csr // 启动监听8000端口，只启动客户端渲染，相当于传统的cra脚手架开发模式
 $ npm run prod // 模拟SSR应用生产环境
 $ npm run build // 打包服务端以及客户端资源文件
 $ npm run analyze // 可视化分析客户端打包的资源详情
-
 ```
 
 # config.default.js 文件配置
 
 为了足够灵活使用，这里我们将一些关键项提供可配置的选项，可根据实际需要来配置，如无特殊必要，使用默认配置即可。
 
-```
-
+```js
 const resolvePath = (path) => require('path').resolve(process.cwd(), path)
 
 module.exports = {
@@ -149,8 +139,6 @@ module.exports = {
     ]), // 客户端需要加载的静态js文件资源
     serverJs: (chunkName) => resolvePath(`dist/${chunkName}.server.js`) // 服务端需要使用的打包后的serverRender方法js文件的路径
 }
-
-
 ```
 
 # 执行流程
