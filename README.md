@@ -19,7 +19,7 @@ $ open http://localhost:7001
 
 - 基于cra脚手架开发，由cra开发的React App可无缝迁移，如果你熟悉cra的配置，上手成本几乎为0
 - 小而美，相比于beidou，next.js这样的高度封装方案，我们的实现原理和开发模式一目了然
-- 同时支持SSR以及CSR两种开发模式
+- 同时支持SSR以及CSR两种开发模式,本地开发环境以及线上环境皆可无缝切换两种渲染模式
 - 统一前端路由与服务端路由，无需重复编写路由文件配置
 - 支持切换路由时自动获取数据
 - 支持本地开发HMR
@@ -106,6 +106,7 @@ const resolvePath = (path) => require('path').resolve(process.cwd(), path)
 
 module.exports = {
     keys: 'eggssr',
+    type: 'ssr', // 指定运行类型可设置为csr切换为客户端渲染
     static: {
         // 设置Node应用的静态资源目录，为了生产环境读取静态资源文件
       prefix: '/',
