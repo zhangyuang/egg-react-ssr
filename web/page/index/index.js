@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import './index.less'
 
 function Page (props) {
@@ -43,4 +43,4 @@ Page.getInitialProps = () => {
     ]
   })
 }
-export default Page
+export default withRouter(Page)

@@ -67,3 +67,5 @@ typings/
 run/
 
 dist/
+
+package-lock.json
