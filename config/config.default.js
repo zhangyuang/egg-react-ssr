@@ -23,6 +23,7 @@ module.exports = {
       handler: 'index'
     }
   ],
+  baseDir: resolvePath(''),
   template: resolvePath('web/index.html'), // 使用的模版文件路径
   injectCss: (chunkName) => ([
     `/static/css/${chunkName}.chunk.css`
