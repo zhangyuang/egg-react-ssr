@@ -24,6 +24,7 @@ $ open http://localhost:7001
 - 支持切换路由时自动获取数据
 - 支持本地开发HMR
 - 稳定性经过线上大规模应用验证，可提供性能优化方案
+- 支持tree shaking以及打包去重依赖，使得打包的bundle非常小，为同样复杂度的next.js项目的0.4倍
 
 ## 开发中
 
@@ -149,6 +150,8 @@ module.exports = {
 # 与其他方案的对比
 
 与[easy-team](https://github.com/ykfe/egg-react-ssr/wiki/与easy-team实现方案的对比)方案的对比
+与[next.js](https://github.com/ykfe/egg-react-ssr/wiki/与next.js实现方案的对比)方案的对比
+
 
 # 答疑群
 
