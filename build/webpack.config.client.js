@@ -99,10 +99,16 @@ if (process.env.npm_config_report === 'true') {
   plugins.push(new BundleAnalyzerPlugin())
 }
 module.exports = merge(baseConfig, {
-  mode: process.env.NODE_ENV,
   devtool: devtool,
   entry: {
     Page: paths.entry
+  },
+  resolve: {
+    alias: {
+      'react': isDev ? paths.resolveApp('node_modules/react/cjs/react.development.js') : paths.resolveApp('node_modules/react/cjs/react.production.min.js'),
+      'react-dom': isDev ? paths.resolveApp('node_modules/react-dom/cjs/react-dom.development.js') : paths.resolveApp('node_modules/react-dom/cjs/react-dom.production.min.js'),
+      'react-router-dom': isDev ? paths.resolveApp('node_modules/react-router-dom/cjs/react-router-dom.js') : paths.resolveApp('node_modules/react-router-dom/cjs/react-router-dom.min.js')
+    }
   },
   output: {
     path: paths.appBuild,

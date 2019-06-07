@@ -11,7 +11,6 @@ const plugins = [
   })
 ]
 module.exports = merge(baseConfig, {
-  mode: process.env.NODE_ENV,
   devtool: isDev ? 'eval-source-map' : '',
   entry: {
     Page: paths.entry

@@ -22,7 +22,7 @@ let webpackModule = {
         },
         {
           test: /\.(js|mjs|jsx|ts|tsx)$/,
-          include: paths.appSrc,
+          include: [paths.appSrc, paths.resolveApp('node_modules/ykfe-utils')],
           loader: require.resolve('babel-loader'),
           options: {
             cacheDirectory: true,
@@ -92,6 +92,7 @@ let webpackModule = {
 }
 
 module.exports = {
+  mode: process.env.NODE_ENV,
   resolve: {
     alias: {
       '@': path.resolve(__dirname, '../web')
