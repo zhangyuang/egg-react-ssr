@@ -25,6 +25,7 @@ $ open http://localhost:7001
 - 支持本地开发HMR
 - 稳定性经过线上大规模应用验证，可提供性能优化方案
 - 支持tree shaking以及打包去重依赖，使得打包的bundle非常小，为同样复杂度的next.js项目的0.4倍
+- 支持csr/ssr自定义layout，无需通过path来手动区分
 
 ## 开发中
 
@@ -152,9 +153,8 @@ module.exports = {
 与[easy-team](https://github.com/ykfe/egg-react-ssr/wiki/与easy-team实现方案的对比)方案的对比
 与[next.js](https://github.com/ykfe/egg-react-ssr/wiki/与next.js实现方案的对比)方案的对比
 
-
 # 答疑群
 
 虽然我们已经尽力检查了一遍应用，但仍有可能有疏漏的地方，如果你在使用过程中发现任何问题或者建议，欢迎提[issue](https://github.com/ykfe/egg-react-ssr/issues)或者[PR](https://github.com/ykfe/egg-react-ssr/pulls)
 欢迎直接扫码加入钉钉群
-<img src="https://img.alicdn.com/tfs/TB15zfha79E3KVjSZFGXXc19XXa-750-990.jpg" width="300">
+<img src="https://img.alicdn.com/tfs/TB1CONSclGE3KVjSZFhXXckaFXa-750-990.jpg" width="300">
