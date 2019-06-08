@@ -1,5 +1,6 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
+import Layout from './layout'
 import './index.less'
 
 const mockData = {
@@ -17,6 +18,9 @@ function News (props) {
     </div>
   )
 }
+
+// 自定义Layout
+News.Layout = Layout
 
 News.getInitialProps = (ctx) => {
   const newsId = __isBrowser__ ? ctx.match.params.id : ctx.params.id
