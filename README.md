@@ -25,6 +25,7 @@ $ open http://localhost:7001
 - 支持本地开发HMR
 - 稳定性经过线上大规模应用验证，可提供性能优化方案
 - 支持tree shaking以及打包去重依赖，使得打包的bundle非常小，为同样复杂度的next.js项目的0.4倍
+- 支持csr/ssr自定义layout，无需通过path来手动区分
 
 ## 开发中
 
