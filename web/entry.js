@@ -13,7 +13,7 @@ const clientRender = async () => {
         // 使用HOC使得csr首次进入页面以及csr/ssr切换路由时调用getInitialProps
         Routes.map(({ path, exact, Component }, key) => {
           const ActiveComponent = Component()
-          const Layout = Component.Layout || defaultLayout
+          const Layout = ActiveComponent.Layout || defaultLayout
           return <Route exact={exact} key={key} path={path} render={props => {
             const HOC = GetinitialProps(ActiveComponent, props)
             return <Layout><HOC /></Layout>
