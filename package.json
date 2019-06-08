@@ -12,7 +12,7 @@
     "react-dev-utils": "^8.0.0",
     "react-dom": "^16.8.3",
     "react-router-dom": "^5.0.0",
-    "ykfe-utils": "^1.0.2"
+    "ykfe-utils": "^1.1.0"
   },
   "scripts": {
     "debug": "egg-bin debug",
