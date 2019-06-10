@@ -1,0 +1,23 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "zhangyuang",
+      "name": "LeonCheung",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/17424434?v=4",
+      "profile": "https://github.com/zhangyuang",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "egg-react-ssr",
+  "projectOwner": "ykfe",
+  "repoType": "github",
+  "repoHost": "https://github.com"
+}
