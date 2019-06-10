@@ -1,0 +1,41 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "zhangyuang",
+      "name": "LeonCheung",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/17424434?v=4",
+      "profile": "https://github.com/zhangyuang",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "i5ting",
+      "name": "狼叔",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/3118295?v=4",
+      "profile": "http://i5ting.com",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "JohnieXu",
+      "name": "Xu Zhiyong",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/21156871?v=4",
+      "profile": "http://www.lessing.online/xx-blog/",
+      "contributions": [
+        "bug"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "egg-react-ssr",
+  "projectOwner": "ykfe",
+  "repoType": "github",
+  "repoHost": "https://github.com"
+}
