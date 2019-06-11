@@ -1,5 +1,4 @@
 import React from 'react'
-import { withRouter } from 'react-router-dom'
 import Layout from './layout'
 import './index.less'
 
@@ -30,4 +29,4 @@ News.getInitialProps = (ctx) => {
 }
 
 // 如果使用React-Router确保使用withRouter来包裹组件，csr阶段需要读取props.history属性
-export default withRouter(News)
+export default News

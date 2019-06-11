@@ -1,5 +1,5 @@
 import React from 'react'
-import { withRouter, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './index.less'
 
 function Page (props) {
@@ -20,7 +20,7 @@ function Page (props) {
   )
 }
 
-Page.getInitialProps = () => {
+Page.getInitialProps = (ctx) => {
   return Promise.resolve({
     news: [
       {
@@ -43,4 +43,4 @@ Page.getInitialProps = () => {
     ]
   })
 }
-export default withRouter(Page)
+export default Page

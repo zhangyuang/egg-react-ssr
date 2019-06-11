@@ -14,8 +14,8 @@ const clientRender = async () => {
         Routes.map(({ path, exact, Component }, key) => {
           const ActiveComponent = Component()
           const Layout = ActiveComponent.Layout || defaultLayout
-          return <Route exact={exact} key={key} path={path} render={props => {
-            const HOC = GetinitialProps(ActiveComponent, props)
+          return <Route exact={exact} key={key} path={path} render={() => {
+            const HOC = GetinitialProps(ActiveComponent)
             return <Layout><HOC /></Layout>
           }} />
         })
