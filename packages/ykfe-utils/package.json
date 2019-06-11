@@ -1,0 +1,32 @@
+{
+  "name": "ykfe-utils",
+  "version": "1.1.2",
+  "description": "",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "sideEffects": false,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run build:cjs && npm run build:esm",
+    "build:cjs": "NODE_ENV=production babel src --out-dir lib --presets=@babel/preset-react --plugins=@babel/plugin-transform-modules-commonjs",
+    "build:esm": "NODE_ENV=production babel src --out-dir es --presets=@babel/preset-react",
+    "watch": "concurrently \" NODE_ENV=production babel --watch src --out-dir lib --presets=@babel/preset-react --plugins=@babel/plugin-transform-modules-commonjs\" \" NODE_ENV=production babel --watch src --out-dir es --presets=@babel/preset-react \""
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
+    "@babel/plugin-transform-modules-commonjs": "^7.4.4",
+    "@babel/preset-react": "^7.0.0",
+    "concurrently": "^4.1.0"
+  },
+  "dependencies": {
+    "multistream": "^2.1.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.0",
+    "serialize-javascript": "^1.7.0",
+    "string-to-stream": "^1.1.1"
+  }
+}

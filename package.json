@@ -25,7 +25,9 @@
       "*node_modules*",
       "*dist*",
       "*run*",
-      "*logs*"
+      "*logs*",
+      "*lib*",
+      "*es*"
     ],
     "global": [
       "__isBrowser__",
@@ -40,6 +42,7 @@
   },
   "homepage": "https://github.com/ykfe/egg-react-ssr#readme",
   "devDependencies": {
+    "lerna": "^3.8.0",
     "pre-commit": "^1.2.2",
     "standard": "^12.0.1",
     "vuepress": "^0.14.8"

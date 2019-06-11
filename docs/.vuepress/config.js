@@ -14,8 +14,8 @@ module.exports = {
     locales: {
       '/': {
         nav: [
-          { text: '指南', link: '/guide' },
-          { text: '配置', link: '/config' },
+          { text: '指南', link: '/guide/' },
+          { text: '配置', link: '/config/' },
           { text: 'Github', link: 'https://github.com/ykfe/egg-react-ssr' },
         ],
         selectText: '选择语言',
