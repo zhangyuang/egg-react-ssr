@@ -29,11 +29,11 @@ module.exports = {
                 'getting-started',
                 'isomorphism',
                 'config',
+                'hmr',
                 'getInitialProps',
                 'hydrate',
-                'hmr',
-                'optimize',
                 'publish',
+                'optimize',
                 'ts',
                 'serverless',
                 'faq'
