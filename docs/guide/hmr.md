@@ -49,6 +49,8 @@ NODE_ENV=development webpack-dev-server --port 8000 --hot --config ./build/webpa
 "sockjs-client": "1.3.0", // websocket的客户端实现
 ```
 
+以流程图的形式展示
+![](https://s2.ax1x.com/2019/06/14/Vhv9gg.jpg)
 这里我们只贴出关键部分代码，不贴出完整代码
 
 ```js
@@ -233,8 +235,6 @@ function hotApply () {
 由于 webpack-hot-middleware 本质也是使用 EventSource(类似 websocket) 来实现 hmr，故这里只介绍用法，不深入到源码级别
 
 ```js
-#!/usr/bin/env node
-
 const devMiddleware = require('./devMiddleware') // 分别加载webpack-dev-middleware以及hot-middleware两个中间件，只是我们这里改造成了适合koa的中间件写法
 const hotMiddleware = require('./hotMiddleware')
 const compose = require('koa-compose')

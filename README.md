@@ -91,7 +91,7 @@ Router Props: 路由信息，包括pathname以及Router params等信息，详细
 # npm scripts
 
 ```
-$ npm start // 启动监听7001端口，建议使用方式，同时启动服务端渲染 + 客户端水合
+$ npm start // 启动监听7001端口，建议使用方式，同时启动服务端渲染 + 客户端hydrate
 $ npm run ssr // 启动监听7001端口，只启动服务端渲染，此时仅服务端直出html，没有与客户端混合的步骤
 $ npm run csr // 启动监听8000端口，只启动客户端渲染，相当于传统的cra脚手架开发模式
 $ npm run prod // 模拟SSR应用生产环境
