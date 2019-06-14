@@ -31,6 +31,7 @@ module.exports = {
                 'config',
                 'getInitialProps',
                 'hydrate',
+                'node',
                 'hmr',
                 'publish',
                 'optimize',

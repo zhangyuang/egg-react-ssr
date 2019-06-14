@@ -2,7 +2,7 @@
 
 本文档将会基于我们团队开源的[Egg + React + SSR](https://github.com/ykfe/egg-react-ssr)应用骨架进行讲解, 你可以先将该项目clone到本地，并运行一下，简单熟悉一下目录结构以及文件。
 
-## 下载应用应用
+## 下载应用
 
 ```
 $ npm install yk-cli -g
