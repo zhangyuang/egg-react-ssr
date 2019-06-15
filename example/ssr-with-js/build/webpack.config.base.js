@@ -6,6 +6,7 @@ const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const getStyleLoaders = require('./util').getStyleLoaders
 const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent')
+
 let webpackModule = {
   strictExportPresence: true,
   rules: [
@@ -22,23 +23,14 @@ let webpackModule = {
         },
         {
           test: /\.(js|mjs|jsx|ts|tsx)$/,
-          include: [paths.appSrc, paths.resolveApp('node_modules/ykfe-utils')],
+          include: paths.appSrc,
           loader: require.resolve('babel-loader'),
           options: {
-            cacheDirectory: true,
-            cacheCompression: false
-          }
-        },
-        {
-          test: /\.(js|mjs)$/,
-          exclude: /@babel(?:\/|\\{1,2})runtime/,
-          loader: require.resolve('babel-loader'),
-          options: {
-            configFile: false,
-            compact: false,
             cacheDirectory: true,
             cacheCompression: false,
-            sourceMaps: false
+            presets: [
+              '@babel/preset-react'
+            ]
           }
         },
         {

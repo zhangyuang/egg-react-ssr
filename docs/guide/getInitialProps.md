@@ -4,6 +4,13 @@
 这里我们将服务端的逻辑封装到一个名为serverRender的方法中进行。
 
 ```js
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { BrowserRouter, StaticRouter, Route } from 'react-router-dom'
+import defaultLayout from '@/layout'
+import { GetinitialProps, getComponent } from 'ykfe-utils'
+import { routes as Routes } from '../config/config.default'
+
 const serverRender = async (ctx) => {
   // 服务端渲染 根据ctx.path获取请求的具体组件，调用getInitialProps并渲染
   const ActiveComponent = getComponent(Routes, ctx.path)()

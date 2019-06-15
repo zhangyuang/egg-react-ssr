@@ -6,7 +6,7 @@ import { GetinitialProps, getComponent } from 'ykfe-utils'
 import { routes as Routes } from '../config/config.default'
 
 const clientRender = async () => {
-  // 客户端渲染|水合
+  // 客户端渲染|hydrate
   ReactDOM[window.__USESSR__ ? 'hydrate' : 'render'](
     <BrowserRouter>
       {

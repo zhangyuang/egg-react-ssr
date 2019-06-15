@@ -3,7 +3,6 @@ const path = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const baseConfig = require('./webpack.config.base')
-const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const paths = require('./paths')
@@ -85,7 +84,6 @@ const plugins = [
     __isBrowser__: true
   }),
   new ModuleNotFoundPlugin(paths.appPath),
-  new WatchMissingNodeModulesPlugin(paths.appNodeModules),
   new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
   new ManifestPlugin({
     fileName: 'asset-manifest.json',
