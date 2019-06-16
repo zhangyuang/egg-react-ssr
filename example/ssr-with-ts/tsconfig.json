@@ -1,0 +1,55 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "./server",
+    "target": "esnext",
+    "module": "commonjs",
+    "strict": true,
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "charset": "utf8",
+    "allowJs": true,
+    "pretty": true,
+    "jsx": "preserve",
+    "noEmitOnError": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "esModuleInterop": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "strictPropertyInitialization": false,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "skipDefaultLibCheck": true,
+    "importHelpers": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": false,
+    "strictNullChecks": true,
+    "paths": {
+      "@/*": [
+        "web/*"
+      ]
+    }
+  },
+  "exclude": [
+    "app/public",
+    "app/views",
+    "node_modules*",
+    "build*",
+    "dist*",
+    "test*",
+    "server*"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "extends": ["tslint-config-egg"],
+  "linterOptions": {
+    "exclude": [
+      "config/**/*.js",
+      "node_modules/**/*.ts",
+      "coverage/lcov-report/*.js",
+      "src/static/**/*.js"
+    ]
+  },
+  "rules": {
+    "ordered-imports": false,
+    "member-ordering": false,
+    "object-literal-sort-keys": false,
+    "strict-type-predicates": false,
+    "triple-equals": false,
+    "no-debugger": false,
+    "no-console": false,
+    "no-empty": false,
+    "no-empty-interface": false,
+    "no-eval": false,
+    "no-for-in-array": false,
+    "jsx-no-lambda": false,
+    "interface-name": false,
+    "member-access": [true, "no-public", "check-accessor"],
+    "variable-name": false,
+    "no-var-requires": false,
+    "object-literal-shorthand": false,
+    "only-arrow-functions": [false],
+    "no-unused-variable": [false]
+  }
+}

@@ -1,0 +1,13 @@
+.DS_Store
+
+node_modules/
+
+dist
+
+logs/**/*
+
+
+
+run/**/*
+
+server/**/*
