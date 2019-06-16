@@ -1,0 +1,39 @@
+{% if style === "css" %}
+.list {
+  background-color: #fff;
+  width: 1000px;
+  margin: 100px auto;
+}
+.list li {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 20px 30px 20px 80px;
+  border-bottom: 1px solid #eee;
+  position: relative;
+  line-height: 20px;
+}
+.list li .toDetail a {
+  font-size: 14px;
+  color: #888888;
+}
+{% else %}
+.list {
+    background-color: #fff;
+    width: 1000px;
+    margin: 100px auto;
+    li {
+        display: flex;
+        justify-content: space-between;
+        background-color: #fff;
+        padding: 20px 30px 20px 80px;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        line-height: 20px;
+        .toDetail a{
+            font-size: 14px;
+            color: #888
+        }
+    }
+}
+{% endif %}
