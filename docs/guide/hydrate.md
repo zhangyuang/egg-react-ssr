@@ -101,7 +101,7 @@ export default GetInitialProps
 
 6、最后我们用layout将HOC组件包裹，进行hydrate或者render
 
-## hydrate API揭秘
+## hydrate API
 
 在揭秘hydrate之前，我们需要知道React的onClick绑定事件和用addEventListener的方式绑定事件有什么区别。
 > React并不是将click事件绑在该div的真实DOM上，而是在document处监听所有支持的事件，当事件发生并冒泡至document处时，React将事件内容封装并交由真正的处理函数运行。
@@ -109,18 +109,8 @@ export default GetInitialProps
 
 ![](https://user-gold-cdn.xitu.io/2017/10/9/8792eeae6dc6011274986acf42a76b15?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
 
-这里我们贴出核心代码
-```js
-// react-dom/src/client/ReactDOM.js
-hydrate(element: React$Node, container: DOMContainer, callback: ?Function) {
-    // 这里我们调用了legacyRenderSubtreeIntoContainer方法，与ReactDOM.render方法不同的地方是第四个参数我们这时候为true
-    return legacyRenderSubtreeIntoContainer(
-        null,
-        element,
-        container,
-        true,
-        callback,
-    );
-}
+> hydrate是 React 中提供在初次渲染的时候，去复用原本已经存在的 DOM 节点，减少重新生成节点以及删除原本 DOM 节点的开销，来加速初次渲染的功能。主要使用场景是服务端渲染或者像prerender等情况。
 
-```
+### hydrate API 源码分析
+
+待更新。。。

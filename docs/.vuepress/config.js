@@ -33,8 +33,8 @@ module.exports = {
                 'hydrate',
                 'stream',
                 'hmr',
-                'publish',
                 'optimize',
+                'publish',
                 'ts',
                 'serverless',
                 'faq'
