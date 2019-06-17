@@ -1,15 +1,112 @@
 # 构建配置
 
-## 通用配置
+## 基础配置
 
 服务器端渲染(SSR)项目的配置大体上与纯客户端项目类似，我们建议将配置分为三个文件：base, client 和 server。基本配置(base config)包含在两个环境共享的配置，例如，resolve，plugins，module，别名(alias)和 loader等配置项。服务器配置(server config)和客户端配置(client config)，可以通过使用 webpack-merge 来简单地扩展基本配置。
 
+我们利用 webpack 分别对客户端代码和服务器端代码分别进行打包，服务器需要服务器 bundle 用于服务器端渲染(SSR)，而客户端 bundle 会发送给浏览器，用于客户端对服务端渲染的 html 进行事件绑定和接管。
+
 - base config
 
+webpack.base.conf.js 配置主要定义通用的rules，例如 MiniCssExtractPlugin 对样式文件的编译，对 js 文件 babel 编译，处理图片、字体等。其基本配置如下：
+
 ```javascript
+'use strict'
+
+const paths = require('./paths')
+const path = require('path')
+// style files regexes
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const getStyleLoaders = require('./util').getStyleLoaders
+const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent')
+let webpackModule = {
+  strictExportPresence: true,
+  rules: [
+    { parser: { requireEnsure: false } },
+    {
+      oneOf: [
+        {
+          test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+          loader: require.resolve('url-loader'),
+          options: {
+            limit: 10000,
+            name: 'static/media/[name].[hash:8].[ext]'
+          }
+        },
+        {
+          test: /\.(js|mjs|jsx|ts|tsx)$/,
+          include: paths.appSrc,
+          loader: require.resolve('babel-loader'),
+          options: {
+            cacheDirectory: true,
+            cacheCompression: false
+          }
+        },
+        {
+          test: /\.(js|mjs)$/,
+          exclude: /@babel(?:\/|\\{1,2})runtime/,
+          loader: require.resolve('babel-loader'),
+          options: {
+            configFile: false,
+            compact: false,
+            cacheDirectory: true,
+            cacheCompression: false,
+            sourceMaps: false
+          }
+        },
+        {
+          test: /\.css$/,
+          exclude: /\.module\.css$/,
+          use: getStyleLoaders({
+            importLoaders: 1
+          })
+        },
+        {
+          test: /\.module\.css$/,
+          use: getStyleLoaders({
+            importLoaders: 1,
+            modules: true,
+            getLocalIdent: getCSSModuleLocalIdent
+          })
+        },
+        {
+          test: /\.less$/,
+          exclude: /\.module\.less$/,
+          use: getStyleLoaders(
+            {
+              importLoaders: 2,
+              localIdentName: '[local]'
+            },
+            'less-loader'
+          ),
+          sideEffects: true
+        },
+        {
+          test: /\.module\.less$/,
+          use: getStyleLoaders(
+            {
+              importLoaders: 2,
+              modules: true,
+              getLocalIdent: getCSSModuleLocalIdent
+            },
+            'less-loader'
+          )
+        },
+        {
+          exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
+          loader: require.resolve('file-loader'),
+          options: {
+            name: 'static/media/[name].[hash:8].[ext]'
+          }
+        }
+      ]
+    }
+  ]
+}
+
 module.exports = {
   // Webpack 在启动后会从配置的入口模块出发找出所有依赖的模块，Resolve 配置 Webpack 如何寻找模块所对应的文件。
-  // Webpack 内置 JavaScript 模块化语法解析功能，默认会采用模块化标准里约定好的规则去寻找，但你也可以根据自己的需要修改默认的规则。
+  // Webpack 内置 JavaScript 模块化语法解析功能，默认会采用模块化标准里约定好的规则去寻找，你也可以根据自己的需要修改默认的规则。
   resolve: {
     // 引用文件别名
     alias: {
@@ -47,6 +144,23 @@ module.exports = {
 ```
 
 ## server 配置
+
+server 构建配置中，需要注意以下几个点：
+
+1. 在整个输出模块里新增target选项
+
+```
+// 告诉webpack当前环境是node环境，可以使用 Node.js require 加载 chunk。
+target："node"
+```
+
+2. externals 白名单
+
+服务端中需要对样式文件进行编译，在服务端代码中不能直接引用样式文件。
+
+3. devtool 使用 source-map 在开发环境调试
+
+具体配置如下：
 
 ```javascript
 const webpack = require('webpack')
@@ -98,16 +212,17 @@ module.exports = merge(baseConfig, {
 // 合并 base 配置
 module.exports = merge(baseConfig, {
   // 打包时可以通过 NODE_ENV 设置打包模式
+  // 'production' || 'development' || 'none'
   mode: process.env.NODE_ENV,
   // 通过在浏览器调试工具(browser devtools)中添加元信息(meta info)增强调试
-  devtool: devtool,
+  devtool: isDev ? 'cheap-module-source-map' : (process.env.GENERATE_SOURCEMAP !== 'false' ? 'source-map' : false),
   // 打包入口
   entry: {
     Page: paths.entry
   },
   // 生成的打包文件路径
   output: {
-    path: paths.appBuild,
+    path: 'your target output path',
     pathinfo: true,
     filename: 'static/js/[name].js',
     chunkFilename: 'static/js/[name].chunk.js',
@@ -121,10 +236,11 @@ module.exports = merge(baseConfig, {
   // 用来拓展 webpack 功能，它们会在整个构建过程中生效，执行相关的任务。
   plugins: plugins.filter(Boolean),
   // node 模块
-  // true：提供 polyfill。
-  // "mock"：提供 mock 实现预期接口，但功能很少或没有。
-  // "empty"：提供空对象。
-  // false: 什么都不提供。预期获取此对象的代码，可能会因为获取不到此对象，触发 ReferenceError 而崩溃。尝试使用 require('modulename') 导入模块的代码，可能会触发 Cannot find module "modulename" 错误。
+  // 1. true：提供 polyfill。
+  // 2. "mock"：提供 mock 实现预期接口，但功能很少或没有。
+  // 3. "empty"：提供空对象。
+  // 4. false: 什么都不提供。预期获取此对象的代码，可能会因为获取不到此对象，触发 ReferenceError 而崩溃。
+  // 尝试使用 require('modulename') 导入模块的代码，可能会触发 Cannot find module "modulename" 错误。
   node: {
     dgram: 'empty',
     fs: 'empty',
@@ -132,6 +248,9 @@ module.exports = merge(baseConfig, {
     tls: 'empty',
     child_process: 'empty'
   },
+  // 配置如何展示性能提示。例如，如果一个资源超过 250kb，webpack 会对此输出一个警告来通知你。
   performance: false
 })
 ```
+
+以上的配置是全部配置项的一些关键截取，在实际项目中如果对于配置有定制需求可以修改对应的 client/server 打包配置文件。所有的配置内容可以参考项目 [build](https://github.com/ykfe/egg-react-ssr/tree/master/build) 目录下的配置内容。
