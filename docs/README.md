@@ -12,7 +12,7 @@ features:
 footer: MIT Licensed | Copyright © 2017-present
 ---
 
-### Getting started
+## Getting started
 
 ```bash
 $ npm install yk-cli -g
@@ -21,6 +21,27 @@ $ cd <Your Project Name>
 $ npm i
 $ npm start
 $ open http://localhost:7001
+```
+
+## 用法
+
+- render是react的视图渲染方法
+- getInitialProps是获取数据方法，将返回值赋值给组件状态
+    - csr通过高阶组件实现
+    - ssr通过node执行
+
+```js
+function Page(props) {
+  return <div> {props.name} </div>
+}
+
+Page.getInitialProps = async (ctx) => {
+  return Promise.resolve({
+    name: 'Egg + React + SSR'
+  })
+}
+
+export default Page
 ```
 
 ## 社区交流

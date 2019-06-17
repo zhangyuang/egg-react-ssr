@@ -36,5 +36,14 @@ class Page {
 
 解决方式: 通过读取state的方式，在didmount中更新state，来触发组件的重新render，缺点是会让客户端再调用一次render方法
 
+## 如何让某一个组件只在客户端进行渲染
+
+使用ykfe-utils提供的高阶组件OnlyCsr
+
+```
+import { OnlyCsr } from 'ykfe-utils'
+
+export default OnlyCsr(Page)
+```
 
 
