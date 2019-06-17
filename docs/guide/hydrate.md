@@ -1,4 +1,6 @@
-# 客户端混合
+# 客户端hydrate
+
+通过获取到服务端直出的html字符串，我们能够展现一个有内容的页面，但此时得到的页面是死的，并没有事件的绑定，所以我们需要加载打包后的客户端静态资源来进行一个DOM的对比检测以及事件的绑定。
 
 ## 执行流程
 
@@ -102,6 +104,12 @@ export default GetInitialProps
 6、最后我们用layout将HOC组件包裹，进行hydrate或者render
 
 ## hydrate API
+
+### DOM检测
+
+这里我们先讲解一下hydrate API的DOM检测功能，你注意到我们将服务端获取到的数据通过window.__INITIAL_DATA__注入给客户端作为初始数据使用，React会用这些数据在客户端生成一遍vdom，并且会比较客户端生成的vdom与服务端生成的vdom的内容是否一致，如果不一致，他会在控制台提示error。详见[文档](https://zh-hans.reactjs.org/docs/react-dom.html#hydrate),此时他会使用客户端生成的内容，但你应该将不匹配作为一个Bug来处理。
+
+### 事件绑定
 
 在揭秘hydrate之前，我们需要知道React的onClick绑定事件和用addEventListener的方式绑定事件有什么区别。
 > React并不是将click事件绑在该div的真实DOM上，而是在document处监听所有支持的事件，当事件发生并冒泡至document处时，React将事件内容封装并交由真正的处理函数运行。

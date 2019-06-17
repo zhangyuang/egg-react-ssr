@@ -1,8 +1,10 @@
 # 以流的形式返回
 
-这一章讲述的是，当我们获取到打包后的serverRender方法后，应该如何调用，来将我们想要给结果返回给浏览器端。
+这一章讲述的是，当我们获取到打包后的serverRender方法后，应该如何将它渲染为流，以及和我们的模版文件结合成一个完整的流返回给客户端。使用流相较于使用字符串可以大大缩短我们的ttfb(首次请求返回)时间。同时还告诉你如何通过config的字段来切换CSR/SSR两种渲染模式。
 
 ## 组合过程
+
+这里我们要将index.html模版文件与前端组件组合为一个完整的stream返回给客户端。
 
 ```js
 //ykfe-utils/src/renderToStream.js
@@ -26,18 +28,23 @@ const renderToStream = async (ctx, chunkName, config) => {
   }
   let stream
   if (!isCsr) {
+    // 如果我们是SSR渲染模式才需要调用serverRender方法来将组件渲染为html，如果是CSR模式，我们可以省去这一步
     if (isLocal) {
       // 本地开发环境下每次刷新的时候清空require服务端文件的缓存，保证服务端与客户端渲染结果一致
       delete require.cache[config.serverJs(chunkName)]
     }
-    // 如果当前是服务端渲染模式，我们需要require打包后的[chunkName].server.js导出的模块，即打包后的serverRender方法，客户端模式不需要服务端直出html可以省去这一步
+    // 获取到config.default.js中的打包后的[chunkName].server.js的路径
     const serverStream = require(config.serverJs(chunkName))
     // 在这里我们调用serverRender方法，获取到staticRouter包裹的需要渲染的组件
     const serverRes = await serverStream.default(ctx)
     // 调用renderToNodeStream API来将组件渲染为字符串
     stream = global.renderToNodeStream(serverRes)
   }
-    // 接下来我们根据模版中的锚点，来插入一些静态资源信息
+```
+
+接下来我们根据模版中的锚点，来在适当位置插入一些静态资源信息，使用[multiStream](https://www.npmjs.com/package/multistream)来将多个stream组合为一个stream，当第一个流end时，第二个流才strat。
+
+```js
   const docArr = baseHtml.split('<!-- Start Server Render Document -->')
 
   const beginDoc = docArr[0].trim().replace('\n', '')
@@ -63,4 +70,4 @@ export default renderToStream
 
 ## 优势
 
-通过以上代码，我们可以很好的兼容CSR/SSR两种渲染模式，他们共用了index.html来作为自己的模版，当需要修改骨架时，无需在多个地方修改。其次当你降级为CSR渲染模式时，我们无需调用serverRender方法，这样减小了服务端的压力，在流量过大时，可以开启此选项来降级。
+通过以上代码，我们可以很好的兼容CSR/SSR两种渲染模式，他们共用了index.html来作为自己的模版，当需要修改骨架时，无需在多个地方修改。其次当你降级为CSR渲染模式时，我们无需调用serverRender方法，这样减小了服务端的压力，在流量过大时，可以开启此选项来降级。同时我们可以发现上述代码还有一定的性能提升空间，我们最后将多个stream依次返回给了客户端，其实这里我们可以结合[bigpipe](https://github.com/bigviewjs/bigview)的理念，来实现服务端/客户端并行渲染。
