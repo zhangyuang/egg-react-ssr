@@ -63,6 +63,8 @@ package-lock.json
 
 cache/**
 
+map/**/*.map
+
 javascript.version.json
 
 typescript.version.json
