@@ -47,7 +47,7 @@ ctx: Node应用请求的上下文(仅在SSR阶段可以获取)
 Router Props: 路由信息，包括pathname以及Router params等信息，详细信息参考react-router文档
 
 # 目录结构
-  
+
 ```
 ├── README.md
 ├── app // egg核心目录
