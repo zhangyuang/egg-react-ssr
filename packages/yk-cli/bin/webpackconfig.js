@@ -24,3 +24,4 @@ async function webpack(option) {
     });
 }
 exports.webpack = webpack;
+//# sourceMappingURL=webpackconfig.js.map

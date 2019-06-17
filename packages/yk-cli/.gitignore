@@ -63,7 +63,7 @@ package-lock.json
 
 cache/**
 
-map/**/*.map
+bin
 
 javascript.version.json
 

@@ -34,15 +34,5 @@
   "bugs": {
     "url": "https://github.com/ykfe/yk-cli/issues"
   },
-  "homepage": "https://github.com/ykfe/yk-cli#readme",
-  "files": [
-    "bin",
-    "src",
-    "types",
-    "tpl",
-    ".gitignore",
-    "tsconfig.json",
-    "README.md",
-    "help.txt"
-  ]
+  "homepage": "https://github.com/ykfe/yk-cli#readme"
 }

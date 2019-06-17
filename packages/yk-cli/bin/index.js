@@ -45,3 +45,4 @@ const generator = (argv) => {
     session();
 };
 generator(process.argv.slice(2));
+//# sourceMappingURL=index.js.map

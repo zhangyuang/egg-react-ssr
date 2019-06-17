@@ -48,3 +48,4 @@ async function getVersionEffective(option) {
     });
 }
 exports.getVersionEffective = getVersionEffective;
+//# sourceMappingURL=versionEffective.js.map

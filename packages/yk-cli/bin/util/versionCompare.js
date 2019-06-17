@@ -64,3 +64,4 @@ async function deletecache(type) {
     });
 }
 exports.deletecache = deletecache;
+//# sourceMappingURL=versionCompare.js.map

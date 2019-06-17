@@ -41,3 +41,4 @@ function init_app(option) {
     });
 }
 exports.init_app = init_app;
+//# sourceMappingURL=app.js.map
