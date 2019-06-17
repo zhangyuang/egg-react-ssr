@@ -9,6 +9,12 @@ Object.defineProperty(exports, "GetinitialProps", {
     return _getinitialProps.default;
   }
 });
+Object.defineProperty(exports, "OnlyCsr", {
+  enumerable: true,
+  get: function () {
+    return _onlyCsr.default;
+  }
+});
 Object.defineProperty(exports, "getComponent", {
   enumerable: true,
   get: function () {
@@ -23,6 +29,8 @@ Object.defineProperty(exports, "renderToStream", {
 });
 
 var _getinitialProps = _interopRequireDefault(require("./components/getinitialProps"));
+
+var _onlyCsr = _interopRequireDefault(require("./components/onlyCsr"));
 
 var _getComponent = _interopRequireDefault(require("./getComponent"));
 

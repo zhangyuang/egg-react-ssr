@@ -16,6 +16,26 @@
 
 [ReactDOMServer](https://reactjs.org/docs/react-dom-server.html)服务端渲染
 
+## 功能/特性
+
+### 已完成
+
+- 基于cra脚手架开发，由cra开发的React App可无缝迁移，如果你熟悉cra的配置，上手成本几乎为0
+- 小而美，相比于beidou，next.js这样的高度封装方案，我们的实现原理和开发模式一目了然
+- 同时支持SSR以及CSR两种开发模式,本地开发环境以及线上环境皆可无缝切换两种渲染模式
+- 统一前端路由与服务端路由，无需重复编写路由文件配置
+- 支持切换路由时自动获取数据
+- 支持本地开发HMR
+- 稳定性经过线上大规模应用验证，可提供性能优化方案
+- 支持tree shaking以及打包去重依赖，使得打包的bundle非常小，为同样复杂度的next.js项目的0.4倍
+- 支持csr/ssr自定义layout，无需通过path来手动区分
+- 支持选择某个具体的组件在客户端还是服务端进行渲染
+
+### 开发中
+
+- 配套[TypeScript](https://github.com/ykfe/egg-react-ssr-typescript)版本的实现
+- 配套serverless版本的实现
+
 ## 与其他社区方案的对比
 
 ### 与[easy-team](https://github.com/ykfe/egg-react-ssr/wiki/%E4%B8%8Eeasy-team%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%A1%88%E7%9A%84%E5%AF%B9%E6%AF%94)方案对比
