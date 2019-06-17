@@ -6,7 +6,7 @@
   "types": "types/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rm -rf ./bin && tsc",
+    "build": "rm -rf ./bin && tsc --sourceMap false",
     "start": "node --inspect=19229 ./bin/index.js",
     "dev": "rm -rf ./bin && tsc -w"
   },
