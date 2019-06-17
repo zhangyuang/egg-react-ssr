@@ -14,10 +14,19 @@
 
 [React](https://react.docschina.org/)用于构建用户界面的 JavaScript 库
 
-[SSR](https://reactjs.org/docs/react-dom-server.html)服务端渲染
+[ReactDOMServer](https://reactjs.org/docs/react-dom-server.html)服务端渲染
 
 ## 与其他社区方案的对比
 
-与[easy-team](https://github.com/ykfe/egg-react-ssr/wiki/%E4%B8%8Eeasy-team%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%A1%88%E7%9A%84%E5%AF%B9%E6%AF%94)方案对比
+### 与[easy-team](https://github.com/ykfe/egg-react-ssr/wiki/%E4%B8%8Eeasy-team%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%A1%88%E7%9A%84%E5%AF%B9%E6%AF%94)方案对比
 
-与[next.js](https://github.com/ykfe/egg-react-ssr/wiki/%E4%B8%8Enext.js%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%A1%88%E7%9A%84%E5%AF%B9%E6%AF%94)方案对比
+- 与服务端框架不耦合，easy-team的实现方式与egg框架耦合的太过紧密
+- 本地开发读取服务端bundle的方式更加优雅
+- 通过config.default.js同时两种渲染模式无缝切换而easy-team需要在构建时指定渲染类型
+
+### 与[next.js](https://github.com/ykfe/egg-react-ssr/wiki/%E4%B8%8Enext.js%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%A1%88%E7%9A%84%E5%AF%B9%E6%AF%94)方案对比
+
+- 与服务端框架不耦合，next.js实现与http模块耦合紧密
+- 本地开发读取服务端bundle的方式更加优雅
+- 体积小，同等复杂度项目大小为为next.js生成文件的0.3倍
+- 实现非黑盒，关键配置皆可通过config.default.js来配置
