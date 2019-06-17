@@ -5,10 +5,10 @@ import fs from 'fs';
  * 项目帮助提示
  *
  * @export
- * @returns {Promise<boolean>}
+ * @returns {Promise<void>}
  */
-export function help(): Promise<boolean> {
-    return new Promise<boolean>((resolve, reject) => {
+export function help(): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
         let content = fs.readFileSync(`${__dirname}/../help.txt`).toString("utf8");
         console.log(content);
     });

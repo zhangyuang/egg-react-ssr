@@ -1,2 +1,9 @@
 import { Optional } from "./interface/option";
-export declare function component(option: Optional): Promise<boolean>;
+/**
+ * 编译现有组件模板
+ *
+ * @export
+ * @param {Optional} option
+ * @returns {Promise<void>}
+ */
+export declare function component(option: Optional): Promise<void>;

@@ -24,6 +24,10 @@
 
 * 发布 npm publish
 
+### 注释工具
+
+* Document this (https://marketplace.visualstudio.com/items?itemName=joelday.docthis)
+
 ### vscode 调试文件
 
 * .vscode/launch.json

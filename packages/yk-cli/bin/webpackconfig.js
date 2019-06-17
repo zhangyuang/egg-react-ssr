@@ -5,6 +5,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const render_1 = require("./util/render");
 const path_1 = __importDefault(require("path"));
+/**
+ * webpack
+ * 处理模板
+ * @export
+ * @param {Optional} option
+ * @returns {Promise<void>}
+ */
 async function webpack(option) {
     return new Promise((resolve, reject) => {
         const filelist = [
@@ -20,8 +27,7 @@ async function webpack(option) {
             render_1.renderTemplate(tplpath, filepath, option);
         });
         console.log("webpack设置成功.....");
-        resolve(true);
+        resolve();
     });
 }
 exports.webpack = webpack;
-//# sourceMappingURL=webpackconfig.js.map

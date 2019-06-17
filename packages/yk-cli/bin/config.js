@@ -9,7 +9,7 @@ const inquirer_1 = __importDefault(require("inquirer"));
  * 获取全局配置 option
  * @export
  * @param {Optional} option
- * @returns {Promise<boolean>}
+ * @returns {Promise<void>}
  */
 function appconfig(option) {
     return new Promise((resolve, reject) => {
@@ -17,7 +17,7 @@ function appconfig(option) {
                 type: 'input',
                 message: '您创建的应用名称:',
                 name: 'appname',
-                default: option.command && option.command.length > 0 ? String(option.command[0]) : ''
+                default: option.command && option.command.length > 0 ? String(option.command[0]) : 'app'
             }, {
                 type: 'list',
                 message: '使用的开发语言',
@@ -38,16 +38,11 @@ function appconfig(option) {
                     "css"
                 ]
             }]).then((answers) => {
-            if (!answers.appname || String(answers.appname).trim() == '') {
-                console.log("创建的应用名不能为空!");
-                reject(false);
-            }
             option.appname = answers.appname;
             option.style = answers.style;
             option.language = answers.language;
-            resolve(true);
+            resolve();
         });
     });
 }
 exports.appconfig = appconfig;
-//# sourceMappingURL=config.js.map

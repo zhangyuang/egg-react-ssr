@@ -3,13 +3,16 @@ import { Optional } from '../interface/option';
 import { versionCompare, deletecache } from './versionCompare';
 import https from 'https';
 
-
+/**
+ * http 
+ * 缓存判断是否有效处理
+ * @export
+ * @param {Optional} option
+ * @returns {Promise<boolean>}
+ */
 export async function getVersionEffective(option: Optional): Promise<boolean> {
     return new Promise<boolean>((resolve, reject) => {
-        let url = config.js_url;
-        if (option.language === "typescript") {
-            url = config.ts_url;
-        }
+        let url = option.language === "typescript" ? config.ts_url : config.js_url;
         let content: string = "";
         let packagejson = null;
         https.get(url, (res) => {

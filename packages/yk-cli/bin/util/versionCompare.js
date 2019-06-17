@@ -15,22 +15,11 @@ const path_1 = __importDefault(require("path"));
  * @returns {boolean} 是否一致
  */
 function versionCompare(type, version) {
-    const version_file = path_1.default.resolve(__dirname, '..', '..', `${type}.version.json`);
-    const version_dir = path_1.default.resolve(__dirname, '..', '..', `cache/example/ssr-with-${type === "javascript" ? "js" : "ts"}/package.json`);
+    const version_file = path_1.default.resolve(__dirname, `../../${type}.version.json`);
+    const version_dir = path_1.default.resolve(__dirname, `../../cache/example/ssr-with-${type === "javascript" ? "js" : "ts"}/package.json`);
     if (fs_1.default.existsSync(version_file) && fs_1.default.existsSync(version_dir)) {
-        try {
-            const content = fs_1.default.readFileSync(version_file).toString();
-            const old_version = JSON.parse(content).version;
-            if (old_version === version) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
-        catch (ex) {
-            return false;
-        }
+        const old_version = require(version_file).version;
+        return old_version === version;
     }
     else {
         return false;
@@ -45,7 +34,7 @@ exports.versionCompare = versionCompare;
  * @param {string} version 版本号
  */
 function versionlog(type, version) {
-    const version_file = path_1.default.resolve(__dirname, '..', '..', `${type}.version.json`);
+    const version_file = path_1.default.resolve(__dirname, `../../${type}.version.json`);
     fs_1.default.writeFileSync(version_file, JSON.stringify({ version: version }));
 }
 exports.versionlog = versionlog;
@@ -59,9 +48,8 @@ exports.versionlog = versionlog;
 async function deletecache(type) {
     const version_file = `${type}.version.json`;
     return new Promise((resolve, reject) => {
-        const task = child_process_1.spawn(`rm -rf ./cache && rm -rf ./${version_file}`, [], { cwd: path_1.default.resolve(__dirname, "..", ".."), shell: true });
+        const task = child_process_1.spawn(`rm -rf ./cache && rm -rf ./${version_file}`, [], { cwd: path_1.default.resolve(__dirname, "../.."), shell: true });
         task.on('close', (code) => { resolve(true); });
     });
 }
 exports.deletecache = deletecache;
-//# sourceMappingURL=versionCompare.js.map

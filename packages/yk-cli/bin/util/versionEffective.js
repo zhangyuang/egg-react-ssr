@@ -6,12 +6,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const fileconfig_1 = require("./fileconfig");
 const versionCompare_1 = require("./versionCompare");
 const https_1 = __importDefault(require("https"));
+/**
+ * http
+ * 缓存判断是否有效处理
+ * @export
+ * @param {Optional} option
+ * @returns {Promise<boolean>}
+ */
 async function getVersionEffective(option) {
     return new Promise((resolve, reject) => {
-        let url = fileconfig_1.config.js_url;
-        if (option.language === "typescript") {
-            url = fileconfig_1.config.ts_url;
-        }
+        let url = option.language === "typescript" ? fileconfig_1.config.ts_url : fileconfig_1.config.js_url;
         let content = "";
         let packagejson = null;
         https_1.default.get(url, (res) => {
@@ -48,4 +52,3 @@ async function getVersionEffective(option) {
     });
 }
 exports.getVersionEffective = getVersionEffective;
-//# sourceMappingURL=versionEffective.js.map

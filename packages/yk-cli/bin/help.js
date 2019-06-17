@@ -8,7 +8,7 @@ const fs_1 = __importDefault(require("fs"));
  * 项目帮助提示
  *
  * @export
- * @returns {Promise<boolean>}
+ * @returns {Promise<void>}
  */
 function help() {
     return new Promise((resolve, reject) => {
@@ -17,4 +17,3 @@ function help() {
     });
 }
 exports.help = help;
-//# sourceMappingURL=help.js.map

@@ -3,9 +3,15 @@ import { renderTemplate } from "./util/render";
 import path from 'path';
 
 
-
-export async function webpack(option: Optional): Promise<boolean> {
-    return new Promise<boolean>((resolve, reject) => {
+/**
+ * webpack 
+ * 处理模板
+ * @export
+ * @param {Optional} option
+ * @returns {Promise<void>}
+ */
+export async function webpack(option: Optional): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
         const filelist = [
             'tpl/build/paths.js.nj',
             'tpl/build/util.js.nj',
@@ -19,6 +25,6 @@ export async function webpack(option: Optional): Promise<boolean> {
             renderTemplate(tplpath, filepath, option);
         });
         console.log("webpack设置成功.....")
-        resolve(true);
+        resolve();
     });
 }

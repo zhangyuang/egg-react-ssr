@@ -2,6 +2,6 @@
  * 项目帮助提示
  *
  * @export
- * @returns {Promise<boolean>}
+ * @returns {Promise<void>}
  */
-export declare function help(): Promise<boolean>;
+export declare function help(): Promise<void>;

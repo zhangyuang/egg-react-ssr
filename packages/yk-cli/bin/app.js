@@ -11,7 +11,7 @@ const fs_1 = __importDefault(require("fs"));
  *
  * @export
  * @param {Optional} option 应用全局配置
- * @returns {Promise<boolean>}
+ * @returns {Promise<void>}
  */
 function init_app(option) {
     console.log("当前应用名称: " + option.appname);
@@ -23,22 +23,21 @@ function init_app(option) {
                     message: `当前文件夹下含有您要创建 ${option.appname} 的应用名称文件,是否强制删除文件 继续初始化?`,
                     name: 'file'
                 }]).then((answers) => {
-                if (answers) {
+                if (answers && (answers === 'y' || answers === 'yes')) {
                     const task = child_process_1.spawn(`rm -rf ./${option.appname}`, [], { cwd: `./`, shell: true });
                     task.on('close', (code) => {
                         console.log(`原文件已经成功删除....`);
-                        resolve(true);
+                        resolve();
                     });
                 }
                 else {
-                    reject(false);
+                    reject();
                 }
             });
         }
         else {
-            resolve(true);
+            resolve();
         }
     });
 }
 exports.init_app = init_app;
-//# sourceMappingURL=app.js.map

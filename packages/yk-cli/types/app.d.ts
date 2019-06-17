@@ -4,6 +4,6 @@ import { Optional } from "./interface/option";
  *
  * @export
  * @param {Optional} option 应用全局配置
- * @returns {Promise<boolean>}
+ * @returns {Promise<void>}
  */
-export declare function init_app(option: Optional): Promise<boolean>;
+export declare function init_app(option: Optional): Promise<void>;
