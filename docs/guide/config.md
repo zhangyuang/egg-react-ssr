@@ -19,22 +19,18 @@ const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const getStyleLoaders = require('./util').getStyleLoaders
 const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent')
-let webpackModule = {
+const webpackModule = {
   strictExportPresence: true,
   rules: [
     { parser: { requireEnsure: false } },
     {
       oneOf: [
-        {
-          test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
-          loader: require.resolve('url-loader'),
-          options: {
-            limit: 10000,
-            name: 'static/media/[name].[hash:8].[ext]'
-          }
-        },
+        .
+        .
+        .
         {
           test: /\.(js|mjs|jsx|ts|tsx)$/,
+          // 只编译 web 目录下的文件，如果有特殊 node_modules 模块编译需求，可以在这里进行配置
           include: paths.appSrc,
           loader: require.resolve('babel-loader'),
           options: {
@@ -42,33 +38,10 @@ let webpackModule = {
             cacheCompression: false
           }
         },
-        {
-          test: /\.(js|mjs)$/,
-          exclude: /@babel(?:\/|\\{1,2})runtime/,
-          loader: require.resolve('babel-loader'),
-          options: {
-            configFile: false,
-            compact: false,
-            cacheDirectory: true,
-            cacheCompression: false,
-            sourceMaps: false
-          }
-        },
-        {
-          test: /\.css$/,
-          exclude: /\.module\.css$/,
-          use: getStyleLoaders({
-            importLoaders: 1
-          })
-        },
-        {
-          test: /\.module\.css$/,
-          use: getStyleLoaders({
-            importLoaders: 1,
-            modules: true,
-            getLocalIdent: getCSSModuleLocalIdent
-          })
-        },
+        // 处理样式文件配置项
+        .
+        .
+        .
         {
           test: /\.less$/,
           exclude: /\.module\.less$/,
@@ -110,22 +83,10 @@ module.exports = {
   resolve: {
     // 引用文件别名
     alias: {
-      '@': path.resolve(__dirname, '../web')
+      '@': xxxx
     },
     // 在导入语句没带文件后缀时，Webpack 会自动带上后缀后去尝试访问文件是否存在。resolve.extensions 用于配置在尝试过程中用到的后缀列表。
-    extensions: [
-      'web.mjs',
-      'mjs',
-      'web.js',
-      'js',
-      'web.ts',
-      'ts',
-      'web.tsx',
-      'tsx',
-      'json',
-      'web.jsx',
-      'jsx'
-    ].map(ext => `.${ext}`)
+    extensions: xxxx
   },
   // 1. 条件匹配：通过 test、include、exclude 三个配置项来命中 Loader 要应用规则的文件。
   // 2. 应用规则：对选中后的文件通过 use 配置项来应用 Loader，可以只应用一个 Loader 或者按照从后往前的顺序应用一组 Loader，同时还可以分别给Loader 传入参数。
@@ -143,6 +104,8 @@ module.exports = {
 }
 ```
 
+我们为了保证开发环境和生产环境的统一，在上面配置中的 CSS 样式处理配置我们没有用 style-loader，而是用 css-hot-loader，具体解释详见 [CSS HMR 实现](/guide/hmr.html#css-hmr-实现)。
+
 ## server 配置
 
 server 构建配置中，需要注意以下几个点：
@@ -150,15 +113,15 @@ server 构建配置中，需要注意以下几个点：
 1. 在整个输出模块里新增target选项
 
 ```
-// 告诉webpack当前环境是node环境，可以使用 Node.js require 加载 chunk。
+// 告诉webpack当前环境是 Node 环境，可以使用 Node.js require 加载 chunk。
 target："node"
 ```
 
 2. externals 白名单
 
-服务端中需要对样式文件进行编译，在服务端代码中不能直接引用样式文件。
+这里使用 `webpack-node-externals` 模块，方便对 Node 的 externals 进行控制。该配置默认所有的第三方的依赖不会被打包编译。在配置中我们设置了白名单，对样式文件进行编译，因为在服务端代码中不能直接引用样式文件，需要借助 webpack 进行打包编译。
 
-3. devtool 使用 source-map 在开发环境调试
+1. libraryTarget: 'commonjs2' 指定导出库的类型为 commonjs2
 
 具体配置如下：
 
@@ -189,7 +152,7 @@ module.exports = merge(baseConfig, {
   // 运行环境
   // 编译为类 Node.js 环境可用（使用 Node.js require 加载 chunk）
   target: 'node',
-  // 不要打包这些模块，而是在运行时从环境中请求他们
+  // 不要/加白某些模块，是否需要进行编译打包，从运行时环境中引用
   // 服务端中需要对样式文件加白名单，服务端中不可以直接引用样式文件
   externals: nodeExternals({
     whitelist: /\.(css|less|sass|scss)$/
@@ -199,6 +162,7 @@ module.exports = merge(baseConfig, {
     path: paths.appBuild,
     publicPath: '/',
     filename: '[name].server.js',
+    // 设置依赖引用规则为 commonjs2
     libraryTarget: 'commonjs2'
   },
   // 用来拓展 webpack 功能，它们会在整个构建过程中生效，执行相关的任务。

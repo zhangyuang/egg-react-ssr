@@ -21,7 +21,7 @@ sidebarDepth: 3
 
 ## 热替换实现
 
-这里我们介绍两种方式来实现，一种是[webpack-dev-server](https://webpack.docschina.org/configuration/dev-server/), 一种是直接用中间件的方式  
+这里我们介绍两种方式来实现，一种是[webpack-dev-server](https://webpack.docschina.org/configuration/dev-server/), 一种是直接用中间件的方式
 现在最火的构建工具 webpack, 提供了 webpack-dev-server 这个工具，来帮你隐藏其中细节快速来实现热替换
 
 ### webpack-dev-server用法及源码
@@ -32,7 +32,7 @@ webpack-dev-server 中内置了 express,在你本地开发时，它其实是用 
 - 当启动了 webpack wacth 选项时，该中间件将延迟请求直到新的文件编译完成
 - 支持热重载
 
-光使用该中间件还无法实现热替换，webpack-dev-server 还使用了 sockjs 来实现热替换  
+光使用该中间件还无法实现热替换，webpack-dev-server 还使用了 sockjs 来实现热替换
 使用方式:
 
 ```js
@@ -271,9 +271,9 @@ app.listen(port)
 
 ### CSS HMR 实现
 
-大部分框架实现 css hmr 用的都是 style-loader,主要还是 style-loader 中使用了 module.hot.accept，在 CSS 依赖模块更新之后，会将其 patch(修补) 到 style 标签中。  
+大部分框架实现 css hmr 用的都是 style-loader,主要还是 style-loader 中使用了 module.hot.accept，在 CSS 依赖模块更新之后，会将其 patch(修补) 到 style 标签中。
 但在该应用中，为了保持开发环境和生产环境的统一，因为在生产环境我们需要将 css 提取为单独文件，而不是以 style 标签的形式，所以这里我们没有用 style-loader,而是用 css-hot-loader
-来实现 hmr。  
+来实现 hmr。
 参考 react-hot-loader 来实现一个 css-hot-loader 也不难。每次热加载都是一个 js 文件的修改，每个 css 文件在 webpack 中也是一个 js 模块，那么只需要在这个 css 文件对应的模块里面加一段代码就可以实现 css 文件的更新了。本质也是修改 css 的时候让浏览器去下载一个新的 css 文件
 
 ```js
