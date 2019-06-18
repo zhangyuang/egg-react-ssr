@@ -31,6 +31,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "zhaoxingyue",
+      "name": "zhaoxingyue",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/15117664?v=4",
+      "profile": "http://zxy.im",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
