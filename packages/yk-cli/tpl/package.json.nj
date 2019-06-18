@@ -42,12 +42,15 @@
       "window"
     ]
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not ie <= 11",
+      "not op_mini all"
+    ],
+    "development": []
+  },
   "devDependencies": {
     "@babel/core": "^7.4.4",
     "@babel/plugin-transform-runtime": "^7.4.4",
@@ -237,12 +240,15 @@
   "eslintIgnore": [
     "coverage"
   ],
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not ie <= 11",
+      "not op_mini all"
+    ],
+    "development": []
+  },
   "babel": {
     "presets": [
       "@babel/preset-typescript",
