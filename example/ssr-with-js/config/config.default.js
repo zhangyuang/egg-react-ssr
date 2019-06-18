@@ -28,7 +28,7 @@ module.exports = {
   injectCss: (chunkName) => ([
     `/static/css/${chunkName}.chunk.css`
   ]), // 客户端需要加载的静态样式表
-  injectSrcipt: (chunkName) => ([
+  injectScript: (chunkName) => ([
     `<script src='/static/js/runtime~${chunkName}.js'></script>`,
     `<script src='/static/js/vendor.chunk.js'></script>`,
     `<script src='/static/js/${chunkName}.chunk.js'></script>`
