@@ -1,4 +1,6 @@
-# 客户端混合
+# 客户端DOM激活
+
+通过获取到服务端直出的html字符串，我们能够展现一个有内容的页面，但此时得到的页面是死的，并没有事件的绑定，所以我们需要加载打包后的客户端静态资源来进行一个DOM的对比检测以及事件的绑定。
 
 ## 执行流程
 
@@ -36,15 +38,15 @@ const clientRender = async () => {
 }
 ```
 
-1、首先我们判断了当前页面是否使用了服务端渲染，使用window.__USESSR__属性来判断，使用了SSR的应用会在服务端吐出来的html中注入这个属性。根据不同的结果判断使用render方法还是hydrate的方法来处理我们的组件，此处是为了兼容ssr/csr两种渲染模式。  
+1. 首先我们判断了当前页面是否使用了服务端渲染，使用window.__USESSR__属性来判断，使用了SSR的应用会在服务端吐出来的html中注入这个属性。根据不同的结果判断使用render方法还是hydrate的方法来处理我们的组件，此处是为了兼容ssr/csr两种渲染模式。  
 
-2、接着我们使用了BrowserRouter来包裹客户端渲染的组件，此处是为了能够使用前端路由跳转来切换页面。  
+2. 接着我们使用了BrowserRouter来包裹客户端渲染的组件，此处是为了能够使用前端路由跳转来切换页面。  
 
-3、接着我们遍历了config配置中的路由表, 首先我们调用Component方法来获取到真实的class组件, 然后与服务端一致，判断组件有没有自己特殊的layout需求，如果有就用组件自己的layout不用默认的  
+3. 接着我们遍历了config配置中的路由表, 首先我们调用Component方法来获取到真实的class组件, 然后与服务端一致，判断组件有没有自己特殊的layout需求，如果有就用组件自己的layout不用默认的  
 
-4、这里我们用react-router的route组件来渲染我们自己的组件  
+4. 这里我们用react-router的route组件来渲染我们自己的组件  
 
-5、这里我们写了一个GetinitialProps的高阶组件，用来隐藏此处的细节，为了使csr/ssr的使用方式和表现形式一致，现在我们来看看GetinitialProps这个HOC到底干了什么
+5. 这里我们写了一个GetinitialProps的高阶组件，用来隐藏此处的细节，为了使csr/ssr的使用方式和表现形式一致，现在我们来看看GetinitialProps这个HOC到底干了什么
 
 ## HOC组件机制
 
@@ -101,26 +103,20 @@ export default GetInitialProps
 
 6、最后我们用layout将HOC组件包裹，进行hydrate或者render
 
-## hydrate API揭秘
+## hydrate API
+
+hydrate是React16的新API，他的主要功能有如下两点
+
+### DOM检测
+
+这里我们先讲解一下hydrate API的DOM检测功能，你注意到我们将服务端获取到的数据通过window.__INITIAL_DATA__注入给客户端作为初始数据使用，React会用这些数据在客户端生成一遍vdom，并且会比较客户端生成的vdom与服务端生成的vdom的内容是否一致，如果不一致，他会在控制台提示error。详见[文档](https://zh-hans.reactjs.org/docs/react-dom.html#hydrate),此时他会使用客户端生成的内容，但你应该将不匹配作为一个Bug来处理。
+
+### 事件绑定
 
 在揭秘hydrate之前，我们需要知道React的onClick绑定事件和用addEventListener的方式绑定事件有什么区别。
 > React并不是将click事件绑在该div的真实DOM上，而是在document处监听所有支持的事件，当事件发生并冒泡至document处时，React将事件内容封装并交由真正的处理函数运行。
 以上面的代码为例，整个事件生命周期示意如下：
 
-![](https://user-gold-cdn.xitu.io/2017/10/9/8792eeae6dc6011274986acf42a76b15?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+![](https://img.alicdn.com/tfs/TB1p48Rdf1H3KVjSZFBXXbSMXXa-1660-682.jpg)
 
-这里我们贴出核心代码
-```js
-// react-dom/src/client/ReactDOM.js
-hydrate(element: React$Node, container: DOMContainer, callback: ?Function) {
-    // 这里我们调用了legacyRenderSubtreeIntoContainer方法，与ReactDOM.render方法不同的地方是第四个参数我们这时候为true
-    return legacyRenderSubtreeIntoContainer(
-        null,
-        element,
-        container,
-        true,
-        callback,
-    );
-}
-
-```
+> hydrate是 React 中提供在初次渲染的时候，去复用原本已经存在的 DOM 节点，减少重新生成节点以及删除原本 DOM 节点的开销，来加速初次渲染的功能。主要使用场景是服务端渲染或者像prerender等情况。

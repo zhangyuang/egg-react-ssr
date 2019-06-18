@@ -1,6 +1,6 @@
 {
   "name": "ykfe-utils",
-  "version": "1.1.2",
+  "version": "1.2.1",
   "description": "",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -28,5 +28,6 @@
     "react-router-dom": "^5.0.0",
     "serialize-javascript": "^1.7.0",
     "string-to-stream": "^1.1.1"
-  }
+  },
+  "gitHead": "b5729665d337e0f1a8d832e785c721a2347f52af"
 }

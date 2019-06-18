@@ -21,10 +21,10 @@ sidebarDepth: 3
 
 ## 热替换实现
 
-这里我们介绍两种方式来实现，一种是[webpack-dev-server](https://webpack.docschina.org/configuration/dev-server/), 一种是直接用中间件的方式  
+这里我们介绍两种方式来实现，一种是[webpack-dev-server](https://webpack.docschina.org/configuration/dev-server/), 一种是直接用中间件的方式
 现在最火的构建工具 webpack, 提供了 webpack-dev-server 这个工具，来帮你隐藏其中细节快速来实现热替换
 
-### webpack-dev-server用法及源码
+### webpack-dev-server
 
 webpack-dev-server 中内置了 express,在你本地开发时，它其实是用 express 创建了一个 Node Server，然后加载了[webpack-dev-middleware](https://github.com/webpack/webpack-dev-middleware)这个中间件，该中间件提供以下功能(来自于官网的介绍)
 
@@ -32,7 +32,7 @@ webpack-dev-server 中内置了 express,在你本地开发时，它其实是用 
 - 当启动了 webpack wacth 选项时，该中间件将延迟请求直到新的文件编译完成
 - 支持热重载
 
-光使用该中间件还无法实现热替换，webpack-dev-server 还使用了 sockjs 来实现热替换  
+光使用该中间件还无法实现热替换，webpack-dev-server 还使用了 sockjs 来实现热替换
 使用方式:
 
 ```js
@@ -40,6 +40,8 @@ NODE_ENV=development webpack-dev-server --port 8000 --hot --config ./build/webpa
 ```
 
 开启 --hot 选项即可，很多教程都说需要配置 new webpack.HotModuleReplacementPlugin 插件，其实当你开启 hot 选项的时候，webpack 已经自动帮你注入了这个插件，当你再重复添加时，会报栈溢出的错误，所以我们记住这里无需再额外手动添加 HotModuleReplacementPlugin 插件。
+
+### webpack-dev-server源码解析
 
 这里我们来简单探究一下 webpack-dev-server 源码，来研究一下它是如何来实现热替换的
 需要用到的库
@@ -126,6 +128,11 @@ function reloadApp() {
   }
 }
 
+```
+
+reloadApp顾名思义用来重启App，让他刷新或者热更新，让我们来看看他到底调用了哪些方法
+
+```js
 // webpack/hot/entry.js
 // 在开启了hot选项时，webpack-dev-server会在entry中加入webpack/hot/entry.js
 
@@ -153,7 +160,9 @@ if (module.hot) {
     lastHash = currentHash;
   });
 }
-
+```
+接下来我们调用了HotModuleReplacement这个插件里面的方法，去生成hot-update.json以及hot-update.js两个文件
+```js
 // webpack/lib/HotModuleReplacement.runtime.js
 function hotCheck(apply) {
   // module.hot.check 方法
@@ -186,9 +195,11 @@ function hotUpdateDownloaded() {
             })
     }
 }
+```
 
+hotApply就是webpack-dev-server的核心实现了，由于该方法代码过多，故只挑出关键部分讲解
+```js
 function hotApply () {
-    // 由于该方法代码过多，故只挑出关键部分讲解
     for(let moduleId in hotUpdate) {
         // 首先该方法遍历了你修改了代码的模块(文件),此处我们以修改web/index/index.js为例
         // getAffectedStuff获取到你的模块的parent以及parent的parent这样递归，即加载了这个模块的模块，在此处是config/config.default.js以及web/entry.js
@@ -271,9 +282,9 @@ app.listen(port)
 
 ### CSS HMR 实现
 
-大部分框架实现 css hmr 用的都是 style-loader,主要还是 style-loader 中使用了 module.hot.accept，在 CSS 依赖模块更新之后，会将其 patch(修补) 到 style 标签中。  
+大部分框架实现 css hmr 用的都是 style-loader,主要还是 style-loader 中使用了 module.hot.accept，在 CSS 依赖模块更新之后，会将其 patch(修补) 到 style 标签中。
 但在该应用中，为了保持开发环境和生产环境的统一，因为在生产环境我们需要将 css 提取为单独文件，而不是以 style 标签的形式，所以这里我们没有用 style-loader,而是用 css-hot-loader
-来实现 hmr。  
+来实现 hmr。
 参考 react-hot-loader 来实现一个 css-hot-loader 也不难。每次热加载都是一个 js 文件的修改，每个 css 文件在 webpack 中也是一个 js 模块，那么只需要在这个 css 文件对应的模块里面加一段代码就可以实现 css 文件的更新了。本质也是修改 css 的时候让浏览器去下载一个新的 css 文件
 
 ```js

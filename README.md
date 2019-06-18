@@ -26,6 +26,7 @@ $ open http://localhost:7001
 - 稳定性经过线上大规模应用验证，可提供性能优化方案
 - 支持tree shaking以及打包去重依赖，使得打包的bundle非常小，为同样复杂度的next.js项目的0.4倍
 - 支持csr/ssr自定义layout，无需通过path来手动区分
+- 支持选择某个具体的组件在客户端还是服务端进行渲染
 
 ## 开发中
 
@@ -47,7 +48,7 @@ ctx: Node应用请求的上下文(仅在SSR阶段可以获取)
 Router Props: 路由信息，包括pathname以及Router params等信息，详细信息参考react-router文档
 
 # 目录结构
-  
+
 ```
 ├── README.md
 ├── app // egg核心目录
