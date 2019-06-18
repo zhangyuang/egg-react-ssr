@@ -1,4 +1,5 @@
 # Egg + React + SSR应用骨架
+[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors)
 
 # Getting Start
 
@@ -136,7 +137,7 @@ module.exports = {
     injectCss: (chunkName) => ([
       `/static/css/${chunkName}.chunk.css`
     ]), // 客户端需要加载的静态css文件资源
-    injectSrcipt: (chunkName) => ([
+    injectScript: (chunkName) => ([
       `<script src='/static/js/runtime~${chunkName}.js'></script>`,
       `<script src='/static/js/vendor.chunk.js'></script>`,
       `<script src='/static/js/${chunkName}.chunk.js'></script>`
@@ -154,9 +155,20 @@ module.exports = {
 与[easy-team](https://github.com/ykfe/egg-react-ssr/wiki/与easy-team实现方案的对比)方案的对比
 与[next.js](https://github.com/ykfe/egg-react-ssr/wiki/与next.js实现方案的对比)方案的对比
 
-
 # 答疑群
 
 虽然我们已经尽力检查了一遍应用，但仍有可能有疏漏的地方，如果你在使用过程中发现任何问题或者建议，欢迎提[issue](https://github.com/ykfe/egg-react-ssr/issues)或者[PR](https://github.com/ykfe/egg-react-ssr/pulls)
 欢迎直接扫码加入钉钉群
-<img src="https://img.alicdn.com/tfs/TB15zfha79E3KVjSZFGXXc19XXa-750-990.jpg" width="300">
+<img src="https://img.alicdn.com/tfs/TB1CONSclGE3KVjSZFhXXckaFXa-750-990.jpg" width="300">
+
+## Contributors
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+<table><tr><td align="center"><a href="https://github.com/zhangyuang"><img src="https://avatars3.githubusercontent.com/u/17424434?v=4" width="100px;" alt="LeonCheung"/><br /><sub><b>LeonCheung</b></sub></a><br /><a href="https://github.com/ykfe/egg-react-ssr/commits?author=zhangyuang" title="Code">💻</a></td><td align="center"><a href="http://i5ting.com"><img src="https://avatars3.githubusercontent.com/u/3118295?v=4" width="100px;" alt="狼叔"/><br /><sub><b>狼叔</b></sub></a><br /><a href="https://github.com/ykfe/egg-react-ssr/commits?author=i5ting" title="Code">💻</a></td><td align="center"><a href="http://www.lessing.online/xx-blog/"><img src="https://avatars2.githubusercontent.com/u/21156871?v=4" width="100px;" alt="Xu Zhiyong"/><br /><sub><b>Xu Zhiyong</b></sub></a><br /><a href="https://github.com/ykfe/egg-react-ssr/issues?q=author%3AJohnieXu" title="Bug reports">🐛</a></td></tr></table>
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
