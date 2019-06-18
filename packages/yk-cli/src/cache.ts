@@ -40,20 +40,17 @@ export function cacheMange(option: Optional): Promise<void> {
                 resolve();
             }
         })).then(() => new Promise<void>((resolve, reject) => {
-            /** 当前执行目录下创建 '项目名称' 文件夹 */
-            const task = spawn(`mkdir ${option.appname}`, [], { cwd: `./`, shell: true });
-            task.on('close', (code: number) => {
-                console.log('创建项目文件夹.....')
+            /** 将缓存中的对应的项目内容拷贝至 '项目名称' 文件夹 */
+            const task = spawn(`cp -rf ${__dirname}/../cache/example/ssr-with-${option.language === "javascript" ? "js" : "ts"} ./`, [], { cwd: `./`, shell: true });
+            task.on('close', (_code: number) => {
+                console.log('原始项目克隆成功....');
                 resolve();
             });
         })).then(() => new Promise<void>((resolve, reject) => {
-            /** 将缓存中的对应的项目内容拷贝至 '项目名称' 文件夹 */
-            const task = spawn(`
-    cp -rf ${__dirname}/../cache/example/ssr-with-${option.language === "javascript" ? "js" : "ts"}/** ./ &&
-    cp -rf ${__dirname}/../cache/example/ssr-with-${option.language === "javascript" ? "js" : "ts"}/.* ./
-    `, [], { cwd: `./${option.appname}`, shell: true });
-            task.on('close', (_code: number) => {
-                console.log('原始项目克隆成功....');
+            /** 当前执行目录下修改创建 '项目名称' 文件夹 */
+            const task = spawn(`mv ssr-with-${option.language === "javascript" ? "js" : "ts"} ${option.appname}`, [], { cwd: `./`, shell: true });
+            task.on('close', (code: number) => {
+                console.log('创建项目文件夹.....')
                 resolve();
             });
         }));
