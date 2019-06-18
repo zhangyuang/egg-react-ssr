@@ -10,13 +10,15 @@
 
 ## 技术栈
 
-[Egg](https://eggjs.org/zh-cn/intro/index.html)企业级Node.js框架
+[Egg](https://eggjs.org/zh-cn/intro/index.html)企业级Node.js框架, 基于 Koa 开发，性能优异,高度可扩展的插件机制,内置多进程管理
 
-[React](https://react.docschina.org/)用于构建用户界面的 JavaScript 库
+[React](https://react.docschina.org/)目前最流行的前端框架之一
 
-[ReactDOMServer](https://reactjs.org/docs/react-dom-server.html)服务端渲染
+[ReactDOMServer](https://reactjs.org/docs/react-dom-server.html)React官方提供的服务端渲染有关的库
 
 ## 功能/特性
+
+以下是该应用具有的功能点
 
 ### 已完成
 
@@ -37,6 +39,8 @@
 - 配套serverless版本的实现
 
 ## 与其他社区方案的对比
+
+相较于目前市面上的其他实现方案，我们有诸多优势
 
 ### 与[easy-team](https://github.com/ykfe/egg-react-ssr/wiki/%E4%B8%8Eeasy-team%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%A1%88%E7%9A%84%E5%AF%B9%E6%AF%94)方案对比
 

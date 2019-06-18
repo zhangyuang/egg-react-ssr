@@ -38,15 +38,15 @@ const clientRender = async () => {
 }
 ```
 
-1、首先我们判断了当前页面是否使用了服务端渲染，使用window.__USESSR__属性来判断，使用了SSR的应用会在服务端吐出来的html中注入这个属性。根据不同的结果判断使用render方法还是hydrate的方法来处理我们的组件，此处是为了兼容ssr/csr两种渲染模式。  
+1. 首先我们判断了当前页面是否使用了服务端渲染，使用window.__USESSR__属性来判断，使用了SSR的应用会在服务端吐出来的html中注入这个属性。根据不同的结果判断使用render方法还是hydrate的方法来处理我们的组件，此处是为了兼容ssr/csr两种渲染模式。  
 
-2、接着我们使用了BrowserRouter来包裹客户端渲染的组件，此处是为了能够使用前端路由跳转来切换页面。  
+2. 接着我们使用了BrowserRouter来包裹客户端渲染的组件，此处是为了能够使用前端路由跳转来切换页面。  
 
-3、接着我们遍历了config配置中的路由表, 首先我们调用Component方法来获取到真实的class组件, 然后与服务端一致，判断组件有没有自己特殊的layout需求，如果有就用组件自己的layout不用默认的  
+3. 接着我们遍历了config配置中的路由表, 首先我们调用Component方法来获取到真实的class组件, 然后与服务端一致，判断组件有没有自己特殊的layout需求，如果有就用组件自己的layout不用默认的  
 
-4、这里我们用react-router的route组件来渲染我们自己的组件  
+4. 这里我们用react-router的route组件来渲染我们自己的组件  
 
-5、这里我们写了一个GetinitialProps的高阶组件，用来隐藏此处的细节，为了使csr/ssr的使用方式和表现形式一致，现在我们来看看GetinitialProps这个HOC到底干了什么
+5. 这里我们写了一个GetinitialProps的高阶组件，用来隐藏此处的细节，为了使csr/ssr的使用方式和表现形式一致，现在我们来看看GetinitialProps这个HOC到底干了什么
 
 ## HOC组件机制
 

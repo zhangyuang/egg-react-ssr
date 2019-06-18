@@ -126,6 +126,11 @@ function reloadApp() {
   }
 }
 
+```
+
+reloadApp顾名思义用来重启App，让他刷新或者热更新，让我们来看看他到底调用了哪些方法
+
+```js
 // webpack/hot/entry.js
 // 在开启了hot选项时，webpack-dev-server会在entry中加入webpack/hot/entry.js
 
@@ -153,7 +158,9 @@ if (module.hot) {
     lastHash = currentHash;
   });
 }
-
+```
+接下来我们调用了HotModuleReplacement这个插件里面的方法，去生成hot-update.json以及hot-update.js两个文件
+```js
 // webpack/lib/HotModuleReplacement.runtime.js
 function hotCheck(apply) {
   // module.hot.check 方法
@@ -186,9 +193,11 @@ function hotUpdateDownloaded() {
             })
     }
 }
+```
 
+hotApply就是webpack-dev-server的核心实现了，由于该方法代码过多，故只挑出关键部分讲解
+```js
 function hotApply () {
-    // 由于该方法代码过多，故只挑出关键部分讲解
     for(let moduleId in hotUpdate) {
         // 首先该方法遍历了你修改了代码的模块(文件),此处我们以修改web/index/index.js为例
         // getAffectedStuff获取到你的模块的parent以及parent的parent这样递归，即加载了这个模块的模块，在此处是config/config.default.js以及web/entry.js
