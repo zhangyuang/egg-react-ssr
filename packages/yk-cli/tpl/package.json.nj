@@ -1,0 +1,279 @@
+{% if language === "javascript" %}
+{
+  "name": "{{appname}}",
+  "version": "1.0.0",
+  "dependencies": {
+    "@babel/runtime": "^7.4.5",
+    "egg": "^2.21.0",
+    "egg-bin": "^4.12.3",
+    "egg-proxy": "^1.1.0",
+    "egg-scripts": "^2.11.0",
+    "egg-static": "^2.2.0",
+    "react": "^16.8.3",
+    "react-dev-utils": "^8.0.0",
+    "react-dom": "^16.8.3",
+    "react-router-dom": "^5.0.0",
+    "ykfe-utils": "^1.1.0"
+  },
+  "scripts": {
+    "debug": "egg-bin debug",
+    "standard": "standard",
+    "start": "concurrently \"npm run ssr\" \" npm run csr \"",
+    "ssr": "rm -rf dist && concurrently \"egg-bin dev\" \"NODE_ENV=development webpack --watch --config ./build/webpack.config.server.js\"",
+    "csr": "NODE_ENV=development webpack-dev-server --port 8000 --hot --client-log-level error --config ./build/webpack.config.client.js",
+    "prod": "npm run build && eggctl start",
+    "build:server": "NODE_ENV=production webpack --config build/webpack.config.server.js",
+    "build": "rm -rf dist && NODE_ENV=production webpack --config build/webpack.config.client.js && npm run build:server",
+    "analyze": "NODE_ENV=production npm_config_report=true npm run build"
+  },
+  "pre-commit": [
+    "standard"
+  ],
+  "standard": {
+    "parser": "babel-eslint",
+    "ignore": [
+      "node_modules",
+      "app/public",
+      "dist"
+    ],
+    "global": [
+      "__isBrowser__",
+      "location",
+      "window"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not ie <= 11",
+      "not op_mini all"
+    ],
+    "development": []
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/plugin-transform-runtime": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.0.0",
+    "@svgr/webpack": "2.4.1",
+    "babel-eslint": "9.0.0",
+    "babel-loader": "8.0.4",
+    "babel-plugin-named-asset-import": "^0.2.3",
+    "concurrently": "^4.1.0",
+    "css-hot-loader": "^1.4.3",
+    "css-loader": "1.0.0",
+    "css-modules-require-hook": "^4.2.3",
+    "file-loader": "2.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    {% if style === "less" %}
+    "less": "^3.9.0",
+    "less-loader": "^4.1.0",
+    {% elif style === "sass" %}
+    "node-sass": "^4.12.0",
+    "sass-loader": "^7.1.0",
+    {% endif %}
+    "mini-css-extract-plugin": "^0.5.0",
+    "optimize-css-assets-webpack-plugin": "5.0.1",
+    "postcss-flexbugs-fixes": "4.1.0",
+    "postcss-loader": "3.0.0",
+    "postcss-preset-env": "^6.0.5",
+    "postcss-safe-parser": "4.0.1",
+    "pre-commit": "^1.2.2",
+    "standard": "^12.0.1",
+    "terser-webpack-plugin": "^1.2.0",
+    "url-loader": "1.1.1",
+    "webpack": "4.19.1",
+    "webpack-bundle-analyzer": "^3.0.3",
+    "webpack-cli": "^3.3.3",
+    "webpack-dev-server": "3.3.1",
+    "webpack-manifest-plugin": "^2.0.4",
+    "webpack-merge": "^4.1.4",
+    "webpack-node-externals": "^1.7.2"
+  }
+}
+{% elif language === "typescript" %}
+{
+  "name": "{{appname}}",
+  "version": "1.0.0",
+  "description": "SSR scaffolding using typescript in egg server environment",
+  "egg": {
+    "typescript": true,
+    "declarations": true
+  },
+  "scripts": {
+    "start": "egg-scripts start --port=7001 --daemon --env=$NODE_ENV --title=egg-server-egg-react-ssr-typescript ./server",
+    "stop": "egg-scripts stop --title=egg-server-egg-react-ssr-typescript",
+    "dev": "concurrently \"npm run ssr\" \" npm run csr \"",
+    "debug": "rm -rf dist && concurrently \"egg-bin debug --inspect=19230 --port=7268 -r egg-ts-helper/register\" \"NODE_ENV=development webpack --watch --config ./build/webpack.config.server.js\" \"npm run csr\"",
+    "test-local": "egg-bin test",
+    "test": "npm run lint -- --fix && npm run test-local",
+    "cov": "egg-bin cov -r egg-ts-helper/register",
+    "tsc": "rm -rf ./server && ets && tsc -p tsconfig.json && cp -rf ./dist ./server/",
+    "ci": "npm run lint && npm run cov && npm run tsc",
+    "autod": "autod",
+    "lint": "tslint --project . -c tslint.json",
+    "clean": "ets clean",
+    "standard": "standard",
+    "ssr": "rm -rf dist && concurrently \"egg-bin dev\" \"NODE_ENV=development webpack --watch --config ./build/webpack.config.server.js\"",
+    "csr": "NODE_ENV=development webpack-dev-server --port 8000 --hot --config ./build/webpack.config.client.js",
+    "prod": "npm run build && eggctl start",
+    "build:server": "NODE_ENV=production webpack --config build/webpack.config.server.js",
+    "build:client": "NODE_ENV=production webpack --config build/webpack.config.client.js",
+    "build": "rm -rf dist && NODE_ENV=production webpack --config build/webpack.config.client.js && npm run build:server && npm run tsc && cp -f ./package.json ./server",
+    "analyze": "NODE_ENV=production npm_config_report=true npm run build"
+  },
+  "dependencies": {
+    "@babel/core": "7.4.3",
+    "@babel/plugin-transform-runtime": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-stage-0": "^7.0.0",
+    "@babel/preset-typescript": "^7.3.3",
+    "@babel/runtime": "^7.4.5",
+    "@svgr/webpack": "4.1.0",
+    "@types/jest": "24.0.13",
+    "@types/mocha": "^2.2.40",
+    "@types/multistream": "^2.1.1",
+    "@types/node": "12.0.2",
+    "@types/react": "16.8.18",
+    "@types/react-dom": "16.8.4",
+    "@types/serialize-javascript": "^1.5.0",
+    "@types/supertest": "^2.0.0",
+    "@types/webpack-env": "^1.13.9",
+    "@typescript-eslint/eslint-plugin": "1.6.0",
+    "@typescript-eslint/parser": "1.6.0",
+    "autod": "^3.0.1",
+    "autod-egg": "^1.1.0",
+    "babel-eslint": "10.0.1",
+    "babel-jest": "^24.8.0",
+    "babel-loader": "8.0.5",
+    "babel-plugin-named-asset-import": "^0.3.2",
+    "babel-preset-mobx": "^2.0.0",
+    "camelcase": "^5.2.0",
+    "case-sensitive-paths-webpack-plugin": "2.2.0",
+    "concurrently": "^4.1.0",
+    "css-hot-loader": "^1.4.4",
+    "css-loader": "^1.0.1",
+    "dotenv": "6.2.0",
+    "dotenv-expand": "4.2.0",
+    "egg": "^2.6.1",
+    "egg-bin": "^4.13.1",
+    "egg-ci": "^1.8.0",
+    "egg-mock": "^3.16.0",
+    "egg-proxy": "^1.1.0",
+    "egg-scripts": "^2.6.0",
+    "egg-ts-helper": "^1.25.2",
+    "eslint": "^5.16.0",
+    "eslint-config-react-app": "^4.0.1",
+    "eslint-loader": "2.1.2",
+    "eslint-plugin-flowtype": "2.50.1",
+    "eslint-plugin-import": "2.16.0",
+    "eslint-plugin-jsx-a11y": "6.2.1",
+    "eslint-plugin-react": "7.12.4",
+    "eslint-plugin-react-hooks": "^1.5.0",
+    "file-loader": "3.0.1",
+    "fs-extra": "7.0.1",
+    "html-webpack-plugin": "4.0.0-beta.5",
+    "identity-obj-proxy": "3.0.0",
+    "is-wsl": "^1.1.0",
+    "jest": "24.7.1",
+    "jest-environment-jsdom-fourteen": "0.1.0",
+    "jest-resolve": "24.7.1",
+    "jest-watch-typeahead": "0.3.0",
+    "mini-css-extract-plugin": "0.5.0",
+    "multistream": "^2.1.1",
+    "optimize-css-assets-webpack-plugin": "5.0.1",
+    "pnp-webpack-plugin": "1.2.1",
+    "postcss-flexbugs-fixes": "4.1.0",
+    "postcss-loader": "3.0.0",
+    "postcss-normalize": "7.0.1",
+    "postcss-preset-env": "6.6.0",
+    "postcss-safe-parser": "4.0.1",
+    "react": "^16.8.6",
+    "react-app-polyfill": "^1.0.1",
+    "react-dev-utils": "^9.0.1",
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.0",
+    "reflect-metadata": "^0.1.13",
+    "resolve": "1.10.0",
+    "semver": "6.0.0",
+    "serialize-javascript": "^1.7.0",
+    "string-to-stream": "^1.1.1",
+    "style-loader": "0.23.1",
+     {% if style === "less" %}
+    "less": "^3.9.0",
+    "less-loader": "^4.1.0",
+    {% elif style === "sass" %}
+    "node-sass": "^4.12.0",
+    "sass-loader": "^7.1.0",
+    {% endif %}
+    "terser-webpack-plugin": "1.2.3",
+    "ts-pnp": "1.1.2",
+    "tslib": "^1.9.0",
+    "tslint": "^5.0.0",
+    "tslint-config-egg": "^1.0.0",
+    "typescript": "3.4.5",
+    "typings-for-css-modules-loader": "^1.7.0",
+    "url-loader": "1.1.2",
+    "webpack": "4.29.6",
+    "webpack-bundle-analyzer": "^3.3.2",
+    "webpack-cli": "^3.3.4",
+    "webpack-dev-server": "3.7.1",
+    "webpack-manifest-plugin": "2.0.4",
+    "webpack-merge": "^4.2.1",
+    "webpack-node-externals": "^1.7.2",
+    "workbox-webpack-plugin": "4.2.0",
+    "ykfe-utils": "^1.0.2"
+  },
+  "engines": {
+    "node": ">=8.9.0"
+  },
+  "ci": {
+    "version": "8"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "eslintIgnore": [
+    "coverage"
+  ],
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not ie <= 11",
+      "not op_mini all"
+    ],
+    "development": []
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-typescript",
+      "@babel/preset-react",
+      "@babel/env",
+      "mobx"
+    ],
+    "plugins": [
+      [
+        "@babel/plugin-transform-runtime",
+        {
+          "absoluteRuntime": false,
+          "corejs": false,
+          "helpers": true,
+          "regenerator": true,
+          "useESModules": false
+        }
+      ]
+    ]
+  },
+  "author": "zhusjfaker",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack-cli": "^3.3.2"
+  }
+}
+{% endif %}
+

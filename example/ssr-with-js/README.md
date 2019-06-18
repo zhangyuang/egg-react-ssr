@@ -1,5 +1,4 @@
 # Egg + React + SSR应用骨架
-[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors)
 
 # Getting Start
 
@@ -27,7 +26,6 @@ $ open http://localhost:7001
 - 稳定性经过线上大规模应用验证，可提供性能优化方案
 - 支持tree shaking以及打包去重依赖，使得打包的bundle非常小，为同样复杂度的next.js项目的0.4倍
 - 支持csr/ssr自定义layout，无需通过path来手动区分
-- 支持选择某个具体的组件在客户端还是服务端进行渲染
 
 ## 开发中
 
@@ -49,7 +47,7 @@ ctx: Node应用请求的上下文(仅在SSR阶段可以获取)
 Router Props: 路由信息，包括pathname以及Router params等信息，详细信息参考react-router文档
 
 # 目录结构
-
+  
 ```
 ├── README.md
 ├── app // egg核心目录
@@ -93,7 +91,7 @@ Router Props: 路由信息，包括pathname以及Router params等信息，详细
 # npm scripts
 
 ```
-$ npm start // 启动监听7001端口，建议使用方式，同时启动服务端渲染 + 客户端hydrate
+$ npm start // 启动监听7001端口，建议使用方式，同时启动服务端渲染 + 客户端水合
 $ npm run ssr // 启动监听7001端口，只启动服务端渲染，此时仅服务端直出html，没有与客户端混合的步骤
 $ npm run csr // 启动监听8000端口，只启动客户端渲染，相当于传统的cra脚手架开发模式
 $ npm run prod // 模拟SSR应用生产环境
@@ -137,7 +135,7 @@ module.exports = {
     injectCss: (chunkName) => ([
       `/static/css/${chunkName}.chunk.css`
     ]), // 客户端需要加载的静态css文件资源
-    injectScript: (chunkName) => ([
+    injectSrcipt: (chunkName) => ([
       `<script src='/static/js/runtime~${chunkName}.js'></script>`,
       `<script src='/static/js/vendor.chunk.js'></script>`,
       `<script src='/static/js/${chunkName}.chunk.js'></script>`
@@ -155,20 +153,9 @@ module.exports = {
 与[easy-team](https://github.com/ykfe/egg-react-ssr/wiki/与easy-team实现方案的对比)方案的对比
 与[next.js](https://github.com/ykfe/egg-react-ssr/wiki/与next.js实现方案的对比)方案的对比
 
+
 # 答疑群
 
 虽然我们已经尽力检查了一遍应用，但仍有可能有疏漏的地方，如果你在使用过程中发现任何问题或者建议，欢迎提[issue](https://github.com/ykfe/egg-react-ssr/issues)或者[PR](https://github.com/ykfe/egg-react-ssr/pulls)
 欢迎直接扫码加入钉钉群
-<img src="https://img.alicdn.com/tfs/TB1CONSclGE3KVjSZFhXXckaFXa-750-990.jpg" width="300">
-
-## Contributors
-
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
-
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore -->
-<table><tr><td align="center"><a href="https://github.com/zhangyuang"><img src="https://avatars3.githubusercontent.com/u/17424434?v=4" width="100px;" alt="LeonCheung"/><br /><sub><b>LeonCheung</b></sub></a><br /><a href="https://github.com/ykfe/egg-react-ssr/commits?author=zhangyuang" title="Code">💻</a></td><td align="center"><a href="http://i5ting.com"><img src="https://avatars3.githubusercontent.com/u/3118295?v=4" width="100px;" alt="狼叔"/><br /><sub><b>狼叔</b></sub></a><br /><a href="https://github.com/ykfe/egg-react-ssr/commits?author=i5ting" title="Code">💻</a></td><td align="center"><a href="http://www.lessing.online/xx-blog/"><img src="https://avatars2.githubusercontent.com/u/21156871?v=4" width="100px;" alt="Xu Zhiyong"/><br /><sub><b>Xu Zhiyong</b></sub></a><br /><a href="https://github.com/ykfe/egg-react-ssr/issues?q=author%3AJohnieXu" title="Bug reports">🐛</a></td></tr></table>
-
-<!-- ALL-CONTRIBUTORS-LIST:END -->
-
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+<img src="https://img.alicdn.com/tfs/TB15zfha79E3KVjSZFGXXc19XXa-750-990.jpg" width="300">
