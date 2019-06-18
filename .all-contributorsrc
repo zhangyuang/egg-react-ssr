@@ -31,6 +31,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "zhusjfaker",
+      "name": "zhushijie",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/31839470?v=4",
+      "profile": "https://github.com/zhusjfaker",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
