@@ -48,7 +48,7 @@ ctx: Node应用请求的上下文(仅在SSR阶段可以获取)
 Router Props: 路由信息，包括pathname以及Router params等信息，详细信息参考react-router文档(需使用withRouter高阶组件)
 
 # 目录结构
-  
+
 ```
 ├── README.md
 ├── app // egg核心目录
@@ -136,7 +136,7 @@ module.exports = {
     injectCss: (chunkName) => ([
       `/static/css/${chunkName}.chunk.css`
     ]), // 客户端需要加载的静态css文件资源
-    injectSrcipt: (chunkName) => ([
+    injectScript: (chunkName) => ([
       `<script src='/static/js/runtime~${chunkName}.js'></script>`,
       `<script src='/static/js/vendor.chunk.js'></script>`,
       `<script src='/static/js/${chunkName}.chunk.js'></script>`
