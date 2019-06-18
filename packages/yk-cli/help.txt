@@ -1,0 +1,12 @@
+
+  Usage: ykcli <command> 
+
+
+  Commands:
+
+    init <app-name>                       create a new project powered by yk-cli
+    help                                  help for detailed usage of yk-cli information
+
+
+    If you have any problems, do not hesitate to file an issue:
+      https://github.com/ykfe/yk-cli/issues

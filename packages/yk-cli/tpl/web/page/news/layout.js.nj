@@ -1,0 +1,20 @@
+
+import React from 'react'
+{% if style === "less" %}
+import './layout.less'
+import '@/assets/common.less'
+{% elif style === "sass" %}
+import './layout.scss'
+import '@/assets/common.scss'
+{% elif style === "css" %}
+import './layout.css'
+import '@/assets/common.css'
+{% endif %}
+import { Link } from 'react-router-dom'
+
+const Layout = (props) => {
+  return (
+    <div className='normal'><h1 className='title'><Link to='/'>News Page</Link><div className='author'>by ykfe</div></h1>{props.children}</div>)
+}
+
+export default Layout

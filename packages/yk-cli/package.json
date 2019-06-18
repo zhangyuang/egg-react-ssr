@@ -1,0 +1,37 @@
+{
+  "name": "yk-cli",
+  "version": "1.0.3",
+  "description": "react ssr + csr cli",
+  "main": "./bin/index.js",
+  "types": "types/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rm -rf ./bin && tsc --project ./tsconfig.json --sourceMap false",
+    "start": "node --inspect=19229 ./bin/index.js",
+    "dev": "rm -rf ./bin && tsc -w"
+  },
+  "bin": {
+    "ykcli": "./bin/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ykfe/yk-cli.git"
+  },
+  "dependencies": {
+    "download-git-repo": "^2.0.0",
+    "inquirer": "^6.2.0",
+    "nunjucks": "^3.2.0"
+  },
+  "devDependencies": {
+    "@types/inquirer": "^6.0.3",
+    "@types/node": "^10.12.10",
+    "@types/nunjucks": "^3.1.1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ykfe/yk-cli/issues"
+  },
+  "homepage": "https://github.com/ykfe/yk-cli#readme"
+}
