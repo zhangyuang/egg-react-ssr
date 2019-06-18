@@ -24,7 +24,7 @@ sidebarDepth: 3
 这里我们介绍两种方式来实现，一种是[webpack-dev-server](https://webpack.docschina.org/configuration/dev-server/), 一种是直接用中间件的方式
 现在最火的构建工具 webpack, 提供了 webpack-dev-server 这个工具，来帮你隐藏其中细节快速来实现热替换
 
-### webpack-dev-server用法及源码
+### webpack-dev-server
 
 webpack-dev-server 中内置了 express,在你本地开发时，它其实是用 express 创建了一个 Node Server，然后加载了[webpack-dev-middleware](https://github.com/webpack/webpack-dev-middleware)这个中间件，该中间件提供以下功能(来自于官网的介绍)
 
@@ -40,6 +40,8 @@ NODE_ENV=development webpack-dev-server --port 8000 --hot --config ./build/webpa
 ```
 
 开启 --hot 选项即可，很多教程都说需要配置 new webpack.HotModuleReplacementPlugin 插件，其实当你开启 hot 选项的时候，webpack 已经自动帮你注入了这个插件，当你再重复添加时，会报栈溢出的错误，所以我们记住这里无需再额外手动添加 HotModuleReplacementPlugin 插件。
+
+### webpack-dev-server源码解析
 
 这里我们来简单探究一下 webpack-dev-server 源码，来研究一下它是如何来实现热替换的
 需要用到的库

@@ -4,11 +4,11 @@ actionText: 快速上手 →
 actionLink: /guide/
 features:
 - title: 小
-  details: 构建出来的bundle为同等复杂度的next.js项目的0.4倍
+  details: 生产环境构建出来的bundle为同等复杂度的next.js项目的0.4倍，文件数量相比于next.js减少非常多
 - title: 全
-  details: 同时支持CSR/SSR两种渲染模式无缝切换
+  details: 支持HMR，同时支持本地开发以及生产环境CSR/SSR两种渲染模式无缝切换，支持定制特定组件的渲染模式
 - title: 美
-  details: 一切关键位置皆可通过config.default.js来配置
+  details: 配置非黑盒，且一切关键位置皆可通过config.default.js来配置
 footer: MIT Licensed | Copyright © 2017-present
 ---
 

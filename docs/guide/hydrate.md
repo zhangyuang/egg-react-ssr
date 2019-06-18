@@ -105,6 +105,8 @@ export default GetInitialProps
 
 ## hydrate API
 
+hydrate是React16的新API，他的主要功能有如下两点
+
 ### DOM检测
 
 这里我们先讲解一下hydrate API的DOM检测功能，你注意到我们将服务端获取到的数据通过window.__INITIAL_DATA__注入给客户端作为初始数据使用，React会用这些数据在客户端生成一遍vdom，并且会比较客户端生成的vdom与服务端生成的vdom的内容是否一致，如果不一致，他会在控制台提示error。详见[文档](https://zh-hans.reactjs.org/docs/react-dom.html#hydrate),此时他会使用客户端生成的内容，但你应该将不匹配作为一个Bug来处理。
@@ -115,10 +117,6 @@ export default GetInitialProps
 > React并不是将click事件绑在该div的真实DOM上，而是在document处监听所有支持的事件，当事件发生并冒泡至document处时，React将事件内容封装并交由真正的处理函数运行。
 以上面的代码为例，整个事件生命周期示意如下：
 
-![](https://user-gold-cdn.xitu.io/2017/10/9/8792eeae6dc6011274986acf42a76b15?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+![](https://img.alicdn.com/tfs/TB1p48Rdf1H3KVjSZFBXXbSMXXa-1660-682.jpg)
 
 > hydrate是 React 中提供在初次渲染的时候，去复用原本已经存在的 DOM 节点，减少重新生成节点以及删除原本 DOM 节点的开销，来加速初次渲染的功能。主要使用场景是服务端渲染或者像prerender等情况。
-
-### hydrate API 源码分析
-
-待更新。。。

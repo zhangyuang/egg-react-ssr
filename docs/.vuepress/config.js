@@ -3,7 +3,7 @@ module.exports = {
   locales: {
     '/': {
       lang: 'zh-CN',
-      description: 'Egg + React + SSR服务端渲染应用详解',
+      description: '最小而美的服务端渲染应用骨架',
     },
     '/en/': {
        // 英文版，待补充
