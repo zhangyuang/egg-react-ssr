@@ -41,12 +41,15 @@
       "window"
     ]
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not ie <= 11",
+      "not op_mini all"
+    ],
+    "development": []
+  },
   "devDependencies": {
     "@babel/core": "^7.4.4",
     "@babel/preset-react": "^7.0.0",

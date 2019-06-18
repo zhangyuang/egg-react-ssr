@@ -1,6 +1,6 @@
 {
   "name": "yk-cli",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "react ssr + csr cli",
   "main": "./bin/index.js",
   "types": "types/index.d.ts",
