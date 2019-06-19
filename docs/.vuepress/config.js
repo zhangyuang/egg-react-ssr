@@ -1,5 +1,15 @@
 module.exports = {
   title: 'Egg + React + SSR',
+  head: [
+    ['link', { rel: 'icon', href: 'https://avatars1.githubusercontent.com/u/50347314?s=200&v=4' }],
+    ['script', {}, `var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?ad212e8d41079dc41abaeda9b36e2501";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })()`]
+  ],
   locales: {
     '/': {
       lang: 'zh-CN',

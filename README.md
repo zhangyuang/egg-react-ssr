@@ -45,10 +45,10 @@ export default Page
 
 具体说明如下。
 
-- render是react的视图渲染方法
+- render是React的视图渲染方法
 - getInitialProps是获取数据方法，将返回值赋值给组件状态
     - csr通过高阶组件实现
-    - ssr通过node执行
+    - ssr通过Node执行
 
 在运行时，通过`npm run csr`和`npm run ssr`来进行区分，是目前最简单的同构渲染方案。当页面初始化加载时，getInitialProps只会加载在服务端。只有当路由跳转（Link组件跳转或 API 方法跳转）时，客户端才会执行getInitialProps。
 
@@ -59,17 +59,17 @@ getInitialProps入参对象的属性如下：
 
 ### 特性
 
-- 基于cra脚手架开发，由cra开发的React App可无缝迁移，如果你熟悉cra的配置，上手成本几乎为0
-- 小而美，相比于beidou，next.js这样的高度封装方案，我们的实现原理和开发模式一目了然
-- 同时支持SSR以及CSR两种开发模式,本地开发环境以及线上环境皆可无缝切换两种渲染模式
-- 统一前端路由与服务端路由，无需重复编写路由文件配置
-- 支持切换路由时自动获取数据
-- 支持本地开发HMR
-- 稳定性经过线上大规模应用验证，可提供性能优化方案
-- 支持tree shaking以及打包去重依赖，使得打包的bundle非常小，为同样复杂度的next.js项目的0.4倍
-- 支持csr/ssr自定义layout，无需通过path来手动区分
-- 配套[TypeScript](https://github.com/ykfe/egg-react-ssr-typescript)版本的实现（未完成）
-- 配套serverless版本的实现（未完成）
+- [x] 基于cra脚手架开发，由cra开发的React App可无缝迁移，如果你熟悉cra的配置，上手成本几乎为0
+- [x] 小而美，相比于beidou，next.js这样的高度封装方案，我们的实现原理和开发模式一目了然
+- [x] 同时支持SSR以及CSR两种开发模式,本地开发环境以及线上环境皆可无缝切换两种渲染模式
+- [x] 统一前端路由与服务端路由，无需重复编写路由文件配置
+- [x] 支持切换路由时自动获取数据
+- [x] 支持本地开发HMR
+- [x] 稳定性经过线上大规模应用验证，可提供性能优化方案
+- [x] 支持tree shaking以及打包去重依赖，使得打包的bundle非常小，为同样复杂度的next.js项目的0.4倍
+- [x] 支持csr/ssr自定义layout，无需通过path来手动区分
+- [ ] 配套[TypeScript](https://github.com/ykfe/egg-react-ssr-typescript)版本的实现
+- [ ] 配套serverless版本的实现
 
 ### 执行流程
 
@@ -85,7 +85,7 @@ const resolvePath = (path) => require('path').resolve(process.cwd(), path)
 
 module.exports = {
     keys: 'eggssr',
-    type: 'ssr', // 指定运行类型可设置为csr切换为客户端渲染
+    type: 'ssr', // 指定运行类型可设置为csr切换为客户端渲染,此时服务端不会做获取数据生成字符串的操作以及不会使用hydrate API
     static: {
         // 设置Node应用的静态资源目录，为了生产环境读取静态资源文件
       prefix: '/',
