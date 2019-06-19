@@ -1,8 +1,7 @@
 
-import { spawn } from "child_process";
-import fs from 'fs';
-import path from 'path';
-
+import { spawn } from 'child_process'
+import fs from 'fs'
+import path from 'path'
 
 /**
  * 版本比对
@@ -12,17 +11,15 @@ import path from 'path';
  * @param {string} version 版本号
  * @returns {boolean} 是否一致
  */
-export function versionCompare(type: "javascript" | "typescript", version: string): boolean {
-    const version_file = path.resolve(__dirname, `../../${type}.version.json`)
-    const version_dir = path.resolve(__dirname, `../../cache/example/ssr-with-${type === "javascript" ? "js" : "ts"}/package.json`);
-    if (fs.existsSync(version_file) && fs.existsSync(version_dir)) {
-        const old_version = require(version_file).version;
-        return old_version === version
-    }
-    else {
-        return false;
-    }
-
+export function versionCompare (type: 'javascript' | 'typescript', version: string): boolean {
+  const versionFile = path.resolve(__dirname, `../../${type}.version.json`)
+  const versionDir = path.resolve(__dirname, `../../cache/example/ssr-with-${type === 'javascript' ? 'js' : 'ts'}/package.json`)
+  if (fs.existsSync(versionFile) && fs.existsSync(versionDir)) {
+    const oldVersion = require(versionFile).version
+    return oldVersion === version
+  } else {
+    return false
+  }
 
 }
 
@@ -33,9 +30,9 @@ export function versionCompare(type: "javascript" | "typescript", version: strin
  * @param {("javascript" | "typescript")} type 版本类型
  * @param {string} version 版本号
  */
-export function versionlog(type: "javascript" | "typescript", version: string): void {
-    const version_file = path.resolve(__dirname, `../../${type}.version.json`);
-    fs.writeFileSync(version_file, JSON.stringify({ version: version }));
+export function versionlog (type: 'javascript' | 'typescript', version: string): void {
+  const versionFile = path.resolve(__dirname, `../../${type}.version.json`)
+  fs.writeFileSync(versionFile, JSON.stringify({ version: version }))
 }
 
 /**
@@ -45,10 +42,10 @@ export function versionlog(type: "javascript" | "typescript", version: string): 
  * @param {("javascript" | "typescript")} type
  * @returns {Promise<boolean>}
  */
-export async function deletecache(type: "javascript" | "typescript"): Promise<boolean> {
-    const version_file = `${type}.version.json`
-    return new Promise<boolean>((resolve, reject) => {
-        const task = spawn(`rm -rf ./cache && rm -rf ./${version_file}`, [], { cwd: path.resolve(__dirname, "../.."), shell: true });
-        task.on('close', (code: number) => { resolve(true); });
-    });
+export async function deletecache (type: 'javascript' | 'typescript'): Promise<boolean> {
+  const versionFile = `${type}.version.json`
+  return new Promise<boolean>((resolve, reject) => {
+    const task = spawn(`rm -rf ./cache && rm -rf ./${versionFile}`, [], { cwd: path.resolve(__dirname, '../..'), shell: true })
+    task.on('close', (code: number) => { resolve(true) })
+  })
 }

@@ -2,21 +2,21 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, StaticRouter, Route } from 'react-router-dom'
 import defaultLayout from '@/layout'
-import { GetinitialProps, getComponent } from 'ykfe-utils'
+import { getWrappedComponent, getComponent } from 'ykfe-utils'
 import { routes as Routes } from '../config/config.default'
 
 const clientRender = async () => {
-  // 客户端渲染|hydrate
-  ReactDOM[window.__USESSR__ ? 'hydrate' : 'render'](
+  // 客户端渲染||hydrate
+  ReactDOM[window.__USE_SSR__ ? 'hydrate' : 'render'](
     <BrowserRouter>
       {
-        // 使用HOC使得csr首次进入页面以及csr/ssr切换路由时调用getInitialProps
+        // 使用高阶组件getWrappedComponent使得csr首次进入页面以及csr/ssr切换路由时调用getInitialProps
         Routes.map(({ path, exact, Component }, key) => {
           const ActiveComponent = Component()
           const Layout = ActiveComponent.Layout || defaultLayout
           return <Route exact={exact} key={key} path={path} render={() => {
-            const HOC = GetinitialProps(ActiveComponent)
-            return <Layout><HOC /></Layout>
+            const WrappedComponent = getWrappedComponent(ActiveComponent)
+            return <Layout><WrappedComponent /></Layout>
           }} />
         })
       }

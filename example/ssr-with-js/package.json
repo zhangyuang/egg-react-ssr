@@ -16,7 +16,6 @@
   },
   "scripts": {
     "debug": "egg-bin debug",
-    "standard": "standard",
     "start": "concurrently \"npm run ssr\" \" npm run csr \"",
     "ssr": "rm -rf dist && concurrently \"egg-bin dev\" \"NODE_ENV=development webpack --watch --config ./build/webpack.config.server.js\"",
     "csr": "NODE_ENV=development webpack-dev-server --port 8000 --hot --client-log-level error --config ./build/webpack.config.client.js",
@@ -24,22 +23,6 @@
     "build:server": "NODE_ENV=production webpack --config build/webpack.config.server.js",
     "build": "rm -rf dist && NODE_ENV=production webpack --config build/webpack.config.client.js && npm run build:server",
     "analyze": "NODE_ENV=production npm_config_report=true npm run build"
-  },
-  "pre-commit": [
-    "standard"
-  ],
-  "standard": {
-    "parser": "babel-eslint",
-    "ignore": [
-      "node_modules",
-      "app/public",
-      "dist"
-    ],
-    "global": [
-      "__isBrowser__",
-      "location",
-      "window"
-    ]
   },
   "browserslist": {
     "production": [
@@ -55,7 +38,6 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.0.0",
     "@svgr/webpack": "2.4.1",
-    "babel-eslint": "9.0.0",
     "babel-loader": "8.0.4",
     "concurrently": "^4.1.0",
     "css-hot-loader": "^1.4.3",
@@ -71,8 +53,6 @@
     "postcss-loader": "3.0.0",
     "postcss-preset-env": "^6.0.5",
     "postcss-safe-parser": "4.0.1",
-    "pre-commit": "^1.2.2",
-    "standard": "^12.0.1",
     "terser-webpack-plugin": "^1.2.0",
     "url-loader": "1.1.1",
     "webpack": "4.19.1",

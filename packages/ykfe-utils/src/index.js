@@ -5,6 +5,7 @@ import renderToStream from './renderToStream'
 
 export {
   GetinitialProps,
+  GetinitialProps as getWrappedComponent,
   OnlyCsr,
   getComponent,
   renderToStream

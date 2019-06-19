@@ -5,7 +5,8 @@
   "main": "./bin/index.js",
   "types": "types/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "tslint --project . src/**/*.ts",
+    "lint:fix": "tslint --fix src/**/*.ts",
     "build": "rm -rf ./bin && tsc --project ./tsconfig.json --sourceMap false",
     "start": "node --inspect=19229 ./bin/index.js",
     "dev": "rm -rf ./bin && tsc -w"
@@ -17,6 +18,12 @@
     "type": "git",
     "url": "git+https://github.com/ykfe/yk-cli.git"
   },
+  "standard": {
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint/eslint-plugin"
+    ]
+  },
   "dependencies": {
     "download-git-repo": "^2.0.0",
     "inquirer": "^6.2.0",
@@ -25,7 +32,10 @@
   "devDependencies": {
     "@types/inquirer": "^6.0.3",
     "@types/node": "^10.12.10",
-    "@types/nunjucks": "^3.1.1"
+    "@types/nunjucks": "^3.1.1",
+    "tslint": "^5.17.0",
+    "tslint-config-standard": "^8.0.1",
+    "typescript": "^3.5.2"
   },
   "keywords": [],
   "author": "",

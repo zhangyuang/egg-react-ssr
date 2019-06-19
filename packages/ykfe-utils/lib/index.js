@@ -9,6 +9,12 @@ Object.defineProperty(exports, "GetinitialProps", {
     return _getinitialProps.default;
   }
 });
+Object.defineProperty(exports, "getWrappedComponent", {
+  enumerable: true,
+  get: function () {
+    return _getinitialProps.default;
+  }
+});
 Object.defineProperty(exports, "OnlyCsr", {
   enumerable: true,
   get: function () {
