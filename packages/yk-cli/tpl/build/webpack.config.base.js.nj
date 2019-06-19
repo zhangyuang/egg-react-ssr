@@ -6,6 +6,7 @@ const path = require('path')
 // style files regexes
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const getStyleLoaders = require('./util').getStyleLoaders
+const parallel = require('./util').parallel
 const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent')
 
 let webpackModule = {
@@ -25,14 +26,18 @@ let webpackModule = {
         {
           test: /\.(js|mjs|jsx|ts|tsx)$/,
           include: paths.appSrc,
-          loader: require.resolve('babel-loader'),
-          options: {
-            cacheDirectory: true,
-            cacheCompression: false,
-            presets: [
-              '@babel/preset-react'
-            ]
-          }
+          use: parallel([
+            {
+              loader: require.resolve('babel-loader'),
+              options: {
+              cacheDirectory: true,
+              cacheCompression: false,
+              presets: [
+                '@babel/preset-react'
+              ]
+              }
+            }
+          ])
         },
         {
           test: /\.css$/,
@@ -142,6 +147,7 @@ const typescriptFormatter = require('react-dev-utils/typescriptFormatter')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const resolve = require('resolve')
 const getStyleLoaders = require('./util').getStyleLoaders
+const parallel = require('./util').parallel
 const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent')
 
 const sassRegex = /\.(scss|sass)$/;
@@ -165,24 +171,28 @@ let webpackModule = {
         {
           test: /\.(js|mjs|jsx|ts|tsx)$/,
           include: [paths.appSrc, paths.resolveApp('config')],
-          loader: require.resolve('babel-loader'),
-          options: {
-            plugins: [
-              [
-                require.resolve('babel-plugin-named-asset-import'),
-                {
-                  loaderMap: {
-                    svg: {
-                      ReactComponent: '@svgr/webpack?-prettier,-svgo![path]'
-                    }
-                  }
-                }
-              ]
-            ],
-            cacheDirectory: true,
-            cacheCompression: false
+          use: parallel([
+            {
+              loader: require.resolve('babel-loader'),
+              options: {
+              plugins: [
+                [
+                  require.resolve('babel-plugin-named-asset-import'),
+                  {
+                    loaderMap: {
+                      svg: {
+                              ReactComponent: '@svgr/webpack?-prettier,-svgo![path]'
+                           }
+                        }
+                      }
+                ]
+              ],
+              cacheDirectory: true,
+              cacheCompression: false
+            }
           }
-        },
+        ])
+      },
         {
           test: /\.css$/,
           exclude: /\.module\.css$/,

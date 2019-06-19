@@ -3,6 +3,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const publicPath = paths.servedPath
 const shouldUseRelativeAssetPaths = publicPath === './'
 const isDev = process.env.NODE_ENV === 'development'
+const cpuLength = require('os').cpus().length
+
 const getStyleLoaders = (cssOptions, preProcessor) => {
   let loaders = [
     {
@@ -41,6 +43,20 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
   }
   return loaders
 }
+
+const parallel = (loaders) => {
+  if (!isDev && cpuLength > 1) {
+    return [
+      {
+        loader: require.resolve('thread-loader')
+      },
+      ...loaders
+    ]
+  }
+  return loaders
+}
+
 module.exports = {
-  getStyleLoaders
+  getStyleLoaders,
+  parallel
 }

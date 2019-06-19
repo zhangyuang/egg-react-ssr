@@ -74,6 +74,7 @@
     "pre-commit": "^1.2.2",
     "standard": "^12.0.1",
     "terser-webpack-plugin": "^1.2.0",
+    "thread-loader": "^2.1.2",
     "url-loader": "1.1.1",
     "webpack": "4.19.1",
     "webpack-bundle-analyzer": "^3.0.3",

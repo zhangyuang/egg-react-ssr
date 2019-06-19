@@ -5,8 +5,8 @@ const path = require('path')
 // style files regexes
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const getStyleLoaders = require('./util').getStyleLoaders
+const parallel = require('./util').parallel
 const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent')
-
 let webpackModule = {
   strictExportPresence: true,
   rules: [
@@ -24,14 +24,18 @@ let webpackModule = {
         {
           test: /\.(js|mjs|jsx|ts|tsx)$/,
           exclude: /node_modules/,
-          loader: require.resolve('babel-loader'),
-          options: {
-            cacheDirectory: true,
-            cacheCompression: false,
-            presets: [
-              '@babel/preset-react'
-            ]
-          }
+          use: parallel([
+            {
+              loader: require.resolve('babel-loader'),
+              options: {
+                cacheDirectory: true,
+                cacheCompression: false,
+                presets: [
+                  '@babel/preset-react'
+                ]
+              }
+            }
+          ])
         },
         {
           test: /\.css$/,
