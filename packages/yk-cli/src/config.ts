@@ -22,7 +22,7 @@ export function appconfig (option: Optional): Promise<void> {
       default: 'javascript',
       choices: [
         'javascript',
-        'typescript'
+        'typescript(开发中)'
       ]
     }, {
       type: 'list',

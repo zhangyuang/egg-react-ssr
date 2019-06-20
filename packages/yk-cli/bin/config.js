@@ -25,7 +25,7 @@ function appconfig(option) {
                 default: 'javascript',
                 choices: [
                     'javascript',
-                    'typescript'
+                    'typescript(开发中)'
                 ]
             }, {
                 type: 'list',
