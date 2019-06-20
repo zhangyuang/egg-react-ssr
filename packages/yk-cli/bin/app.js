@@ -14,7 +14,7 @@ const fs_1 = __importDefault(require("fs"));
  * @returns {Promise<void>}
  */
 function init_app(option) {
-    console.log("当前应用名称: " + option.appname);
+    console.log('当前应用名称: ' + option.appname);
     return new Promise((resolve, reject) => {
         /** 如果文件重复则提示 是否删除 对应 create react app 的交互 */
         if (fs_1.default.existsSync(`./${option.appname}`)) {

@@ -12,7 +12,7 @@ const fs_1 = __importDefault(require("fs"));
  */
 function help() {
     return new Promise((resolve, reject) => {
-        let content = fs_1.default.readFileSync(`${__dirname}/../help.txt`).toString("utf8");
+        let content = fs_1.default.readFileSync(`${__dirname}/../help.txt`).toString('utf8');
         console.log(content);
     });
 }

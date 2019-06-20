@@ -23,10 +23,10 @@ async function webpack(option) {
         ];
         filelist.forEach(p => {
             const tplpath = path_1.default.resolve(__dirname, '..', p);
-            const filepath = `./${option.appname}/${p.replace("tpl/", "").replace(".nj", "")}`;
+            const filepath = `./${option.appname}/${p.replace('tpl/', '').replace('.nj', '')}`;
             render_1.renderTemplate(tplpath, filepath, option);
         });
-        console.log("webpack设置成功.....");
+        console.log('webpack设置成功.....');
         resolve();
     });
 }

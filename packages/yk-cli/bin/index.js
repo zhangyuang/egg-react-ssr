@@ -21,7 +21,7 @@ const generator = (argv) => {
         try {
             switch (action) {
                 /** 构建项目 */
-                case "init":
+                case 'init':
                     /** 自检更新当前脚手架是否最新 */
                     await update_1.updatelocal(option);
                     /** 问询APP配置 */
@@ -35,13 +35,13 @@ const generator = (argv) => {
                     /** 处理 webpack */
                     await webpackconfig_1.webpack(option);
                     /** 处理 组件 */
-                    if ((option.language === "javascript" && option.style !== "less") || (option.language === "typescript" && option.style !== "sass")) {
+                    if ((option.language === 'javascript' && option.style !== 'less') || (option.language === 'typescript' && option.style !== 'sass')) {
                         await webcomponent_1.component(option);
                     }
                     console.log(`项目安装成功!`);
                     break;
                 /** 项目帮助 */
-                case "help":
+                case 'help':
                     await help_1.help();
                     break;
             }

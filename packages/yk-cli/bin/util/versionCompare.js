@@ -15,11 +15,11 @@ const path_1 = __importDefault(require("path"));
  * @returns {boolean} 是否一致
  */
 function versionCompare(type, version) {
-    const version_file = path_1.default.resolve(__dirname, `../../${type}.version.json`);
-    const version_dir = path_1.default.resolve(__dirname, `../../cache/example/ssr-with-${type === "javascript" ? "js" : "ts"}/package.json`);
-    if (fs_1.default.existsSync(version_file) && fs_1.default.existsSync(version_dir)) {
-        const old_version = require(version_file).version;
-        return old_version === version;
+    const versionFile = path_1.default.resolve(__dirname, `../../${type}.version.json`);
+    const versionDir = path_1.default.resolve(__dirname, `../../cache/example/ssr-with-${type === 'javascript' ? 'js' : 'ts'}/package.json`);
+    if (fs_1.default.existsSync(versionFile) && fs_1.default.existsSync(versionDir)) {
+        const oldVersion = require(versionFile).version;
+        return oldVersion === version;
     }
     else {
         return false;
@@ -34,8 +34,8 @@ exports.versionCompare = versionCompare;
  * @param {string} version 版本号
  */
 function versionlog(type, version) {
-    const version_file = path_1.default.resolve(__dirname, `../../${type}.version.json`);
-    fs_1.default.writeFileSync(version_file, JSON.stringify({ version: version }));
+    const versionFile = path_1.default.resolve(__dirname, `../../${type}.version.json`);
+    fs_1.default.writeFileSync(versionFile, JSON.stringify({ version: version }));
 }
 exports.versionlog = versionlog;
 /**
@@ -46,9 +46,9 @@ exports.versionlog = versionlog;
  * @returns {Promise<boolean>}
  */
 async function deletecache(type) {
-    const version_file = `${type}.version.json`;
+    const versionFile = `${type}.version.json`;
     return new Promise((resolve, reject) => {
-        const task = child_process_1.spawn(`rm -rf ./cache && rm -rf ./${version_file}`, [], { cwd: path_1.default.resolve(__dirname, "../.."), shell: true });
+        const task = child_process_1.spawn(`rm -rf ./cache && rm -rf ./${versionFile}`, [], { cwd: path_1.default.resolve(__dirname, '../..'), shell: true });
         task.on('close', (code) => { resolve(true); });
     });
 }

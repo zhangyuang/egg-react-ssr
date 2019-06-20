@@ -1,4 +1,4 @@
-import { Optional } from "./interface/option";
+import { Optional } from './interface/option';
 /**
  * 判断NPM包自动更新
  *

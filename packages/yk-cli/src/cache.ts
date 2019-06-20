@@ -18,9 +18,10 @@ export function cacheMange (option: Optional): Promise<void> {
 
   return getVersionEffective(option)
         .then((value) => new Promise<void>((resolve, reject) => {
+          console.log('xxx',value)
             /** 如果版本不一致 则直接更新缓存 */
           if (!value) {
-            download(`github:zhusjfaker/egg-react-ssr#${config.branch}`, path.resolve(__dirname, '../cache'), (err: any) => {
+            download(`https://github.com/ykfe/egg-react-ssr.git`, path.resolve(__dirname, '../cache'), (err: any) => {
               if (!err) {
                 const packagejsonPath = path.resolve(__dirname, `../cache/example/ssr-with-${option.language === 'javascript' ? 'js' : 'ts'}/package.json`)
                 const version = require(packagejsonPath).version

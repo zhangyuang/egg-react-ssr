@@ -1,4 +1,4 @@
-import { Optional } from "./interface/option";
+import { Optional } from './interface/option';
 /**
  * webpack
  * 处理模板

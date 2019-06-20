@@ -15,8 +15,8 @@ const https_1 = __importDefault(require("https"));
  */
 async function getVersionEffective(option) {
     return new Promise((resolve, reject) => {
-        let url = option.language === "typescript" ? fileconfig_1.config.ts_url : fileconfig_1.config.js_url;
-        let content = "";
+        let url = option.language === 'typescript' ? fileconfig_1.config.ts_url : fileconfig_1.config.js_url;
+        let content = '';
         let packagejson = null;
         https_1.default.get(url, (res) => {
             res.on('data', (buffer) => {
@@ -28,7 +28,7 @@ async function getVersionEffective(option) {
                 resolve(false);
             });
             res.on('end', async () => {
-                if (content !== "") {
+                if (content !== '') {
                     try {
                         packagejson = JSON.parse(content);
                         const version = packagejson.version;

@@ -14,9 +14,9 @@ const path_1 = __importDefault(require("path"));
  */
 function packagejson(option) {
     return new Promise((resolve, reject) => {
-        const tplpath = path_1.default.resolve(__dirname, "../tpl/package.json.nj");
+        const tplpath = path_1.default.resolve(__dirname, '../tpl/package.json.nj');
         render_1.renderTemplate(tplpath, `./${option.appname}/package.json`, option);
-        console.log("原项目配置修改成功.....");
+        console.log('原项目配置修改成功.....');
         resolve();
     });
 }

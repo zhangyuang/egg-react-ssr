@@ -65,7 +65,7 @@ const beginDocStream = stringToStream(beginDoc.replace('<!-- Start Injecting Sty
 
 // 这里通过注入window.__USESSR__告诉客户端当前使用了服务端渲染，在HOC组件以及clientRender方法中用到了该属性
 // 我们通过window.__INITIAL_DATA__将服务端获取的数据注入到页面中，作为客户端hydrate的初始数据
-const initialData = !isCsr ? `<script>window.__USESSR__=true;window.__INITIAL_DATA__ =${serialize(ctx.serverData || {})};</script>` : ''
+const initialData = !isCsr ? `<script>window.__USE_SSR__=true;window.__INITIAL_DATA__ =${serialize(ctx.serverData || {})};</script>` : ''
 
 // 插入静态js文件资源
 const injectSrcipt = config.injectSrcipt(chunkName).join('')

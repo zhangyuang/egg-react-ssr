@@ -17,10 +17,10 @@ const path_1 = __importDefault(require("path"));
 function readFileList(dir, filesList = [], ext = null) {
     const files = fs_1.default.readdirSync(dir);
     files.forEach((item, index) => {
-        var fullPath = path_1.default.join(dir, item);
+        let fullPath = path_1.default.join(dir, item);
         const stat = fs_1.default.statSync(fullPath);
         if (stat.isDirectory()) {
-            readFileList(path_1.default.join(dir, item), filesList, ext); //递归读取文件
+            readFileList(path_1.default.join(dir, item), filesList, ext); // 递归读取文件
         }
         else {
             if (ext && item.indexOf(ext) > -1) {

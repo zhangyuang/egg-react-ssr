@@ -3,14 +3,14 @@ export interface Optional {
     action?: string;
     /** 命令行 */
     command?: string[];
-    /**包管理工具 */
+    /** 包管理工具 */
     tool?: string;
     /** 应用名称 */
     appname?: string;
     /** 样式预处理 */
-    style?: "less" | "sass" | "css";
+    style?: 'less' | 'sass' | 'css';
     /** 状态管理的中间件 */
     store?: string;
     /** 项目语言 */
-    language?: "typescript" | "javascript";
+    language?: 'typescript' | 'javascript';
 }

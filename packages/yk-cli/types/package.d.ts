@@ -1,4 +1,4 @@
-import { Optional } from "./interface/option";
+import { Optional } from './interface/option';
 /**
  * package.json
  * 修改模式

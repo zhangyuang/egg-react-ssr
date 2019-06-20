@@ -22,20 +22,20 @@ function appconfig(option) {
                 type: 'list',
                 message: '使用的开发语言',
                 name: 'language',
-                default: "javascript",
+                default: 'javascript',
                 choices: [
-                    "javascript",
-                    "typescript"
+                    'javascript',
+                    'typescript'
                 ]
             }, {
                 type: 'list',
                 message: '是否使用样式预处理器:',
                 name: 'style',
-                default: "less",
+                default: 'less',
                 choices: [
-                    "less",
-                    "sass",
-                    "css"
+                    'less',
+                    'sass',
+                    'css'
                 ]
             }]).then((answers) => {
             option.appname = answers.appname;

@@ -1,4 +1,4 @@
-import { Optional } from "../interface/option";
+import { Optional } from '../interface/option';
 /**
  * 渲染 Nunjuncks
  *
