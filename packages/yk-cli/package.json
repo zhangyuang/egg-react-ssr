@@ -1,6 +1,6 @@
 {
   "name": "yk-cli",
-  "version": "1.0.8",
+  "version": "1.0.10",
   "description": "react ssr + csr cli",
   "main": "./bin/index.js",
   "types": "types/index.d.ts",
@@ -26,8 +26,9 @@
   },
   "dependencies": {
     "download-git-repo": "^2.0.0",
-    "inquirer": "^6.2.0",
-    "nunjucks": "^3.2.0"
+    "inquirer": "6.3.1",
+    "nunjucks": "^3.2.0",
+    "ora": "^3.4.0"
   },
   "devDependencies": {
     "@types/inquirer": "^6.0.3",

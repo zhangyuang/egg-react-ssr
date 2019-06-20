@@ -14,7 +14,6 @@ const fs_1 = __importDefault(require("fs"));
  * @returns {Promise<void>}
  */
 function init_app(option) {
-    console.log('当前应用名称: ' + option.appname);
     return new Promise((resolve, reject) => {
         /** 如果文件重复则提示 是否删除 对应 create react app 的交互 */
         if (fs_1.default.existsSync(`./${option.appname}`)) {
@@ -23,7 +22,7 @@ function init_app(option) {
                     message: `当前文件夹下含有您要创建 ${option.appname} 的应用名称文件,是否强制删除文件 继续初始化?`,
                     name: 'file'
                 }]).then((answers) => {
-                if (answers && (answers === 'y' || answers === 'yes')) {
+                if (answers.file) {
                     const task = child_process_1.spawn(`rm -rf ./${option.appname}`, [], { cwd: `./`, shell: true });
                     task.on('close', (code) => {
                         console.log(`原文件已经成功删除....`);
@@ -41,3 +40,4 @@ function init_app(option) {
     });
 }
 exports.init_app = init_app;
+//# sourceMappingURL=app.js.map

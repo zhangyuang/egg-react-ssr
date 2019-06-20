@@ -41,16 +41,16 @@ function cacheMange(option) {
         /** 将缓存中的对应的项目内容拷贝至 '项目名称' 文件夹 */
         const task = child_process_1.spawn(`cp -rf ${__dirname}/../cache/example/ssr-with-${option.language === 'javascript' ? 'js' : 'ts'} ./`, [], { cwd: `./`, shell: true });
         task.on('close', (_code) => {
-            console.log('原始项目克隆成功....');
             resolve();
         });
     })).then(() => new Promise((resolve, reject) => {
         /** 当前执行目录下修改创建 '项目名称' 文件夹 */
         const task = child_process_1.spawn(`mv ssr-with-${option.language === 'javascript' ? 'js' : 'ts'} ${option.appname}`, [], { cwd: `./`, shell: true });
         task.on('close', (code) => {
-            console.log('创建项目文件夹.....');
+            console.log('\n 创建项目文件夹.....');
             resolve();
         });
     }));
 }
 exports.cacheMange = cacheMange;
+//# sourceMappingURL=cache.js.map

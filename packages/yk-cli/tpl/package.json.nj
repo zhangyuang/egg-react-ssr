@@ -32,7 +32,8 @@
     "not op_mini all"
   ],
   "resolutions": {
-    "browserslist": "4.6.3"
+    "browserslist": "4.6.3",
+    "caniuse-lite": "1.0.30000974"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.0.0",
@@ -41,6 +42,7 @@
     "@svgr/webpack": "2.4.1",
     "babel-loader": "8.0.4",
     "browserslist": "^4.6.3",
+    "caniuse-lite": "1.0.30000974",
     "concurrently": "^4.1.0",
     "css-hot-loader": "^1.4.3",
     "css-loader": "1.0.0",

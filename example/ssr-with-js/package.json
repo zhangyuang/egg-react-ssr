@@ -3,7 +3,7 @@
   "version": "1.1.1",
   "dependencies": {
     "egg": "^2.21.0",
-    "egg-bin": "^4.12.3",
+    "egg-bin": "^4.13.1",
     "egg-proxy": "^1.1.0",
     "egg-scripts": "^2.11.0",
     "egg-static": "^2.2.0",
@@ -31,7 +31,8 @@
     "not op_mini all"
   ],
   "resolutions": {
-    "browserslist": "4.6.3"
+    "browserslist": "4.6.3",
+    "caniuse-lite": "1.0.30000974"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
@@ -40,6 +41,7 @@
     "@svgr/webpack": "2.4.1",
     "babel-loader": "8.0.4",
     "browserslist": "^4.6.3",
+    "caniuse-lite": "1.0.30000974",
     "concurrently": "^4.1.0",
     "css-hot-loader": "^1.4.3",
     "css-loader": "1.0.0",

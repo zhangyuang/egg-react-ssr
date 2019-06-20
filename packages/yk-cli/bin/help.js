@@ -17,3 +17,4 @@ function help() {
     });
 }
 exports.help = help;
+//# sourceMappingURL=help.js.map

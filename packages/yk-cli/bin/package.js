@@ -21,3 +21,4 @@ function packagejson(option) {
     });
 }
 exports.packagejson = packagejson;
+//# sourceMappingURL=package.js.map

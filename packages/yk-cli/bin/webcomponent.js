@@ -31,18 +31,18 @@ async function component(option) {
             /** 处理所有样式 css/less/scss 模板 */
             if (p.indexOf('.css.nj') > -1) {
                 let filepath = null;
-                let filepath_perfix = path_1.default.resolve(`./${option.appname}/web/${p.replace(webpath + '/', '').replace('.css.nj', '')}`);
+                let filepathPrefix = path_1.default.resolve(`./${option.appname}/web/${p.replace(webpath + '/', '').replace('.css.nj', '')}`);
                 /** js 版本对应的是 *.less */
                 if (option.language === 'javascript') {
-                    filepath = filepath_perfix + '.less';
+                    filepath = filepathPrefix + '.less';
                 }
                 else if (option.language === 'typescript') {
-                    filepath = filepath_perfix.indexOf('assets') > -1 ? filepath_perfix + '.scss' : filepath_perfix + '.module.scss';
+                    filepath = filepathPrefix.indexOf('assets') > -1 ? filepathPrefix + '.scss' : filepathPrefix + '.module.scss';
                 }
                 /** 把对应的 旧 less / module.scss 文件删除 写入新的 css / scss / less 文件 */
                 if (filepath && fs_1.default.existsSync(filepath)) {
                     fs_1.default.unlinkSync(filepath);
-                    const newfilepath = `${filepath_perfix}${option.language === 'typescript' && filepath.indexOf('assets') === -1 ? '.module' : ''}.${convert(option.style)}`;
+                    const newfilepath = `${filepathPrefix}${option.language === 'typescript' && filepath.indexOf('assets') === -1 ? '.module' : ''}.${convert(option.style)}`;
                     render_1.renderTemplate(p, newfilepath, option);
                 }
             }
@@ -56,12 +56,12 @@ async function component(option) {
             }
             else if (p.indexOf('.style.d.ts.nj') > -1) {
                 let filepath = null;
-                let filepath_perfix = path_1.default.resolve(`./${option.appname}/web/${p.replace(webpath + '/', '').replace('.style.d.ts.nj', '')}`);
-                filepath = filepath_perfix + '.scss.d.ts';
+                let filepathPrefix = path_1.default.resolve(`./${option.appname}/web/${p.replace(webpath + '/', '').replace('.style.d.ts.nj', '')}`);
+                filepath = filepathPrefix + '.scss.d.ts';
                 /** 替换less.d.ts || css.d.ts */
                 if (filepath && fs_1.default.existsSync(filepath)) {
                     fs_1.default.unlinkSync(filepath);
-                    const newfilepath = `${filepath_perfix}.${convert(option.style)}.d.ts`;
+                    const newfilepath = `${filepathPrefix}.${convert(option.style)}.d.ts`;
                     render_1.renderTemplate(p, newfilepath, option);
                 }
             }
@@ -69,3 +69,4 @@ async function component(option) {
     });
 }
 exports.component = component;
+//# sourceMappingURL=webcomponent.js.map

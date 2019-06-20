@@ -30,15 +30,15 @@ export function appconfig (option: Optional): Promise<void> {
       name: 'style',
       default: 'less',
       choices: [
-          'less',
-          'sass',
-          'css'
-        ]
+        'less',
+        'sass',
+        'css'
+      ]
     }]).then((answers: any) => {
-        option.appname = answers.appname
-        option.style = answers.style
-        option.language = answers.language
-        resolve()
-      })
+      option.appname = answers.appname
+      option.style = answers.style
+      option.language = answers.language
+      resolve()
+    })
   })
 }

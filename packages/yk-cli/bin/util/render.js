@@ -21,3 +21,4 @@ function renderTemplate(template, file, content) {
     }
 }
 exports.renderTemplate = renderTemplate;
+//# sourceMappingURL=render.js.map

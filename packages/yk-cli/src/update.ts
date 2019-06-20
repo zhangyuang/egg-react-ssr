@@ -31,6 +31,9 @@ export function updatelocal (option: Optional): Promise<void> {
             cwd: `./`,
             shell: true
           })
+          task.stdout.on('data', (data) => {
+            console.log(data)
+          })
           task.on('close', (code: number) => {
             console.log(
               `更新完毕... 请您重新执行 ykcli init ${
