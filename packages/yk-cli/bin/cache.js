@@ -20,7 +20,7 @@ function cacheMange(option) {
         .then((value) => new Promise((resolve, reject) => {
         /** 如果版本不一致 则直接更新缓存 */
         if (!value) {
-            download(`https://github.com/ykfe/egg-react-ssr.git#master`, path_1.default.resolve(__dirname, '../cache'), (err) => {
+            download(`github:ykfe/egg-react-ssr#master`, path_1.default.resolve(__dirname, '../cache'), (err) => {
                 if (!err) {
                     const packagejsonPath = path_1.default.resolve(__dirname, `../cache/example/ssr-with-${option.language === 'javascript' ? 'js' : 'ts'}/package.json`);
                     const version = require(packagejsonPath).version;
