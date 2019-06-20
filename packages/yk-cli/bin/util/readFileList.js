@@ -34,4 +34,3 @@ function readFileList(dir, filesList = [], ext = null) {
     return filesList;
 }
 exports.readFileList = readFileList;
-//# sourceMappingURL=readFileList.js.map

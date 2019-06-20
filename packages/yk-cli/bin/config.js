@@ -46,4 +46,3 @@ function appconfig(option) {
     });
 }
 exports.appconfig = appconfig;
-//# sourceMappingURL=config.js.map

@@ -8,4 +8,3 @@ exports.config = {
     js_url: 'https://raw.githubusercontent.com/ykfe/egg-react-ssr/master/example/ssr-with-js/package.json',
     branch: 'backup'
 };
-//# sourceMappingURL=fileconfig.js.map

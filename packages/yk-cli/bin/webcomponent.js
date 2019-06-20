@@ -69,4 +69,3 @@ async function component(option) {
     });
 }
 exports.component = component;
-//# sourceMappingURL=webcomponent.js.map

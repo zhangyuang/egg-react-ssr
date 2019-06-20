@@ -32,15 +32,13 @@ export function updatelocal (option: Optional): Promise<void> {
             shell: true
           })
           task.stdout.on('data', (data) => {
-            console.log(data)
+            console.log(data.toString('utf-8'))
           })
           task.on('close', (code: number) => {
             console.log(
-              `更新完毕... 请您重新执行 ykcli init ${
-                option && option.appname ? option.appname : ''
-              }`
+              `更新完毕... 请您重新执行 ykcli init`
             )
-            reject()
+            process.exit()
           })
         } else {
           resolve()

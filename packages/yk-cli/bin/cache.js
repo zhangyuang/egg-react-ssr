@@ -53,4 +53,3 @@ function cacheMange(option) {
     }));
 }
 exports.cacheMange = cacheMange;
-//# sourceMappingURL=cache.js.map
