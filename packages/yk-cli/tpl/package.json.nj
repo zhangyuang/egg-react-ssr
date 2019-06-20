@@ -25,14 +25,14 @@
     "build": "rm -rf dist && NODE_ENV=production webpack --config build/webpack.config.client.js && npm run build:server",
     "analyze": "NODE_ENV=production npm_config_report=true npm run build"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not ie <= 11",
-      "not op_mini all"
-    ],
-    "development": []
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "resolutions": {
+    "browserslist": "4.6.3"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.0.0",
@@ -40,6 +40,7 @@
     "@babel/core": "^7.4.4",
     "@svgr/webpack": "2.4.1",
     "babel-loader": "8.0.4",
+    "browserslist": "^4.6.3",
     "concurrently": "^4.1.0",
     "css-hot-loader": "^1.4.3",
     "css-loader": "1.0.0",
