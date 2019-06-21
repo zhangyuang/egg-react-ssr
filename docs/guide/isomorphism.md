@@ -16,7 +16,7 @@ SSR 演变过程：
 
 1. JSP/ASP 都算，当然 Node 渲染模板也算，Node 世界模板最为丰富
 
-2. bigpipe，虽然很老了，但分块传输有点是非常明显的，且浏览器友好。fb和微博，qunar都是受益者。Node天然支持，res.write 很友好
+2. bigpipe，虽然很老了，但分块传输优点是非常明显的，且浏览器友好。fb和微博，qunar都是受益者。Node天然支持，res.write 很友好
 
 3. 基于组件写法的SSR，比如React SSR。时代变了，SSR也要跟上。vdom + hydrate玩的可以很嗨，连 bigpipe 也可以结合起来。umi SSR和rax SSR未来可期
 
