@@ -181,7 +181,7 @@ function hotCheck(apply) {
         hotEnsureUpdateChunk(chunkId); // 该方法借助hotAvailableFilesMap主要用来下载hot-update.js,确定该文件应该去下载哪一个chunk的信息
     }
     var promise = new Promise(function(resolve, reject) {
-        // 调用hotUpdateDownloaded方法，用下载的hot-update.js的问价内容来更新旧的模块
+        // 调用hotUpdateDownloaded方法，用下载的hot-update.js的文件内容来更新旧的模块
         hotUpdateDownloaded();
     });
     return promise;
