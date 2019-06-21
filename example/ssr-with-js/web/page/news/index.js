@@ -28,5 +28,4 @@ News.getInitialProps = (ctx) => {
   })
 }
 
-// 如果使用React-Router确保使用withRouter来包裹组件，csr阶段需要读取props.history属性
 export default News

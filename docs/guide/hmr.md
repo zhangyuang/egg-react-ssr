@@ -52,7 +52,7 @@ NODE_ENV=development webpack-dev-server --port 8000 --hot --config ./build/webpa
 ```
 
 以流程图的形式展示
-![](https://s2.ax1x.com/2019/06/14/Vhv9gg.jpg)
+![](https://img.alicdn.com/tfs/TB1yAZLdEGF3KVjSZFvXXb_nXXa-1968-952.jpg)
 这里我们只贴出关键部分代码，不贴出完整代码
 
 ```js
