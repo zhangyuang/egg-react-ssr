@@ -33,16 +33,30 @@
       ]
     },
     {
-      "login": "zhaoxingyue",
-      "name": "zhaoxingyue",
-      "avatar_url": "https://avatars2.githubusercontent.com/u/15117664?v=4",
-      "profile": "http://zxy.im",
       "login": "zhusjfaker",
       "name": "zhushijie",
       "avatar_url": "https://avatars1.githubusercontent.com/u/31839470?v=4",
       "profile": "https://github.com/zhusjfaker",
       "contributions": [
         "code"
+      ]
+    },
+    {
+      "login": "jxycbjhc",
+      "name": "snoy",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/16661897?v=4",
+      "profile": "https://github.com/jxycbjhc",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "zhaoxingyue",
+      "name": "zhaoxingyue",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/15117664?v=4",
+      "profile": "http://zxy.im",
+      "contributions": [
+        "doc"
       ]
     }
   ],
