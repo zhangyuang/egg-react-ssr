@@ -1,10 +1,4 @@
-export interface Optional {
-    /** 执行的指令 */
-    action?: string;
-    /** 命令行 */
-    command?: string[];
-    /** 包管理工具 */
-    tool?: string;
+export interface Answers {
     /** 应用名称 */
     appName?: string;
     /** 样式预处理 */

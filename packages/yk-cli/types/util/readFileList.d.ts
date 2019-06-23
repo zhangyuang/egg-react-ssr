@@ -7,4 +7,4 @@
  * @param {(string | null)} [ext=null] 后缀过滤
  * @returns
  */
-export declare function readFileList(dir: string, filesList?: string[], ext?: string | null): string[];
+export declare function readFileList(dir: string, ext?: string | null): string[];

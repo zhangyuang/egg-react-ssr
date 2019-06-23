@@ -1,6 +1,6 @@
 {% if language === "javascript" %}
 {
-  "name": "{{appname}}",
+  "name": "{{appName}}",
   "version": "1.0.0",
   "dependencies": {
     "egg": "^2.21.0",
@@ -49,13 +49,8 @@
     "css-modules-require-hook": "^4.2.3",
     "file-loader": "2.0.0",
     "html-webpack-plugin": "^3.2.0",
-    {% if style === "less" %}
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
-    {% elif style === "sass" %}
-    "node-sass": "^4.12.0",
-    "sass-loader": "^7.1.0",
-    {% endif %}
     "mini-css-extract-plugin": "^0.5.0",
     "optimize-css-assets-webpack-plugin": "5.0.1",
     "postcss-flexbugs-fixes": "4.1.0",
@@ -75,7 +70,7 @@
 }
 {% elif language === "typescript" %}
 {
-  "name": "{{appname}}",
+  "name": "{{appName}}",
   "version": "1.0.0",
   "description": "SSR scaffolding using typescript in egg server environment",
   "egg": {
