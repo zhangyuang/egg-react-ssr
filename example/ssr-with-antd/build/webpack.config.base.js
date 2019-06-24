@@ -34,10 +34,10 @@ let webpackModule = {
             ],
             plugins: [
               [
-                "import",
+                'import',
                 {
-                  "libraryName": "antd",
-                  "style": "css"
+                  'libraryName': 'antd',
+                  'style': 'css'
                 }
               ]
             ]
@@ -112,4 +112,3 @@ module.exports = {
   ],
   performance: false
 }
-

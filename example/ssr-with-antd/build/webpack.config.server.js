@@ -28,4 +28,3 @@ module.exports = merge(baseConfig, {
   },
   plugins: plugins
 })
- 

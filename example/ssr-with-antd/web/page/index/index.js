@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { DatePicker } from 'antd';
+import { DatePicker } from 'antd'
 import './index.less'
 
 function Page (props) {
@@ -17,7 +17,7 @@ function Page (props) {
           ))
         }
       </ul>
-      <DatePicker></DatePicker>
+      <DatePicker />
     </div>
   )
 }
