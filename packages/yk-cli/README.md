@@ -2,7 +2,7 @@
 
 用于快速创建一个Egg + React + SSR 应用的脚手架
 
-# Getting Start
+## Getting Start
 
 如何使用
 
@@ -15,6 +15,6 @@ $ npm start
 $ open http://localhost:7001
 ```
 
-# Guide
+## Guide
 
 更详细的使用说明请查看[官方文档](http://ykfe.net)

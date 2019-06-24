@@ -14,7 +14,6 @@ import shell from 'shelljs'
 export function checkRepeat (option: Optional): Promise<void> {
   const { appName } = option
   return new Promise<void>((resolve, reject) => {
-        // 如果文件重复则提示 是否删除 对应 create react app 的交互
     if (fs.existsSync(`./${appName}`)) {
       inquirer.prompt([{
         type: 'confirm',

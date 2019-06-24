@@ -7,6 +7,7 @@
  * @returns {boolean} 是否一致
  */
 export declare function versionCompare(type: 'javascript' | 'typescript', version: string): boolean;
+
 /**
  * 记录版本号
  *
@@ -15,6 +16,7 @@ export declare function versionCompare(type: 'javascript' | 'typescript', versio
  * @param {string} version 版本号
  */
 export declare function versionlog(type: 'javascript' | 'typescript', version: string): void;
+
 /**
  * 移除缓存
  *

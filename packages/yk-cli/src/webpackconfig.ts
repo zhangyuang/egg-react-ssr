@@ -1,4 +1,4 @@
-import { resolveApp, renderTemplate } from './util/index'
+import { resolveApp, renderTemplate } from './util'
 import { Optional } from './interface/option'
 
 /**

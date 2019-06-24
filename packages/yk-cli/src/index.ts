@@ -7,7 +7,7 @@ import { checkRepeat } from './check'
 import { processPackage } from './package'
 import { processWebpack } from './webpackConfig'
 import { cacheMange } from './cache'
-import { update } from './update'
+import { updateCli } from './update'
 import yargs from 'yargs'
 
 const spinner = ora('应用初始化中')
@@ -18,7 +18,7 @@ yargs
       appName: argv.appName || 'app'
     }
     // 自检更新当前脚手架是否最新
-    await update()
+    await updateCli()
     // 问询APP配置
     await getConfig(option)
     // 判断当前appName是否已存在

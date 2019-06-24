@@ -6,6 +6,7 @@ export declare const execPromise: typeof exec.__promisify__;
 export declare const downloadPromise: Function;
 export declare const resolveApp: (source: string) => string;
 export declare const getPromise: object;
+
 /**
  * http
  * 缓存判断是否有效处理
@@ -14,6 +15,7 @@ export declare const getPromise: object;
  * @returns {Promise<boolean>}
  */
 export declare function getVersionEffective(option: Optional): Promise<boolean>;
+
 /**
  * 渲染 Nunjuncks
  *

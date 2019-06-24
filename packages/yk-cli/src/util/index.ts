@@ -17,16 +17,16 @@ export const processError = (err: string) => {
   }
 }
 
-export const execPromise = promisify(exec)
+export const execWithPromise = promisify(exec)
 
-export const downloadPromise = promisify(download)
+export const downloadWithPromise = promisify(download)
 
 export const resolveApp = (source: string) => {
   // 以根目录为基准
   return path.resolve(__dirname, `../../${source}`)
 }
 
-export const getPromise: object = (url: string) => {
+export const getWithPromise: object = (url: string) => {
   return new Promise((resolve, reject) => {
     let data: string = ''
     https.get(url, res => {
@@ -49,7 +49,7 @@ export async function getVersionEffective (option: Optional): Promise<boolean> {
   if (fs.existsSync(resolveApp('./cache'))) {
     const url = option.language === 'typescript' ? tsUrl : jsUrl
     const language = option.language === 'javascript' ? 'js' : 'ts'
-    const { version } = await getPromise(url)
+    const { version } = await getWithPromise(url)
     const localVersion = require(resolveApp(`./cache/example/ssr-with-${language}/package.json`)).version.trim()
     // 如果版本一样就不用更新
     return version.trim() === localVersion
