@@ -1,7 +1,10 @@
 module.exports = {
-  title: 'Egg + React + SSR',
+  title: 'Egg + React + SSR 服务端渲染',
   head: [
     ['link', { rel: 'icon', href: 'https://avatars1.githubusercontent.com/u/50347314?s=200&v=4' }],
+    ['meta', { name: 'keywords', itemprop: 'keywords', content: '服务端渲染, React, Egg, SSR, ReactSSR'}],
+    ['meta', { property: 'og:title', content: 'Egg + React + SSR 服务端渲染'}],
+    ['meta', { property: 'og:description', content: 'Egg + React + SSR 服务端渲染, 最小而美的服务端渲染应用骨架'}],
     ['script', {}, `var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
