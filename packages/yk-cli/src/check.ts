@@ -13,20 +13,19 @@ import shell from 'shelljs'
  */
 export function checkRepeat (option: Optional): Promise<void> {
   const { appName } = option
-  return new Promise<void>((resolve, reject) => {
+  return new Promise<void>(async (resolve, reject) => {
     if (fs.existsSync(`./${appName}`)) {
-      inquirer.prompt([{
+      const answers: any = await inquirer.prompt([{
         type: 'confirm',
         message: `当前文件夹下含有您要创建 ${appName} 的应用名称文件,是否强制删除文件 继续初始化?`,
         name: 'delete',
         default: 'Yes'
-      }]).then(async (answers: any) => {
-        if (answers.delete) {
-          shell.rm('-rf', `./${appName}`)
-          console.log(`原文件已经成功删除...`)
-          resolve()
-        } else process.exit()
-      })
+      }])
+      if (answers.delete) {
+        shell.rm('-rf', `./${appName}`)
+        console.log(`原文件已经成功删除...`)
+        resolve()
+      } else process.exit()
     } else resolve()
   }).catch(err => processError(err))
 }

@@ -10,8 +10,8 @@ import inquirer from 'inquirer'
  * @returns {Promise<void>}
  */
 export function getConfig (option: Optional): Promise<void> {
-  return new Promise<void>((resolve, reject) => {
-    inquirer.prompt([{
+  return new Promise<void>(async (resolve, reject) => {
+    const answers: any = await inquirer.prompt([{
       type: 'input',
       message: '应用名称:',
       name: 'appName',
@@ -25,9 +25,9 @@ export function getConfig (option: Optional): Promise<void> {
         'javascript'
         // 'typescript(开发中)'
       ]
-    }]).then((answers: any) => {
-      Object.assign(option, answers)
-      resolve()
-    })
+    }])
+
+    Object.assign(option, answers)
+    resolve()
   }).catch(err => processError(err))
 }

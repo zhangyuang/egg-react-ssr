@@ -6,4 +6,4 @@ import { Optional } from './interface/option';
  * @param {Optional} option 应用全局配置
  * @returns {Promise<void>}
  */
-export declare function processPackage(option: Optional): Promise<void>;
+export declare function processPackage(option: Optional): void;

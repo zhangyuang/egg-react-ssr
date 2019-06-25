@@ -2,6 +2,7 @@ import { getWithPromise, execWithPromise, processError, resolveApp } from './uti
 import ora from 'ora'
 const spinner = ora('发现本地版本较旧,尝试更新yk-cli脚手架')
 const url = 'https://raw.githubusercontent.com/ykfe/egg-react-ssr/master/packages/yk-cli/package.json'
+
 /**
  * 判断NPM包自动更新
  *

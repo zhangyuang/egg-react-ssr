@@ -8,7 +8,7 @@
     "example": "example"
   },
   "scripts": {
-    "standard": "standard",
+    "standard": "standard --fix",
     "install": "lerna bootstrap",
     "test": "echo \"Error: no test specified\" && exit 1",
     "docs:dev": "vuepress dev docs",
