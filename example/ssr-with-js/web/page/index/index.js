@@ -5,7 +5,6 @@ import './index.less'
 function Page (props) {
   return (
     <div className='normal'>
-      <div className='welcome' />
       <ul className='list'>
         {
           props.news && props.news.map((item, index) => (
