@@ -1,13 +1,11 @@
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const baseConfig = require('./webpack.config.base')
-const { CleanWebpackPlugin} = require('clean-webpack-plugin')
 const nodeExternals = require('webpack-node-externals')
 const paths = require('./paths')
 const isDev = process.env.NODE_ENV === 'development'
 
 const plugins = [
-  new CleanWebpackPlugin(),
   new webpack.DefinePlugin({
     __isBrowser__: false
   })
