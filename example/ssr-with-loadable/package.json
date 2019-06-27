@@ -1,10 +1,9 @@
-
 {
-  "name": "app",
-  "version": "1.0.0",
+  "name": "egg-ssr",
+  "version": "1.1.2",
   "dependencies": {
     "egg": "^2.21.0",
-    "egg-bin": "^4.12.3",
+    "egg-bin": "^4.13.1",
     "egg-proxy": "^1.1.0",
     "egg-scripts": "^2.11.0",
     "egg-static": "^2.2.0",
@@ -36,9 +35,10 @@
     "caniuse-lite": "1.0.30000974"
   },
   "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.0.0",
-    "@babel/core": "^7.4.4",
     "@svgr/webpack": "2.4.1",
     "babel-loader": "8.0.4",
     "browserslist": "^4.6.3",
@@ -57,6 +57,7 @@
     "postcss-loader": "3.0.0",
     "postcss-preset-env": "^6.0.5",
     "postcss-safe-parser": "4.0.1",
+    "react-loadable": "^5.5.0",
     "terser-webpack-plugin": "^1.2.0",
     "url-loader": "1.1.1",
     "webpack": "4.19.1",
@@ -68,5 +69,3 @@
     "webpack-node-externals": "^1.7.2"
   }
 }
-
-
