@@ -16,12 +16,12 @@
   },
   "scripts": {
     "debug": "egg-bin debug",
-    "start": "rm -rf dist && concurrently \"npm run ssr\" \" npm run csr \"",
+    "start": "rimraf dist && concurrently \"npm run ssr\" \" npm run csr \"",
     "ssr": "concurrently \"egg-bin dev\" \"cross-env NODE_ENV=development webpack --watch --config ./build/webpack.config.server.js\"",
     "csr": "cross-env NODE_ENV=development webpack-dev-server --port 8000 --hot --client-log-level error --config ./build/webpack.config.client.js",
     "prod": "npm run build && eggctl start",
     "build:server": "cross-env NODE_ENV=production webpack --config build/webpack.config.server.js",
-    "build": "cross-env NODE_ENV=production webpack --config build/webpack.config.client.js && npm run build:server",
+    "build": "rimraf dist && cross-env NODE_ENV=production webpack --config build/webpack.config.client.js && npm run build:server",
     "analyze": "cross-env NODE_ENV=production npm_config_report=true npm run build"
   },
   "browserslist": [
@@ -57,6 +57,7 @@
     "postcss-loader": "3.0.0",
     "postcss-preset-env": "^6.0.5",
     "postcss-safe-parser": "4.0.1",
+    "rimraf": "^2.6.3",
     "terser-webpack-plugin": "^1.2.0",
     "url-loader": "1.1.1",
     "webpack": "4.19.1",

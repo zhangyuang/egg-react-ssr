@@ -1,7 +1,7 @@
 {
   "name": "egg-react-ssr",
-  "version": "1.2.4",
-  "description": "# Getting Start",
+  "version": "1.2.5",
+  "description": "The Best Scheme for Server Side Rendering",
   "main": "index.js",
   "directories": {
     "doc": "docs",
