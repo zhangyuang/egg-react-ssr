@@ -21,6 +21,7 @@ function Page (props) {
 }
 
 Page.getInitialProps = (ctx) => {
+  console.log('xx')
   return Promise.resolve({
     news: [
       {

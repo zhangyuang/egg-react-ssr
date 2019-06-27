@@ -30,6 +30,9 @@ let webpackModule = {
             cacheCompression: false,
             presets: [
               '@babel/preset-react'
+            ],
+            plugins: [
+              '@babel/plugin-syntax-dynamic-import'
             ]
           }
         },
