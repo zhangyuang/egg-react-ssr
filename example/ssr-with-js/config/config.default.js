@@ -26,7 +26,7 @@ module.exports = {
   baseDir: resolvePath(''),
   template: resolvePath('web/index.html'), // 使用的模版文件路径
   injectCss: (chunkName) => ([
-    `/static/css/${chunkName}.chunk.css`
+    `<link rel='stylesheet' href='/static/css/${chunkName}.chunk.css' />`
   ]), // 客户端需要加载的静态样式表
   injectScript: (chunkName) => ([
     `<script src='/static/js/runtime~${chunkName}.js'></script>`,

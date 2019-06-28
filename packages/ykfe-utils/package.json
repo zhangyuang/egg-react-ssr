@@ -1,22 +1,20 @@
 {
   "name": "ykfe-utils",
-  "version": "1.2.6",
+  "version": "1.3.6",
   "description": "",
   "main": "lib/index.js",
   "module": "es/index.js",
   "sideEffects": false,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm run build:cjs && npm run build:esm",
-    "build:cjs": "NODE_ENV=production babel src --out-dir lib --presets=@babel/preset-react --plugins=@babel/plugin-transform-modules-commonjs",
-    "build:esm": "NODE_ENV=production babel src --out-dir es --presets=@babel/preset-react",
-    "watch": "concurrently \" NODE_ENV=production babel --watch src --out-dir lib --presets=@babel/preset-react --plugins=@babel/plugin-transform-modules-commonjs\" \" NODE_ENV=production babel --watch src --out-dir es --presets=@babel/preset-react \""
+    "watch": "concurrently \" NODE_ENV=production babel --watch src --out-dir lib --presets=@babel/preset-react --plugins=@babel/plugin-transform-modules-commonjs,@babel/plugin-proposal-class-properties\" \" NODE_ENV=production babel --watch src --out-dir es --presets=@babel/preset-react --plugins=@babel/plugin-proposal-class-properties \""
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.4",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
     "@babel/plugin-transform-modules-commonjs": "^7.4.4",
     "@babel/preset-react": "^7.0.0",
     "concurrently": "^4.1.0"
