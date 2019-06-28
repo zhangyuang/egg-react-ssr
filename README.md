@@ -69,7 +69,7 @@ getInitialProps入参对象的属性如下：
 - [x] 支持tree shaking以及打包去重依赖，使得打包的bundle非常小，为同样复杂度的next.js项目的0.4倍
 - [x] 支持csr/ssr自定义layout，无需通过path来手动区分
 - [x] 配套结合antd的example的实现
-- [x] 配套结合react-loadabele做路由分割的example的实现
+- [x] 配套结合react-loadable做路由分割的example的实现
 - [ ] 配套[TypeScript](https://github.com/ykfe/egg-react-ssr-typescript)版本的实现
 - [ ] 配套serverless版本的实现
 
