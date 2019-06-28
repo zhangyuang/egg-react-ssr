@@ -1,4 +1,3 @@
-
 const paths = require('./paths')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const publicPath = paths.servedPath
