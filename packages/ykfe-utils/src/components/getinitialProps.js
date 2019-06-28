@@ -34,7 +34,7 @@ function GetInitialProps (WrappedComponent) {
     }
     render () {
       // 只有在首次进入页面需要将window.__INITIAL_DATA__作为props，路由切换时不需要
-      return <WrappedComponent {...Object.assign({}, this.state.getProps ? {} : window.__INITIAL_DATA__, this.state.extraProps)} />
+      return <WrappedComponent {...Object.assign({}, this.props, this.state.getProps ? {} : window.__INITIAL_DATA__, this.state.extraProps)} />
     }
   }
   return withRouter(GetInitialPropsClass)
