@@ -1,9 +1,9 @@
 {
-  "name": "egg-ssr",
-  "version": "1.1.2",
+  "name": "app",
+  "version": "1.0.0",
   "dependencies": {
     "egg": "^2.21.0",
-    "egg-bin": "^4.13.1",
+    "egg-bin": "^4.12.3",
     "egg-proxy": "^1.1.0",
     "egg-scripts": "^2.11.0",
     "egg-static": "^2.2.0",
@@ -36,6 +36,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.0.0",
@@ -57,7 +58,6 @@
     "postcss-loader": "3.0.0",
     "postcss-preset-env": "^6.0.5",
     "postcss-safe-parser": "4.0.1",
-    "react-loadable": "^5.5.0",
     "terser-webpack-plugin": "^1.2.0",
     "url-loader": "1.1.1",
     "webpack": "4.19.1",

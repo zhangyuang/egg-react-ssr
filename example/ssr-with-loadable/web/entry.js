@@ -1,11 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Loadable from 'react-loadable'
 import { BrowserRouter, StaticRouter, Route } from 'react-router-dom'
 import defaultLayout from '@/layout'
 import { getWrappedComponent, getComponent } from 'ykfe-utils'
-import { routes as Routes } from '../config/config.default'
-// import routes from './route'
+// import { routes as Routes } from '../config/config.default'
+import routes from './route'
 
 const clientRender = async () => {
   // 客户端渲染||hydrate
@@ -13,17 +12,11 @@ const clientRender = async () => {
     <BrowserRouter>
       {
         // 使用高阶组件getWrappedComponent使得csr首次进入页面以及csr/ssr切换路由时调用getInitialProps
-        Routes.map(({ path, exact, Component, name }, key) => {
-          const ActiveComponent = Loadable({
-            // loader: () => import(/* webpackChunkName: "pageChunk" */ name),
-            loading () {
-              return <div>Loading...</div>
-            }
-          })
-          const Layout = ActiveComponent.Layout || defaultLayout
+        routes.map(({ path, exact, component }, key) => {
           return <Route exact={exact} key={key} path={path} render={() => {
-            const WrappedComponent = getWrappedComponent(ActiveComponent)
-            return <Layout><WrappedComponent /></Layout>
+            const WrappedComponent = getWrappedComponent(component)
+            const Layout = WrappedComponent.Layout || defaultLayout
+            return component.name === 'LoadableComponent' ? <WrappedComponent /> : <Layout>  <WrappedComponent /> </Layout>
           }} />
         })
       }
