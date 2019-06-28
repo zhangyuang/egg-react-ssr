@@ -1,4 +1,5 @@
 const resolvePath = (path) => require('path').resolve(process.cwd(), path)
+const React = require('react')
 
 module.exports = {
   keys: 'eggssr',
@@ -18,15 +19,22 @@ module.exports = {
     {
       path: '/news/:id',
       exact: true,
-      Component: () => (require('@/page/news').default),
+      Component: () => (__isBrowser__ ? require('ykfe-utils').Loadable({
+        loader: () => import(/* webpackChunkName: "news" */ '@/page/news'),
+        loading: function Loading () {
+          return React.createElement('div')
+        }
+      }) : require('@/page/news').default
+      ),
       controller: 'page',
       handler: 'index'
     }
   ],
+  loadable: true,
   baseDir: resolvePath(''),
   template: resolvePath('web/index.html'), // 使用的模版文件路径
   injectCss: (chunkName) => ([
-    `/static/css/${chunkName}.chunk.css`
+    `<link rel='stylesheet' href='/static/css/${chunkName}.chunk.css' />`
   ]), // 客户端需要加载的静态样式表
   injectScript: (chunkName) => ([
     `<script src='/static/js/runtime~${chunkName}.js'></script>`,
