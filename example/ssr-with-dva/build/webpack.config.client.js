@@ -103,12 +103,6 @@ module.exports = merge(baseConfig, {
   entry: {
     Page: paths.entry
   },
-  resolve: {
-    alias: {
-      // for this issue https://github.com/ykfe/egg-react-ssr/issues/36
-      'react-router': require.resolve('react-router')
-    }
-  },
   output: {
     path: paths.appBuild,
     pathinfo: true,

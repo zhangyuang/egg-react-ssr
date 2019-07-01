@@ -1,26 +1,15 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { connect } from 'dva'
 import './index.less'
 import { Link } from 'react-router-dom'
 
-// 模拟当前页码
-let currentPage = 1
-
-function Page(props) {
-  // dataFromRedux 是从 mapstatetoprops 中合并来的数据
-  const { dataFromRedux, store } = props
-
-  // 请求下一页
-  const loadMoreHandler = async (page) => {
-    await props.store.dispatch({ type: 'news/load', payload: { page: page } })
-  }
-
+function Page (props) {
   return (
     <div className='normal'>
       <div className='welcome' />
       <ul className='list'>
         {
-          props.dataFromRedux && props.dataFromRedux.map((item, index) => (
+          props.news && props.news.map((item, index) => (
             <li key={`news${index}`}>
               <div>文章标题: {item.title}</div>
               <div className='toDetail'><Link to={`/news/${item.id}`}>点击查看详情</Link></div>
@@ -28,19 +17,16 @@ function Page(props) {
           ))
         }
       </ul>
-      <div onClick={() => { loadMoreHandler(++currentPage) }}>加载更多</div>
     </div>
   )
 }
 
-Page.getInitialProps = async (ctx) => {
-  await ctx.store.dispatch({ type: 'news/load', payload: { page: currentPage } })
+Page.getInitialProps = async ({ store }) => {
+  await store.dispatch({ type: 'page/getData' })
 }
 
-const mapStateToProps = (state, ownProps) => {
-  const { news } = state
-  return { dataFromRedux: news.data }
-}
+const mapStateToProps = (state) => ({
+  news: state.page.news
+})
 
 export default connect(mapStateToProps)(Page)
-

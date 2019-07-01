@@ -2,7 +2,7 @@
   "name": "egg-ssr",
   "version": "1.1.3",
   "dependencies": {
-    "dva-no-router": "^1.2.1",
+    "dva": "2.4.1",
     "egg": "^2.21.0",
     "egg-bin": "^4.13.1",
     "egg-proxy": "^1.1.0",
@@ -11,9 +11,6 @@
     "koa-router": "^7.4.0",
     "react": "^16.8.3",
     "react-dev-utils": "^8.0.0",
-    "react-dom": "^16.8.3",
-    "react-redux": "^4.0.0",
-    "react-router-dom": "^5.0.0",
     "ykfe-utils": "^1.1.0"
   },
   "scripts": {

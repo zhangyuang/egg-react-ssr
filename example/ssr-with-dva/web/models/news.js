@@ -1,114 +1,35 @@
-const delay = time => new Promise(resolve => { setTimeout(() => resolve(), time) })
-
-function unique(arr) {
-  return Array.from(new Set(arr));
+const mockData = {
+  '1': `Racket-on-Chez continues to improve. Snapshot builds are currently available at pre.racket-lang.org, and we expect that Racket-on-Chez will be included as a download option in the next release.`,
+  '2': `This means anyone with more than three devices connected doesn't have to worry right this instant. That will change, however, when it comes time to replace one of your current devices or if you add another device to your collection. At that point, you will have to make a decision.`,
+  '3': `World's most mysterious text is finally cracked: Bristol academic deciphers lost language of 600-year-old Voynich manuscript to reveal astrological sex tips, herbal remedies and other pagan beliefs`,
+  '4': `After a successful test in Mexico City, fast-food chain Burger King will begin delivering food to drivers caught in traffic in Los Angeles in what they have dubbed The Traffic Jam Whopper.`,
+  '5': `Product advertisement and promotion on YouTube is a function of the dedicated audience (or influence) of the individual (influencer) anchoring the advertising or promotion.`
 }
-
+const getData = async ({ id }) => {
+  return Promise.resolve({
+    detail: mockData[id]
+  })
+}
 export default {
   namespace: 'news',
   state: {
-    data: [],
-    detail: {}
+    detail: ''
   },
   reducers: {
-    save(state, { payload }) {
+    init (state, { payload }) {
       return {
         ...state,
-        data: unique([...state.data, ...payload])
-      }
-    },
-    saveOne(state, { payload }) {
-      return {
-        ...state,
-        detail: payload
+        detail: payload.detail
       }
     }
   },
   effects: {
-    * load({ payload }, { call, put }) {
-      const { page } = payload
-      const { data, meta } = yield call(api.load, page)
+    * getData ({ payload }, { call, put }) {
+      const data = yield call(getData, payload)
       yield put({
-        type: 'save',
+        type: 'init',
         payload: data
-      })
-
-      return new Promise((resolve, reject) => {
-        if (!data) {
-          reject('没有内容了')
-        }
-        resolve({ data, meta })
-      })
-    },
-    * loadOne({ payload }, { call, put }) {
-      const { id } = payload
-      const { data, meta } = yield call(api.loadOne, id)
-
-      yield put({
-        type: 'saveOne',
-        payload: data
-      })
-
-      return new Promise((resolve, reject) => {
-        if (!data) {
-          reject('没有内容了')
-        }
-        resolve({ data, meta })
       })
     }
   }
 }
-
-// ---------------------------------------------------------
-// 模拟请求
-const api = {
-  load: async page => {
-    const pagesize = 5
-    const isLast = page > Math.floor(mockData.length / pagesize)
-    if (isLast) {
-      return {
-        data: [],
-        msg: '没有内容了.',
-        meta: {
-          page: page
-        }
-      }
-    }
-    const startIndex = (page - 1) * pagesize
-    let data = mockData.slice(startIndex, startIndex + pagesize)
-    return {
-      data: data,
-      msg: 'ok.',
-      meta: {
-        page: page
-      }
-    }
-  },
-  loadOne: async id => {
-    let data = mockData.filter(v => v.id === id)
-    return {
-      data: data[0] || {},
-      msg: 'ok.',
-      meta: {}
-    }
-  }
-}
-
-// 模拟数据
-const mockData = [
-  { id: '1', title: '111Racket v7.3 Release Notes', body: '11111111' },
-  { id: '2', title: '222Free Dropbox Accounts Now Only Sync to Three Devices', body: '222' },
-  { id: '3', title: '333Voynich Manuscript Decoded by Bristol Academic', body: '333' },
-  { id: '4', title: '4444Burger King to Deliver Whoppers to LA Drivers Stuck in Traffic', body: '4444' },
-  { id: '5', title: '555555How much do YouTube celebrities charge to advertise your product? ', body: '5555' },
-  { id: '6', title: '66666Racket v7.3 Release Notes', body: '666' },
-  { id: '7', title: '7777Free Dropbox Accounts Now Only Sync to Three Devices', body: '777' },
-  { id: '8', title: '888888Voynich Manuscript Decoded by Bristol Academic', body: '888' },
-  { id: '9', title: '999999Burger King to Deliver Whoppers to LA Drivers Stuck in Traffic', body: '999' },
-  { id: '10', title: '10 ow much do YouTube celebrities charge to advertise your product? ', body: '10101010' },
-  { id: '11', title: '11 Racket v7.3 Release Notes', body: '666' },
-  { id: '12', title: '12 Free Dropbox Accounts Now Only Sync to Three Devices', body: '777' },
-  { id: '13', title: '13 Voynich Manuscript Decoded by Bristol Academic', body: '888' },
-  { id: '14', title: '14 Burger King to Deliver Whoppers to LA Drivers Stuck in Traffic', body: '999' },
-  { id: '15', title: '15 How much do YouTube celebrities charge to advertise your product? ', body: '10101010' }
-]
