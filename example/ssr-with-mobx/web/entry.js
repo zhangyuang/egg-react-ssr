@@ -4,8 +4,7 @@ import { BrowserRouter, StaticRouter, Route } from 'react-router-dom'
 import defaultLayout from '@/layout'
 import { getWrappedComponent, getComponent } from 'ykfe-utils'
 import { routes as Routes } from '../config/config.default'
-import { useStaticRendering } from 'mobx-react'
-import { Provider } from 'mobx-react'
+import { Provider, useStaticRendering } from 'mobx-react'
 import RootStore from './store'
 
 const clientRender = async () => {

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './index.less'
+import { action } from 'mobx'
 import { inject, observer } from 'mobx-react'
 
 function Page (props) {
@@ -20,8 +21,7 @@ function Page (props) {
     </div>
   )
 }
-
-Page.getInitialProps = (ctx) => {
+Page.getInitialProps = action((ctx) => {
   return Promise.resolve({
     news: [
       {
@@ -43,5 +43,6 @@ Page.getInitialProps = (ctx) => {
       }
     ]
   })
-}
+})
+
 export default inject('store')(observer(Page))
