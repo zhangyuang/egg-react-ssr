@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import './index.less'
-import { Link } from '@/utils/Link'
+import { Link } from 'react-router-dom'
 
 // 模拟当前页码
 let currentPage = 1
@@ -37,8 +37,10 @@ Page.getInitialProps = async (ctx) => {
   await ctx.store.dispatch({ type: 'news/load', payload: { page: currentPage } })
 }
 
-export default connect((state, ownProps) => {
+const mapStateToProps = (state, ownProps) => {
   const { news } = state
   return { dataFromRedux: news.data }
-})(Page)
+}
+
+export default connect(mapStateToProps)(Page)
 

@@ -20,7 +20,9 @@ Page.getInitialProps = async (ctx) => {
   await ctx.store.dispatch({ type: 'news/loadOne', payload: { id: newsId } })
 }
 
-export default connect((state, ownProps) => {
+const mapStateToProps = (state, ownProps) => {
   const { news } = state
   return { dataFromRedux: news.detail }
-})(Page)
+}
+
+export default connect(mapStateToProps)(Page)
