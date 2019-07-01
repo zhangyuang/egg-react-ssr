@@ -8,7 +8,7 @@ export default {
   namespace: 'news',
   state: {
     data: [],
-    showId: null
+    detail: {}
   },
   reducers: {
     save(state, { payload }) {
@@ -20,32 +20,23 @@ export default {
     saveOne(state, { payload }) {
       return {
         ...state,
-        data: unique([...state.data, payload]),
-        showId: payload.id
+        detail: payload
       }
     }
   },
   effects: {
     * load({ payload }, { call, put }) {
       const { page } = payload
-      // @note:
       const { data, meta } = yield call(api.load, page)
-
-      // @note:
       yield put({
         type: 'save',
         payload: data
       })
 
-      // @important: 这里返回promise 让 serverRender 接收 进行后续操作。
       return new Promise((resolve, reject) => {
         if (!data) {
           reject('没有内容了')
         }
-        console.log(data);
-
-        console.log('--[2] data: ok.')
-        // @note:
         resolve({ data, meta })
       })
     },
@@ -62,8 +53,6 @@ export default {
         if (!data) {
           reject('没有内容了')
         }
-        console.log('--[2] data: ok.')
-        // @note:
         resolve({ data, meta })
       })
     }
@@ -74,7 +63,6 @@ export default {
 // 模拟请求
 const api = {
   load: async page => {
-    console.log('...loading')
     const pagesize = 5
     const isLast = page > Math.floor(mockData.length / pagesize)
     if (isLast) {
@@ -97,9 +85,7 @@ const api = {
     }
   },
   loadOne: async id => {
-    console.log('...loading')
     let data = mockData.filter(v => v.id === id)
-    // page <= Math.floor(mockData.length / pagesize)
     return {
       data: data[0] || {},
       msg: 'ok.',

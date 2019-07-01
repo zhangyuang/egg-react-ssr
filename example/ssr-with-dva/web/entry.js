@@ -16,6 +16,7 @@ const initializeDVA = params => {
   let options = params ? params : {}
   options.initialState = params.initialState ? options.initialState : {}
 
+  // @note 如果是 纯 csr 用 hashhistory
   if (__isBrowser__ && !window.__USE_SSR__) {
     options.history = require('history').createHashHistory()
   }
@@ -27,7 +28,6 @@ const initializeDVA = params => {
   return app
 }
 
-// ---------------------------------------------------------
 // clientRender
 const clientRender = () => {
   const initialState = window['__INITIAL_DATA__'] ? window['__INITIAL_DATA__'] : {}
@@ -42,7 +42,6 @@ const clientRender = () => {
           const Layout = ActiveComponent.Layout || defaultLayout
           return <Route exact={exact} key={key} path={path} render={() => {
             const WrappedComponent = getWrappedComponent(ActiveComponent)
-            // @note:
             return <Layout><WrappedComponent store={store} /></Layout>
           }} />
         })}
@@ -59,10 +58,9 @@ const clientRender = () => {
   }
 }
 
-// ---------------------------------------------------------
 // serverRender
 const serverRender = async ctx => {
-  console.log('-------------------------------------------');
+  // @note: 这个可能需要删掉 没有用了吧？
   const app = initializeDVA({
     history: require('history').createMemoryHistory({
       initialEntries: [ctx.req.url]
@@ -70,20 +68,15 @@ const serverRender = async ctx => {
   })
   const store = app._store
   const ActiveComponent = getComponent(Routes, ctx.path)()
-  // const ActiveComponent = getComponent(Routes, ctx.path)()
   const Layout = ActiveComponent.Layout || defaultLayout
   ctx.store = store
-  // @important:
   const asyncData = ActiveComponent.getInitialProps ? await ActiveComponent.getInitialProps(ctx) : {} // note: 获取异步数据 发起 dispatch
-  // @important:
   const curState = store.getState() // note: 重置csr dvaStore状态
   ctx.serverData = curState
 
-  // ActiveComponentWithRouter = withRouter(ActiveComponent)
   app.router(() => (
     <StaticRouter location={ctx.req.url} context={asyncData}>
       <Layout>
-        {/* // @note: */}
         <ActiveComponent {...asyncData} />
       </Layout>
     </StaticRouter>
