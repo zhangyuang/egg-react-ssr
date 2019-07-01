@@ -54,6 +54,6 @@ export default connect((state, ownProps) => {
   console.log('[2] ownProps:', ownProps);
 
   // @note:
-  return { dataFromRedux888888888: news }
+  return { dataFromRedux888888888: news.data }
 })(Page)
 

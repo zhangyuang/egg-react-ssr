@@ -6,13 +6,23 @@ function unique(arr) {
 
 export default {
   namespace: 'news',
-  state: [],
+  state: {
+    data: [],
+    showId: null
+  },
   reducers: {
     save(state, { payload }) {
-      return unique([...state, ...payload])
+      return {
+        ...state,
+        data: unique([...state.data, ...payload])
+      }
     },
     saveOne(state, { payload }) {
-      return unique([...state, payload])
+      return {
+        ...state,
+        data: unique([...state.data, payload]),
+        showId: payload.id
+      }
     }
   },
   effects: {

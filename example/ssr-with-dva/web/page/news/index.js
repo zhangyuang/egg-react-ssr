@@ -4,13 +4,18 @@ import { connect } from 'react-redux'
 
 import './index.less'
 
+/*
+// @important:
+现在问题就是
+当
+*/
 function Page(props) {
   console.log('🦊[3] render:')
   console.log('--[3] props', props)
-  const { detailDataFromGetInitialProps, dataFromRedux888888888 } = props
+  const { detailDataFromGetInitialProps, dataFromRedux888888888, news } = props
 
   return <div className='news-container'>
-    文章详情: {props.detailDataFromGetInitialProps && props.detailDataFromGetInitialProps.body}
+    文章详情: {props.dataFromRedux888888888 && props.dataFromRedux888888888.body}
   </div>
 }
 
@@ -29,13 +34,17 @@ Page.getInitialProps = async (ctx) => {
 }
 
 // export default Page
+
 export default connect((state, ownProps) => {
   console.log('🦊[2] connect:')
   // console.log('[2] ownProps:', ownProps);
   // const newsId = __isBrowser__ ? ownProps.match.params.id : ownProps.params.id
-  // const { news } = state
+  const { news } = state
+  console.log(news);
+
   // const id = ownProps.params
-  // const detail = id && news.filter(v => v.id === id)[0]
+  // @important: 在model 中加了个 字段  showId 来显示当前 显示的 详情页id.
+  const detail = news.data.filter(v => v.id === news.showId)[0]
   // // @note:
-  return { dataFromRedux888888888: {} }
+  return { dataFromRedux888888888: detail }
 })(Page)
