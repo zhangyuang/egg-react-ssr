@@ -6,4 +6,4 @@ import { Optional } from './interface/option';
  * @param {Optional} option
  * @returns {Promise<void>}
  */
-export declare function webpack(option: Optional): Promise<void>;
+export declare function processWebpack(option: Optional): void;

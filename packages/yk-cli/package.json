@@ -1,12 +1,12 @@
 {
   "name": "yk-cli",
-  "version": "1.0.13",
-  "description": "react ssr + csr cli",
+  "version": "1.0.16",
+  "description": "ykcli for ssr",
   "main": "./bin/index.js",
   "types": "types/index.d.ts",
   "scripts": {
-    "lint": "tslint --project . src/**/*.ts",
-    "lint:fix": "tslint --fix src/**/*.ts",
+    "lint": "tslint -c tslint.json -p .",
+    "lint:fix": "tslint -c tslint.json -p . --fix",
     "build": "rm -rf ./bin && tsc --project ./tsconfig.json --sourceMap false",
     "start": "node --inspect=19229 ./bin/index.js",
     "dev": "rm -rf ./bin && tsc -w"
@@ -24,16 +24,23 @@
       "@typescript-eslint/eslint-plugin"
     ]
   },
+  "pre-commit": [
+    "lint:fix"
+  ],
   "dependencies": {
     "download-git-repo": "^2.0.0",
     "inquirer": "6.3.1",
     "nunjucks": "^3.2.0",
-    "ora": "^3.4.0"
+    "ora": "^3.4.0",
+    "shelljs": "^0.8.3",
+    "yargs": "^13.2.4"
   },
   "devDependencies": {
     "@types/inquirer": "^6.0.3",
-    "@types/node": "^10.12.10",
     "@types/nunjucks": "^3.1.1",
+    "@types/shelljs": "^0.8.5",
+    "@types/yargs": "^13.0.0",
+    "pre-commit": "^1.2.2",
     "tslint": "^5.17.0",
     "tslint-config-standard": "^8.0.1",
     "typescript": "^3.5.2"

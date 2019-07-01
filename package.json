@@ -1,14 +1,14 @@
 {
   "name": "egg-react-ssr",
-  "version": "1.0.0",
-  "description": "# Getting Start",
+  "version": "1.2.5",
+  "description": "The Best Scheme for Server Side Rendering",
   "main": "index.js",
   "directories": {
     "doc": "docs",
     "example": "example"
   },
   "scripts": {
-    "standard": "standard",
+    "standard": "standard --fix",
     "install": "lerna bootstrap",
     "test": "echo \"Error: no test specified\" && exit 1",
     "docs:dev": "vuepress dev docs",
@@ -28,6 +28,7 @@
     "standard"
   ],
   "standard": {
+    "parser": "babel-eslint",
     "ignore": [
       "**/app/public",
       "**/dist/",
@@ -45,6 +46,7 @@
   },
   "homepage": "https://github.com/ykfe/egg-react-ssr#readme",
   "devDependencies": {
+    "babel-eslint": "^10.0.2",
     "lerna": "^3.8.0",
     "pre-commit": "^1.2.2",
     "standard": "^12.0.1",

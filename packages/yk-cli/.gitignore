@@ -64,7 +64,3 @@ package-lock.json
 cache/**
 
 bin
-
-javascript.version.json
-
-typescript.version.json

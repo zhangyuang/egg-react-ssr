@@ -58,6 +58,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "deancn175",
+      "name": "九牧",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/48011106?v=4",
+      "profile": "http://www.puacode.com",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,

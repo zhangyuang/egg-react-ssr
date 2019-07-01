@@ -23,7 +23,7 @@ let webpackModule = {
         },
         {
           test: /\.(js|mjs|jsx|ts|tsx)$/,
-          exclude: /node_modules/,
+          include: paths.appSrc,
           loader: require.resolve('babel-loader'),
           options: {
             cacheDirectory: true,
