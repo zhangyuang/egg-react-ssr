@@ -2,7 +2,7 @@
 import React from 'react'
 import '@/assets/common.less'
 import './layout.less'
-import { Link } from 'react-router-dom'
+import { Link } from '@/utils/Link'
 
 const Layout = (props) => {
   return (

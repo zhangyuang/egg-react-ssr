@@ -1,14 +1,26 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 import './index.less'
+import { Link } from '@/utils/Link'
 
-function Page (props) {
+let page = 1
+
+function Page(props) {
+  console.log('🦊[3] render:')
+  console.log('[3] props:', props);
+
+  const { newsDataFromInitialProps, dataFromRedux888888888, news, store } = props
+
+  const loadMore = async (page) => {
+    const { data } = await props.store.dispatch({ type: 'news/load', payload: { page: page } })
+  }
+
   return (
     <div className='normal'>
       <div className='welcome' />
       <ul className='list'>
         {
-          props.news && props.news.map((item, index) => (
+          props.dataFromRedux888888888 && props.dataFromRedux888888888.map((item, index) => (
             <li key={`news${index}`}>
               <div>文章标题: {item.title}</div>
               <div className='toDetail'><Link to={`/news/${item.id}`}>点击查看详情</Link></div>
@@ -16,31 +28,32 @@ function Page (props) {
           ))
         }
       </ul>
+      <div onClick={() => { loadMore(++page) }}>加载更多</div>
     </div>
   )
 }
 
-Page.getInitialProps = (ctx) => {
-  return Promise.resolve({
-    news: [
-      {
-        id: '1',
-        title: 'Racket v7.3 Release Notes'
-      },
-      {
-        id: '2',
-        title: 'Free Dropbox Accounts Now Only Sync to Three Devices'
-      },
-      { id: '3',
-        title: 'Voynich Manuscript Decoded by Bristol Academic'
-      },
-      { id: '4',
-        title: 'Burger King to Deliver Whoppers to LA Drivers Stuck in Traffic'
-      },
-      { id: '5',
-        title: 'How much do YouTube celebrities charge to advertise your product? '
-      }
-    ]
-  })
+Page.getInitialProps = async (ctx) => {
+  console.log('🦊[1] getInitialProps:')
+  await ctx.store.dispatch({ type: 'news/load', payload: { page: page } })
+  // const { data } = await ctx.store.dispatch({ type: 'news/load', payload: { page: page } })
+  // const { news } = ctx.store.getState()
+  return {
+    aaaaaaaaaaaaaaaaaaaaaaaaaaaa: 6666666666666666666666
+    // newsDataFromInitialProps: news,
+    // store: ctx.store,
+    // ctx: ctx
+  }
 }
-export default Page
+
+// @important: don't forget export
+
+export default connect((state, ownProps) => {
+  console.log('🦊[2] connect:')
+  const { news } = state
+  console.log('[2] ownProps:', ownProps);
+
+  // @note:
+  return { dataFromRedux888888888: news }
+})(Page)
+

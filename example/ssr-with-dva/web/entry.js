@@ -1,44 +1,96 @@
-import React from 'react'
+import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter, StaticRouter, Route } from 'react-router-dom'
+import { BrowserRouter, StaticRouter, Switch, Route, Link, withRouter } from 'react-router-dom'
 import defaultLayout from '@/layout'
 import { getWrappedComponent, getComponent } from 'ykfe-utils'
 import { routes as Routes } from '../config/config.default'
 
-const clientRender = async () => {
-  // 客户端渲染||hydrate
-  ReactDOM[window.__USE_SSR__ ? 'hydrate' : 'render'](
+// import * as dvaCore from 'dva-core'; // 如有进一步需求根据 dva-core 定制
+// import dva from 'dva' // dva 是涵盖router/fetch...等等 众多依赖版本,比较繁杂
+import dva from 'dva-no-router' // no-router 是 比较干净。 也就是没有定死 dva(options)
+import models from './models'
+
+// ---------------------------------------------------------
+// initializeDVA 用于 clientRender/serverRender 公用
+const initializeDVA = params => {
+  let options = params ? params : {}
+  options.initialState = params.initialState ? options.initialState : {}
+
+  if (__isBrowser__ && !window.__USE_SSR__) {
+    options.history = require('history').createHashHistory()
+  }
+
+  const app = dva(options)
+  models.forEach(m => app.model(m))
+  app.router(() => { })
+  app.start()
+  return app
+}
+
+// ---------------------------------------------------------
+// clientRender
+const clientRender = () => {
+  const initialState = window['__INITIAL_DATA__'] ? window['__INITIAL_DATA__'] : {}
+  const app = initializeDVA({ initialState })
+  const store = app._store
+
+  app.router(() => (
     <BrowserRouter>
-      {
-        // 使用高阶组件getWrappedComponent使得csr首次进入页面以及csr/ssr切换路由时调用getInitialProps
-        Routes.map(({ path, exact, Component }, key) => {
+      <Switch>
+        {Routes.map(({ path, exact, Component }, key) => {
           const ActiveComponent = Component()
           const Layout = ActiveComponent.Layout || defaultLayout
           return <Route exact={exact} key={key} path={path} render={() => {
             const WrappedComponent = getWrappedComponent(ActiveComponent)
-            return <Layout><WrappedComponent /></Layout>
+            // @note:
+            return <Layout><WrappedComponent store={store} /></Layout>
           }} />
-        })
-      }
+        })}
+      </Switch>
     </BrowserRouter>
-    , document.getElementById('app'))
+  ))
+
+  const DvaApp = app.start()
+  // note: 客户端渲染||hydrate
+  ReactDOM[window.__USE_SSR__ ? 'hydrate' : 'render'](<DvaApp />, document.getElementById('app'))
 
   if (process.env.NODE_ENV === 'development' && module.hot) {
     module.hot.accept()
   }
 }
 
-const serverRender = async (ctx) => {
-  // 服务端渲染 根据ctx.path获取请求的具体组件，调用getInitialProps并渲染
+// ---------------------------------------------------------
+// serverRender
+const serverRender = async ctx => {
+  console.log('-------------------------------------------');
+  const app = initializeDVA({
+    history: require('history').createMemoryHistory({
+      initialEntries: [ctx.req.url]
+    })
+  })
+  const store = app._store
   const ActiveComponent = getComponent(Routes, ctx.path)()
-  const serverData = ActiveComponent.getInitialProps ? await ActiveComponent.getInitialProps(ctx) : {}
+  // const ActiveComponent = getComponent(Routes, ctx.path)()
   const Layout = ActiveComponent.Layout || defaultLayout
-  ctx.serverData = serverData
-  return <StaticRouter location={ctx.req.url} context={serverData}>
-    <Layout>
-      <ActiveComponent {...serverData} />
-    </Layout>
-  </StaticRouter>
+  ctx.store = store
+  // @important:
+  const asyncData = ActiveComponent.getInitialProps ? await ActiveComponent.getInitialProps(ctx) : {} // note: 获取异步数据 发起 dispatch
+  // @important:
+  const curState = store.getState() // note: 重置csr dvaStore状态
+  ctx.serverData = curState
+
+  // ActiveComponentWithRouter = withRouter(ActiveComponent)
+  app.router(() => (
+    <StaticRouter location={ctx.req.url} context={asyncData}>
+      <Layout>
+        {/* // @note: */}
+        <ActiveComponent {...asyncData} />
+      </Layout>
+    </StaticRouter>
+  ))
+
+  const DvaApp = app.start()
+  return <DvaApp />
 }
 
-export default __isBrowser__ ? clientRender() : serverRender
+export default (__isBrowser__ ? clientRender() : serverRender)
