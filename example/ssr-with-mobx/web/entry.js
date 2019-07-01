@@ -4,6 +4,7 @@ import { BrowserRouter, StaticRouter, Route } from 'react-router-dom'
 import defaultLayout from '@/layout'
 import { getWrappedComponent, getComponent } from 'ykfe-utils'
 import { routes as Routes } from '../config/config.default'
+import { useStaticRendering } from 'mobx-react'
 
 const clientRender = async () => {
   // 客户端渲染||hydrate
@@ -29,6 +30,7 @@ const clientRender = async () => {
 }
 
 const serverRender = async (ctx) => {
+  useStaticRendering(true)
   // 服务端渲染 根据ctx.path获取请求的具体组件，调用getInitialProps并渲染
   const ActiveComponent = getComponent(Routes, ctx.path)()
   const serverData = ActiveComponent.getInitialProps ? await ActiveComponent.getInitialProps(ctx) : {}

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './index.less'
+import { inject, observer } from 'mobx-react'
 
 function Page (props) {
   return (
@@ -43,4 +44,4 @@ Page.getInitialProps = (ctx) => {
     ]
   })
 }
-export default Page
+export default inject('store')(observer(Page))
