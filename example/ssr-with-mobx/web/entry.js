@@ -5,6 +5,8 @@ import defaultLayout from '@/layout'
 import { getWrappedComponent, getComponent } from 'ykfe-utils'
 import { routes as Routes } from '../config/config.default'
 import { useStaticRendering } from 'mobx-react'
+import { Provider } from 'mobx-react'
+import RootStore from './store'
 
 const clientRender = async () => {
   // 客户端渲染||hydrate
@@ -31,16 +33,19 @@ const clientRender = async () => {
 
 const serverRender = async (ctx) => {
   useStaticRendering(true)
+  const store = new RootStore()
   // 服务端渲染 根据ctx.path获取请求的具体组件，调用getInitialProps并渲染
   const ActiveComponent = getComponent(Routes, ctx.path)()
   const serverData = ActiveComponent.getInitialProps ? await ActiveComponent.getInitialProps(ctx) : {}
   const Layout = ActiveComponent.Layout || defaultLayout
   ctx.serverData = serverData
-  return <StaticRouter location={ctx.req.url} context={serverData}>
-    <Layout>
-      <ActiveComponent {...serverData} />
-    </Layout>
-  </StaticRouter>
+  return <Provider store={store}>
+    <StaticRouter location={ctx.req.url} context={serverData}>
+      <Layout>
+        <ActiveComponent {...serverData} />
+      </Layout>
+    </StaticRouter>
+  </Provider>
 }
 
 export default __isBrowser__ ? clientRender() : serverRender
