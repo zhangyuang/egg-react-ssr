@@ -29,7 +29,7 @@ const renderToStream = async (ctx, chunkName, config) => {
   const docArr = baseHtml.split('<!-- Start Server Render Document -->')
 
   const beginDoc = docArr[0].trim().replace('\n', '')
-  const beginDocStream = stringToStream(beginDoc.replace('<!-- Start Injecting Style Flows Up and Down -->', ` <link rel='stylesheet' href='${config.injectCss(chunkName).join('')}' />`))
+  const beginDocStream = stringToStream(beginDoc.replace('<!-- Start Injecting Style Flows Up and Down -->', `${config.injectCss(chunkName).join('')}`))
   const initialData = !isCsr ? `<script>window.__USE_SSR__=true;window.__USESSR__=true;window.__INITIAL_DATA__ =${serialize(ctx.serverData || {})};</script>` : ''
   const injectScript = config.injectScript ? config.injectScript(chunkName).join('') : config.injectSrcipt(chunkName).join('')
 

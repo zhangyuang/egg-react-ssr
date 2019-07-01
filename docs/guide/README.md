@@ -34,6 +34,8 @@
 - 支持tree shaking以及打包去重依赖，使得打包的bundle非常小，为同样复杂度的next.js项目的0.4倍
 - 支持csr/ssr自定义layout，无需通过path来手动区分
 - 支持选择某个具体的组件在客户端还是服务端进行渲染
+- 配套结合[antd](https://github.com/ykfe/egg-react-ssr/tree/master/example/ssr-with-antd)的example的实现
+- 配套结合[react-loadable](https://github.com/ykfe/egg-react-ssr/tree/master/example/ssr-with-loadable)做路由分割的example的实现
 
 ### 开发中
 

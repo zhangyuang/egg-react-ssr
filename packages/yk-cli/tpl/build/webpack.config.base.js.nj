@@ -49,7 +49,6 @@ let webpackModule = {
             getLocalIdent: getCSSModuleLocalIdent
           })
         },
-       {% if style === "less" %}
         {
           test: /\.less$/,
           exclude: /\.module\.less$/,
@@ -73,31 +72,6 @@ let webpackModule = {
             'less-loader'
           )
         },
-        {% elif style === "sass" %}
-        {
-          test: /\.scss$/,
-          exclude: /\.module\.scss$/,
-          use: getStyleLoaders(
-            {
-              importLoaders: 2,
-              localIdentName: '[local]'
-            },
-            'sass-loader'
-          ),
-          sideEffects: true
-        },
-        {
-          test: /\.module\.scss$/,
-          use: getStyleLoaders(
-            {
-              importLoaders: 2,
-              modules: true,
-              getLocalIdent: getCSSModuleLocalIdent
-            },
-            'sass-loader'
-          )
-        },
-        {% endif %}
         {
           exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
           loader: require.resolve('file-loader'),

@@ -6,4 +6,4 @@ import { Optional } from './interface/option';
  * @param {Optional} option
  * @returns {Promise<void>}
  */
-export declare function appconfig(option: Optional): Promise<void>;
+export declare function getConfig(option: Optional): Promise<void>;

@@ -1,3 +1,4 @@
+import { processError } from './util/index'
 import { Optional } from './interface/option'
 import inquirer from 'inquirer'
 
@@ -8,37 +9,25 @@ import inquirer from 'inquirer'
  * @param {Optional} option
  * @returns {Promise<void>}
  */
-export function appconfig (option: Optional): Promise<void> {
-  return new Promise<void>((resolve, reject) => {
-    inquirer.prompt([{
+export function getConfig (option: Optional): Promise<void> {
+  return new Promise<void>(async (resolve, reject) => {
+    const answers: any = await inquirer.prompt([{
       type: 'input',
-      message: '您创建的应用名称:',
-      name: 'appname',
-      default: option.command && option.command.length > 0 ? String(option.command[0]) : 'app'
+      message: '应用名称:',
+      name: 'appName',
+      default: option.appName
     }, {
       type: 'list',
-      message: '使用的开发语言',
+      message: '开发语言',
       name: 'language',
       default: 'javascript',
       choices: [
-        'javascript',
-        'typescript(开发中)'
+        'javascript'
+        // 'typescript(开发中)'
       ]
-    }, {
-      type: 'list',
-      message: '是否使用样式预处理器:',
-      name: 'style',
-      default: 'less',
-      choices: [
-        'less',
-        'sass',
-        'css'
-      ]
-    }]).then((answers: any) => {
-      option.appname = answers.appname
-      option.style = answers.style
-      option.language = answers.language
-      resolve()
-    })
-  })
+    }])
+
+    Object.assign(option, answers)
+    resolve()
+  }).catch(err => processError(err))
 }

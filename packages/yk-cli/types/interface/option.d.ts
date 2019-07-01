@@ -6,7 +6,7 @@ export interface Optional {
     /** 包管理工具 */
     tool?: string;
     /** 应用名称 */
-    appname?: string;
+    appName?: string;
     /** 样式预处理 */
     style?: 'less' | 'sass' | 'css';
     /** 状态管理的中间件 */
