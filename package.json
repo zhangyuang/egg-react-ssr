@@ -46,10 +46,15 @@
   },
   "homepage": "https://github.com/ykfe/egg-react-ssr#readme",
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
     "babel-eslint": "^10.0.2",
     "lerna": "^3.8.0",
     "pre-commit": "^1.2.2",
     "standard": "^12.0.1",
     "vuepress": "^0.14.8"
+  },
+  "__npminstall_done": false,
+  "dependencies": {
+    "mobx": "^5.10.1"
   }
 }
