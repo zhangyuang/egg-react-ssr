@@ -18,12 +18,12 @@
   "scripts": {
     "debug": "egg-bin debug",
     "start": "concurrently \"npm run ssr\" \" npm run csr \"",
-    "ssr": "rm -rf dist && concurrently \"egg-bin dev\" \"NODE_ENV=development webpack --watch --config ./build/webpack.config.server.js\"",
-    "csr": "NODE_ENV=development webpack-dev-server --port 8000 --hot --client-log-level error --config ./build/webpack.config.client.js",
+    "ssr": "rimraf dist && concurrently \"egg-bin dev\" \"cross-env NODE_ENV=development webpack --watch --config ./build/webpack.config.server.js\"",
+    "csr": "cross-env NODE_ENV=development webpack-dev-server --port 8000 --hot --client-log-level error --config ./build/webpack.config.client.js",
     "prod": "npm run build && eggctl start",
-    "build:server": "NODE_ENV=production webpack --config build/webpack.config.server.js",
-    "build": "rm -rf dist && NODE_ENV=production webpack --config build/webpack.config.client.js && npm run build:server",
-    "analyze": "NODE_ENV=production npm_config_report=true npm run build"
+    "build:server": "cross-env NODE_ENV=production webpack --config build/webpack.config.server.js",
+    "build": "rimraf dist && cross-env NODE_ENV=production webpack --config build/webpack.config.client.js && npm run build:server",
+    "analyze": "cross-env NODE_ENV=production npm_config_report=true npm run build"
   },
   "browserslist": [
     ">0.2%",
