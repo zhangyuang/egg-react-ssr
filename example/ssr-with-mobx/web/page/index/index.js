@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './index.less'
-import { action } from 'mobx'
 import { inject, observer } from 'mobx-react'
 
 function Page (props) {
@@ -21,28 +20,13 @@ function Page (props) {
     </div>
   )
 }
-Page.getInitialProps = action((ctx) => {
-  return Promise.resolve({
-    news: [
-      {
-        id: '1',
-        title: 'Racket v7.3 Release Notes'
-      },
-      {
-        id: '2',
-        title: 'Free Dropbox Accounts Now Only Sync to Three Devices'
-      },
-      { id: '3',
-        title: 'Voynich Manuscript Decoded by Bristol Academic'
-      },
-      { id: '4',
-        title: 'Burger King to Deliver Whoppers to LA Drivers Stuck in Traffic'
-      },
-      { id: '5',
-        title: 'How much do YouTube celebrities charge to advertise your product? '
-      }
-    ]
-  })
+
+Page.getInitialProps = async ({ store }) => {
+  await store.pageStore.getData()
+}
+
+const mapStateToProps = ({ store }) => ({
+  news: store.pageStore.news
 })
 
-export default inject('store')(observer(Page))
+export default inject(mapStateToProps)(observer(Page))
