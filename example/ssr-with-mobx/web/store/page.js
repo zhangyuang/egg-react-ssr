@@ -23,8 +23,9 @@ const getData = async () => {
 }
 class PageStore {
     @observable news = []
-    constructor (rootStore) {
-      this.rootStore = rootStore
+
+    constructor (state) {
+      this.news = (state && state.pageStore.news) || []
     }
 
     @action

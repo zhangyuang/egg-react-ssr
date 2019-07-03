@@ -47,7 +47,7 @@ const serverRender = async (ctx) => {
   const ActiveComponent = getComponent(Routes, ctx.path)()
   const serverData = ActiveComponent.getInitialProps ? await ActiveComponent.getInitialProps(ctx) : {}
   const Layout = ActiveComponent.Layout || defaultLayout
-  // ctx.serverData = toJS(store)
+  ctx.serverData = store
 
   return <Provider store={store}>
     <StaticRouter location={ctx.req.url} context={serverData}>
