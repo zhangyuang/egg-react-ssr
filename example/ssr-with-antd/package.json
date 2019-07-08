@@ -4,7 +4,6 @@
   "dependencies": {
     "antd": "^3.19.8",
     "egg": "^2.21.0",
-    "egg-bin": "^4.13.1",
     "egg-proxy": "^1.1.0",
     "egg-scripts": "^2.11.0",
     "egg-static": "^2.2.0",
@@ -36,6 +35,7 @@
     "caniuse-lite": "1.0.30000974"
   },
   "devDependencies": {
+    "egg-bin": "^4.13.1",
     "@babel/core": "^7.4.4",
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.0.0",
