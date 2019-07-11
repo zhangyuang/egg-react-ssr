@@ -69,7 +69,7 @@ app.ready(() => {
 
 ```
 npm install - g 0x
-0x -o --node start.js // -o选项让0x来自动从浏览器中打开热力图
+0x -o -- node start.js // -o选项让0x来自动从浏览器中打开热力图
 ab -n 100 -c 2 http: //127.0.0.1:7001/ //用ab工具来向该应用发起100次请求，每次并发数为2
 ```
 
