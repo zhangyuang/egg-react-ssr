@@ -57,6 +57,11 @@ getInitialProps入参对象的属性如下：
 - ctx: Node应用请求的上下文(仅在SSR阶段可以获取)
 - Router Props: 路由信息，包括pathname以及Router params等信息，详细信息参考react-router文档
 
+## 执行环境
+
+- 服务器Node.js >= 7.6， 为了原生的使用async/await语法
+- 浏览器版本大于等于IE9, React支持到IE9，但为了更好的在IE下使用，你可能需要引入[Polyfill](https://reactjs.org/docs/javascript-environment-requirements.html)
+
 ### 特性
 
 - [x] 基于cra脚手架开发，由cra开发的React App可无缝迁移，如果你熟悉cra的配置，上手成本几乎为0

@@ -18,6 +18,11 @@
 
 [ReactDOMServer](https://reactjs.org/docs/react-dom-server.html)React官方提供的服务端渲染有关的库
 
+## 执行环境
+
+- 服务器Node.js >= 7.6， 为了原生的使用async/await语法
+- 浏览器版本大于等于IE9, React支持到IE9，但为了更好的在IE下使用，你可能需要引入[Polyfill](https://reactjs.org/docs/javascript-environment-requirements.html)
+
 ## 功能/特性
 
 以下是该应用具有的功能点
