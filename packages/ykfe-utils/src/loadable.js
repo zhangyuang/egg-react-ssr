@@ -1,6 +1,6 @@
 
-const React = require('react')
-const PropTypes = require('prop-types')
+import React from 'react'
+import PropTypes from 'prop-types'
 const ALL_INITIALIZERS = []
 const READY_INITIALIZERS = []
 
@@ -349,4 +349,4 @@ Loadable.preloadReady = () => {
   })
 }
 
-module.exports = Loadable
+export default Loadable

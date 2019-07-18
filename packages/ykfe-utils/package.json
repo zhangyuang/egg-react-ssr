@@ -7,7 +7,9 @@
   "sideEffects": false,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "concurrently \" NODE_ENV=production babel --watch src --out-dir lib --presets=@babel/preset-react --plugins=@babel/plugin-transform-modules-commonjs,@babel/plugin-proposal-class-properties\" \" NODE_ENV=production babel --watch src --out-dir es --presets=@babel/preset-react --plugins=@babel/plugin-proposal-class-properties \""
+    "watch:es": "NODE_ENV=production BABEL_ENV=es babel src --out-dir es --watch",
+    "watch:lib": "NODE_ENV=production BABEL_ENV=lib babel src --out-dir lib --watch",
+    "watch": "concurrently \"npm run watch:es\" \"npm run watch:lib \""
   },
   "author": "",
   "license": "ISC",
@@ -15,9 +17,10 @@
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.4",
     "@babel/plugin-proposal-class-properties": "^7.4.4",
-    "@babel/plugin-transform-modules-commonjs": "^7.4.4",
+    "@babel/plugin-transform-runtime": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
-    "concurrently": "^4.1.0"
+    "@babel/runtime": "^7.5.5"
   },
   "dependencies": {
     "multistream": "^2.1.1",
@@ -26,6 +29,5 @@
     "react-router-dom": "^5.0.0",
     "serialize-javascript": "^1.7.0",
     "string-to-stream": "^1.1.1"
-  },
-  "gitHead": "b5729665d337e0f1a8d832e785c721a2347f52af"
+  }
 }
