@@ -101,7 +101,7 @@ if (process.env.npm_config_report === 'true') {
 module.exports = merge(baseConfig, {
   devtool: devtool,
   entry: {
-    Page: paths.entry
+    Page: ['@babel/polyfill', paths.entry]
   },
   resolve: {
     alias: {
