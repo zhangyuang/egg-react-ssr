@@ -103,6 +103,12 @@ module.exports = merge(baseConfig, {
   entry: {
     Page: paths.entry
   },
+  resolve: {
+    alias: {
+      'react-router': paths.resolveApp('node_modules/react-router'),
+      'react-router-dom': paths.resolveApp('node_modules/react-router-dom')
+    }
+  },
   output: {
     path: paths.appBuild,
     pathinfo: true,

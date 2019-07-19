@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import dva from 'dva'
 import models from './models'
-import { BrowserRouter, StaticRouter, Route } from 'react-router-dom'
+import { BrowserRouter, StaticRouter, Route, Switch } from 'react-router-dom'
 import defaultLayout from '@/layout'
 import { getWrappedComponent, getComponent } from 'ykfe-utils'
 import { routes as Routes } from '../config/config.default'
@@ -26,16 +26,18 @@ const clientRender = () => {
 
   app.router(() => (
     <BrowserRouter>
-      {
-        Routes.map(({ path, exact, Component }, key) => {
-          const ActiveComponent = Component()
-          const Layout = ActiveComponent.Layout || defaultLayout
-          return <Route exact={exact} key={key} path={path} render={() => {
-            const WrappedComponent = getWrappedComponent(ActiveComponent)
-            return <Layout><WrappedComponent store={store} /></Layout>
-          }} />
-        })
-      }
+      <Switch>
+        {
+          Routes.map(({ path, exact, Component }, key) => {
+            const ActiveComponent = Component()
+            const Layout = ActiveComponent.Layout || defaultLayout
+            return <Route exact={exact} key={key} path={path} render={() => {
+              const WrappedComponent = getWrappedComponent(ActiveComponent)
+              return <Layout><WrappedComponent store={store} /></Layout>
+            }} />
+          })
+        }
+      </Switch>
     </BrowserRouter>
   ))
   const DvaApp = app.start()
