@@ -46,4 +46,12 @@ import { OnlyCsr } from 'ykfe-utils'
 export default OnlyCsr(Page)
 ```
 
+## 刷新8000端口为什么会导致404
 
+8000端口启动的是CSR(客户端渲染)应用，并且此时我们使用的是history路由模式，这里我们首先要明白前端路由和后端路由有什么区别
+
+- 前端路由，一般分为hash路由和history路由两种模式，分别是使用url hash值和html5 history api来实现前端修改url地址来局部更新页面
+- 后端路由，是当前应用真实存在的访问路径，在请求到来时根据path去匹配对应的路由来做一些应用操作
+
+形如`http://localhost:8000/user/:id`这种路由，在没有后端路由支持的情况下，服务端并不存在与之对应的资源，刷新后相当于去服务器访问该资源自然会404。
+解决方式请查看: [HTML5 History 模式](https://router.vuejs.org/zh/guide/essentials/history-mode.html)
