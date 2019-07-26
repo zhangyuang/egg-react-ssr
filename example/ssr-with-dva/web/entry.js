@@ -7,6 +7,7 @@ import defaultLayout from '@/layout'
 import { getWrappedComponent, getComponent } from 'ykfe-utils'
 import { routes as Routes } from '../config/config.default'
 import { createMemoryHistory, createBrowserHistory } from 'history'
+import { ConnectedRouter } from 'react-router-redux'
 
 const initDva = (options) => {
   const app = dva(options)
@@ -18,26 +19,30 @@ const initDva = (options) => {
 
 const clientRender = () => {
   const initialState = window.__INITIAL_DATA__ || {}
+  const history = createBrowserHistory()
   const app = initDva({
     initialState,
-    history: createBrowserHistory()
+    history: history
   })
   const store = app._store
 
   app.router(() => (
+    // ConnectedRouter for this issue https://github.com/ykfe/egg-react-ssr/issues/54
     <BrowserRouter>
-      <Switch>
-        {
-          Routes.map(({ path, exact, Component }, key) => {
-            const ActiveComponent = Component()
-            const Layout = ActiveComponent.Layout || defaultLayout
-            return <Route exact={exact} key={key} path={path} render={() => {
-              const WrappedComponent = getWrappedComponent(ActiveComponent)
-              return <Layout><WrappedComponent store={store} /></Layout>
-            }} />
-          })
-        }
-      </Switch>
+      <ConnectedRouter history={history}>
+        <Switch>
+          {
+            Routes.map(({ path, exact, Component }, key) => {
+              const ActiveComponent = Component()
+              const Layout = ActiveComponent.Layout || defaultLayout
+              return <Route exact={exact} key={key} path={path} render={() => {
+                const WrappedComponent = getWrappedComponent(ActiveComponent)
+                return <Layout><WrappedComponent store={store} /></Layout>
+              }} />
+            })
+          }
+        </Switch>
+      </ConnectedRouter>
     </BrowserRouter>
   ))
   const DvaApp = app.start()
