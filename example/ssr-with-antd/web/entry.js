@@ -14,7 +14,7 @@ const clientRender = async () => {
         Routes.map(({ path, exact, Component }, key) => {
           const ActiveComponent = Component()
           const Layout = ActiveComponent.Layout || defaultLayout
-          return <Route exact={exact} key={key} path={path} render={() => {
+          return <Route exact={exact} key={path} path={path} render={() => {
             const WrappedComponent = getWrappedComponent(ActiveComponent)
             return <Layout><WrappedComponent /></Layout>
           }} />

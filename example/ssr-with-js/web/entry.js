@@ -11,10 +11,10 @@ const clientRender = async () => {
     <BrowserRouter>
       {
         // 使用高阶组件getWrappedComponent使得csr首次进入页面以及csr/ssr切换路由时调用getInitialProps
-        Routes.map(({ path, exact, Component }, key) => {
+        Routes.map(({ path, exact, Component }) => {
           const ActiveComponent = Component()
           const Layout = ActiveComponent.Layout || defaultLayout
-          return <Route exact={exact} key={key} path={path} render={() => {
+          return <Route exact={exact} key={path} path={path} render={() => {
             const WrappedComponent = getWrappedComponent(ActiveComponent)
             return <Layout><WrappedComponent /></Layout>
           }} />

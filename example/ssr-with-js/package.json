@@ -1,6 +1,6 @@
 {
   "name": "egg-ssr",
-  "version": "1.1.3",
+  "version": "1.1.5",
   "dependencies": {
     "egg": "^2.21.0",
     "egg-proxy": "^1.1.0",

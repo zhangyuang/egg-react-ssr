@@ -32,10 +32,10 @@ const clientRender = () => {
       <ConnectedRouter history={history}>
         <Switch>
           {
-            Routes.map(({ path, exact, Component }, key) => {
+            Routes.map(({ path, exact, Component }) => {
               const ActiveComponent = Component()
               const Layout = ActiveComponent.Layout || defaultLayout
-              return <Route exact={exact} key={key} path={path} render={() => {
+              return <Route exact={exact} key={path} path={path} render={() => {
                 const WrappedComponent = getWrappedComponent(ActiveComponent)
                 return <Layout><WrappedComponent store={store} /></Layout>
               }} />
