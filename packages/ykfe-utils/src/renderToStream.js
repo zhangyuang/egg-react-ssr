@@ -26,6 +26,8 @@ const renderToStream = async (ctx, chunkName, config) => {
     stream = global.renderToNodeStream(serverRes)
   }
 
+  baseHtml.replace('<!-- Start Server Render Head -->', config.head ? config.head.join('') : '')
+
   const docArr = baseHtml.split('<!-- Start Server Render Document -->')
 
   const beginDoc = docArr[0].trim().replace('\n', '')
