@@ -117,7 +117,10 @@ module.exports = {
       }
     ],
     template: resolvePath('web/index.html'), // 使用的模版文件路径
-    baseHtml: 'string', // 自定义模版的html内容，会优先使用baseHtml后使用template，在需要动态设置meta信息的时候可以使用该选项
+    head: [
+      '<meta description=xxx />',
+      '<title>title</title>'
+    ], // 自定义头部内容，通常在动态设置meta信息的时候用到
     injectCss: (chunkName) => ([
       `<link rel='stylesheet' href='/static/css/${chunkName}.chunk.css' />`
     ]), // 客户端需要加载的静态css文件资源
