@@ -28,7 +28,7 @@
 const baseDir = config.baseDir || process.cwd() //获取当前应用的路径
 const isLocal = config.env === 'local' // 当前是否是本地开发环境
 const isCsr = config.type === 'csr' // 当前渲染模式是客户端渲染还是服务端渲染
-const baseHtml = fs.readFileSync(config.template, 'utf-8').toString() //首先获取到模版文件的内容
+let baseHtml = fs.readFileSync(config.template, 'utf-8').toString() //首先获取到模版文件的内容
 if (!global.renderToNodeStream) {
     // 这块是为了保证服务端用的react-dom与客户端用的是同一份代码，否则使用react-hooks的时候会报错
     // 详情请参考issue: https://github.com/ykfe/egg-react-ssr/issues/4
@@ -56,6 +56,10 @@ if (!isCsr) {
 接下来我们根据模版中的锚点，来在适当位置插入一些静态资源信息，使用multiStream来将多个stream组合为一个stream，当第一个流end时，第二个流才strat。
 
 ```js
+// 根据config.head设置html的<head>部分
+const head = config.customHead || config.head || []
+baseHtml = baseHtml.replace('<!-- Start Server Render Head -->', head.join(''))
+
 // 以<!-- Start Server Render Document -->为界限，将模版分为两部分，我们需要在中间注入一些
 const docArr = baseHtml.split('<!-- Start Server Render Document -->')
 

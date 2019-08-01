@@ -9,7 +9,7 @@ const renderToStream = async (ctx, chunkName, config) => {
   const baseDir = config.baseDir || process.cwd()
   const isLocal = config.env === 'local'
   const isCsr = config.type === 'csr'
-  const baseHtml = config.baseHtml || fs.readFileSync(config.template, 'utf-8').toString()
+  let baseHtml = config.baseHtml || fs.readFileSync(config.template, 'utf-8').toString()
   if (!global.renderToNodeStream) {
     const ReactDOMServer = require(baseDir + '/node_modules/react-dom/server')
     const { renderToNodeStream } = ReactDOMServer
@@ -26,7 +26,8 @@ const renderToStream = async (ctx, chunkName, config) => {
     stream = global.renderToNodeStream(serverRes)
   }
 
-  baseHtml.replace('<!-- Start Server Render Head -->', config.head ? config.head.join('') : '')
+  const head = config.customHead || config.head || []
+  baseHtml = baseHtml.replace('<!-- Start Server Render Head -->', head.join(''))
 
   const docArr = baseHtml.split('<!-- Start Server Render Document -->')
 

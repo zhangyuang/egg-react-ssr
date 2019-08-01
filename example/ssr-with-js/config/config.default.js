@@ -25,6 +25,10 @@ module.exports = {
   ],
   baseDir: resolvePath(''),
   template: resolvePath('web/index.html'), // 使用的模版文件路径
+  head: [
+    '<title>React App</title>',
+    '<meta name="description" content="最小而美的Egg + React + SSR 服务端渲染应用骨架.">'
+  ],
   injectCss: (chunkName) => ([
     `<link rel='stylesheet' href='/static/css/${chunkName}.chunk.css' />`
   ]), // 客户端需要加载的静态样式表
