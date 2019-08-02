@@ -14,9 +14,9 @@ const clientRender = async () => {
         Routes.map(({ path, exact, Component }) => {
           const activeComponent = Component()
           const WrappedComponent = getWrappedComponent(activeComponent)
+          const Layout = WrappedComponent.Layout || defaultLayout
           return <Route exact={exact} key={path} path={path} render={() => {
-            const Layout = WrappedComponent.Layout || defaultLayout
-            return activeComponent.name === 'LoadableComponent' ? <WrappedComponent /> : <Layout><WrappedComponent /></Layout>
+            return <Layout><WrappedComponent /></Layout>
           }} />
         })
       }
@@ -35,7 +35,7 @@ const serverRender = async (ctx) => {
   const Layout = ActiveComponent.Layout || defaultLayout
   ctx.serverData = serverData
   return <StaticRouter location={ctx.req.url} context={serverData}>
-    <Layout>
+    <Layout layoutData={ctx}>
       <ActiveComponent {...serverData} />
     </Layout>
   </StaticRouter>

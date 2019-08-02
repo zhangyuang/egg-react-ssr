@@ -1,16 +1,13 @@
-
 'use strict'
 const path = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const baseConfig = require('./webpack.config.base')
-const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const paths = require('./paths')
 const ManifestPlugin = require('webpack-manifest-plugin')
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const safePostCssParser = require('postcss-safe-parser')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const publicPath = '/'
@@ -86,23 +83,27 @@ const plugins = [
     __isBrowser__: true
   }),
   new ModuleNotFoundPlugin(paths.appPath),
-  new WatchMissingNodeModulesPlugin(paths.appNodeModules),
   new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
   new ManifestPlugin({
     fileName: 'asset-manifest.json',
     publicPath: publicPath
-  }),
-  new HtmlWebpackPlugin({
-    template: paths.template
   })
 ]
+
 if (process.env.npm_config_report === 'true') {
   plugins.push(new BundleAnalyzerPlugin())
 }
+
 module.exports = merge(baseConfig, {
   devtool: devtool,
   entry: {
-    Page: paths.entry
+    Page: ['@babel/polyfill', paths.entry]
+  },
+  resolve: {
+    alias: {
+      // for this issue https://github.com/ykfe/egg-react-ssr/issues/36
+      'react-router': require.resolve('react-router')
+    }
   },
   output: {
     path: paths.appBuild,

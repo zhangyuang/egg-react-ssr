@@ -9,7 +9,7 @@ class PageController extends Controller {
       // Page为webpack打包的chunkName，项目默认的entry为Page
       ctx.type = 'text/html'
       ctx.status = 200
-      const stream = await renderToStream(ctx, 'Page', ctx.app.config)
+      const stream = await renderToStream(ctx, ctx.app.config)
       ctx.body = stream
     } catch (error) {
       ctx.logger.error(`Page Controller renderToStream Error ${error}`)

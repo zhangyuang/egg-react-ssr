@@ -29,11 +29,16 @@ let webpackModule = {
             cacheDirectory: true,
             cacheCompression: false,
             presets: [
+              [
+                '@babel/preset-env',
+                {
+                  'modules': 'false'
+                }
+              ],
               '@babel/preset-react'
             ],
             plugins: [
-              '@babel/plugin-syntax-dynamic-import',
-              '@babel/plugin-proposal-class-properties'
+              '@babel/plugin-transform-runtime'
             ]
           }
         },
@@ -88,6 +93,10 @@ let webpackModule = {
 }
 
 module.exports = {
+  stats: {
+    children: false,
+    entrypoints: false
+  },
   mode: process.env.NODE_ENV,
   resolve: {
     alias: {

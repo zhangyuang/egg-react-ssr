@@ -31,11 +31,11 @@ const clientRender = async () => {
 const serverRender = async (ctx) => {
   // 服务端渲染 根据ctx.path获取请求的具体组件，调用getInitialProps并渲染
   const ActiveComponent = getComponent(Routes, ctx.path)()
-  const serverData = ActiveComponent.getInitialProps ? await ActiveComponent.getInitialProps(ctx) : {}
   const Layout = ActiveComponent.Layout || defaultLayout
+  const serverData = ActiveComponent.getInitialProps ? await ActiveComponent.getInitialProps(ctx) : {}
   ctx.serverData = serverData
   return <StaticRouter location={ctx.req.url} context={serverData}>
-    <Layout>
+    <Layout layoutData={ctx}>
       <ActiveComponent {...serverData} />
     </Layout>
   </StaticRouter>

@@ -28,8 +28,8 @@ const clientRender = () => {
 
   app.router(() => (
     // ConnectedRouter for this issue https://github.com/ykfe/egg-react-ssr/issues/54
-    <BrowserRouter>
-      <ConnectedRouter history={history}>
+    <ConnectedRouter history={history}>
+      <BrowserRouter>
         <Switch>
           {
             Routes.map(({ path, exact, Component }) => {
@@ -42,8 +42,8 @@ const clientRender = () => {
             })
           }
         </Switch>
-      </ConnectedRouter>
-    </BrowserRouter>
+      </BrowserRouter>
+    </ConnectedRouter>
   ))
   const DvaApp = app.start()
 
@@ -70,7 +70,7 @@ const serverRender = async ctx => {
 
   app.router(() => (
     <StaticRouter location={ctx.req.url} context={storeState}>
-      <Layout>
+      <Layout layoutData={ctx}>
         <ActiveComponent {...storeState} />
       </Layout>
     </StaticRouter>
