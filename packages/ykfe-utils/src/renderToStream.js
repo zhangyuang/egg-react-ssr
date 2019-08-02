@@ -1,13 +1,15 @@
 'use strict'
 
+const fs = require('fs')
 const renderToStream = async (ctx, chunkName, config) => {
   const baseDir = config.baseDir || process.cwd()
   const isLocal = config.env === 'local'
   const isCsr = config.type === 'csr'
   if (!global.renderToNodeStream) {
     const ReactDOMServer = require(baseDir + '/node_modules/react-dom/server')
-    const { renderToNodeStream } = ReactDOMServer
+    const { renderToNodeStream, renderToString } = ReactDOMServer
     global.renderToNodeStream = renderToNodeStream
+    global.renderToString = renderToString
   }
   let stream
   if (!isCsr) {
@@ -18,6 +20,9 @@ const renderToStream = async (ctx, chunkName, config) => {
     const serverStream = require(config.serverJs(chunkName))
     const serverRes = await serverStream.default(ctx, chunkName)
     stream = global.renderToNodeStream(serverRes)
+    const str = global.renderToString(serverRes)
+    console.log(process.cwd())
+    fs.writeFileSync(process.cwd() + '/web/index.html', str)
   }
 
   return stream
