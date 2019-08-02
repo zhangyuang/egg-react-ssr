@@ -1,6 +1,6 @@
 {
   "name": "ykfe-utils",
-  "version": "1.4.8",
+  "version": "1.4.9",
   "description": "",
   "main": "lib/index.js",
   "module": "es/index.js",
