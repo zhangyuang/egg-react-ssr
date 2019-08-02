@@ -88,10 +88,10 @@ const plugins = [
   new ManifestPlugin({
     fileName: 'asset-manifest.json',
     publicPath: publicPath
-  }),
-  new HtmlWebpackPlugin({
-    template: paths.template
   })
+  // new HtmlWebpackPlugin({
+  //   template: paths.template
+  // })
 ]
 
 if (process.env.npm_config_report === 'true') {
