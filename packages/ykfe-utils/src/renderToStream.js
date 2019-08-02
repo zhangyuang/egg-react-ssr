@@ -21,7 +21,7 @@ const renderToStream = async (ctx, chunkName, config) => {
       // 本地开发环境下每次刷新的时候清空require服务端文件的缓存，保证服务端与客户端渲染结果一致
       delete require.cache[config.serverJs(chunkName)]
     }
-    const serverStream = require(config.serverJs(chunkName))
+    const serverStream = config.serverStream || require(config.serverJs(chunkName))
     const serverRes = await serverStream.default(ctx)
     stream = global.renderToNodeStream(serverRes)
   }
