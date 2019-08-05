@@ -1,30 +1,26 @@
 'use strict'
 
-const fs = require('fs')
 const renderToStream = async (ctx, chunkName, config) => {
   const baseDir = config.baseDir || process.cwd()
   const isLocal = config.env === 'local'
-  const isCsr = config.type === 'csr'
+  const serverJs = config.serverJs(chunkName)
+
   if (!global.renderToNodeStream) {
-    const ReactDOMServer = require(baseDir + '/node_modules/react-dom/server')
-    const { renderToNodeStream, renderToString } = ReactDOMServer
-    global.renderToNodeStream = renderToNodeStream
-    global.renderToString = renderToString
-  }
-  let stream
-  if (!isCsr) {
-    if (isLocal) {
-      // 本地开发环境下每次刷新的时候清空require服务端文件的缓存，保证服务端与客户端渲染结果一致
-      delete require.cache[config.serverJs(chunkName)]
-    }
-    const serverStream = require(config.serverJs(chunkName))
-    const serverRes = await serverStream.default(ctx, chunkName)
-    stream = global.renderToNodeStream(serverRes)
-    const str = global.renderToString(serverRes)
-    console.log(process.cwd())
-    fs.writeFileSync(process.cwd() + '/web/index.html', str)
+    // for this issue https://github.com/ykfe/egg-react-ssr/issues/4
+    global.renderToNodeStream = require(baseDir + '/node_modules/react-dom/server').renderToNodeStream
   }
 
+  if (!global.serverStream) {
+    global.serverStream = require(serverJs).default
+  }
+
+  if (isLocal) {
+    // 本地开发环境下每次刷新的时候清空require服务端文件的缓存，保证服务端与客户端渲染结果一致
+    delete require.cache[serverJs]
+  }
+
+  const serverRes = await global.serverStream(ctx, chunkName)
+  const stream = global.renderToNodeStream(serverRes)
   return stream
 }
 

@@ -3,12 +3,18 @@ import React from 'react'
 import '@/assets/common.less'
 import './index.less'
 import { Link } from 'react-router-dom'
+import serialize from 'serialize-javascript'
+
+const commonNode = props => (
+  <div className='normal'><h1 className='title'><Link to='/'>Egg + React + SSR</Link><div className='author'>by ykfe</div></h1>{props.children}</div>
+)
 
 const Layout = (props) => {
   if (__isBrowser__) {
-    return <div id='app' ><div className='normal'><h1 className='title'><Link to='/'>Egg + React + SSR</Link><div className='author'>by ykfe</div></h1>{props.children}</div></div>
+    return commonNode(props)
   } else {
-    const { injectCss, injectScript, chunkName } = props.layoutData.app.config
+    const { injectCss, injectScript, chunkName, type } = props.layoutData.app.config
+    const renderCsr = (__renderCsrTpl__ || type !== 'ssr')
     return (
       <html lang='en'>
         <head>
@@ -21,7 +27,12 @@ const Layout = (props) => {
           }
         </head>
         <body>
-          <div id='app' ><div className='normal'><h1 className='title'><Link to='/'>Egg + React + SSR</Link><div className='author'>by ykfe</div></h1>{props.children}</div></div>
+          <div id='app'>{ renderCsr ? '' : commonNode(props)}</div>
+          {
+            renderCsr ? '' : <script dangerouslySetInnerHTML={{
+              __html: `window.__USE_SSR__=true; window.__INITIAL_DATA__ =${serialize(props.layoutData.serverData || {})}`
+            }} />
+          }
           <div dangerouslySetInnerHTML={{
             __html: injectScript && injectScript(chunkName).join('')
           }} />

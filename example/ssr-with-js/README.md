@@ -28,6 +28,3 @@ $ open http://localhost:7001
 - [x] 支持csr/ssr自定义layout，无需通过path来手动区分
 - [ ] 配套[TypeScript](https://github.com/ykfe/egg-react-ssr-typescript)版本的实现
 - [ ] 配套serverless版本的实现
-
-
-

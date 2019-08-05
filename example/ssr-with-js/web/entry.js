@@ -30,16 +30,20 @@ const clientRender = async () => {
 
 const serverRender = async (ctx, chunkName) => {
   // 服务端渲染 根据ctx.path获取请求的具体组件，调用getInitialProps并渲染
-  const ActiveComponent = getComponent(Routes, ctx.path)()
-  const serverData = ActiveComponent.getInitialProps ? await ActiveComponent.getInitialProps(ctx) : {}
-  const Layout = ActiveComponent.Layout || defaultLayout
-  ctx.serverData = serverData
   ctx.app.config.chunkName = chunkName
-  return <StaticRouter location={ctx.req.url} context={serverData}>
-    <Layout layoutData={ctx}>
-      <ActiveComponent {...serverData} />
-    </Layout>
-  </StaticRouter>
+  const ActiveComponent = getComponent(Routes, ctx.path)()
+  const Layout = ActiveComponent.Layout || defaultLayout
+  if (ctx.app.config.type === 'ssr') {
+    const serverData = ActiveComponent.getInitialProps ? await ActiveComponent.getInitialProps(ctx) : {}
+    ctx.serverData = serverData
+    return <StaticRouter location={ctx.req.url} context={serverData}>
+      <Layout layoutData={ctx}>
+        <ActiveComponent {...serverData} />
+      </Layout>
+    </StaticRouter>
+  } else {
+    return <Layout layoutData={ctx} />
+  }
 }
 
 export default __isBrowser__ ? clientRender() : serverRender
