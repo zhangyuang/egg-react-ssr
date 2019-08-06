@@ -118,19 +118,15 @@ module.exports = {
       }
     ],
     template: resolvePath('web/index.html'), // 使用的模版文件路径
-    head: [
-      '<meta description=xxx />',
-      '<title>title</title>'
-    ], // 自定义头部内容，通常在动态设置meta信息的时候用到
-    injectCss: (chunkName) => ([
-      `<link rel='stylesheet' href='/static/css/${chunkName}.chunk.css' />`
-    ]), // 客户端需要加载的静态css文件资源
-    injectScript: (chunkName) => ([
-      `<script src='/static/js/runtime~${chunkName}.js'></script>`,
-      `<script src='/static/js/vendor.chunk.js'></script>`,
-      `<script src='/static/js/${chunkName}.chunk.js'></script>`
-    ]), // 客户端需要加载的静态js文件资源
-    serverJs: (chunkName) => resolvePath(`dist/${chunkName}.server.js`) // 服务端需要使用的打包后的serverRender方法js文件的路径
+    injectCss: [
+    `/static/css/Page.chunk.css`
+  ], // 客户端需要加载的静态样式表
+  injectScript: [
+    `<script src='/static/js/runtime~Page.js'></script>`,
+    `<script src='/static/js/vendor.chunk.js'></script>`,
+    `<script src='/static/js/Page.chunk.js'></script>`
+  ], // 客户端需要加载的静态资源文件表
+  serverJs: resolvePath(`dist/Page.server.js`)
 }
 ```
 
