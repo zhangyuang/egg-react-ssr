@@ -31,7 +31,7 @@ const Layout = (props) => {
           <div id='app'>{ commonNode(props) }</div>
           {
             serverData && <script dangerouslySetInnerHTML={{
-              __html: `window.__USE_SSR__=true; window.__INITIAL_DATA__ =${serialize(serverData || {})}`
+              __html: `window.__USE_SSR__=true; window.__INITIAL_DATA__ =${serialize(serverData)}`
             }} />
           }
           <div dangerouslySetInnerHTML={{
