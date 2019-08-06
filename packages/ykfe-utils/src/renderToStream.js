@@ -1,17 +1,18 @@
 'use strict'
 
-const renderToStream = async (ctx, chunkName, config) => {
+const renderToStream = async (ctx, config) => {
   const baseDir = config.baseDir || process.cwd()
   const isLocal = config.env === 'local'
-  const serverJs = config.serverJs(chunkName)
+  const serverJs = config.serverJs
+
+  if (config.type !== 'ssr') {
+    const string = require('./csr')
+    return string
+  }
 
   if (!global.renderToNodeStream) {
     // for this issue https://github.com/ykfe/egg-react-ssr/issues/4
     global.renderToNodeStream = require(baseDir + '/node_modules/react-dom/server').renderToNodeStream
-  }
-
-  if (!global.serverStream) {
-    global.serverStream = require(serverJs).default
   }
 
   if (isLocal) {
@@ -19,7 +20,11 @@ const renderToStream = async (ctx, chunkName, config) => {
     delete require.cache[serverJs]
   }
 
-  const serverRes = await global.serverStream(ctx, chunkName)
+  if (!global.serverStream || isLocal) {
+    global.serverStream = require(serverJs).default
+  }
+
+  const serverRes = await global.serverStream(ctx)
   const stream = global.renderToNodeStream(serverRes)
   return stream
 }

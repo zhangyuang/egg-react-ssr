@@ -80,8 +80,7 @@ if (!isDev) {
 
 const plugins = [
   new webpack.DefinePlugin({
-    __isBrowser__: true,
-    __renderCsrTpl__: false
+    __isBrowser__: true
   }),
   new ModuleNotFoundPlugin(paths.appPath),
   new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),

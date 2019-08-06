@@ -39,7 +39,6 @@
     ],
     "global": [
       "__isBrowser__",
-      "__renderCsrTpl__",
       "location",
       "window"
     ]

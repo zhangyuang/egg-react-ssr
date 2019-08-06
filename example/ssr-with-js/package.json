@@ -11,17 +11,17 @@
     "react-dev-utils": "^8.0.0",
     "react-dom": "^16.8.3",
     "react-router-dom": "^5.0.0",
-    "ykfe-utils": "^2.0.0"
+    "ykfe-utils": "^2.0.2"
   },
   "scripts": {
     "debug": "egg-bin debug",
     "start": "rimraf dist && concurrently \"npm run ssr\" \" npm run csr \"",
     "ssr": "concurrently \"egg-bin dev\" \"cross-env NODE_ENV=development webpack --watch --config ./build/webpack.config.server.js\"",
-    "csr": "cross-env NODE_ENV=development node ./clientRender.js",
+    "csr": "cross-env NODE_ENV=development ykcli dev",
     "prod": "npm run build && eggctl start",
     "build:server": "cross-env NODE_ENV=production webpack --config build/webpack.config.server.js",
-    "build:client": "cross-env NODE_ENV=production node ./clientRender.js",
-    "build": "rimraf dist && npm run build:client && npm run build:server",
+    "build:client": "cross-env NODE_ENV=production ykcli build",
+    "build": "rimraf dist && ykcli build && npm run build:server",
     "analyze": "cross-env NODE_ENV=production npm_config_report=true npm run build"
   },
   "browserslist": [
@@ -44,8 +44,6 @@
     "@babel/runtime": "^7.5.5",
     "@svgr/webpack": "2.4.1",
     "babel-loader": "8.0.4",
-    "babel-plugin-module-resolver": "^3.2.0",
-    "babel-plugin-transform-define": "^1.3.1",
     "browserslist": "^4.6.3",
     "caniuse-lite": "1.0.30000974",
     "concurrently": "^4.1.0",
@@ -74,6 +72,7 @@
     "webpack-dev-server": "3.3.1",
     "webpack-manifest-plugin": "^2.0.4",
     "webpack-merge": "^4.1.4",
-    "webpack-node-externals": "^1.7.2"
+    "webpack-node-externals": "^1.7.2",
+    "yk-cli": "^2.0.0"
   }
 }
