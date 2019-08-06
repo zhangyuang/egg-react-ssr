@@ -51,9 +51,5 @@
     "pre-commit": "^1.2.2",
     "standard": "^12.0.1",
     "vuepress": "^0.14.8"
-  },
-  "__npminstall_done": false,
-  "dependencies": {
-    "mobx": "^5.10.1"
   }
 }
