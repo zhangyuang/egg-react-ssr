@@ -87,7 +87,7 @@
     "start": "egg-scripts start --port=7001 --daemon --env=$NODE_ENV --title=egg-server-egg-react-ssr-typescript ./server",
     "stop": "egg-scripts stop --title=egg-server-egg-react-ssr-typescript",
     "dev": "concurrently \"npm run ssr\" \" npm run csr \"",
-    "debug": "rm -rf dist && concurrently \"egg-bin debug --inspect=19230 --port=7268 -r egg-ts-helper/register\" \"NODE_ENV=development webpack --watch --config ./build/webpack.config.server.js\" \"npm run csr\"",
+    "debug": "rm -rf dist && concurrently \"egg-bin debug --inspect=19230 --port=7268 -r egg-ts-helper/register\" \"cross-env NODE_ENV=development webpack --watch --config ./build/webpack.config.server.js\" \"npm run csr\"",
     "test-local": "egg-bin test",
     "test": "npm run lint -- --fix && npm run test-local",
     "cov": "egg-bin cov -r egg-ts-helper/register",
@@ -96,8 +96,8 @@
     "autod": "autod",
     "lint": "tslint --project . -c tslint.json",
     "clean": "ets clean",
-    "ssr": "rm -rf dist && concurrently \"egg-bin dev\" \"NODE_ENV=development webpack --watch --config ./build/webpack.config.server.js\"",
-    "csr": "NODE_ENV=development webpack-dev-server --port 8000 --hot --config ./build/webpack.config.client.js",
+    "ssr": "rm -rf dist && concurrently \"egg-bin dev\" \"cross-env NODE_ENV=development webpack --watch --config ./build/webpack.config.server.js\"",
+    "csr": "cross-env NODE_ENV=development webpack-dev-server --port 8000 --hot --config ./build/webpack.config.client.js",
     "prod": "npm run build && eggctl start",
     "build:server": "NODE_ENV=production webpack --config build/webpack.config.server.js",
     "build:client": "NODE_ENV=production webpack --config build/webpack.config.client.js",
@@ -251,6 +251,7 @@
   "author": "zhusjfaker",
   "license": "MIT",
   "devDependencies": {
+    "cross-env": "^5.2.0",
     "webpack-cli": "^3.3.2"
   }
 }
