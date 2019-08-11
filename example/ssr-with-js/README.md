@@ -2,19 +2,6 @@
 
 详细用法实现请查看[官方文档](http://ykfe.net)
 
-# Getting Start
-
-这里我们提供了一个脚手架来方便你创建项目
-
-```
-$ npm install yk-cli -g
-$ ykcli init <Your Project Name>
-$ cd <Your Project Name>
-$ npm i
-$ npm start
-$ open http://localhost:7001
-```
-
 # 功能/特性
 
 - [x] 基于cra脚手架开发，由cra开发的React App可无缝迁移，如果你熟悉cra的配置，上手成本几乎为0
@@ -26,8 +13,6 @@ $ open http://localhost:7001
 - [x] 稳定性经过线上大规模应用验证，可提供性能优化方案
 - [x] 支持tree shaking以及打包去重依赖，使得打包的bundle非常小，为同样复杂度的next.js项目的0.4倍
 - [x] 支持csr/ssr自定义layout，无需通过path来手动区分
+- [x] 抛弃传统模版引擎，拥抱 React 组件，使用JSX来作为模版
 - [ ] 配套[TypeScript](https://github.com/ykfe/egg-react-ssr-typescript)版本的实现
 - [ ] 配套serverless版本的实现
-
-
-

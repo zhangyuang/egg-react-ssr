@@ -76,6 +76,7 @@ getInitialProps入参对象的属性如下：
 - [x] 配套结合[antd](https://github.com/ykfe/egg-react-ssr/tree/master/example/ssr-with-antd)的example的实现
 - [x] 配套结合[react-loadable](https://github.com/ykfe/egg-react-ssr/tree/master/example/ssr-with-loadable)做路由分割的example的实现
 - [x] 配套结合[dva](https://github.com/ykfe/egg-react-ssr/tree/master/example/ssr-with-dva)做数据管理的example的实现
+- [x] 抛弃传统模版引擎，拥抱 React 组件，使用JSX来作为模版
 - [ ] 配套[TypeScript](https://github.com/ykfe/egg-react-ssr-typescript)版本的实现
 - [ ] 配套serverless版本的实现
 
@@ -117,19 +118,15 @@ module.exports = {
       }
     ],
     template: resolvePath('web/index.html'), // 使用的模版文件路径
-    head: [
-      '<meta description=xxx />',
-      '<title>title</title>'
-    ], // 自定义头部内容，通常在动态设置meta信息的时候用到
-    injectCss: (chunkName) => ([
-      `<link rel='stylesheet' href='/static/css/${chunkName}.chunk.css' />`
-    ]), // 客户端需要加载的静态css文件资源
-    injectScript: (chunkName) => ([
-      `<script src='/static/js/runtime~${chunkName}.js'></script>`,
-      `<script src='/static/js/vendor.chunk.js'></script>`,
-      `<script src='/static/js/${chunkName}.chunk.js'></script>`
-    ]), // 客户端需要加载的静态js文件资源
-    serverJs: (chunkName) => resolvePath(`dist/${chunkName}.server.js`) // 服务端需要使用的打包后的serverRender方法js文件的路径
+    injectCss: [
+    `/static/css/Page.chunk.css`
+  ], // 客户端需要加载的静态样式表
+  injectScript: [
+    `<script src='/static/js/runtime~Page.js'></script>`,
+    `<script src='/static/js/vendor.chunk.js'></script>`,
+    `<script src='/static/js/Page.chunk.js'></script>`
+  ], // 客户端需要加载的静态资源文件表
+  serverJs: resolvePath(`dist/Page.server.js`) // 打包后的server端的bundle文件路径
 }
 ```
 
@@ -168,7 +165,6 @@ module.exports = {
     ├── assets
     │   └── common.less
     ├── entry.js // webpack打包入口文件，分环境导出不同配置
-    ├── index.html // 页面骨架模版
     ├── layout
     │   ├── index.js // 页面布局
     │   └── index.less
@@ -208,6 +204,10 @@ $ npm run prod // 模拟SSR应用生产环境
 $ npm run build // 打包服务端以及客户端资源文件
 $ npm run analyze // 可视化分析客户端打包的资源详情
 ```
+
+## Changelog
+
+每一个版本的详细改动请查看 [release notes](https://github.com/ykfe/egg-react-ssr/releases)
 
 ## 与其他方案的对比
 

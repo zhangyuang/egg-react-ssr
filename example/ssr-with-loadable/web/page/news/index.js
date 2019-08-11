@@ -1,5 +1,4 @@
 import React from 'react'
-import Layout from './layout'
 import './index.less'
 
 const mockData = {
@@ -12,14 +11,11 @@ const mockData = {
 
 function News (props) {
   return (
-    <div className='news-container' >
+    <div className='news-container'>
       文章详情: {props.newsDetail}
     </div>
   )
 }
-
-// 自定义Layout
-News.Layout = Layout
 
 News.getInitialProps = (ctx) => {
   const newsId = __isBrowser__ ? ctx.match.params.id : ctx.params.id

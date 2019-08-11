@@ -17,7 +17,7 @@ const serverRender = async (ctx) => {
   const Layout = ActiveComponent.Layout || defaultLayout
   ctx.serverData = serverData
   return <StaticRouter location={ctx.req.url} context={serverData}>
-    <Layout>
+    <Layout layoutData={ctx}>
       <ActiveComponent {...serverData} />
     </Layout>
   </StaticRouter>

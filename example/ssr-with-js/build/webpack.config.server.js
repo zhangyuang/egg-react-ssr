@@ -7,7 +7,8 @@ const isDev = process.env.NODE_ENV === 'development'
 
 const plugins = [
   new webpack.DefinePlugin({
-    __isBrowser__: false
+    __isBrowser__: false,
+    __renderCsrTpl__: false
   })
 ]
 module.exports = merge(baseConfig, {

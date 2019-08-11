@@ -24,14 +24,13 @@ module.exports = {
     }
   ],
   baseDir: resolvePath(''),
-  template: resolvePath('web/index.html'), // 使用的模版文件路径
-  injectCss: (chunkName) => ([
-    `<link rel='stylesheet' href='/static/css/${chunkName}.chunk.css' />`
-  ]), // 客户端需要加载的静态样式表
-  injectScript: (chunkName) => ([
-    `<script src='/static/js/runtime~${chunkName}.js'></script>`,
+  injectCss: [
+    `/static/css/Page.chunk.css`
+  ], // 客户端需要加载的静态样式表
+  injectScript: [
+    `<script src='/static/js/runtime~Page.js'></script>`,
     `<script src='/static/js/vendor.chunk.js'></script>`,
-    `<script src='/static/js/${chunkName}.chunk.js'></script>`
-  ]), // 客户端需要加载的静态资源文件表
-  serverJs: (chunkName) => resolvePath(`dist/${chunkName}.server.js`)
+    `<script src='/static/js/Page.chunk.js'></script>`
+  ], // 客户端需要加载的静态资源文件表
+  serverJs: resolvePath(`dist/Page.server.js`)
 }

@@ -15,7 +15,7 @@ class NewsStore {
     @observable detail = ''
 
     constructor (state) {
-      this.detail = (state && state.newsStore.detail) || ''
+      this.detail = (state && state.newsStore && state.newsStore.detail) || ''
     }
 
     @action

@@ -93,6 +93,10 @@ let webpackModule = {
 }
 
 module.exports = {
+  stats: {
+    children: false,
+    entrypoints: false
+  },
   mode: process.env.NODE_ENV,
   resolve: {
     alias: {

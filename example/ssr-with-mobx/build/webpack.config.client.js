@@ -8,7 +8,6 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const paths = require('./paths')
 const ManifestPlugin = require('webpack-manifest-plugin')
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const safePostCssParser = require('postcss-safe-parser')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const publicPath = '/'
@@ -88,9 +87,6 @@ const plugins = [
   new ManifestPlugin({
     fileName: 'asset-manifest.json',
     publicPath: publicPath
-  }),
-  new HtmlWebpackPlugin({
-    template: paths.template
   })
 ]
 
@@ -101,7 +97,7 @@ if (process.env.npm_config_report === 'true') {
 module.exports = merge(baseConfig, {
   devtool: devtool,
   entry: {
-    Page: paths.entry
+    Page: ['@babel/polyfill', paths.entry]
   },
   resolve: {
     alias: {
