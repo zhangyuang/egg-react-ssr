@@ -117,7 +117,6 @@ module.exports = {
         handler: 'index'
       }
     ],
-    template: resolvePath('web/index.html'), // 使用的模版文件路径
     injectCss: [
     `/static/css/Page.chunk.css`
   ], // 客户端需要加载的静态样式表

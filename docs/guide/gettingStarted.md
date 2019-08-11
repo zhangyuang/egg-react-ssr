@@ -63,7 +63,6 @@ $ npm run analyze // 可视化分析客户端打包的资源详情
     ├── assets
     │   └── common.less
     ├── entry.js // webpack打包入口文件，分环境导出不同配置
-    ├── index.html // 页面骨架模版
     ├── layout
     │   ├── index.js // 页面布局
     │   └── index.less
