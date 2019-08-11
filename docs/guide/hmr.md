@@ -36,7 +36,7 @@ webpack-dev-server 中内置了 express,在你本地开发时，它其实是用 
 使用方式:
 
 ```js
-NODE_ENV=development webpack-dev-server --port 8000 --hot --config ./build/webpack.config.client.js
+cross-env NODE_ENV=development webpack-dev-server --port 8000 --hot --config ./build/webpack.config.client.js
 ```
 
 开启 --hot 选项即可，很多教程都说需要配置 new webpack.HotModuleReplacementPlugin 插件，其实当你开启 hot 选项的时候，webpack 已经自动帮你注入了这个插件，当你再重复添加时，会报栈溢出的错误，所以我们记住这里无需再额外手动添加 HotModuleReplacementPlugin 插件。
