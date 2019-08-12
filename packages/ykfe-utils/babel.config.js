@@ -7,16 +7,16 @@ module.exports = function (api) {
     [
       '@babel/preset-env',
       {
-        'modules': isEs ? 'false' : 'auto',
-        'targets': {
-          'ie': '9'
+        modules: isEs ? 'false' : 'auto',
+        targets: {
+          ie: '9'
         }
       }
     ],
     '@babel/preset-react'
   ]
   const plugins = [
-    ['@babel/plugin-proposal-class-properties', { 'loose': true }],
+    ['@babel/plugin-proposal-class-properties', { loose: true }],
     '@babel/plugin-transform-runtime'
   ]
 

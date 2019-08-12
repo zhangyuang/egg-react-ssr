@@ -7,7 +7,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const getStyleLoaders = require('./util').getStyleLoaders
 const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent')
 
-let webpackModule = {
+const webpackModule = {
   strictExportPresence: true,
   rules: [
     { parser: { requireEnsure: false } },
@@ -32,7 +32,7 @@ let webpackModule = {
               [
                 '@babel/preset-env',
                 {
-                  'modules': 'false'
+                  modules: 'false'
                 }
               ],
               '@babel/preset-react'
@@ -42,8 +42,8 @@ let webpackModule = {
               [
                 'import',
                 {
-                  'libraryName': 'antd',
-                  'style': 'css'
+                  libraryName: 'antd',
+                  style: 'css'
                 }
               ]
             ]

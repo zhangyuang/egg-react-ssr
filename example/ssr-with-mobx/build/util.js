@@ -4,7 +4,7 @@ const publicPath = paths.servedPath
 const shouldUseRelativeAssetPaths = publicPath === './'
 const isDev = process.env.NODE_ENV === 'development'
 const getStyleLoaders = (cssOptions, preProcessor) => {
-  let loaders = [
+  const loaders = [
     {
       loader: MiniCssExtractPlugin.loader,
       options: Object.assign(

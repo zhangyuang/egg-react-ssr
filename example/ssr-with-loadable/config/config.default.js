@@ -37,7 +37,7 @@ module.exports = {
   injectScript: [
     `<script src='/static/js/runtime~Page.js'></script>`,
     `<script src='/static/js/vendor.chunk.js'></script>`,
-    `<script src='/static/js/Page.chunk.js'></script>`,
+    `<script src='/static/js/Page.chunk.js'></script>`
   ], // 客户端需要加载的静态资源文件表
   serverJs: resolvePath(`dist/Page.server.js`)
 }

@@ -8,6 +8,7 @@ function OnlyCsr (WrappedComponent) {
         isCsr: false
       }
     }
+
     componentDidMount () {
       this.setState({
         isCsr: true
@@ -18,7 +19,7 @@ function OnlyCsr (WrappedComponent) {
       return this.state.isCsr ? <WrappedComponent {...this.props} /> : <div />
     }
   }
-  for (let key in WrappedComponent) {
+  for (const key in WrappedComponent) {
     OnlyCsrClass[key] = WrappedComponent[key]
   }
   return OnlyCsrClass

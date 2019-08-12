@@ -7,7 +7,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const getStyleLoaders = require('./util').getStyleLoaders
 const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent')
 
-let webpackModule = {
+const webpackModule = {
   strictExportPresence: true,
   rules: [
     { parser: { requireEnsure: false } },
@@ -32,15 +32,15 @@ let webpackModule = {
               [
                 '@babel/preset-env',
                 {
-                  'modules': 'false'
+                  modules: 'false'
                 }
               ],
               '@babel/preset-react'
             ],
             plugins: [
               '@babel/plugin-transform-runtime',
-              ['@babel/plugin-proposal-decorators', { 'legacy': true }],
-              ['@babel/plugin-proposal-class-properties', { 'loose': true }]
+              ['@babel/plugin-proposal-decorators', { legacy: true }],
+              ['@babel/plugin-proposal-class-properties', { loose: true }]
             ]
           }
         },
