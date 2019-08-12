@@ -12,12 +12,12 @@ function GetInitialProps (WrappedComponent) {
     }
     componentDidMount () {
       const props = this.props
-      if (window.__USESSR__) {
+      if (window.__USE_SSR__) {
         window.onpopstate = () => {
           this.getInitialProps()
         }
       }
-      const getProps = !window.__USESSR__ || (props.history && props.history.action === 'PUSH')
+      const getProps = !window.__USE_SSR__ || (props.history && props.history.action === 'PUSH')
       if (getProps) {
         this.getInitialProps()
       }
