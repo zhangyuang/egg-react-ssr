@@ -52,7 +52,8 @@ module.exports = {
                 'publish',
                 'ts',
                 'serverless',
-                'faq'
+                'faq',
+                'update'
               ],
             },
           ]
