@@ -1,6 +1,6 @@
+import inquirer from 'inquirer'
 import { processError } from './util/index'
 import { Optional } from './interface/option'
-import inquirer from 'inquirer'
 
 /**
  * 应用配置环节

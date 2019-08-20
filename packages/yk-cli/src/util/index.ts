@@ -26,7 +26,7 @@ export const resolveApp = (source: string) => {
   return path.resolve(__dirname, `../../${source}`)
 }
 
-export const getWithPromise: object = (url: string) => {
+export const getWithPromise = (url: string): Promise<any> => {
   return new Promise((resolve, reject) => {
     let data: string = ''
     https.get(url, res => {

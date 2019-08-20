@@ -1,12 +1,13 @@
 
-// 本文件目的是以React jsx 为模版替换掉html-webpack-plugin以及传统模版引擎, 统一ssr/csr都使用React组件来作为页面的骨架和内容部分
+/* tslint:disable */
 
+import * as React from 'react';
+import { renderToString }from 'react-dom/server'
+
+const Module = require('module')
 const cwd = process.cwd()
 const baseConfig = require(cwd + '/build/webpack.config.base')
-const React = require('react')
-const { renderToString } = require('react-dom/server')
 const config = require(cwd + '/config/config.default')
-const Module = require('module')
 
 // 使用babel来处理es6 jsx语法
 require('@babel/register')({
@@ -35,7 +36,7 @@ Module._extensions['.css'] = () => {}
 
 const Layout = require(cwd + '/web/layout').default
 
-const reactToString = (Component, props) => {
+const reactToString = (Component: React.ComponentClass, props: object) => {
   return renderToString(React.createElement(Component, props))
 }
 

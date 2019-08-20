@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import ora from 'ora'
+import yargs from 'yargs'
 import { Optional } from './interface/option'
 import { getConfig } from './config'
 import { checkRepeat } from './check'
@@ -8,7 +9,6 @@ import { processPackage } from './package'
 import { processWebpack } from './webpackConfig'
 import { cacheMange } from './cache'
 import { updateCli } from './update'
-import yargs from 'yargs'
 
 const spinner = ora('应用初始化中')
 
