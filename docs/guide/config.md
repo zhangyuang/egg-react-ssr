@@ -184,4 +184,4 @@ whitelist白名单选项的作用是，在白名单中的文件仍需要webpack�
 3. libraryTarget: 'commonjs2' 指定导出模块的类型为 commonjs2，因为当前我们的运行环境是Node.js而不是浏览器端，所以我们需要遵循Node.js的模块格式
 
 
-以上的配置是全部配置项的一些关键截取，在实际项目中如果对于配置有定制需求可以修改对应的 client/server 打包配置文件。所有的配置内容可以参考项目 [build](https://github.com/ykfe/egg-react-ssr/tree/master/build) 目录下的配置内容。
+以上的配置是全部配置项的一些关键截取，在实际项目中如果对于配置有定制需求可以修改对应的 client/server 打包配置文件。所有的配置内容可以参考项目 [build](https://github.com/ykfe/egg-react-ssr/tree/master/example/ssr-with-js/build) 目录下的配置内容。
