@@ -11,6 +11,7 @@
     "sourceMap": true,
     "outDir": "./bin/",
     "strict": true,
+    "resolveJsonModule": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
     "rootDir": "./src",

@@ -9,7 +9,8 @@
   },
   "scripts": {
     "standard": "standard --fix",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm run test:unit",
+    "test:unit": "jest --coverage && jest-coverage-badges",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs && npm run publish",
     "publish": "surge ./docs/.vuepress/dist ykfe.surge.sh --domain ykfe.net"
@@ -37,7 +38,8 @@
       "**/bin/",
       "**/es/",
       "packages/ykfe-utils/src/loadable.js",
-      "**/node_modules/"
+      "**/node_modules/",
+      "__mocks__"
     ],
     "global": [
       "__isBrowser__",
@@ -48,10 +50,15 @@
   "homepage": "https://github.com/ykfe/egg-react-ssr#readme",
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@types/jest": "^24.0.18",
     "babel-eslint": "^10.0.2",
+    "jest": "^24.9.0",
+    "jest-coverage-badges": "^1.1.2",
     "lerna": "^3.8.0",
     "pre-commit": "^1.2.2",
     "standard": "^12.0.1",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.5.3",
     "vuepress": "^0.14.8"
   }
 }
