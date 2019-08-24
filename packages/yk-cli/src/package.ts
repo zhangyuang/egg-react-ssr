@@ -1,6 +1,6 @@
+import path from 'path'
 import { renderTemplate } from './util/index'
 import { Optional } from './interface/option'
-import path from 'path'
 /**
  * package.json
  * 修改模式

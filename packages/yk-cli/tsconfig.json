@@ -3,14 +3,15 @@
     "target": "esnext",
     "module": "commonjs",
     "lib": [
-      "esnext"
+      "esnext",
     ],
-    "allowJs": true,                      // 允许编译 javascript 文件
     "declaration": true,
+    "jsx": "react",
     "declarationDir": "./types/",
     "sourceMap": true,
     "outDir": "./bin/",
     "strict": true,
+    "resolveJsonModule": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
     "rootDir": "./src",

@@ -5,7 +5,7 @@ export declare const processError: (err: string) => void;
 export declare const execWithPromise: typeof exec.__promisify__;
 export declare const downloadWithPromise: Function;
 export declare const resolveApp: (source: string) => string;
-export declare const getWithPromise: object;
+export declare const getWithPromise: (url: string) => Promise<any>;
 /**
  * http
  * 缓存判断是否有效处理

@@ -1,8 +1,8 @@
-import { processError } from './util/index'
-import { Optional } from './interface/option'
 import inquirer from 'inquirer'
 import fs from 'fs'
 import shell from 'shelljs'
+import { processError } from './util/index'
+import { Optional } from './interface/option'
 
 /**
  * 应用初始化函数

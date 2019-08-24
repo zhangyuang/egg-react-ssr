@@ -1,5 +1,6 @@
-
 // 本文件目的是以React jsx 为模版替换掉html-webpack-plugin以及传统模版引擎, 统一ssr/csr都使用React组件来作为页面的骨架和内容部分
+
+import { Res } from './interface/ctx'
 
 const webpack = require('webpack')
 const fs = require('fs')
@@ -7,7 +8,7 @@ const promisify = require('util').promisify
 const webpackWithPromise = promisify(webpack)
 const cwd = process.cwd()
 const WebpackDevServer = require('webpack-dev-server')
-const string = require('./renderLayout')
+const str = require('./renderLayout')
 const clientConfig = require(cwd + '/build/webpack.config.client')
 
 const dev = () => {
@@ -25,9 +26,9 @@ const dev = () => {
     headers: {
       'access-control-allow-origin': '*'
     },
-    before (app) {
-      app.get('/', async (req, res) => {
-        res.write(string)
+    before (app: any) {
+      app.get('/', async (req: any, res: Res) => {
+        res.write(str)
         res.end()
       })
     }
@@ -46,7 +47,7 @@ const build = async () => {
     timings: true,
     version: true
   }))
-  fs.writeFileSync(cwd + '/dist/index.html', string)
+  fs.writeFileSync(cwd + '/dist/index.html', str)
 }
 
 module.exports = {

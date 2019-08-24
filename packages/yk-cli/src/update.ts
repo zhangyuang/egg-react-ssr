@@ -1,8 +1,8 @@
-import { getWithPromise, execWithPromise, processError, resolveApp } from './util/index'
 import ora from 'ora'
-const spinner = ora('发现本地版本较旧,尝试更新yk-cli脚手架')
-const url = 'https://raw.githubusercontent.com/ykfe/egg-react-ssr/master/packages/yk-cli/package.json'
+import { execWithPromise, getWithPromise, resolveApp } from './util/index'
 
+const url = 'https://raw.githubusercontent.com/ykfe/egg-react-ssr/master/packages/yk-cli/package.json'
+const isTest = process.env.TEST_ENV
 /**
  * 判断NPM包自动更新
  *
@@ -10,19 +10,19 @@ const url = 'https://raw.githubusercontent.com/ykfe/egg-react-ssr/master/package
  * @param {Optional} option 全局应用配置
  * @returns {Promise<void>}
  */
-export function updateCli (): Promise<void> {
-  return new Promise<any>(async (resolve, reject) => {
-    const { version } = await getWithPromise(url)
-    resolve(version.trim())
-  }).then(async version => {
-    const localVersion = require(resolveApp('./package.json')).version.trim()
-    // 成功拿到版本号 且 版本号与本地版本号不一致则执行更新
-    if (version !== localVersion) {
-      spinner.start()
+export async function updateCli (): Promise<void> {
+  const { version } = await getWithPromise(url)
+  const remoteVersion = version.trim()
+  const localVersion = require(resolveApp('./package.json')).version.trim()
+  // 成功拿到版本号 且 版本号与本地版本号不一致则执行更新
+  if (remoteVersion !== localVersion) {
+    const spinner = ora('发现本地版本较旧,尝试更新yk-cli脚手架')
+    spinner.start()
+    if (!isTest) {
       const { stdout } = await execWithPromise(`npm i -g --registry=https://registry.npm.taobao.org yk-cli@${version}`)
-      spinner.succeed()
       console.log(stdout, `更新完毕... 请您重新执行 ykcli init`)
       process.exit()
     }
-  }).catch(err => processError(err))
+    spinner.succeed()
+  }
 }

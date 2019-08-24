@@ -1,6 +1,8 @@
 # Egg + React + SSR应用骨架
 
 [![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
+![jest coverage](coverage/badge-statements.svg)
 
 最小而美的服务端渲染应用骨架，特点
 

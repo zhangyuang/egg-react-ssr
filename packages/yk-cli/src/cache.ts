@@ -1,6 +1,6 @@
+import shell from 'shelljs'
 import { downloadWithPromise, resolveApp, getVersionEffective } from './util/index'
 import { Optional } from './interface/option'
-import shell from 'shelljs'
 
 /**
  * 缓存管理
