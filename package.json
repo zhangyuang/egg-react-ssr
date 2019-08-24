@@ -9,7 +9,7 @@
   },
   "scripts": {
     "standard": "standard --fix",
-    "test": "npm run test:unit",
+    "test": "TEST_ENV=true npm run test:unit",
     "test:unit": "jest --coverage && jest-coverage-badges",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs && npm run publish",
@@ -59,6 +59,8 @@
     "standard": "^12.0.1",
     "ts-jest": "^24.0.2",
     "typescript": "^3.5.3",
-    "vuepress": "^0.14.8"
+    "vuepress": "^0.14.8",
+    "tslint": "^5.17.0",
+    "tslint-config-standard": "^8.0.1"
   }
 }

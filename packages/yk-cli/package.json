@@ -46,8 +46,6 @@
     "@types/shelljs": "^0.8.5",
     "@types/yargs": "^13.0.0",
     "pre-commit": "^1.2.2",
-    "tslint": "^5.17.0",
-    "tslint-config-standard": "^8.0.1",
     "typescript": "^3.5.2"
   },
   "keywords": [],

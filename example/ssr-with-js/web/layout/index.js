@@ -1,13 +1,14 @@
 
 import React from 'react'
+import serialize from 'serialize-javascript'
+import { Link } from 'react-router-dom'
 import '@/assets/common.less'
 import './index.less'
-import { Link } from 'react-router-dom'
-import serialize from 'serialize-javascript'
 
 const commonNode = props => (
   // 为了同时兼容ssr/csr请保留此判断，如果你的layout没有内容请使用 props.children ? { props.children } : ''
-  props.children ? <div className='normal'><h1 className='title'><Link to='/'>Egg + React + SSR</Link><div className='author'>by ykfe</div></h1>{props.children}</div>
+  props.children
+    ? <div className='normal'><h1 className='title'><Link to='/'>Egg + React + SSR</Link><div className='author'>by ykfe</div></h1>{props.children}</div>
     : ''
 )
 
