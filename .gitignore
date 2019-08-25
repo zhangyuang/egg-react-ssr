@@ -11,3 +11,7 @@ docs/.vuepress/dist
 es
 
 lib
+
+*.log
+
+tests_output

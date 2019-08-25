@@ -7,6 +7,4 @@ const { updateCli } = require('../../src/update')
 test('hope update cli can be invoke', async () => {
   await updateCli()
   expect(ora).toBeCalled()
-  expect(ora.start).toBeCalled()
-  expect(ora.succeed).toBeCalled()
 })

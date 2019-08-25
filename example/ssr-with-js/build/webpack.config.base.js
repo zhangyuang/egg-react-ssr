@@ -4,8 +4,8 @@ const paths = require('./paths')
 const path = require('path')
 // style files regexes
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const getStyleLoaders = require('./util').getStyleLoaders
 const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent')
+const getStyleLoaders = require('./util').getStyleLoaders
 
 const webpackModule = {
   strictExportPresence: true,

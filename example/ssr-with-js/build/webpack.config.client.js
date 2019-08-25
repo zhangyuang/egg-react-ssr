@@ -2,14 +2,14 @@
 const path = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
-const baseConfig = require('./webpack.config.base')
 const TerserPlugin = require('terser-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const paths = require('./paths')
 const ManifestPlugin = require('webpack-manifest-plugin')
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin')
 const safePostCssParser = require('postcss-safe-parser')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const paths = require('./paths')
+const baseConfig = require('./webpack.config.base')
 const publicPath = '/'
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false'
 const isDev = process.env.NODE_ENV === 'development'
