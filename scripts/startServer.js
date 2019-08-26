@@ -8,7 +8,7 @@ egg.startCluster({
   baseDir: baseDir,
   port: 7001,
   workers: 1
-}, async () => {
+}, () => {
   const child = fork('./packages/yk-cli/bin/clientRender')
   child.send({
     msg: 'start dev'
