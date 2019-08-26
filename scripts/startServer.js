@@ -1,37 +1,17 @@
-const { exec, fork, spawn } = require('child_process')
-const { series, waterfall } = require('async')
-const npm = require('npm')
 
-exec('cd ./example/ssr-with-js && npm start', (err, stdout) => {
-  if (err) {
-    console.log('error', err)
-    process.exit()
-  }
+const egg = require('egg')
+const path = require('path')
+const { exec } = require('child_process')
+egg.startCluster({
+  baseDir: path.resolve(__dirname, '../example/ssr-with-js/'),
+  port: 7001,
+  workers: 1
+}, () => {
   exec('nightwatch --config ./e2e/nightwatch.config.js', (err, stdout) => {
     if (err) {
-      console.log('error', err)
+      console.log(err)
       process.exit()
     }
     console.log(stdout)
   })
 })
-// const npm = require('npm')
-// waterfall([
-//   function (cb) {
-//     exec('cd ./example/ssr-with-js && npm start', () => {
-//       console.log('xx')
-//       cb()
-//     })
-//     // cb()
-//   },
-//   function (cb) {
-//     exec('nightwatch --config ./e2e/nightwatch.config.js', (err, stdout) => {
-//       if (err) {
-//         console.log(err)
-//       }
-//       console.log(stdout)
-//       cb()
-//     })
-//     // cb()
-//   }
-// ])
