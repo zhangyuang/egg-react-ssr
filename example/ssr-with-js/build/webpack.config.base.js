@@ -30,15 +30,15 @@ const webpackModule = {
             cacheCompression: false,
             presets: [
               [
-                '@babel/preset-env',
+                require.resolve('@babel/preset-env'),
                 {
                   modules: 'false'
                 }
               ],
-              '@babel/preset-react'
+              require.resolve('@babel/preset-react')
             ],
             plugins: [
-              '@babel/plugin-transform-runtime'
+              require.resolve('@babel/plugin-transform-runtime')
             ]
           }
         },

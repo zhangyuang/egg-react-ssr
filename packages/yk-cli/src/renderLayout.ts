@@ -5,7 +5,7 @@ import * as React from 'react';
 import { renderToString }from 'react-dom/server'
 
 const Module = require('module')
-const cwd = process.cwd()
+const cwd = process.env.BASE_DIR || process.cwd()
 const baseConfig = require(cwd + '/build/webpack.config.base')
 const config = require(cwd + '/config/config.default')
 
@@ -15,16 +15,16 @@ require('@babel/register')({
     /layout/ // babel只编译layout组件
   ],
   presets: [
-    '@babel/preset-env',
-    '@babel/preset-react'
+    require.resolve('@babel/preset-env'),
+    require.resolve('@babel/preset-react')
   ],
   plugins: [
-    '@babel/plugin-transform-runtime',
-    ['babel-plugin-module-resolver', {
+    require.resolve('@babel/plugin-transform-runtime'),
+    [require.resolve('babel-plugin-module-resolver'), {
       root: ['./'],
       alias: baseConfig.resolve.alias
     }],
-    ['transform-define', {
+    [require.resolve('babel-plugin-transform-define'), {
       __isBrowser__: false
     }]
   ]

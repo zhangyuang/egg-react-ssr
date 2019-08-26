@@ -17,8 +17,8 @@ export async function updateCli (): Promise<void> {
   // 成功拿到版本号 且 版本号与本地版本号不一致则执行更新
   if (remoteVersion !== localVersion) {
     const spinner = ora('发现本地版本较旧,尝试更新yk-cli脚手架')
-    spinner.start()
     if (!isTesting) {
+      spinner.start()
       const { stdout } = await execWithPromise(`npm i -g --registry=https://registry.npm.taobao.org yk-cli@${version}`)
       console.log(stdout, `更新完毕... 请您重新执行 ykcli init`)
       spinner.succeed()

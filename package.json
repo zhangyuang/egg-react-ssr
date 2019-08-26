@@ -9,9 +9,10 @@
   },
   "scripts": {
     "standard": "standard --fix",
+    "lint:fix": "tslint -c tslint.json -p . --fix",
     "test": "TEST_ENV=true npm run test:unit && npm run test:e2e",
     "test:unit": "jest --coverage && jest-coverage-badges",
-    "test:e2e": "node ./scripts/startServer.js",
+    "test:e2e": "NODE_ENV=development node ./scripts/startServer.js",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs && npm run publish",
     "publish": "surge ./docs/.vuepress/dist ykfe.surge.sh --domain ykfe.net"
@@ -26,7 +27,8 @@
     "url": "https://github.com/ykfe/egg-react-ssr/issues"
   },
   "pre-commit": [
-    "standard"
+    "standard",
+    "lint:fix"
   ],
   "standard": {
     "parser": "babel-eslint",
