@@ -30,7 +30,7 @@ jobs:
       - run: sudo npm install -g cnpm
       - run: cnpm install
       - run: ./node_modules/lerna/cli.js bootstrap --npm-client=cnpm
-      - run: cd example/ssr-with-js
+      - run: cd ./example/ssr-with-js
       - run: cnpm install --registry=https://registry.npmjs.org
       - run: cd ..
       # - save_cache:
