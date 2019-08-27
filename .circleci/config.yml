@@ -15,7 +15,10 @@ jobs:
       # - image: circleci/mongo:3.4.4
 
     working_directory: ~/repo
-
+    machine:
+      environment:
+        PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
+        NODE_ENV: development
     steps:
       - checkout
 
@@ -29,11 +32,13 @@ jobs:
       - run: cnpm install
       - run: ./node_modules/lerna/cli.js bootstrap --npm-client=cnpm
       - run: cd example/ssr-with-js
-      - run: yarn
+      - run: cnpm install
       - run: cd ..
       - save_cache:
           paths:
             - node_modules
+            - example/ssr-with-js/node_modules
+            - packages/yk-cli/node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
