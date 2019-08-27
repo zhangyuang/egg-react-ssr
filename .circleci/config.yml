@@ -27,7 +27,7 @@ jobs:
             - v1-dependencies-
       - run: sudo npm install -g cnpm
       - run: cnpm install
-      - run: ./node_modules/lerna/cli.js --npm-client=cnpm
+      - run: ./node_modules/lerna/cli.js bootstrap --npm-client=cnpm
 
       - save_cache:
           paths:
