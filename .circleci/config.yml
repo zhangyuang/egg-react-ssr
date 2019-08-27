@@ -29,13 +29,13 @@ jobs:
       - run: cnpm install
       - run: ./node_modules/lerna/cli.js bootstrap --npm-client=cnpm
 
+      - run: cd example/ssr-with-js
+      - run: cnpm install
+      - run: cd ..
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-      - run: cd example/ssr-with-js
-      - run: cnpm install
-      - run: cd ..
 
       # run tests!
       - run: cnpm test 
