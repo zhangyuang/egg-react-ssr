@@ -31,13 +31,11 @@ jobs:
       - run: cnpm install
       - run: ./node_modules/lerna/cli.js bootstrap --npm-client=cnpm
       - run: cd example/ssr-with-js
-      - run: cnpm install
+      - run: cnpm install --registry=https://registry.npmjs.org
       - run: cd ..
       # - save_cache:
       #     paths:
       #       - node_modules
-      #       - example/ssr-with-js/node_modules
-      #       - packages/yk-cli/node_modules
       #     key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
