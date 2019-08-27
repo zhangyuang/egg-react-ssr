@@ -27,11 +27,15 @@ jobs:
             - v1-dependencies-
 
       - run: yarn install
+      - run: lerna boostrap
 
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+      - run: cd example/ssr-with-js
+      - run: yarn install
+      - run: cd ..
 
       # run tests!
       - run: yarn test 
