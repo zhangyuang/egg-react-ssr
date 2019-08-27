@@ -27,7 +27,7 @@ jobs:
             - v1-dependencies-
 
       - run: yarn install
-      - run: lerna boostrap
+      - run: ./node_modules/lerna/cli.js boostrap
 
       - save_cache:
           paths:
