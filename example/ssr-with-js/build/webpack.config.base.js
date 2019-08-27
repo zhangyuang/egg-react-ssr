@@ -4,8 +4,8 @@ const paths = require('./paths')
 const path = require('path')
 // style files regexes
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const getStyleLoaders = require('./util').getStyleLoaders
 const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent')
+const getStyleLoaders = require('./util').getStyleLoaders
 
 const webpackModule = {
   strictExportPresence: true,
@@ -30,15 +30,15 @@ const webpackModule = {
             cacheCompression: false,
             presets: [
               [
-                '@babel/preset-env',
+                require.resolve('@babel/preset-env'),
                 {
                   modules: 'false'
                 }
               ],
-              '@babel/preset-react'
+              require.resolve('@babel/preset-react')
             ],
             plugins: [
-              '@babel/plugin-transform-runtime'
+              require.resolve('@babel/plugin-transform-runtime')
             ]
           }
         },

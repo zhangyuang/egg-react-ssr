@@ -1,12 +1,10 @@
 {
   "name": "yk-cli",
-  "version": "2.1.3",
+  "version": "2.2.0",
   "description": "ykcli for ssr",
   "main": "./bin/index.js",
   "types": "types/index.d.ts",
   "scripts": {
-    "lint": "tslint -c tslint.json -p .",
-    "lint:fix": "tslint -c tslint.json -p . --fix",
     "build": "rm -rf ./bin && tsc --project ./tsconfig.json --sourceMap false",
     "start": "node --inspect=19229 ./bin/index.js",
     "dev": "tsc -w"
@@ -18,11 +16,10 @@
     "type": "git",
     "url": "git+https://github.com/ykfe/yk-cli.git"
   },
-  "pre-commit": [
-    "lint:fix"
-  ],
   "dependencies": {
     "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.5.5",
     "babel-plugin-module-resolver": "^3.2.0",
     "babel-plugin-transform-define": "^1.3.1",
@@ -40,12 +37,12 @@
   },
   "devDependencies": {
     "@types/inquirer": "^6.0.3",
+    "@types/node": "^12.7.2",
     "@types/nunjucks": "^3.1.1",
     "@types/react": "^16.8.23",
     "@types/react-dom": "^16.8.4",
     "@types/shelljs": "^0.8.5",
     "@types/yargs": "^13.0.0",
-    "pre-commit": "^1.2.2",
     "typescript": "^3.5.2"
   },
   "keywords": [],
