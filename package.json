@@ -30,6 +30,9 @@
     "standard",
     "lint:fix"
   ],
+  "engines" : {
+     "node" : ">=8" 
+  },
   "standard": {
     "parser": "babel-eslint",
     "ignore": [
