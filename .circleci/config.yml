@@ -30,7 +30,7 @@ jobs:
       - run: ./node_modules/lerna/cli.js bootstrap --npm-client=cnpm
 
       - run: cd example/ssr-with-js
-      - run: yarn install
+      - run: npm install
       - run: cd ..
       - save_cache:
           paths:
