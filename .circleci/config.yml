@@ -25,17 +25,17 @@ jobs:
             - v1-dependencies-{{ checksum "package.json" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
-
-      - run: yarn install
-      - run: ./node_modules/lerna/cli.js exec -- yarn install
+      - run: sudo npm install -g cnpm
+      - run: cnpm install
+      - run: ./node_modules/lerna/cli.js --npm-client=cnpm
 
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: cd example/ssr-with-js
-      - run: yarn install
+      - run: cnpm install
       - run: cd ..
 
       # run tests!
-      - run: yarn test 
+      - run: cnpm test 
