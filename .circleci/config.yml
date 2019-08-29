@@ -22,21 +22,20 @@ jobs:
       - checkout
 
       # Download and cache dependencies
-      # - restore_cache:
-      #     keys:
-      #       - v1-dependencies-{{ checksum "package.json" }}
-      #       # fallback to using the latest cache if no exact match is found
-      #       - v1-dependencies-
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
       - run: sudo npm install -g cnpm
       - run: cnpm install
-      - run: ./node_modules/lerna/cli.js bootstrap --npm-client=cnpm
-      - run: cd ./example/ssr-with-js
-      - run: cnpm install --registry=https://registry.npmjs.org
-      - run: cd ..
-      # - save_cache:
-      #     paths:
-      #       - node_modules
-      #     key: v1-dependencies-{{ checksum "package.json" }}
+      - run: cd ./packages/yk-cli && cnpm install && npm run build
+      - run: cd ./example/ssr-with-js && cnpm install
+      - save_cache:
+          paths:
+            - node_modules
+            - ./packages/yk-cli/node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
       - run: cnpm test 
