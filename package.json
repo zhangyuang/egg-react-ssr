@@ -8,7 +8,7 @@
     "example": "example"
   },
   "scripts": {
-    "standard": "standard --fix",
+    "lint": "tslint -c tslint.json -p . && standard",
     "lint:fix": "tslint -c tslint.json -p . --fix",
     "test": "TEST_ENV=true npm run test:unit && npm run test:e2e",
     "test:unit": "jest --coverage && jest-coverage-badges",
@@ -27,8 +27,7 @@
     "url": "https://github.com/ykfe/egg-react-ssr/issues"
   },
   "pre-commit": [
-    "standard",
-    "lint:fix"
+    "lint",
   ],
   "engines" : {
      "node" : ">=8" 

@@ -14,7 +14,7 @@ jobs:
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/mongo:3.4.4
 
-    working_directory: ~/repo
+    working_directory: ~/egg-react-ssr
 
     environment:
       NODE_ENV: development
@@ -29,6 +29,7 @@ jobs:
             - v1-dependencies-
       - run: sudo npm install -g cnpm
       - run: cnpm install
+      # - run: npm run lint
       - run: cd ./packages/yk-cli && cnpm install && npm run build
       - run: cd ./example/ssr-with-js && cnpm install
       - save_cache:
@@ -38,4 +39,4 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
-      - run: cnpm test  
+      - run: cnpm test
