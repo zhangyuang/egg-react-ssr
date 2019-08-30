@@ -27,7 +27,7 @@
     "url": "https://github.com/ykfe/egg-react-ssr/issues"
   },
   "pre-commit": [
-    "lint",
+    "lint"
   ],
   "engines" : {
      "node" : ">=8" 
