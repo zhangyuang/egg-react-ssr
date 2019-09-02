@@ -15,6 +15,9 @@ jobs:
       # - image: circleci/mongo:3.4.4
 
     working_directory: ~/egg-react-ssr
+
+    environment:
+      NODE_ENV: development
     steps:
       - checkout
 
@@ -29,7 +32,7 @@ jobs:
 
       # run tests!
       - run: npm test
-        - save_cache:
+      - save_cache:
           paths:
             - node_modules
             - ./packages/yk-cli/node_modules
