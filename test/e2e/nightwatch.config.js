@@ -1,5 +1,5 @@
 module.exports = {
-  'src_folders': ['e2e'],
+  'src_folders': ['test/e2e'],
   'webdriver': {
     'start_process': true,
     'server_path': 'node_modules/.bin/chromedriver',
