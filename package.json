@@ -11,7 +11,7 @@
     "lint": "tslint -c tslint.json -p . && standard",
     "lint:fix": "standard --fix && tslint -c tslint.json -p . --fix",
     "test": "node ./test/scripts/preInstall.js && npm run test:unit && npm run test:e2e",
-    "test:unit": "TEST_ENV=true jest && codecov -t dd18ae4a-5b03-4ad4-906b-6d035b0b50ec",
+    "test:unit": "TEST_ENV=true jest && codecov",
     "test:e2e": "NODE_ENV=development node ./test/scripts/startServer.js",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs && npm run publish",
