@@ -29,9 +29,9 @@ jobs:
 
       # run tests!
       - run: npm test
-      - save_cache:
-        paths:
-          - node_modules
-          - ./packages/yk-cli/node_modules
-          - ./example/ssr-with-js/node_modules
-        key: v1-dependencies-{{ checksum "package.json" }}
+        - save_cache:
+          paths:
+            - node_modules
+            - ./packages/yk-cli/node_modules
+            - ./example/ssr-with-js/node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
