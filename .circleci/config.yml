@@ -29,13 +29,14 @@ jobs:
             - v1-dependencies-
       - run: sudo npm install -g cnpm
       - run: cnpm install
-      # - run: npm run lint
+      - run: npm run lint
       - run: cd ./packages/yk-cli && cnpm install && npm run build
       - run: cd ./example/ssr-with-js && cnpm install
       - save_cache:
           paths:
             - node_modules
             - ./packages/yk-cli/node_modules
+            - ./example/ssr-with-js/node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!

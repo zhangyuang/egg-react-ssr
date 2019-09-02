@@ -11,8 +11,8 @@
     "lint": "tslint -c tslint.json -p . && standard",
     "lint:fix": "tslint -c tslint.json -p . --fix",
     "test": "TEST_ENV=true npm run test:unit && npm run test:e2e",
-    "test:unit": "jest --coverage && jest-coverage-badges",
-    "test:e2e": "NODE_ENV=development node ./scripts/startServer.js",
+    "test:unit": "jest --coverage",
+    "test:e2e": "NODE_ENV=development node ./test/scripts/startServer.js",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs && npm run publish",
     "publish": "surge ./docs/.vuepress/dist ykfe.surge.sh --domain ykfe.net"
@@ -60,7 +60,6 @@
     "chromedriver": "^76.0.0",
     "egg": "^2.23.0",
     "jest": "^24.9.0",
-    "jest-coverage-badges": "^1.1.2",
     "lerna": "^3.8.0",
     "nightwatch": "^1.2.1",
     "pre-commit": "^1.2.2",
