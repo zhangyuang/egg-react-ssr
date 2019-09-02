@@ -10,9 +10,10 @@
   "scripts": {
     "lint": "tslint -c tslint.json -p . && standard",
     "lint:fix": "standard --fix && tslint -c tslint.json -p . --fix",
-    "test": "node ./test/scripts/preInstall.js && npm run test:unit && npm run test:e2e",
-    "test:unit": "TEST_ENV=true jest && codecov",
-    "test:e2e": "NODE_ENV=development node ./test/scripts/startServer.js",
+    "test": "node ./test/scripts/preInstall.js && npm run test:unit && npm run test:coverage && npm run test:e2e",
+    "test:coverage": "codecov",
+    "test:unit": "NODE_ENV=test jest --coverage",
+    "test:e2e": "NODE_ENV=development node ./test/e2e/startServer.js",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs && npm run publish",
     "publish": "surge ./docs/.vuepress/dist ykfe.surge.sh --domain ykfe.net"

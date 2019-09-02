@@ -34,10 +34,6 @@ jobs:
 
       # run tests!
       - run: npm test
-
-      - codecov/upload:
-          file: coverage/*.json
-          flags: frontend
       - save_cache:
           paths:
             - node_modules
