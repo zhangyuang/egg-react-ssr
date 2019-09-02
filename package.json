@@ -9,9 +9,9 @@
   },
   "scripts": {
     "lint": "tslint -c tslint.json -p . && standard",
-    "lint:fix": "tslint -c tslint.json -p . --fix",
-    "test": "node ./test/scripts/preInstall.js && nyc npm run test:unit && npm run test:e2e",
-    "test:unit": "TEST_ENV=true jest --coverage",
+    "lint:fix": "standard --fix && tslint -c tslint.json -p . --fix",
+    "test": "node ./test/scripts/preInstall.js && npm run test:unit && npm run test:e2e",
+    "test:unit": "TEST_ENV=true jest && codecov",
     "test:e2e": "NODE_ENV=development node ./test/scripts/startServer.js",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs && npm run publish",
@@ -21,7 +21,7 @@
     "type": "git",
     "url": "git+https://github.com/ykfe/egg-react-ssr.git"
   },
-  "author": "",
+  "author": "ykfe",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ykfe/egg-react-ssr/issues"
@@ -31,6 +31,10 @@
   ],
   "engines": {
     "node": ">=8"
+  },
+  "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
   },
   "standard": {
     "parser": "babel-eslint",
@@ -57,11 +61,11 @@
     "@types/jest": "^24.0.18",
     "babel-eslint": "^10.0.2",
     "chromedriver": "^76.0.0",
+    "codecov": "^3.5.0",
     "egg": "^2.23.0",
     "jest": "^24.9.0",
     "lerna": "^3.8.0",
     "nightwatch": "^1.2.1",
-    "nyc": "^14.1.1",
     "pre-commit": "^1.2.2",
     "standard": "^12.0.1",
     "ts-jest": "^24.0.2",
