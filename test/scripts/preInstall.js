@@ -5,17 +5,20 @@ const { promisify } = require('util')
 const fs = require('fs')
 const execWithPromise = promisify(exec)
 
-const install = (path, shell) => {
+const install = (path, shell, afterHooks) => {
   fs.stat(path, async err => {
     if (err) {
       const { stdout } = await execWithPromise(shell)
+      console.log(stdout)
+    } else {
+      const { stdout } = await execWithPromise(afterHooks)
       console.log(stdout)
     }
   })
 }
 
 const preInstall = async () => {
-  install('./packages/yk-cli/node_modules', 'cd ./packages/yk-cli && npm i --registry=https://registry.npm.taobao.org && pwd && npm run build')
+  install('./packages/yk-cli/node_modules', 'cd ./packages/yk-cli && npm i --registry=https://registry.npm.taobao.org', 'npm run build')
   install('./example/ssr-with-js/node_modules', 'cd ./example/ssr-with-js && npm i --registry=https://registry.npm.taobao.org')
 }
 
