@@ -10,7 +10,8 @@ const install = (path, shell, afterHooks) => {
     if (err) {
       const { stdout } = await execWithPromise(shell)
       console.log(stdout)
-    } else {
+    }
+    if (afterHooks) {
       const { stdout } = await execWithPromise(afterHooks)
       console.log(stdout)
     }
