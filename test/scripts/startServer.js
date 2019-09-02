@@ -22,7 +22,6 @@ egg.startCluster({
           process.exit()
         }
         console.log(stdout)
-        process.exit()
       })
     }
   })

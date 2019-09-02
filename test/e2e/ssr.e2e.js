@@ -3,6 +3,7 @@ module.exports = {
     browser
       .url('http://localhost:7001')
       .assert.containsText('.author', 'by ykfe')
+      .end()
   },
   'CSR': function (browser) {
     browser
