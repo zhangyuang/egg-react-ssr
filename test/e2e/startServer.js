@@ -23,11 +23,9 @@ egg.startCluster({
         const runner = spawn('./node_modules/.bin/nightwatch', ['--config', './test/e2e/nightwatch.config.js'], {
           stdio: 'inherit'
         })
-
         runner.on('exit', code => {
           process.exit(code)
         })
-
         runner.on('error', err => {
           throw err
         })

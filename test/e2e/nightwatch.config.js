@@ -5,7 +5,7 @@ module.exports = {
   'webdriver': {
     'start_process': true,
     'server_path': chrome.path,
-    'port': 9510
+    'port': 9515
   },
   'test_settings': {
 
