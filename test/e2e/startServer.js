@@ -25,4 +25,7 @@ egg.startCluster({
       })
     }
   })
+  process.on('exit', () => {
+    child.kill()
+  })
 })

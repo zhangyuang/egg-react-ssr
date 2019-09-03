@@ -68,7 +68,6 @@
     "lerna": "^3.8.0",
     "nightwatch": "^1.2.1",
     "pre-commit": "^1.2.2",
-    "selenium-server": "^3.141.59",
     "standard": "^12.0.1",
     "ts-jest": "^24.0.2",
     "tslint": "^5.17.0",
