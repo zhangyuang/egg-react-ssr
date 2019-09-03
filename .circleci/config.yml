@@ -1,0 +1,49 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2
+jobs:
+  build:
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:8
+
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      # - image: circleci/mongo:3.4.4
+
+    working_directory: ~/egg-react-ssr
+
+    environment:
+      NODE_ENV: development
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+
+      # install basic repo
+      - run: sudo apt-get install libnss3-dev
+      - run: wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+      - run: echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
+      - run: sudo apt-get update && sudo apt-get install google-chrome-stable
+      - run: sudo npm install -g cnpm --registry=https://registry.npm.taobao.org
+      
+      # run lint
+      - run: cnpm install
+      - run: npm run lint
+
+      # run tests!
+      - run: npm test
+      - save_cache:
+          paths:
+            - node_modules
+            - ./packages/yk-cli/node_modules
+            - ./example/ssr-with-js/node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
