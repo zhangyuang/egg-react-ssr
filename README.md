@@ -1,8 +1,12 @@
 # Egg + React + SSR应用骨架
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
-[![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
-![jest coverage](coverage/badge-statements.svg)
+<a href="https://circleci.com/gh/ykfe"><img src="https://img.shields.io/circleci/build/github/ykfe/egg-react-ssr/dev.svg" alt="Build Status"></a>
+<a href="https://codecov.io/gh/ykfe/egg-react-ssr"><img src="https://img.shields.io/codecov/c/github/ykfe/egg-react-ssr/dev.svg" alt="Coverage Status"></a>
+<img src="https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square" alt="All Contributors">
+<a href="https://standardjs.com"><img src="https://img.shields.io/badge/code_style-standard-brightgreen.svg" alt="standardjs"></a>
+<a href="https://github.com/facebook/jest"><img src="https://img.shields.io/badge/tested_with-jest-99424f.svg" alt="License"></a>
+<a href="https://github.com/ykfe/egg-react-ssr"><img src="https://img.shields.io/npm/l/vue.svg" alt="License"></a>
+<img src="https://img.shields.io/badge/node-%3E=8-green.svg" alt="Node">
 
 最小而美的服务端渲染应用骨架，特点
 

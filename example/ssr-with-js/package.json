@@ -3,7 +3,6 @@
   "version": "2.0.0",
   "dependencies": {
     "egg": "^2.21.0",
-    "egg-proxy": "^1.1.0",
     "egg-scripts": "^2.11.0",
     "egg-static": "^2.2.0",
     "koa-router": "^7.4.0",
@@ -51,6 +50,7 @@
     "css-loader": "1.0.0",
     "css-modules-require-hook": "^4.2.3",
     "egg-bin": "^4.13.1",
+    "egg-proxy": "^1.1.0",
     "file-loader": "2.0.0",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",

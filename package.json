@@ -8,11 +8,12 @@
     "example": "example"
   },
   "scripts": {
-    "standard": "standard --fix",
-    "lint:fix": "tslint -c tslint.json -p . --fix",
-    "test": "TEST_ENV=true npm run test:unit && npm run test:e2e",
-    "test:unit": "jest --coverage && jest-coverage-badges",
-    "test:e2e": "NODE_ENV=development node ./scripts/startServer.js",
+    "lint": "tslint -c tslint.json -p . && standard",
+    "lint:fix": "standard --fix && tslint -c tslint.json -p . --fix",
+    "test": "node ./test/scripts/preInstall.js && npm run test:unit && npm run test:coverage && npm run test:e2e",
+    "test:coverage": "codecov",
+    "test:unit": "NODE_ENV=test jest --coverage",
+    "test:e2e": "NODE_ENV=development node ./test/e2e/startServer.js",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs && npm run publish",
     "publish": "surge ./docs/.vuepress/dist ykfe.surge.sh --domain ykfe.net"
@@ -21,15 +22,21 @@
     "type": "git",
     "url": "git+https://github.com/ykfe/egg-react-ssr.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "ykfe",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/ykfe/egg-react-ssr/issues"
   },
   "pre-commit": [
-    "standard",
-    "lint:fix"
+    "lint"
   ],
+  "engines": {
+    "node": ">=8"
+  },
+  "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
+  },
   "standard": {
     "parser": "babel-eslint",
     "ignore": [
@@ -52,13 +59,12 @@
   },
   "homepage": "https://github.com/ykfe/egg-react-ssr#readme",
   "devDependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.4.4",
     "@types/jest": "^24.0.18",
     "babel-eslint": "^10.0.2",
     "chromedriver": "^76.0.0",
+    "codecov": "^3.5.0",
     "egg": "^2.23.0",
     "jest": "^24.9.0",
-    "jest-coverage-badges": "^1.1.2",
     "lerna": "^3.8.0",
     "nightwatch": "^1.2.1",
     "pre-commit": "^1.2.2",
