@@ -19,17 +19,19 @@ egg.startCluster({
       msg: 'start dev'
     })
     child.on('message', async data => {
-      // if (data.msg === 'start dev finish') {
-      //   const child = await execWithPromise('nightwatch --config ./test/e2e/nightwatch.config.js')
-      //   console.log(child.stdout)
-      // }
-      const runner = spawn('./node_modules/.bin/nightwatch', ['--config', './test/e2e/nightwatch.config.js'], {
-        stdio: 'inherit'
-      })
+      if (data.msg === 'start dev finish') {
+        const runner = spawn('./node_modules/.bin/nightwatch', ['--config', './test/e2e/nightwatch.config.js'], {
+          stdio: 'inherit'
+        })
 
-      runner.on('exit', code => {
-        process.exit(code)
-      })
+        runner.on('exit', code => {
+          process.exit(code)
+        })
+
+        runner.on('error', err => {
+          throw err
+        })
+      }
     })
     process.on('exit', () => {
       child.kill()
