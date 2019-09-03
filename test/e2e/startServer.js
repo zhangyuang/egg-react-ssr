@@ -2,7 +2,7 @@
 
 const egg = require('egg')
 const path = require('path')
-const { exec, fork } = require('child_process')
+const { exec, fork, spawn } = require('child_process')
 const { promisify } = require('util')
 const execWithPromise = promisify(exec)
 const baseDir = process.env.BASE_DIR = path.resolve(__dirname, '../../example/ssr-with-js/')
@@ -19,10 +19,17 @@ egg.startCluster({
       msg: 'start dev'
     })
     child.on('message', async data => {
-      if (data.msg === 'start dev finish') {
-        const { stdout } = await execWithPromise('nightwatch --config ./test/e2e/nightwatch.config.js')
-        console.log(stdout)
-      }
+      // if (data.msg === 'start dev finish') {
+      //   const child = await execWithPromise('nightwatch --config ./test/e2e/nightwatch.config.js')
+      //   console.log(child.stdout)
+      // }
+      const runner = spawn('./node_modules/.bin/nightwatch', ['--config', './test/e2e/nightwatch.config.js'], {
+        stdio: 'inherit'
+      })
+
+      runner.on('exit', code => {
+        process.exit(code)
+      })
     })
     process.on('exit', () => {
       child.kill()
