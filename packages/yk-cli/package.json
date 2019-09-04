@@ -43,7 +43,10 @@
     "@types/react-dom": "^16.8.4",
     "@types/shelljs": "^0.8.5",
     "@types/yargs": "^13.0.0",
-    "typescript": "^3.5.2"
+    "typescript": "^3.5.2",
+    "lodash.template": ">=4.5.0",
+    "braces": ">=2.3.1",
+    "concat-stream": ">=1.5.2"
   },
   "keywords": [],
   "author": "",
