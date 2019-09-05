@@ -80,7 +80,7 @@ if (!isDev) {
 
 const plugins = [
   new webpack.DefinePlugin({
-    __isBrowser__: true
+    '__isBrowser__': true // eslint-disable-line
   }),
   new ModuleNotFoundPlugin(paths.appPath),
   new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
