@@ -15,8 +15,9 @@ const Layout = (props) => {
   if (__isBrowser__) {
     return commonNode(props)
   } else {
-    const { serverData } = props.layoutData
+    const { serverData, req } = props.layoutData
     const { injectCss, injectScript } = props.layoutData.app.config
+    const chunkName = req ? req.url.split('/')[1] : ''
     return (
       <html lang='en'>
         <head>
@@ -26,6 +27,9 @@ const Layout = (props) => {
           <title>React App</title>
           {
             injectCss && injectCss.map(item => <link rel='stylesheet' href={item} key={item} />)
+          }
+          {
+            (chunkName && chunkName) ? <link rel='stylesheet' href={`/static/css/${chunkName}.chunk.css`} /> : ''
           }
         </head>
         <body>
