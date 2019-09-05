@@ -73,6 +73,6 @@ lib
 
 tests_output
 
-cache/**
+**/cache/
 
 bin
