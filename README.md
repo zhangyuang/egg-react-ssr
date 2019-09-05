@@ -1,4 +1,4 @@
-# Egg + React + SSR应用骨架
+# Egg + React + SSR 应用骨架
 
 <a href="https://circleci.com/gh/ykfe"><img src="https://img.shields.io/circleci/build/github/ykfe/egg-react-ssr/dev.svg" alt="Build Status"></a>
 <a href="https://codecov.io/gh/ykfe/egg-react-ssr"><img src="https://img.shields.io/codecov/c/github/ykfe/egg-react-ssr/dev.svg" alt="Coverage Status"></a>
@@ -225,9 +225,13 @@ $ npm run analyze // 可视化分析客户端打包的资源详情
 欢迎直接扫码加入钉钉群
 <img src="https://img.alicdn.com/tfs/TB1CONSclGE3KVjSZFhXXckaFXa-750-990.jpg" width="300">
 
-## 本地如何调试源码并贡献你的代码
+## 本地如何调试源码
 
 请查看该[wiki](https://github.com/ykfe/egg-react-ssr/wiki/%E6%9C%AC%E5%9C%B0%E5%A6%82%E4%BD%95%E8%B0%83%E8%AF%95%E6%BA%90%E7%A0%81%E5%B9%B6%E8%B4%A1%E7%8C%AE%E4%BD%A0%E7%9A%84%E4%BB%A3%E7%A0%81)
+
+## 如何向本项目贡献代码
+
+请查看该[wiki](https://github.com/ykfe/egg-react-ssr/blob/master/CONTRIBUTING.md)
 
 ## Contributors
 

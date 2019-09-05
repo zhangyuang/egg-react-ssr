@@ -1,13 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import dva from 'dva'
-import models from './models'
 import { BrowserRouter, StaticRouter, Route, Switch } from 'react-router-dom'
-import defaultLayout from '@/layout'
 import { getWrappedComponent, getComponent } from 'ykfe-utils'
-import { routes as Routes } from '../config/config.default'
 import { createMemoryHistory, createBrowserHistory } from 'history'
-import { ConnectedRouter } from 'react-router-redux'
+import { routes as Routes } from '../config/config.default'
+import defaultLayout from '@/layout'
+import models from './models'
 
 const initDva = (options) => {
   const app = dva(options)
@@ -27,23 +26,20 @@ const clientRender = () => {
   const store = app._store
 
   app.router(() => (
-    // ConnectedRouter for this issue https://github.com/ykfe/egg-react-ssr/issues/54
-    <ConnectedRouter history={history}>
-      <BrowserRouter>
-        <Switch>
-          {
-            Routes.map(({ path, exact, Component }) => {
-              const ActiveComponent = Component()
-              const Layout = ActiveComponent.Layout || defaultLayout
-              return <Route exact={exact} key={path} path={path} render={() => {
-                const WrappedComponent = getWrappedComponent(ActiveComponent)
-                return <Layout><WrappedComponent store={store} /></Layout>
-              }} />
-            })
-          }
-        </Switch>
-      </BrowserRouter>
-    </ConnectedRouter>
+    <BrowserRouter>
+      <Switch>
+        {
+          Routes.map(({ path, exact, Component }) => {
+            const ActiveComponent = Component()
+            const Layout = ActiveComponent.Layout || defaultLayout
+            return <Route exact={exact} key={path} path={path} render={() => {
+              const WrappedComponent = getWrappedComponent(ActiveComponent)
+              return <Layout><WrappedComponent store={store} /></Layout>
+            }} />
+          })
+        }
+      </Switch>
+    </BrowserRouter>
   ))
   const DvaApp = app.start()
 
