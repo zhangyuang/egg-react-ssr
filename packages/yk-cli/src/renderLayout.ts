@@ -11,8 +11,8 @@ const config = require(cwd + '/config/config.default')
 
 // 使用babel来处理es6 jsx语法
 require('@babel/register')({
-  only: [
-    /layout/ // babel只编译layout组件
+  ignore: [
+    /node_modules/
   ],
   presets: [
     require.resolve('@babel/preset-env'),
@@ -25,7 +25,7 @@ require('@babel/register')({
       alias: baseConfig.resolve.alias
     }],
     [require.resolve('babel-plugin-transform-define'), {
-      __isBrowser__: false
+      '__isBrowser__': false //eslint-disable-line
     }]
   ]
 })

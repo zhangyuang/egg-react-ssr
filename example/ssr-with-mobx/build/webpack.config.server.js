@@ -7,8 +7,7 @@ const isDev = process.env.NODE_ENV === 'development'
 
 const plugins = [
   new webpack.DefinePlugin({
-    __isBrowser__: false,
-    __renderCsrTpl__: false
+    '__isBrowser__': false //eslint-disable-line
   })
 ]
 module.exports = merge(baseConfig, {
