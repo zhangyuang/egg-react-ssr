@@ -17,7 +17,7 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - v1-ssr-{{ .Branch }}-{{ checksum "package-lock.json" }}
+            - v1-ssr-{{ .Branch }}-{{ checksum "package.json" }}
             - v1-ssr-{{ .Branch }}-
             - v1-ssr-
       # install chromedriver module
@@ -30,7 +30,7 @@ jobs:
             - node_modules/
             - ./packages/yk-cli/node_modules/
             - ./example/ssr-with-js/node_modules/
-          key: v1-ssr-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          key: v1-ssr-{{ .Branch }}-{{ checksum "package.json" }}
       - persist_to_workspace:
           root: ~/project
           paths:

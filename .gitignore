@@ -76,3 +76,5 @@ tests_output
 **/cache/
 
 bin
+
+package-lock.json
