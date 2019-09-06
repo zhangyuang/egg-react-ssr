@@ -1,6 +1,6 @@
 {
   "name": "yk-cli",
-  "version": "2.2.1",
+  "version": "2.2.3",
   "description": "ykcli for ssr",
   "main": "./bin/index.js",
   "types": "types/index.d.ts",
