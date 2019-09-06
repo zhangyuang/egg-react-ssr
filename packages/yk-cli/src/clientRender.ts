@@ -36,6 +36,12 @@ const dev = () => {
         res.write(str)
         res.end()
       })
+    },
+    after (app: any) {
+      app.get(/^\//, async (req: any, res: Res) => {
+        res.write(str)
+        res.end()
+      })
     }
   })
   server.listen(8000, 'localhost', () => {

@@ -66,6 +66,12 @@ const dev = () => {
                 res.write(string)
                 res.end()
             })
+        },
+        after(app) {
+            app.get(/^\//, async (req, res) => {
+                res.write(string)
+                res.end()
+            })
         }
     })
     server.listen(8000, 'localhost')
