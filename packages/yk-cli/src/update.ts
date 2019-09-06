@@ -1,7 +1,7 @@
 import ora from 'ora'
 import { execWithPromise, getWithPromise, resolveApp } from './util/index'
 
-const url = 'https://raw.githubusercontent.com/ykfe/egg-react-ssr/master/packages/yk-cli/package.json'
+const url = 'https://raw.githubusercontent.com/ykfe/egg-react-ssr/dev/packages/yk-cli/package.json'
 const isTest = process.env.NODE_ENV === 'test'
 /**
  * 判断NPM包自动更新
