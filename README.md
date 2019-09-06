@@ -10,8 +10,8 @@
 
 最小而美的服务端渲染应用骨架，特点
 
-- 小：实现方式简洁，生产环境构建出来的bundle为同等复杂度的next.js项目的0.4倍，文件数量相比于next.js减少非常多
-- 全：支持HMR，同时支持本地开发以及生产环境CSR/SSR两种渲染模式无缝切换，支持定制特定组件的渲染模式
+- 小：实现方式简洁，生产环境构建出来的bundle为同等复杂度的next.js项目的0.4倍，生成文件数量相比于next.js减少非常多
+- 全：支持HMR，同时支持本地开发以及生产环境CSR/SSR两种渲染模式无缝切换，支持定制组件的渲染模式
 - 美：基于[React](https://reactjs.org/)和[Eggjs](https://eggjs.org/)框架，拥有强大的插件生态，配置非黑盒，且一切关键位置皆可通过config.default.js来配置
 
 ## 快速入门
@@ -29,7 +29,7 @@ $ open http://localhost:7001
 
 ## 功能/特性
 
-这个项目骨架的特色是写法简单，功能强大，相关特性、原理也会在本节一一说明。
+`这个项目骨架的特色是写法简单，功能强大，一切都是组件，支持 SSR/CSR 两种渲染模式无缝切换`
 
 ### 写法
 
@@ -61,7 +61,57 @@ export default Page
 getInitialProps入参对象的属性如下：
 
 - ctx: Node应用请求的上下文(仅在SSR阶段可以获取)
-- Router Props: 路由信息，包括pathname以及Router params等信息，详细信息参考react-router文档
+- Router Props: 包含路由对象属性，包括pathname以及Router params history 等对象，详细信息参考react-router文档
+
+### 一切皆组件
+
+我们的页面基础模版 html，meta 等标签皆使用JSX来生成，避免你去使用繁琐的模版引擎语法
+
+``` js
+const commonNode = props => (
+  // 为了同时兼容ssr/csr请保留此判断，如果你的layout没有内容请使用 props.children ? <div>{ props.children }</div> : ''
+  props.children
+    ? <div className='normal'><h1 className='title'><Link to='/'>Egg + React + SSR</Link><div className='author'>by ykfe</div></h1>{props.children}</div>
+    : ''
+)
+
+const Layout = (props) => {
+  if (__isBrowser__) {
+    return commonNode(props)
+  } else {
+    const { serverData } = props.layoutData
+    const { injectCss, injectScript } = props.layoutData.app.config
+    return (
+      <html lang='en'>
+        <head>
+          <meta charSet='utf-8' />
+          <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no' />
+          <meta name='theme-color' content='#000000' />
+          <title>React App</title>
+          {
+            injectCss && injectCss.map(item => <link rel='stylesheet' href={item} key={item} />)
+          }
+        </head>
+        <body>
+          <div id='app'>{ commonNode(props) }</div>
+          {
+            serverData && <script dangerouslySetInnerHTML={{
+              __html: `window.__USE_SSR__=true; window.__INITIAL_DATA__ =${serialize(serverData)}`
+            }} />
+          }
+          <div dangerouslySetInnerHTML={{
+            __html: injectScript && injectScript.join('')
+          }} />
+        </body>
+      </html>
+    )
+  }
+}
+```
+
+### 渲染模式无缝切换
+
+在本地开发时，你可以同时启动ssr/csr两种渲染模式查看区别，在生产环境时，你可以通过设置config中的type属性来切换不同的渲染模式，在流量较大时可以降级为csr应用
 
 ## 执行环境
 
