@@ -143,7 +143,7 @@ $ pm2 deploy ecosystem.json yourprojectname
 
 ## nginx
 
-nginx 作为负载和代理服务可以实现在服务器上的静态资源托管、多应用 ruute 级别转发等基本需求。
+nginx 作为负载和代理服务可以实现在服务器上的静态资源托管、多应用 route 级别转发等基本需求。
 
 - install
 
