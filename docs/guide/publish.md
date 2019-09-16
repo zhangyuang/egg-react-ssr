@@ -92,7 +92,7 @@ $ scp ~/.ssh/id_rsa.pub username@ip:用户主目录/.ssh/authorized_keys
 
 ### pm2 配置文件 ecosystem.json
 
-```json
+```
 {
   /**
    * Deployment section
