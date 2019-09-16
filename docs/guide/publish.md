@@ -10,7 +10,7 @@ egg 提供了从部署、进程守护、监控、问题排查等一系列的解�
 
 ## pm2 部署
 
-pm2 是一个带有负载均衡功能的应用的进程管理器。当你要把你的独立代码利用全部的服务器上的所有 CPU 核数，并保证进程永远都是存活状态和 0 秒的重载，那么 PM2 是很完美的选择。详细可参考[官方的部署文档示例](http://pm2.keymetrics.io/docs/usage/deployment/)，github项目地址(https://github.com/Unitech/pm2)。
+pm2 是一个带有负载均衡功能的应用的进程管理器。当你要把你的独立代码利用全部的服务器上的所有 CPU 核数，并保证进程永远都是存活状态和 0 秒的重载，那么 PM2 是很完美的选择。详细可参考[官方的部署文档示例](http://pm2.keymetrics.io/docs/usage/deployment/)，[github项目地址](https://github.com/Unitech/pm2)。
 
 pm2 有以下的几个非常给力的能力:
 
@@ -31,7 +31,7 @@ pm2 有以下的几个非常给力的能力:
 $ npm install -g pm2
 ```
 
-- 使用pm2部署简单的项目
+- 使用 pm2 部署简单的项目
 
 ```
 $ pm2 start app.js --name "egg-react-cli" -i 0 --watch
