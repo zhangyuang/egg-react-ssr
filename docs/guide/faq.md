@@ -87,3 +87,37 @@ export default OnlyCsr(Page)
 
 形如`http://localhost:8000/user/:id`这种路由，在没有后端路由支持的情况下，服务端并不存在与之对应的资源，刷新后相当于去服务器访问该资源自然会404。
 解决方式请查看: [HTML5 History 模式](https://router.vuejs.org/zh/guide/essentials/history-mode.html)
+
+<span style="color:red">已针对该情况做本地开发时的优化</span> by this [PR](https://github.com/ykfe/egg-react-ssr/pull/79)
+
+## 如何切换渲染模式
+
+分别介绍在本地开发和生产环境如何切换渲染模式
+
+### 本地开发
+
+由于本地开发时修改config，egg进程会自动重启，故只需要修改`config.type=csr`即可  
+
+### 生产环境
+
+生产环境，config修改并不能自动重启进程，我们建议采用以下做法。访问应用时先通过配置平台获取到最新的config配置覆盖默认配置，可采用http接口的形式或者metaq这种工具来做发布订阅
+
+```js
+  async index () {
+    const { ctx } = this
+    try {
+      // Page为webpack打包的chunkName，项目默认的entry为Page
+      ctx.type = 'text/html'
+      ctx.status = 200
+      let config = ctx.app.config
+      if (ctx.app.config.env !== 'local') {
+          const extraConfig = await http.get('xxx') // 通过接口拿到实时的config,覆盖默认配置
+          config = Object.assign(config, extraConfig)
+      }
+      const stream = await renderToStream(ctx, config)
+      ctx.body = stream
+    } catch (error) {
+      ctx.logger.error(`Page Controller renderToStream Error ${error}`)
+    }
+  }
+```

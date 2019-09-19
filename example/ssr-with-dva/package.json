@@ -11,6 +11,7 @@
     "react": "16.8.3",
     "react-dev-utils": "^8.0.0",
     "react-dom": "16.8.3",
+    "react-router": "^5.0.1",
     "react-router-dom": "^5.0.0",
     "ykfe-utils": "^2.0.2"
   },
@@ -31,10 +32,6 @@
     "not ie <= 9",
     "not op_mini all"
   ],
-  "resolutions": {
-    "browserslist": "4.6.3",
-    "caniuse-lite": "1.0.30000974"
-  },
   "devDependencies": {
     "@babel/core": "^7.4.4",
     "@babel/plugin-transform-runtime": "^7.5.5",
@@ -45,7 +42,6 @@
     "@babel/runtime": "^7.5.5",
     "babel-loader": "8.0.4",
     "browserslist": "^4.6.3",
-    "caniuse-lite": "1.0.30000974",
     "concurrently": "^4.1.0",
     "cross-env": "^5.2.0",
     "css-hot-loader": "^1.4.3",

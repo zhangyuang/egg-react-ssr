@@ -1,12 +1,14 @@
 // 本文件目的是以React jsx 为模版替换掉html-webpack-plugin以及传统模版引擎, 统一ssr/csr都使用React组件来作为页面的骨架和内容部分
 import { Res } from './interface/ctx'
+import { mkdir } from 'shelljs'
 
 const webpack = require('webpack')
+const WebpackDevServer = require('webpack-dev-server')
 const fs = require('fs')
 const promisify = require('util').promisify
+const ora = require('ora')('正在构建')
 const webpackWithPromise = promisify(webpack)
 const cwd = process.env.BASE_DIR || process.cwd()
-const WebpackDevServer = require('webpack-dev-server')
 const str = require('./renderLayout')
 const clientConfig = require(cwd + '/build/webpack.config.client')
 
@@ -36,6 +38,12 @@ const dev = () => {
         res.write(str)
         res.end()
       })
+    },
+    after (app: any) {
+      app.get(/^\//, async (req: any, res: Res) => {
+        res.write(str)
+        res.end()
+      })
     }
   })
   server.listen(8000, 'localhost', () => {
@@ -45,15 +53,23 @@ const dev = () => {
 }
 
 const build = async () => {
+  ora.start()
   const stats = await webpackWithPromise(clientConfig)
   console.log(stats.toString({
     assets: true,
     colors: true,
     hash: true,
     timings: true,
-    version: true
+    version: true,
+    warnings: false
   }))
-  fs.writeFileSync(cwd + '/dist/index.html', str)
+  try {
+    fs.writeFileSync(cwd + '/dist/index.html', str)
+  } catch (error) {
+    mkdir(cwd + '/dist')
+    fs.writeFileSync(cwd + '/dist/index.html', str)
+  }
+  ora.succeed()
 }
 
 module.exports = {

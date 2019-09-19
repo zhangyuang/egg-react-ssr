@@ -4,7 +4,7 @@ import dva from 'dva'
 import { BrowserRouter, StaticRouter, Route, Switch } from 'react-router-dom'
 import { getWrappedComponent, getComponent } from 'ykfe-utils'
 import { createMemoryHistory, createBrowserHistory } from 'history'
-import { routes as Routes } from '../config/config.default'
+import { routes as Routes } from '../config/config.ssr'
 import defaultLayout from '@/layout'
 import models from './models'
 
