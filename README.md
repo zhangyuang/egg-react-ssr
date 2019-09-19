@@ -143,7 +143,7 @@ const Layout = (props) => {
 
 ### 配置
 
-为了足够灵活使用，这里我们将一些关键项提供可配置的选项，可根据实际需要来配置，如无特殊必要，使用默认配置即可。由于项目是基于Egg的，所以配置信息统一放在config.default.js。
+为了足够灵活使用，这里我们将一些关键项提供可配置的选项，可根据实际需要来配置，如无特殊必要，使用默认配置即可。服务端渲染相关配置信息我们放在config.ssr.js，在这里我们建议不要将配置放在egg的配置文件当中，避免前端bundle中包含后端配置文件信息
 
 ```js
 // config/config.ssr
@@ -181,7 +181,7 @@ module.exports = {
     `<script src='/static/js/vendor.chunk.js'></script>`,
     `<script src='/static/js/Page.chunk.js'></script>`
   ], // 客户端需要加载的静态资源文件表
-  serverJs: resolvePath(`dist/Page.server.js`) || function // 打包后的server端的bundle文件路径或者直接传入require后的function
+  serverJs: resolvePath(`dist/Page.server.js`): string|function // 打包后的server端的bundle文件路径, 接受直接传入require后的function
 }
 ```
 
