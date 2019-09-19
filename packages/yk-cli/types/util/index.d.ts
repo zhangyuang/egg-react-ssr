@@ -1,10 +1,8 @@
-/// <reference types="node" />
-import { exec } from 'child_process';
 import { Optional } from '../interface/option';
 export declare const processError: (err: string) => void;
-export declare const execWithPromise: typeof exec.__promisify__;
-export declare const downloadWithPromise: Function;
-export declare const resolveApp: (source: string) => string;
+export declare const execWithPromise: any;
+export declare const downloadWithPromise: any;
+export declare const resolveApp: (source: string) => any;
 export declare const getWithPromise: (url: string) => Promise<any>;
 /**
  * http
