@@ -20,7 +20,7 @@ const renderToStream = async (ctx, config) => {
   }
 
   if (!global.serverStream || isLocal) {
-    global.serverStream = require(serverJs).default
+    global.serverStream = typeof serverJs === 'string' ? require(serverJs).default : serverJs
   }
 
   const serverRes = await global.serverStream(ctx)

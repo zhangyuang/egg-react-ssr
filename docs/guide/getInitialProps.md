@@ -8,11 +8,11 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter, StaticRouter, Route } from 'react-router-dom'
 import defaultLayout from '@/layout'
 import { getWrappedComponent, getComponent } from 'ykfe-utils'
-import { routes as Routes } from '../config/config.default'
+import { routes as Routes } from '../config/config.ssr'
 
 const serverRender = async (ctx) => {
   // 服务端渲染 根据ctx.path获取请求的具体组件，调用getInitialProps并渲染
-  const ActiveComponent = getComponent(Routes, ctx.path)()
+  const ActiveComponent = getComponent(Routes, ctx.path)
   const serverData = ActiveComponent.getInitialProps ? await ActiveComponent.getInitialProps(ctx) : {}
   const Layout = ActiveComponent.Layout || defaultLayout
   ctx.serverData = serverData

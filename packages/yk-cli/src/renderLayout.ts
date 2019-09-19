@@ -5,9 +5,16 @@ import * as React from 'react';
 import { renderToString }from 'react-dom/server'
 
 const Module = require('module')
+const fs = require('fs')
 const cwd = process.env.BASE_DIR || process.cwd()
 const baseConfig = require(cwd + '/build/webpack.config.base')
-const config = require(cwd + '/config/config.default')
+let config 
+try {
+  fs.statSync(cwd + `/config/config.ssr.js`)
+  config = require(cwd + `/config/config.ssr`)
+} catch (error) {
+  config = require(cwd + `/config/config.default`)
+}
 
 // 使用babel来处理es6 jsx语法
 require('@babel/register')({

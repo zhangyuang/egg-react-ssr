@@ -146,10 +146,10 @@ const Layout = (props) => {
 为了足够灵活使用，这里我们将一些关键项提供可配置的选项，可根据实际需要来配置，如无特殊必要，使用默认配置即可。由于项目是基于Egg的，所以配置信息统一放在config.default.js。
 
 ```js
+// config/config.ssr
 const resolvePath = (path) => require('path').resolve(process.cwd(), path)
 
 module.exports = {
-    keys: 'eggssr',
     type: 'ssr', // 指定运行类型可设置为csr切换为客户端渲染,此时服务端不会做获取数据生成字符串的操作以及不会使用hydrate API
     static: {
         // 设置Node应用的静态资源目录，为了生产环境读取静态资源文件
@@ -181,7 +181,7 @@ module.exports = {
     `<script src='/static/js/vendor.chunk.js'></script>`,
     `<script src='/static/js/Page.chunk.js'></script>`
   ], // 客户端需要加载的静态资源文件表
-  serverJs: resolvePath(`dist/Page.server.js`) // 打包后的server端的bundle文件路径
+  serverJs: resolvePath(`dist/Page.server.js`) || function // 打包后的server端的bundle文件路径或者直接传入require后的function
 }
 ```
 

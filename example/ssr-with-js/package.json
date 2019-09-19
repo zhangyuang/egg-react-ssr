@@ -1,6 +1,6 @@
 {
   "name": "egg-ssr",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "dependencies": {
     "egg": "^2.21.0",
     "egg-scripts": "^2.11.0",
@@ -10,6 +10,7 @@
     "react-dev-utils": "^8.0.0",
     "react-dom": "16.8.3",
     "react-router-dom": "^5.0.0",
+    "yk-cli": "^2.4.0",
     "ykfe-utils": "^2.0.2"
   },
   "scripts": {
@@ -20,7 +21,7 @@
     "prod": "npm run build && eggctl start",
     "build:server": "cross-env NODE_ENV=production webpack --config build/webpack.config.server.js",
     "build:client": "cross-env NODE_ENV=production ykcli build",
-    "build": "rimraf dist && ykcli build && npm run build:server",
+    "build": "rimraf dist && npm run build:client && npm run build:server",
     "analyze": "cross-env NODE_ENV=production npm_config_report=true npm run build"
   },
   "browserslist": [
@@ -66,7 +67,6 @@
     "webpack-dev-server": "3.3.1",
     "webpack-manifest-plugin": "^2.0.4",
     "webpack-merge": "^4.1.4",
-    "webpack-node-externals": "^1.7.2",
-    "yk-cli": "^2.0.0"
+    "webpack-node-externals": "^1.7.2"
   }
 }
