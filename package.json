@@ -1,6 +1,6 @@
 {
   "name": "egg-react-ssr",
-  "version": "1.2.5",
+  "version": "2.0.0",
   "description": "The Best Scheme for Server Side Rendering",
   "main": "index.js",
   "directories": {
@@ -30,6 +30,7 @@
   "pre-commit": [
     "lint"
   ],
+  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
   "engines": {
     "node": ">=8"
   },
