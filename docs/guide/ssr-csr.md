@@ -17,7 +17,7 @@
 
 ### 本地开发
 
-以下代码皆封装在[yk-cli](https://github.com/ykfe/egg-react-ssr/tree/feat/useJsxToTpl/packages/yk-cli) 当中，让用户无感知
+以下代码皆封装在[yk-cli](https://github.com/ykfe/egg-react-ssr/blob/dev/packages/yk-cli/src/renderLayout.ts) 当中，让用户无感知
 本地开发我们通过 `webpack-dev-server` 来创建一个服务，此时需要在访问根路由时返回正确的dom解构。
 我们首先将layout组件编译为string
 
