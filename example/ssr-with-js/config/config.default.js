@@ -1,4 +1,9 @@
+const resolvePath = (path) => require('path').resolve(__dirname, path)
 
 module.exports = {
-  keys: 'egg-ssr'
+  keys: 'egg-ssr',
+  static: {
+    prefix: '/',
+    dir: resolvePath('../dist')
+  }
 }
