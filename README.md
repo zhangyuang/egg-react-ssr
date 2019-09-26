@@ -131,12 +131,6 @@ const Layout = (props) => {
 - [ ] 配套[TypeScript](https://github.com/ykfe/egg-react-ssr-typescript)版本的实现
 - [ ] 配套serverless版本的实现
 
-
-## 有哪些公司在使用我们的项目
-
-<table><tr><td align="center"><a href="https://vmall.vmate.com/shop"><img src="https://img.alicdn.com/tfs/TB17p6Vhbj1gK0jSZFOXXc7GpXa-512-512.png" width="100px;" alt="vmate 积分商城"/><br /><sub><b>vmate 积分商城
-</b></sub></a></td></tr></table>
-
 ## 执行环境
 
 - 服务器Node.js >= 7.6， 为了原生的使用async/await语法
@@ -288,6 +282,11 @@ $ npm run analyze // 可视化分析客户端打包的资源详情
 ## 如何向本项目贡献代码
 
 请查看该[wiki](https://github.com/ykfe/egg-react-ssr/blob/master/CONTRIBUTING.md)
+
+## 有哪些公司在使用我们的项目
+
+<table><tr><td align="center"><a href="https://vmall.vmate.com/shop"><img src="https://img.alicdn.com/tfs/TB17p6Vhbj1gK0jSZFOXXc7GpXa-512-512.png" width="100px;" alt="vmate 积分商城"/><br /><sub><b>vmate 积分商城
+</b></sub></a></td></tr></table>
 
 ## Contributors
 
