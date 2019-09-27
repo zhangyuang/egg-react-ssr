@@ -285,7 +285,7 @@ $ npm run analyze // 可视化分析客户端打包的资源详情
 
 ## 有哪些公司在使用我们的项目
 
-<table><tr><td align="center"><a href=https://www.youku.com"><img src="https://img.alicdn.com/tfs/TB17DTuXkH0gK0jSZPiXXavapXa-680-133.svg" width="100px;" alt="优酷"/><br /><sub><b>优酷视频
+<table><tr><td align="center"><a href="https://www.youku.com"><img src="https://img.alicdn.com/tfs/TB17DTuXkH0gK0jSZPiXXavapXa-680-133.svg" width="100px;" alt="优酷"/><br /><sub><b>优酷视频 
 </b></sub></a></td><td align="center"><a href="https://vmall.vmate.com/shop"><img src="https://img.alicdn.com/tfs/TB17p6Vhbj1gK0jSZFOXXc7GpXa-512-512.png" width="100px;" alt="vmate 积分商城"/><br /><sub><b>VMate短视频
 </b></sub></a></td></tr></table>
 
