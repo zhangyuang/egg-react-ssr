@@ -27,6 +27,7 @@ const dev = (argv?: Argv) => {
     publicPath: '/',
     hotOnly: true,
     host: 'localhost',
+    sockPort: PORT,
     contentBase: cwd + '/dist',
     hot: true,
     port: PORT,
