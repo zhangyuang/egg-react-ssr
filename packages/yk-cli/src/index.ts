@@ -2,10 +2,11 @@
 
 import yargs from 'yargs'
 import { Optional } from './interface/option'
+import { Argv } from './interface/argv'
 import init from './init'
 
 yargs
-  .command('init [appName]', 'init the program', {}, async (argv: any) => {
+  .command('init [appName]', 'init the program', {}, async (argv: Argv) => {
     const option: Optional = {
       appName: argv.appName || 'app'
     }
@@ -14,7 +15,7 @@ yargs
   .command('dev', 'start clientRender', {}, async () => {
     process.env.NODE_ENV = 'development'
     const { dev } = require('./clientRender')
-    await dev()
+    await dev(yargs.argv)
   })
   .command('build', 'start clientRender', {}, async () => {
     process.env.NODE_ENV = 'production'

@@ -1,6 +1,7 @@
 // 本文件目的是以React jsx 为模版替换掉html-webpack-plugin以及传统模版引擎, 统一ssr/csr都使用React组件来作为页面的骨架和内容部分
-import { Res } from './interface/ctx'
 import { mkdir } from 'shelljs'
+import { Res } from './interface/ctx'
+import { Argv } from './interface/argv'
 
 const webpack = require('webpack')
 const WebpackDevServer = require('webpack-dev-server')
@@ -11,14 +12,14 @@ const webpackWithPromise = promisify(webpack)
 const cwd = process.env.BASE_DIR || process.cwd()
 const str = require('./renderLayout')
 const clientConfig = require(cwd + '/build/webpack.config.client')
-
 process.on && process.on('message', data => {
   if (data.msg === 'start dev') {
     dev()
   }
 })
 
-const dev = () => {
+const dev = (argv?: Argv) => {
+  const PORT = (argv && argv.PORT) || 8000
   const compiler = webpack(clientConfig)
   const server = new WebpackDevServer(compiler, {
     quiet: true,
@@ -28,7 +29,7 @@ const dev = () => {
     host: 'localhost',
     contentBase: cwd + '/dist',
     hot: true,
-    port: 8000,
+    port: PORT,
     clientLogLevel: 'error',
     headers: {
       'access-control-allow-origin': '*'
@@ -46,8 +47,8 @@ const dev = () => {
       })
     }
   })
-  server.listen(8000, 'localhost', () => {
-    console.log('Starting server on http://localhost:8000')
+  server.listen(PORT, 'localhost', () => {
+    console.log(`Starting server on http://localhost:${PORT}`)
     process.send && process.send({ msg: 'start dev finish' })
   })
 }
