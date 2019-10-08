@@ -24,7 +24,7 @@ const dev = (argv?: Argv) => {
   const server = new WebpackDevServer(compiler, {
     quiet: true,
     disableHostCheck: true,
-    publicPath: '/',
+    publicPath: clientConfig.output.publicPath || '/',
     hotOnly: true,
     host: 'localhost',
     sockPort: PORT,
