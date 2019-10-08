@@ -26,7 +26,7 @@ const dev = (argv?: Argv) => {
     disableHostCheck: true,
     publicPath: clientConfig.output.publicPath || '/',
     hotOnly: true,
-    host: 'localhost',
+    host: '0.0.0.0',
     sockPort: PORT,
     contentBase: cwd + '/dist',
     hot: true,
@@ -48,7 +48,7 @@ const dev = (argv?: Argv) => {
       })
     }
   })
-  server.listen(PORT, 'localhost', () => {
+  server.listen(PORT, '0.0.0.0', () => {
     console.log(`Starting server on http://localhost:${PORT}`)
     process.send && process.send({ msg: 'start dev finish' })
   })
