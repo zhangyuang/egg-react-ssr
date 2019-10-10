@@ -9,9 +9,11 @@ const renderToStream = async (ctx, config) => {
     return string
   }
 
-  if (!global.renderToNodeStream) {
+  if (!global.renderToNodeStream && config.externals) {
     // for this issue https://github.com/ykfe/egg-react-ssr/issues/4
     global.renderToNodeStream = require(baseDir + '/node_modules/react-dom/server').renderToNodeStream
+  } else {
+    global.renderToNodeStream = require('react-dom/server').renderToNodeStream
   }
 
   if (isLocal) {
