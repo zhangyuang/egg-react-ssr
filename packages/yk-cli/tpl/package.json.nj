@@ -37,7 +37,6 @@
     "@babel/polyfill": "^7.4.4",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
-    "@babel/register": "^7.0.0",
     "@babel/runtime": "^7.5.5",
     "babel-loader": "8.0.4",
     "browserslist": "^4.6.3",
