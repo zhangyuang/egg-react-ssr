@@ -49,7 +49,7 @@
       "**/bin/",
       "**/es/",
       "packages/ykfe-utils/src/loadable.js",
-      "**/node_modules/"
+      "**/node_modules/**"
     ],
     "global": [
       "__isBrowser__",
