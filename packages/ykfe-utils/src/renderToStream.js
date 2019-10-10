@@ -4,16 +4,19 @@ const renderToStream = async (ctx, config) => {
   const baseDir = config.baseDir || process.cwd()
   const isLocal = config.env === 'local'
   const serverJs = config.serverJs
+  const runtime = config.runtime
   if (config.type !== 'ssr') {
     const string = require('yk-cli/bin/renderLayout')
     return string
   }
-
-  if (!global.renderToNodeStream && config.externals) {
-    // for this issue https://github.com/ykfe/egg-react-ssr/issues/4
-    global.renderToNodeStream = require(baseDir + '/node_modules/react-dom/server').renderToNodeStream
-  } else {
-    global.renderToNodeStream = require('react-dom/server').renderToNodeStream
+  if (!global.renderToNodeStream) {
+    if (runtime === 'fc') {
+      // 针对fc runtime 将第三方模块打包进来不需要特殊处理
+      global.renderToNodeStream = require('react-dom/server').renderToNodeStream
+    } else {
+      // for this issue https://github.com/ykfe/egg-react-ssr/issues/4
+      global.renderToNodeStream = require(baseDir + '/node_modules/react-dom/server').renderToNodeStream
+    }
   }
 
   if (isLocal) {
@@ -22,7 +25,11 @@ const renderToStream = async (ctx, config) => {
   }
 
   if (!global.serverStream || isLocal) {
-    global.serverStream = typeof serverJs === 'string' ? require(serverJs).default : serverJs
+    if (runtime === 'fc') {
+      global.serverStream = typeof serverJs === 'string' ? require('../../../web/' + serverJs).default : serverJs
+    } else {
+      global.serverStream = typeof serverJs === 'string' ? require(serverJs).default : serverJs
+    }
   }
 
   const serverRes = await global.serverStream(ctx)
