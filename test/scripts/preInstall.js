@@ -19,8 +19,8 @@ const install = (path, shell, afterHooks) => {
 }
 
 const preInstall = async () => {
-  install('./packages/yk-cli/node_modules', 'cd ./packages/yk-cli && npm i', 'cd ./packages/yk-cli && npm run build')
-  install('./example/ssr-with-js/node_modules', 'cd ./example/ssr-with-js && npm i --registry=https://registry.npm.taobao.org')
+  install('./packages/yk-cli/node_modules', 'cd ./packages/yk-cli && npm i')
+  install('./example/ssr-with-js/node_modules', 'cd ./example/ssr-with-js && npm i && npm run build')
 }
 
 preInstall().catch(err => {

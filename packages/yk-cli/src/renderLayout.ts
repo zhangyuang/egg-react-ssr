@@ -3,12 +3,16 @@
 
 import * as React from 'react';
 import { renderToString }from 'react-dom/server'
+import path from 'path'
+import { webpackWithPromise } from './util'
 
-const Module = require('module')
 const fs = require('fs')
+const nodeExternals = require('webpack-node-externals');
 const cwd = process.env.BASE_DIR || process.cwd()
-const baseConfig = require(cwd + '/build/webpack.config.base')
-let config 
+const serverConfig = require(cwd + '/build/webpack.config.server')
+const isDev = process.env.NODE_ENV === 'development'
+let config: object
+
 try {
   fs.statSync(cwd + `/config/config.ssr.js`)
   config = require(cwd + `/config/config.ssr`)
@@ -16,45 +20,46 @@ try {
   config = require(cwd + `/config/config.default`)
 }
 
-// 使用babel来处理es6 jsx语法
-require('@babel/register')({
-  ignore: [
-    /node_modules/
-  ],
-  presets: [
-    require.resolve('@babel/preset-env'),
-    require.resolve('@babel/preset-react')
-  ],
-  plugins: [
-    require.resolve('@babel/plugin-transform-runtime'),
-    [require.resolve('babel-plugin-module-resolver'), {
-      root: ['./'],
-      alias: baseConfig.resolve.alias
-    }],
-    [require.resolve('babel-plugin-transform-define'), {
-      '__isBrowser__': false //eslint-disable-line
-    }]
-  ]
+serverConfig.entry = {
+  Layout: cwd + '/web/layout'
+}
+
+serverConfig.output.path = path.resolve(__dirname, '../dist')
+serverConfig.externals = nodeExternals({
+  whitelist: /\.(css|less|sass|scss)$/,
+  modulesDir: path.resolve(__dirname, '../../') // 保证寻找第三方模块的node_modules是当前应用的node_modules
 })
-
-Module._extensions['.less'] = () => {}
-Module._extensions['.sass'] = () => {}
-Module._extensions['.css'] = () => {}
-
-const Layout = require(cwd + '/web/layout').default
 
 const reactToString = (Component: React.ComponentClass, props: object) => {
   return renderToString(React.createElement(Component, props))
 }
 
-const props = {
-  layoutData: {
-    app: {
-      config: config
+const renderLayout = async () => {
+  let Layout
+
+  if (isDev) {
+    delete require.cache[path.resolve(__dirname, '../dist/Layout.server.js')]
+  }
+
+  try {
+    Layout = require('../dist/Layout.server').default
+  } catch (error) {
+    await webpackWithPromise(serverConfig)
+    Layout = require('../dist/Layout.server').default
+  }
+
+  const props = {
+    layoutData: {
+      app: {
+        config: config
+      }
     }
   }
+
+  const str = reactToString(Layout, props)
+  return str
 }
 
-const string = reactToString(Layout, props)
+export default renderLayout
 
-module.exports = string
+

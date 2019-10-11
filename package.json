@@ -13,7 +13,7 @@
     "test": "node ./test/scripts/preInstall.js && npm run test:unit && npm run test:coverage && npm run test:e2e",
     "test:coverage": "codecov",
     "test:unit": "NODE_ENV=test jest --coverage",
-    "test:e2e": "NODE_ENV=development node ./test/e2e/startServer.js",
+    "test:e2e": "NODE_ENV=production node ./test/e2e/startServer.js",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs && npm run publish",
     "publish": "surge ./docs/.vuepress/dist ykfe.surge.sh --domain ykfe.net"
@@ -30,7 +30,9 @@
   "pre-commit": [
     "lint"
   ],
-  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "engines": {
     "node": ">=8"
   },
@@ -75,5 +77,6 @@
     "tslint-config-standard": "^8.0.1",
     "typescript": "^3.5.3",
     "vuepress": "^0.14.8"
-  }
+  },
+  "dependencies": {}
 }

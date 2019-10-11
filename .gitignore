@@ -78,3 +78,5 @@ tests_output
 bin
 
 package-lock.json
+
+dist

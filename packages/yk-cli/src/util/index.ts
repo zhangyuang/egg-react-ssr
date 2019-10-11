@@ -5,10 +5,13 @@ import path from 'path'
 import { Optional } from '../interface/option'
 import fs from 'fs'
 import nunjucks from 'nunjucks'
+import webpack from 'webpack'
 
 const download = require('download-git-repo')
 const tsUrl = 'https://raw.githubusercontent.com/zhusjfaker/egg-react-ssr/backup/example/ssr-with-ts/package.json'
 const jsUrl = 'https://raw.githubusercontent.com/ykfe/egg-react-ssr/master/example/ssr-with-js/package.json'
+
+export const webpackWithPromise = promisify(webpack)
 
 export const processError = (err: string) => {
   if (err) {

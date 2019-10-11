@@ -5,13 +5,16 @@ const renderToStream = async (ctx, config) => {
   const isLocal = config.env === 'local'
   const serverJs = config.serverJs
   const runtime = config.runtime
+
   if (config.type !== 'ssr') {
-    const string = require('yk-cli/bin/renderLayout')
-    return string
+    const renderLayout = require('yk-cli/bin/renderLayout').default
+    const str = await renderLayout()
+    return str
   }
+
   if (!global.renderToNodeStream) {
-    if (runtime === 'fc') {
-      // 针对fc runtime 将第三方模块打包进来不需要特殊处理
+    if (runtime === 'serverless') {
+      // 针对serverless runtime 将第三方模块打包进来不需要特殊处理
       global.renderToNodeStream = require('react-dom/server').renderToNodeStream
     } else {
       // for this issue https://github.com/ykfe/egg-react-ssr/issues/4
@@ -25,7 +28,7 @@ const renderToStream = async (ctx, config) => {
   }
 
   if (!global.serverStream || isLocal) {
-    if (runtime === 'fc') {
+    if (runtime === 'serverless') {
       global.serverStream = typeof serverJs === 'string' ? require('../../../web/' + serverJs).default : serverJs
     } else {
       global.serverStream = typeof serverJs === 'string' ? require(serverJs).default : serverJs
