@@ -1,4 +1,5 @@
 'use strict'
+
 const path = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
@@ -14,6 +15,7 @@ const publicPath = '/'
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false'
 const isDev = process.env.NODE_ENV === 'development'
 const devtool = isDev ? 'cheap-module-source-map' : (shouldUseSourceMap ? 'source-map' : false)
+
 const optimization = {
   runtimeChunk: true,
   splitChunks: {
@@ -31,6 +33,7 @@ const optimization = {
     }
   }
 }
+
 if (!isDev) {
   optimization.minimizer = [
     new TerserPlugin({
@@ -77,7 +80,7 @@ if (!isDev) {
     })
   ]
 }
-
+console.log('abc')
 const plugins = [
   new webpack.DefinePlugin({
     '__isBrowser__': true // eslint-disable-line
@@ -93,7 +96,7 @@ const plugins = [
 if (process.env.npm_config_report === 'true') {
   plugins.push(new BundleAnalyzerPlugin())
 }
-
+console.log('xxx')
 module.exports = merge(baseConfig, {
   devtool: devtool,
   entry: {

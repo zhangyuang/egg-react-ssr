@@ -4,7 +4,7 @@ const ssrConfig = require('../../../config/config.ssr');
 
 @provide()
 @controller('/')
-export class HomeController {
+export class Page {
 
   @inject()
   ctx: Context;
@@ -18,6 +18,7 @@ export class HomeController {
       Object.assign(this.ctx.app.config, ssrConfig);
       const stream = await renderToStream(this.ctx, this.ctx.app.config);
       this.ctx.body = stream;
+      console.log('123')
     } catch (error) {
       this.ctx.logger.error(`Page Controller renderToStream Error ${error}`);
     }

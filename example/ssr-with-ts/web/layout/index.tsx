@@ -1,18 +1,18 @@
 
-import React from 'react'
-import serialize from 'serialize-javascript'
+import * as React from 'react'
+import * as serialize from 'serialize-javascript'
 import { Link } from 'react-router-dom'
-import '@/assets/common.less'
+// import '@/assets/common.less'
 import './index.less'
-
-const commonNode = props => (
+declare const __isBrowser__: boolean;
+const commonNode = (props:any) => (
   // 为了同时兼容ssr/csr请保留此判断，如果你的layout没有内容请使用 props.children ? <div>{ props.children }</div> : ''
   props.children
     ? <div className='normal'><h1 className='title'><Link to='/'>Egg + React + SSR</Link><div className='author'>by ykfe</div></h1>{props.children}</div>
     : ''
 )
 
-const Layout = (props) => {
+const Layout: JSX.Element|any = (props:any) => {
   if (__isBrowser__) {
     return commonNode(props)
   } else {
@@ -26,7 +26,7 @@ const Layout = (props) => {
           <meta name='theme-color' content='#000000' />
           <title>React App</title>
           {
-            injectCss && injectCss.map(item => <link rel='stylesheet' href={item} key={item} />)
+            injectCss && injectCss.map((item:any) => <link rel='stylesheet' href={item} key={item} />)
           }
         </head>
         <body>

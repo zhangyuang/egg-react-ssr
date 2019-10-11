@@ -1,14 +1,14 @@
-import React from 'react'
+import * as React from 'react'
 import { Link } from 'react-router-dom'
 import './index.less'
 
-function Page (props) {
+function Page (props:any) :JSX.Element{
   return (
     <div className='normal'>
       <div className='welcome' />
       <ul className='list'>
         {
-          props.news && props.news.map(item => (
+          props.news && props.news.map((item:any) => (
             <li key={item.id}>
               <div>文章标题: {item.title}</div>
               <div className='toDetail'><Link to={`/news/${item.id}`}>点击查看详情</Link></div>
@@ -20,7 +20,7 @@ function Page (props) {
   )
 }
 
-Page.getInitialProps = (ctx) => {
+Page.getInitialProps = (ctx:any) => {
   return Promise.resolve({
     news: [
       {

@@ -1,9 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, StaticRouter, Route } from 'react-router-dom'
-import defaultLayout from '@/layout'
-import { getWrappedComponent, getComponent } from 'ykfe-utils'
+import defaultLayout from './layout'
+const { getWrappedComponent, getComponent } = require('ykfe-utils') 
 import { routes as Routes } from '../config/config.ssr'
+
+declare var window: Window & { __USE_SSR__: string }
+declare const __isBrowser__: boolean;
 
 const clientRender = async () => {
   // 客户端渲染||hydrate
@@ -23,12 +26,12 @@ const clientRender = async () => {
     </BrowserRouter>
     , document.getElementById('app'))
 
-  if (process.env.NODE_ENV === 'development' && module.hot) {
-    module.hot.accept()
-  }
+  // if (process.env.NODE_ENV === 'development' && module.hot) {
+  //   module.hot.accept()
+  // }
 }
 
-const serverRender = async (ctx) => {
+const serverRender = async (ctx:any) => {
   // 服务端渲染 根据ctx.path获取请求的具体组件，调用getInitialProps并渲染
   const ActiveComponent = getComponent(Routes, ctx.path)()
   const Layout = ActiveComponent.Layout || defaultLayout
@@ -40,5 +43,4 @@ const serverRender = async (ctx) => {
     </Layout>
   </StaticRouter>
 }
-
 export default __isBrowser__ ? clientRender() : serverRender
