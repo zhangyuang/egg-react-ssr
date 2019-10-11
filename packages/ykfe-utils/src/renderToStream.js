@@ -23,16 +23,13 @@ const renderToStream = async (ctx, config) => {
     // 本地开发环境下每次刷新的时候清空require服务端文件的缓存，保证服务端与客户端渲染结果一致
     delete require.cache[serverJs]
   }
-  try {
-    if (!global.serverStream || isLocal) {
-      if (runtime === 'fc') {
-        global.serverStream = typeof serverJs === 'string' ? require('../../../web/' + serverJs).default : serverJs
-      } else {
-        global.serverStream = typeof serverJs === 'string' ? require(serverJs).default : serverJs
-      }
+
+  if (!global.serverStream || isLocal) {
+    if (runtime === 'fc') {
+      global.serverStream = typeof serverJs === 'string' ? require('../../../web/' + serverJs).default : serverJs
+    } else {
+      global.serverStream = typeof serverJs === 'string' ? require(serverJs).default : serverJs
     }
-  } catch (error) {
-    // 兼容非fc场景编译的时候打包静态分析会报错，这里要catch一下，实际运行时无错误
   }
 
   const serverRes = await global.serverStream(ctx)
