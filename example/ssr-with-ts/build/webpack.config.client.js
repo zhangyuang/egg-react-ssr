@@ -96,7 +96,7 @@ const plugins = [
 if (process.env.npm_config_report === 'true') {
   plugins.push(new BundleAnalyzerPlugin())
 }
-console.log('xxx')
+console.log(paths.appBuild)
 module.exports = merge(baseConfig, {
   devtool: devtool,
   entry: {

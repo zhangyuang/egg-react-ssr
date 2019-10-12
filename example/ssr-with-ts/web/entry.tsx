@@ -4,11 +4,12 @@ import { BrowserRouter, StaticRouter, Route } from 'react-router-dom'
 import defaultLayout from './layout'
 const { getWrappedComponent, getComponent } = require('ykfe-utils') 
 import { routes as Routes } from '../config/config.ssr'
+import { window, __isBrowser__} from './global'
 
-declare var window: Window & { __USE_SSR__: string }
-declare const __isBrowser__: boolean;
 
 const clientRender = async () => {
+  console.log(124)
+
   // 客户端渲染||hydrate
   ReactDOM[window.__USE_SSR__ ? 'hydrate' : 'render'](
     <BrowserRouter>

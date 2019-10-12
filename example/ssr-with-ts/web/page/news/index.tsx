@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import './index.less'
 declare const __isBrowser__: boolean;
 const mockData: any = {

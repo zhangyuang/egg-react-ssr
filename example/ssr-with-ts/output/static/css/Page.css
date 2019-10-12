@@ -1,3 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+a {
+  color: #fff;
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+}
+
 .normal {
   font-family: Georgia, sans-serif;
   text-align: center;

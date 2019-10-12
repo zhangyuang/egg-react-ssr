@@ -18,7 +18,7 @@
     "strict": true,
     "strictPropertyInitialization": false,
     "stripInternal": true,
-    "target": "ES5",
+    "target": "ES2017",
     "jsx": "react"
   },
   "exclude": [

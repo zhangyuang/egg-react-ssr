@@ -1,10 +1,10 @@
 
-import * as React from 'react'
-import * as serialize from 'serialize-javascript'
+import React from 'react'
+import serialize from 'serialize-javascript'
 import { Link } from 'react-router-dom'
-// import '@/assets/common.less'
+import '@/assets/common.less'
 import './index.less'
-declare const __isBrowser__: boolean;
+import { __isBrowser__ } from '../global'
 const commonNode = (props:any) => (
   // 为了同时兼容ssr/csr请保留此判断，如果你的layout没有内容请使用 props.children ? <div>{ props.children }</div> : ''
   props.children
@@ -12,11 +12,14 @@ const commonNode = (props:any) => (
     : ''
 )
 
-const Layout: JSX.Element|any = (props:any) => {
+const Layout: JSX.Element | any = (props: any) => {
+  console.log(__isBrowser__)
   if (__isBrowser__) {
     return commonNode(props)
   } else {
-    const { serverData } = props.layoutData
+    console.log(props)
+    // const { serverData } = props.layoutData
+    const serverData = false
     const { injectCss, injectScript } = props.layoutData.app.config
     return (
       <html lang='en'>
