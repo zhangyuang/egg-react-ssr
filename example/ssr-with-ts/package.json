@@ -65,6 +65,13 @@
   "engines": {
     "node": ">=10.16.0"
   },
+  "standard": {
+    "global": [
+      "__isBrowser__",
+      "location",
+      "window"
+    ]
+  },
   "scripts": {
     "prod": "egg-scripts start --daemon --title=egg-server-ssr-with-ts --framework=midway --ts",
     "start": "concurrently \"npm run ssr\" \"npm run csr\"",

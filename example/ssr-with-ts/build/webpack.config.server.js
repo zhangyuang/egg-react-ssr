@@ -27,4 +27,3 @@ module.exports = merge(baseConfig, {
   },
   plugins: plugins
 })
-console.log('hello')

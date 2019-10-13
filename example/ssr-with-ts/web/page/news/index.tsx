@@ -1,5 +1,6 @@
 import React from 'react'
 import './index.less'
+import { Context } from '../../interface/ctx'
 declare const __isBrowser__: boolean;
 const mockData: any = {
   1: `Racket-on-Chez continues to improve. Snapshot builds are currently available at pre.racket-lang.org, and we expect that Racket-on-Chez will be included as a download option in the next release.`,
@@ -17,7 +18,7 @@ function News (props:any) {
   )
 }
 
-News.getInitialProps = (ctx:any) => {
+News.getInitialProps = (ctx:Context) => {
   const newsId = __isBrowser__ ? ctx.match.params.id : ctx.params.id
   return Promise.resolve({
     newsDetail: mockData[newsId]

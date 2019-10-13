@@ -80,7 +80,6 @@ if (!isDev) {
     })
   ]
 }
-console.log('abc')
 const plugins = [
   new webpack.DefinePlugin({
     '__isBrowser__': true // eslint-disable-line
@@ -96,7 +95,6 @@ const plugins = [
 if (process.env.npm_config_report === 'true') {
   plugins.push(new BundleAnalyzerPlugin())
 }
-console.log(paths.appBuild)
 module.exports = merge(baseConfig, {
   devtool: devtool,
   entry: {

@@ -2,8 +2,11 @@
   "compileOnSave": true,
   "compilerOptions": {
     "esModuleInterop": true,
-    "allowJs": true,
-    "declaration": false,
+    "declarationDir": "./web/types",
+    "lib": [
+      "esnext"
+    ],
+    "declaration": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "incremental": true,
