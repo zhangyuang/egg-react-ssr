@@ -6,14 +6,16 @@ import '@/assets/common.less'
 import './index.less'
 import { LayoutProps } from '../interface/layoutProps'
 
-const commonNode = (props:any) => (
+const commonNode = (props: LayoutProps) => (
   // 为了同时兼容ssr/csr请保留此判断，如果你的layout没有内容请使用 props.children ? <div>{ props.children }</div> : ''
-  props.children
-    ? <div className='normal'><h1 className='title'><Link to='/'>Egg + React + SSR</Link><div className='author'>by ykfe</div></h1>{props.children}</div>
-    : ''
+  <div className='normal'>
+      <h1 className='title'>
+        <Link to='/'>Egg + React + SSR</Link>
+      <div className='author'>by ykfe</div>
+    </h1>{props.children ? props.children : ''}</div>
 )
 
-const Layout: JSX.Element | any = (props: LayoutProps) => {
+const Layout: SFC<LayoutProps>  = (props: LayoutProps):JSX.Element => {
   if (__isBrowser__) {
     return commonNode(props)
   } else {
