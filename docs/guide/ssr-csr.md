@@ -13,7 +13,7 @@
 
 ## csr模式下自己diy模版的生成内容
 
-借助React官方api我们可以将一个React组件编译为html字符串
+借助React官方Api我们可以将一个React组件编译为html字符串
 
 ### 本地开发
 
@@ -23,24 +23,31 @@
 
 ``` js
 // yk-cli/renderLayout.js
-const Layout = require(cwd + '/web/layout').default
+const renderLayout = async () => {
+  let Layout
+  // 我们调用webpack的api来用应用目录下的webpack配置来编译layout组件，使其可以在Node环境中运行
+  try {
+    // serverless 场景我们从事先构建好的应用目录下的dist文件夹中读取layout
+    Layout = isServerless ? require('../../../dist/Layout.server').default : require('../dist/Layout.server').default
+  } catch (error) {
+    // 非serverless场景首次读取失败我们先调用webpack api构建一遍在ykcli的目录下再读取
+    const webpackWithPromise = require('./util')
+    await webpackWithPromise(serverConfig)
+    Layout = require('../dist/Layout.server').default
+  }
 
-const reactToString = (Component, props) => {
-  return renderToString(React.createElement(Component, props))
-}
-
-// 此时props.children的值为undefined,我们只需要渲染一个空的layout骨架即可
-const props = {
-  layoutData: {
-    app: {
-      config: config
+  // 此时props.children 为 undefined 我们只需要传染一个空的layout骨架即可
+  const props = {
+    layoutData: {
+      app: {
+        config: config
+      }
     }
   }
+
+  const str = reactToString(Layout, props)
+  return str
 }
-
-const string = reactToString(Layout, props)
-
-module.exports = string
 ```
 
 然后启动服务，将string返回
@@ -167,8 +174,9 @@ return stream
 // ykfe-utils/renderToStream.js
 
 if (config.type !== 'ssr') {
-    const string = require('yk-cli/bin/renderLayout')
-    return string
+    const renderLayout = require('yk-cli/bin/renderLayout').default
+    const str = await renderLayout()
+    return str
 }
 ```
 
