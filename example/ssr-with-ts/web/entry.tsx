@@ -2,19 +2,10 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, StaticRouter, Route } from 'react-router-dom'
 import defaultLayout from './layout'
-const { getWrappedComponent, getComponent } = require('ykfe-utils')
-// import { routes as Routes } from '../config/config.ssr'
 import { Context } from './interface/ctx'
 import { RouteItem } from './interface/route'
 const { routes } = require('../config/config.ssr')
-
-// declare var module: NodeModule
-
-// interface Window {
-//   __USE_SSR__?: string
-// }
-// declare const window: Window
-// declare const __isBrowser__: boolean
+const { getWrappedComponent, getComponent } = require('ykfe-utils')
 
 const clientRender = async (): Promise<void> => {
 

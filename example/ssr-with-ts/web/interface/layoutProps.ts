@@ -1,3 +1,6 @@
+import { ReactChildren } from "react";
+
 export interface LayoutProps {
-    layoutData?:any
+    layoutData?: any,
+    children?: ReactChildren
 }

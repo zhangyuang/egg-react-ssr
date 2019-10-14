@@ -25,7 +25,6 @@
     "@babel/runtime": "^7.5.5",
     "@types/mocha": "^5.2.7",
     "@types/node": "^10.6.0",
-    "midway-demo-lib": "1",
     "babel-loader": "8.0.4",
     "babel-preset-react-app": "^9.0.2",
     "concurrently": "^4.1.0",
@@ -38,6 +37,7 @@
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
     "midway-bin": "1",
+    "midway-demo-lib": "1",
     "mini-css-extract-plugin": "^0.5.0",
     "optimize-css-assets-webpack-plugin": "5.0.1",
     "postcss-flexbugs-fixes": "4.1.0",
@@ -51,6 +51,7 @@
     "ts-node": "^8.3.0",
     "tslib": "^1.8.1",
     "tslint": "^5.11.0",
+    "tslint-config-standard": "^8.0.1",
     "tslint-midway-contrib": "1",
     "typescript": "^3.5.0",
     "url-loader": "1.1.1",
@@ -99,6 +100,6 @@
     "type": "git",
     "url": ""
   },
-  "author": "",
+  "author": "JerryYuX",
   "license": "MIT"
 }

@@ -3,7 +3,11 @@ import { Link } from 'react-router-dom'
 import './index.less'
 import { News } from '../../interface/news'
 
-function Page (props:any) :JSX.Element{
+interface Props{
+  news: Array<News>
+}
+
+const Page: SFC<Props> = (props:Props): JSX.Element => {
   return (
     <div className='normal'>
       <div className='welcome' />

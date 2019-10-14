@@ -1,4 +1,4 @@
-export interface NodeModule {
+export interface NodeModule  {
     hot?: Hot
 }
 interface Hot {
