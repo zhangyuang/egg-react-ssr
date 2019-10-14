@@ -2,11 +2,11 @@
   "compileOnSave": true,
   "compilerOptions": {
     "esModuleInterop": true,
-    "declarationDir": "./web/types",
     "lib": [
       "esnext"
     ],
     "declaration": true,
+    "declarationDir": "./types/",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "incremental": true,
@@ -30,7 +30,6 @@
     "dist",
     "node_modules*",
     "test",
-    "**/*.d.ts",
     "**/*.spec.ts"
   ]
 }

@@ -6,15 +6,15 @@ const { getWrappedComponent, getComponent } = require('ykfe-utils')
 // import { routes as Routes } from '../config/config.ssr'
 import { Context } from './interface/ctx'
 import { RouteItem } from './interface/route'
-import { NodeModule } from './interface/nodeModule'
 const { routes } = require('../config/config.ssr')
 
-declare var module: NodeModule
-interface Window {
-  __USE_SSR__?: string
-}
-declare const window: Window
-declare const __isBrowser__: boolean
+// declare var module: NodeModule
+
+// interface Window {
+//   __USE_SSR__?: string
+// }
+// declare const window: Window
+// declare const __isBrowser__: boolean
 
 const clientRender = async (): Promise<void> => {
 
