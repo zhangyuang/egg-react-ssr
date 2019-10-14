@@ -1,5 +1,5 @@
-import { controller, get, provide, inject ,Context} from 'midway';
-const  renderToStream  = require('ykfe-utils/lib/renderToStream');
+import { controller, get, provide, inject, Context } from 'midway';
+const renderToStream = require('ykfe-utils/lib/renderToStream');
 const ssrConfig = require('../../../config/config.ssr');
 
 @provide()
@@ -24,5 +24,5 @@ export class Page {
             this.ctx.logger.error(`Page Controller renderToStream Error ${error}`);
         }
     }
-    
+
 }

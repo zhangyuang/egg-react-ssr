@@ -12,7 +12,7 @@ const mockData: any = {
 interface Props {
   newsDetail: string
 }
-const News:SFC<Props> = (props:Props) => {
+const News: SFC<Props> = (props: Props) => {
   return (
     <div className='news-container' >
       文章详情: {props.newsDetail}
@@ -20,7 +20,7 @@ const News:SFC<Props> = (props:Props) => {
   )
 }
 
-News.getInitialProps = (ctx:Context) => {
+News.getInitialProps = (ctx: Context) => {
   const newsId = __isBrowser__ ? ctx.match.params.id : ctx.params.id
   return Promise.resolve({
     newsDetail: mockData[newsId]

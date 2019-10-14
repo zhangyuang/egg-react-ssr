@@ -19,5 +19,5 @@ interface Hot {
 declare const __isBrowser__: boolean
 
 interface SFC<P> extends React.SFC<Props> {
-    getInitialProps ?: any,
+    getInitialProps(any): Promise<T>,
 }

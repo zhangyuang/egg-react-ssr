@@ -1,6 +1,6 @@
-import { ReactChildren } from "react";
+import { ReactChildren } from 'react'
 
 export interface LayoutProps {
-    layoutData?: any,
-    children?: ReactChildren
+  layoutData?: any,
+  children?: ReactChildren
 }
