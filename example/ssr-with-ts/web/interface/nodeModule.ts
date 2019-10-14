@@ -1,6 +1,6 @@
-export interface NodeModule  {
-    hot?: Hot
+export interface NodeModule {
+  hot?: Hot
 }
 interface Hot {
-    accept(path?: string): void
+  accept (path?: string): void
 }

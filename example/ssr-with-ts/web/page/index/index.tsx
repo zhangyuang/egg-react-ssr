@@ -1,19 +1,22 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './index.less'
-import { News } from '../../interface/news'
 
-interface Props{
-  news: Array<News>
+interface Props {
+  news: News[]
+}
+interface News {
+  id: string,
+  title: string
 }
 
-const Page: SFC<Props> = (props:Props): JSX.Element => {
+const Page: SFC<Props> = (props: Props): JSX.Element => {
   return (
     <div className='normal'>
       <div className='welcome' />
       <ul className='list'>
         {
-          props.news && props.news.map((item:News) => (
+          props.news && props.news.map((item: News) => (
             <li key={item.id}>
               <div>文章标题: {item.title}</div>
               <div className='toDetail'><Link to={`/news/${item.id}`}>点击查看详情</Link></div>

@@ -1,7 +1,3 @@
-interface Hot {
-    accept(path?: string): void
-}
-
 interface Window {
     __USE_SSR__?: string
 }

@@ -1,0 +1,10 @@
+{
+  "Page.css": "/static/css/Page.chunk.css",
+  "Page.js": "/static/js/Page.chunk.js",
+  "Page.js.map": "/static/js/Page.chunk.js.map",
+  "runtime~Page.js": "/static/js/runtime~Page.js",
+  "runtime~Page.js.map": "/static/js/runtime~Page.js.map",
+  "vendor.js": "/static/js/vendor.chunk.js",
+  "vendor.js.map": "/static/js/vendor.chunk.js.map",
+  "static/css/Page.chunk.css.map": "/static/css/Page.chunk.css.map"
+}
