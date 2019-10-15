@@ -10,7 +10,7 @@
     "react-dev-utils": "^8.0.0",
     "react-dom": "16.8.3",
     "react-router-dom": "^5.0.0",
-    "yk-cli": "^2.4.0",
+    "yk-cli": "^2.6.1",
     "ykfe-utils": "^2.0.2"
   },
   "scripts": {
@@ -36,7 +36,6 @@
     "@babel/polyfill": "^7.4.4",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
-    "@babel/register": "^7.0.0",
     "@babel/runtime": "^7.5.5",
     "babel-loader": "8.0.4",
     "browserslist": "^4.6.3",

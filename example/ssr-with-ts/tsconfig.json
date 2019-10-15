@@ -5,8 +5,7 @@
     "lib": [
       "esnext"
     ],
-    "declaration": true,
-    "declarationDir": "./types/",
+    "declaration": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "incremental": true,
@@ -30,6 +29,7 @@
     "dist",
     "node_modules*",
     "test",
-    "**/*.spec.ts"
+    "**/*.spec.ts",
+    "web"
   ]
 }

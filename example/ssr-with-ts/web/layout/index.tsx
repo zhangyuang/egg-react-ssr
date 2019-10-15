@@ -4,23 +4,26 @@ import serialize from 'serialize-javascript'
 import { Link } from 'react-router-dom'
 import '@/assets/common.less'
 import './index.less'
-import { LayoutProps } from '../interface/layoutProps'
 
 const commonNode = (props: LayoutProps) => (
   // 为了同时兼容ssr/csr请保留此判断，如果你的layout没有内容请使用 props.children ? <div>{ props.children }</div> : ''
   <div className='normal'>
-      <h1 className='title'>
-        <Link to='/'>Egg + React + SSR</Link>
+    <h1 className='title'>
+      <Link to='/'>Egg + React + SSR</Link>
       <div className='author'>by ykfe</div>
     </h1>{props.children ? props.children : ''}</div>
 )
 
-const Layout: SFC<LayoutProps>  = (props: LayoutProps):JSX.Element => {
+interface LayoutProps {
+  layoutData?: any,
+  children?: React.ReactChildren | React.ReactElement
+}
+
+const Layout: SFC<LayoutProps> = (props: LayoutProps): JSX.Element => {
   if (__isBrowser__) {
     return commonNode(props)
   } else {
-    // const { serverData } = props.layoutData
-    const serverData = false
+    const { serverData } = props.layoutData
     const { injectCss, injectScript } = props.layoutData.app.config
     return (
       <html lang='en'>
@@ -30,11 +33,11 @@ const Layout: SFC<LayoutProps>  = (props: LayoutProps):JSX.Element => {
           <meta name='theme-color' content='#000000' />
           <title>React App</title>
           {
-            injectCss && injectCss.map((item:any) => <link rel='stylesheet' href={item} key={item} />)
+            injectCss && injectCss.map((item: any) => <link rel='stylesheet' href={item} key={item} />)
           }
         </head>
         <body>
-          <div id='app'>{ commonNode(props) }</div>
+          <div id='app'>{commonNode(props)}</div>
           {
             serverData && <script dangerouslySetInnerHTML={{
               __html: `window.__USE_SSR__=true; window.__INITIAL_DATA__ =${serialize(serverData)}`

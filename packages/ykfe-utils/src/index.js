@@ -1,7 +1,6 @@
 import GetinitialProps from './components/getinitialProps'
 import OnlyCsr from './components/onlyCsr'
 import getComponent from './getComponent'
-import renderToStream from './renderToStream'
 import Loadable from './loadable'
 
 export {
@@ -9,6 +8,5 @@ export {
   GetinitialProps as getWrappedComponent,
   OnlyCsr,
   Loadable,
-  getComponent,
-  renderToStream
+  getComponent
 }

@@ -1,9 +1,9 @@
 export interface RouteItem {
-    path: string,
-    exact?: boolean,
-    Component(): Component
+  path: string,
+  exact?: boolean,
+  Component (): Component
 }
 
 export interface Component {
-    Layout?: new () => React.Component<any, any>
+  Layout?: new () => React.Component<any, any>
 }

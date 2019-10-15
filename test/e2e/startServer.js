@@ -14,7 +14,7 @@ egg.startCluster({
 }, async () => {
   try {
     await execWithPromise('cd ./example/ssr-with-js && npm run build:server')
-    const child = fork('./packages/yk-cli/bin/clientRender')
+    const child = fork('./example/ssr-with-js/node_modules/yk-cli/bin/clientRender')
     child.send({
       msg: 'start dev'
     })

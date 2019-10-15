@@ -20,7 +20,6 @@ jobs:
             - v1-ssr-{{ .Branch }}-{{ checksum "package.json" }}
             - v1-ssr-{{ .Branch }}-
             - v1-ssr-
-      # install chromedriver module
       - run:
           command: |
             npm install --registry=https://registry.npm.taobao.org/
@@ -64,6 +63,7 @@ jobs:
           at: ~/project
       - run:
           command: |
+            # install chromedriver module
             sudo apt-get install libnss3-dev
             wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
             echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
