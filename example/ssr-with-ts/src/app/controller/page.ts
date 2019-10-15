@@ -11,7 +11,7 @@ export class Page {
 
   @get('/')
   @get('/news/:id')
-  async index() {
+  async index () {
     try {
       // Page为webpack打包的chunkName，项目默认的entry为Page
       this.ctx.type = 'text/html'

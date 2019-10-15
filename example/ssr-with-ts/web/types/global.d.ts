@@ -7,9 +7,8 @@ interface NodeModule {
 interface Hot {
     accept(path?: string): void
 }
-
 declare const __isBrowser__: boolean
 
 interface SFC<P> extends React.SFC<P> {
-    getInitialProps?(any): Promise<any>,
+    getInitialProps?(object): Promise<any>,
 }

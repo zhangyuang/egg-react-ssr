@@ -5,5 +5,5 @@ export interface RouteItem {
 }
 
 export interface Component {
-  Layout?: new () => React.Component<any, any>
+  Layout?: new () => React.Component<object, object>
 }
