@@ -20,8 +20,8 @@ export async function getConfig (option: Optional): Promise<void> {
     name: 'language',
     default: 'javascript',
     choices: [
-      'javascript'
-        // 'typescript(开发中)'
+      'javascript',
+      'typescript'
     ]
   }])
   Object.assign(option, answers)

@@ -1,11 +1,11 @@
 import ora from 'ora'
 import { getConfig } from './config'
 import { checkRepeat } from './check'
-import { processPackage } from './package'
-import { processWebpack } from './webpackconfig'
 import { cacheMange } from './cache'
 import { updateCli } from './update'
 import { Optional } from './interface/option'
+// import { processPackage } from './package'
+// import { processWebpack } from './webpackconfig'
 
 const spinner = ora('应用初始化中')
 
@@ -21,9 +21,9 @@ const init = async (option: Optional) => {
   // 缓存比对
   await cacheMange(option)
   // 处理 package.json
-  processPackage(option)
+  // processPackage(option)
   // 处理 webpack
-  processWebpack(option)
+  // processWebpack(option)
 
   spinner.succeed()
   process.exit()
