@@ -24,10 +24,14 @@ $ open http://localhost:7001
 - [x] 支持切换路由时自动获取数据
 - [x] 支持本地开发HMR
 - [x] 稳定性经过线上大规模应用验证，可提供性能优化方案
-- [x] 支持tree shaking以及打包去重依赖，使得打包的bundle非常小，为同样复杂度的next.js项目的0.4倍
+- [x] 支持tree shaking，优化构建bundle大小以及数量
 - [x] 支持csr/ssr自定义layout，无需通过path来手动区分
-- [ ] 配套[TypeScript](https://github.com/ykfe/egg-react-ssr-typescript)版本的实现
-- [ ] 配套serverless版本的实现
+- [x] 抛弃传统模版引擎，拥抱 React 组件，使用JSX来作为模版
+- [x] 配套结合[antd](https://github.com/ykfe/egg-react-ssr/tree/master/example/ssr-with-antd)的example的实现
+- [x] 配套结合[react-loadable](https://github.com/ykfe/egg-react-ssr/tree/master/example/ssr-with-loadable)做路由分割的example的实现
+- [x] 配套结合[dva](https://github.com/ykfe/egg-react-ssr/tree/master/example/ssr-with-dva)做数据管理的example的实现
+- [x] 配套阿里云serverless [FC](https://github.com/ykfe/ssr-with-fc)版本的实现
+- [x] 配套[TypeScript](https://github.com/ykfe/egg-react-ssr/tree/dev/example/ssr-with-ts)版本的实现 
 
 
 
