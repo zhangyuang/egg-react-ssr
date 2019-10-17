@@ -142,7 +142,7 @@ const Layout = (props) => {
 - [x] 配套结合[dva](https://github.com/ykfe/egg-react-ssr/tree/master/example/ssr-with-dva)做数据管理的example的实现
 - [x] 配套阿里云serverless [FC](https://github.com/ykfe/ssr-with-fc)版本的实现
 - [x] 抛弃传统模版引擎，拥抱 React 组件，使用JSX来作为模版
-- [ ] 配套[TypeScript](https://github.com/ykfe/egg-react-ssr-typescript)版本的实现
+- [x] 配套[TypeScript](https://github.com/ykfe/egg-react-ssr/tree/dev/example/ssr-with-ts)版本的实现 
 
 ## 执行环境
 
