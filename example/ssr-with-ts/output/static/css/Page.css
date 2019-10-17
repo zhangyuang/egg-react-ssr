@@ -1,0 +1,64 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+a {
+  color: #fff;
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+}
+
+.normal {
+  font-family: Georgia, sans-serif;
+  text-align: center;
+}
+body {
+  background-color: #f2f3f5;
+}
+.title {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 55px;
+  background-color: darkslateblue;
+  color: #fff;
+}
+.author {
+  position: absolute;
+  font-size: 15px;
+  bottom: 10px;
+  right: 100px;
+}
+
+.list {
+  background-color: #fff;
+  width: 1000px;
+  margin: 100px auto;
+}
+.list li {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 20px 30px 20px 80px;
+  border-bottom: 1px solid #eee;
+  position: relative;
+  line-height: 20px;
+}
+.list li .toDetail a {
+  font-size: 14px;
+  color: #888;
+}
+
+.news-container {
+  width: 1000px;
+  background-color: #fff;
+  margin: 100px auto;
+  text-align: left;
+  line-height: 30px;
+  letter-spacing: 1px;
+  padding: 10px;
+}
+

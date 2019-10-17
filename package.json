@@ -51,7 +51,8 @@
       "**/bin/",
       "**/es/",
       "packages/ykfe-utils/src/loadable.js",
-      "**/node_modules/**"
+      "**/node_modules/**",
+      "**/output/**"
     ],
     "global": [
       "__isBrowser__",
