@@ -15,6 +15,7 @@ export class Page {
       this.ctx.status = 200
       Object.assign(this.ctx.app.config, ssrConfig)
       const stream = await renderToStream(this.ctx, this.ctx.app.config)
+      this.ctx.res.write('<!DOCTYPE html>')
       this.ctx.body = stream
     } catch (error) {
       this.ctx.logger.error(`Page Controller renderToStream Error ${error}`)

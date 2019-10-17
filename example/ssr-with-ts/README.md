@@ -14,5 +14,5 @@
 - [x] 支持tree shaking以及打包去重依赖，使得打包的bundle非常小，为同样复杂度的next.js项目的0.4倍
 - [x] 支持csr/ssr自定义layout，无需通过path来手动区分
 - [x] 抛弃传统模版引擎，拥抱 React 组件，使用JSX来作为模版
-- [ ] 配套[TypeScript](https://github.com/ykfe/egg-react-ssr-typescript)版本的实现
-- [ ] 配套serverless版本的实现
+- [x] 配套[TypeScript](https://github.com/ykfe/egg-react-ssr-typescript)版本的实现
+- [x] 配套serverless版本的实现

@@ -12,11 +12,11 @@ export default (appInfo: MyEggAppInfo) => {
 
   // add your config here
   config.middleware = [
+
   ]
   config.static = {
     dir: [path.join(appInfo.appDir, '/output'), path.join(appInfo.appDir, '/src/public')],
     prefix: '/'
-
   }
   return config
 }

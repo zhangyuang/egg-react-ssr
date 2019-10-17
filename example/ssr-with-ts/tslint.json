@@ -1,6 +1,5 @@
 {
   "extends": [
-    "tslint-midway-contrib",
     "tslint-config-standard"
   ]
 }
