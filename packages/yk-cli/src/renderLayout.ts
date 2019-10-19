@@ -43,7 +43,7 @@ const renderLayout = async () => {
     const { webpackWithPromise } = require('./util')
     await webpackWithPromise(serverConfig)
     try {
-      // 兼容serverless场景webpack静态分析打包错误
+      // 兼容serverless场景webpack静态分析打包错误情况以及webpack编译错误情况
       Layout = require('../dist/Layout.server').default
     } catch (error) {
     }
@@ -56,8 +56,8 @@ const renderLayout = async () => {
       }
     }
   }
-
-  const str = reactToStream(Layout, props)
+  
+  const str = Layout ? reactToStream(Layout, props) : '<html></html>'
   return str
 }
 
