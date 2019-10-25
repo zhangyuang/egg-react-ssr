@@ -4,6 +4,6 @@ module.exports = {
   keys: 'egg-ssr',
   static: {
     prefix: '/',
-    dir: resolvePath('../dist')
+    dir: [resolvePath('../dist'), resolvePath('../app/public')]
   }
 }
