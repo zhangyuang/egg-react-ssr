@@ -32,7 +32,7 @@ const webpackModule = {
               [
                 require.resolve('@babel/preset-env'),
                 {
-                  modules: 'false'
+                  modules: false
                 }
               ],
               require.resolve('@babel/preset-react')

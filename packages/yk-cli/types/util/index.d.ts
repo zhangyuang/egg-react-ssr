@@ -1,7 +1,7 @@
 /// <reference types="node" />
 import { exec } from 'child_process';
-import { Optional } from '../interface/option';
 import webpack from 'webpack';
+import { Optional } from '../interface/option';
 export declare const webpackWithPromise: (arg1: webpack.Configuration[]) => Promise<unknown>;
 export declare const processError: (err: string) => void;
 export declare const execWithPromise: typeof exec.__promisify__;

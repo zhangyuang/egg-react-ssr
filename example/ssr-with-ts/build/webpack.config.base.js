@@ -31,7 +31,7 @@ const webpackModule = {
               [
                 require.resolve('@babel/preset-env'),
                 {
-                  modules: 'false'
+                  modules: false
                 }
               ],
               ['react-app', { 'flow': false, 'typescript': true }]

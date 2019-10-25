@@ -1,2 +1,2 @@
-#!/usr/bin/env node
-export {};
+import renderLayout from './renderLayout';
+export { renderLayout };

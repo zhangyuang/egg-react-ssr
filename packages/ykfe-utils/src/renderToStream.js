@@ -1,4 +1,4 @@
-'use strict'
+import { renderLayout } from 'yk-cli'
 
 const renderToStream = async (ctx, config) => {
   const baseDir = config.baseDir || process.cwd()
@@ -7,7 +7,6 @@ const renderToStream = async (ctx, config) => {
   const runtime = config.runtime
 
   if (config.type !== 'ssr') {
-    const renderLayout = require('yk-cli/bin/renderLayout').default
     const str = await renderLayout()
     return str
   }
@@ -29,7 +28,7 @@ const renderToStream = async (ctx, config) => {
 
   if (!global.serverStream || isLocal) {
     if (runtime === 'serverless') {
-      global.serverStream = typeof serverJs === 'string' ? require('../../../web/' + serverJs).default : serverJs
+      global.serverStream = typeof serverJs === 'string' ? require('@/' + serverJs).default : serverJs
     } else {
       global.serverStream = typeof serverJs === 'string' ? require(serverJs).default : serverJs
     }
