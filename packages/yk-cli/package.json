@@ -7,8 +7,8 @@
   "sideEffects": false,
   "types": "types/index.d.ts",
   "scripts": {
-    "build": "rm -rf ./lib ./es && concurrently \" tsc -p ./tsconfig.cjs.json --sourceMap false\" \" tsc -p ./tsconfig.es6.json --sourceMap false\"",
-    "start": "node --inspect=19229 ./bin/index.js",
+    "build": "rm -rf ./lib ./es && concurrently \"tsc -p ./tsconfig.cjs.json --sourceMap false\" \" tsc -p ./tsconfig.es6.json --sourceMap false\"",
+    "start": "node --inspect=19229 ./lib/index.js",
     "dev": "concurrently \"tsc -w -p ./tsconfig.cjs.json \" \"tsc -w -p ./tsconfig.es6.json \""
   },
   "bin": {
