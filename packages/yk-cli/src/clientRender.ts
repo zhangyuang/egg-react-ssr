@@ -1,16 +1,15 @@
 // 本文件目的是以React jsx 为模版替换掉html-webpack-plugin以及传统模版引擎, 统一ssr/csr都使用React组件来作为页面的骨架和内容部分
 import { mkdir } from 'shelljs'
 import webpack from 'webpack'
-import { Res } from './interface/ctx'
+import fs from 'fs'
+import { webpackWithPromise } from './util'
 import { Argv } from './interface/argv'
-import renderLayout from './renderLayout'
 
 const WebpackDevServer = require('webpack-dev-server')
-const fs = require('fs')
-const promisify = require('util').promisify
 const ora = require('ora')('正在构建')
-const webpackWithPromise = promisify(webpack)
 const cwd = process.env.BASE_DIR || process.cwd()
+const runtime = process.env.RUNTIME
+const renderLayout = runtime === 'serverless' ? require('./renderLayoutForFass').default : require('./renderLayout').default
 const clientConfig = require(cwd + '/build/webpack.config.client')
 
 process.on && process.on('message', async data => {
@@ -20,7 +19,6 @@ process.on && process.on('message', async data => {
 })
 
 const dev = async (argv?: Argv) => {
-  const str: string = await renderLayout()
   const PORT = (argv && argv.PORT) || 8000
   const compiler = webpack(clientConfig)
   const server = new WebpackDevServer(compiler, {
@@ -38,15 +36,21 @@ const dev = async (argv?: Argv) => {
       'access-control-allow-origin': '*'
     },
     before (app: any) {
-      app.get('/', async (req: any, res: Res) => {
-        res.write(str)
-        res.end()
+      app.get('/', async (req: any, res: any) => {
+        const stream = await renderLayout()
+        stream.pipe(res, { end: false })
+        stream.on('end', () => {
+          res.end()
+        })
       })
     },
     after (app: any) {
-      app.get(/^\//, async (req: any, res: Res) => {
-        res.write(str)
-        res.end()
+      app.get(/^\//, async (req: any, res: any) => {
+        const stream = await renderLayout()
+        stream.pipe(res, { end: false })
+        stream.on('end', () => {
+          res.end()
+        })
       })
     }
   })
@@ -57,9 +61,9 @@ const dev = async (argv?: Argv) => {
 }
 
 const build = async () => {
-  const str: string = await renderLayout()
+  const stream = await renderLayout()
   ora.start()
-  const stats = await webpackWithPromise(clientConfig)
+  const stats: any = await webpackWithPromise(clientConfig)
   console.log(stats.toString({
     assets: true,
     colors: true,
@@ -68,11 +72,14 @@ const build = async () => {
     version: true,
     warnings: false
   }))
+  let writeStream
   try {
-    fs.writeFileSync(cwd + '/dist/index.html', str)
+    writeStream = fs.createWriteStream(cwd + '/dist/index.html')
+    stream.pipe(writeStream)
   } catch (error) {
     mkdir(cwd + '/dist')
-    fs.writeFileSync(cwd + '/dist/index.html', str)
+    writeStream = fs.createWriteStream(cwd + '/dist/index.html')
+    stream.pipe(writeStream)
   }
   ora.succeed()
 }
