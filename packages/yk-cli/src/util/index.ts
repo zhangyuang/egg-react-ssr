@@ -19,16 +19,6 @@ export const processError = (err: string) => {
     process.exit()
   }
 }
-
-export const execWithPromise = promisify(exec)
-
-export const downloadWithPromise = promisify(download)
-
-export const resolveApp = (source: string) => {
-  // 以根目录为基准
-  return path.resolve(__dirname, `../../${source}`)
-}
-
 export const getWithPromise = (url: string): Promise<any> => {
   return new Promise((resolve, reject) => {
     let data: string = ''
@@ -37,8 +27,17 @@ export const getWithPromise = (url: string): Promise<any> => {
       res.on('end', () => {
         resolve(JSON.parse(data))
       })
-    }).on('error', () => reject())
+    }).on('error', () => reject()).setTimeout(2000, () => reject())
   })
+}
+
+export const execWithPromise = promisify(exec)
+
+export const downloadWithPromise = promisify(download)
+
+export const resolveApp = (source: string) => {
+  // 以根目录为基准
+  return path.resolve(__dirname, `../../${source}`)
 }
 
 /**
@@ -52,10 +51,14 @@ export async function getVersionEffective (option: Optional): Promise<boolean> {
   if (fs.existsSync(resolveApp('./cache'))) {
     const url = option.language === 'typescript' ? tsUrl : jsUrl
     const language = option.language === 'javascript' ? 'js' : 'ts'
-    const { version } = await getWithPromise(url)
-    const localVersion = require(resolveApp(`./cache/example/ssr-with-${language}/package.json`)).version.trim()
-    // 如果版本一样就不用更新
-    return version.trim() === localVersion
+    try {
+      const { version } = await getWithPromise(url)
+      const localVersion = require(resolveApp(`./cache/example/ssr-with-${language}/package.json`)).version.trim()
+      // 如果版本一样就不用更新
+      return version.trim() === localVersion
+    } catch (error) {
+      return true
+    }
   }
   return false
 }
