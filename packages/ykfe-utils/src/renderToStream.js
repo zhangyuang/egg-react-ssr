@@ -4,7 +4,7 @@ const renderToStream = async (ctx, config) => {
   const serverJs = config.serverJs
 
   if (config.type !== 'ssr') {
-    const { renderLayout } = require('yk-cli')
+    const renderLayout = require('yk-cli/lib/renderLayout').default
     const str = await renderLayout()
     return str
   }
