@@ -1,6 +1,7 @@
 
 import React from 'react'
 import { resolve } from 'path'
+import Shell from 'shelljs'
 import { renderToNodeStream } from 'react-dom/server'
 // @ts-ignore
 import nodeExternals from 'webpack-node-externals'
@@ -8,6 +9,7 @@ import { webpackWithPromise } from './util'
 
 const config: any = require('../../../config/config.ssr')
 const serverConfig = require('../../../build/webpack.config.server')
+const isDev = process.env.NODE_ENV === 'development'
 serverConfig.entry = {
   Layout: resolve(__dirname, '../../../web/layout')
 }
@@ -22,6 +24,10 @@ const reactToStream = (Component: React.FunctionComponent, props: object) => {
 }
 
 const renderLayout = async () => {
+  if (isDev) {
+    Shell.rm('-rf', resolve(__dirname, '../dist/Layout.server.js'))
+    delete require.cache[resolve(__dirname, '../dist/Layout.server.js')]
+  }
   let Layout
   try {
     Layout = require('../dist/Layout.server').default
