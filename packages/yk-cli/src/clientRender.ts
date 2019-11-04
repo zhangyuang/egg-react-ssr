@@ -74,6 +74,7 @@ const build = async () => {
   }))
   let writeStream
   try {
+    fs.statSync(cwd + '/dist/index.html')
     writeStream = fs.createWriteStream(cwd + '/dist/index.html')
     stream.pipe(writeStream)
   } catch (error) {
