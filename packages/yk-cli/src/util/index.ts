@@ -1,11 +1,11 @@
+import { promisify } from 'util'
+import { exec } from 'child_process'
 import https from 'https'
 import path from 'path'
+import { Optional } from '../interface/option'
 import fs from 'fs'
 import nunjucks from 'nunjucks'
 import webpack from 'webpack'
-import { promisify } from 'util'
-import { exec } from 'child_process'
-import { Optional } from '../interface/option'
 
 const download = require('download-git-repo')
 const tsUrl = 'https://raw.githubusercontent.com/zhusjfaker/egg-react-ssr/backup/example/ssr-with-ts/package.json'
@@ -19,17 +19,6 @@ export const processError = (err: string) => {
     process.exit()
   }
 }
-export const getWithPromise = (url: string): Promise<any> => {
-  return new Promise((resolve, reject) => {
-    let data: string = ''
-    https.get(url, res => {
-      res.on('data', (chunk: Buffer) => { data += chunk.toString() })
-      res.on('end', () => {
-        resolve(JSON.parse(data))
-      })
-    }).on('error', () => reject()).setTimeout(2000, () => reject())
-  })
-}
 
 export const execWithPromise = promisify(exec)
 
@@ -38,6 +27,20 @@ export const downloadWithPromise = promisify(download)
 export const resolveApp = (source: string) => {
   // 以根目录为基准
   return path.resolve(__dirname, `../../${source}`)
+}
+
+export const getWithPromise = (url: string): Promise<any> => {
+  return new Promise((resolve, reject) => {
+    let data: string = ''
+    https.get(url, {
+      timeout: 2000
+    },res => {
+      res.on('data', (chunk: Buffer) => { data += chunk.toString() })
+      res.on('end', () => {
+        resolve(JSON.parse(data))
+      })
+    }).on('error', (err) => reject(err))
+  })
 }
 
 /**
