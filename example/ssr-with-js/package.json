@@ -1,5 +1,5 @@
 {
-  "name": "egg-ssr",
+  "name": "ssr-with-js",
   "version": "2.1.1",
   "dependencies": {
     "egg": "^2.21.0",

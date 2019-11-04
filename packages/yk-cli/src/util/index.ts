@@ -8,8 +8,8 @@ import nunjucks from 'nunjucks'
 import webpack from 'webpack'
 
 const download = require('download-git-repo')
-const tsUrl = 'https://raw.githubusercontent.com/zhusjfaker/egg-react-ssr/backup/example/ssr-with-ts/package.json'
-const jsUrl = 'https://raw.githubusercontent.com/ykfe/egg-react-ssr/master/example/ssr-with-js/package.json'
+const tsUrl = 'https://registry.npm.taobao.org/ssr-with-js'
+const jsUrl = 'https://registry.npm.taobao.org/ssr-with-ts'
 
 export const webpackWithPromise = promisify(webpack)
 
@@ -31,10 +31,12 @@ export const resolveApp = (source: string) => {
 
 export const getWithPromise = (url: string): Promise<any> => {
   return new Promise((resolve, reject) => {
+    const timer = setTimeout(() => {
+      reject('url request timeout:' + url)
+    }, 5000)
     let data: string = ''
-    https.get(url, {
-      timeout: 2000
-    },res => {
+    https.get(url,res => {
+      clearTimeout(timer)
       res.on('data', (chunk: Buffer) => { data += chunk.toString() })
       res.on('end', () => {
         resolve(JSON.parse(data))
@@ -55,10 +57,10 @@ export async function getVersionEffective (option: Optional): Promise<boolean> {
     const url = option.language === 'typescript' ? tsUrl : jsUrl
     const language = option.language === 'javascript' ? 'js' : 'ts'
     try {
-      const { version } = await getWithPromise(url)
+      const { 'dist-tags': { latest } } = await getWithPromise(url)
       const localVersion = require(resolveApp(`./cache/example/ssr-with-${language}/package.json`)).version.trim()
       // 如果版本一样就不用更新
-      return version.trim() === localVersion
+      return latest === localVersion
     } catch (error) {
       return true
     }

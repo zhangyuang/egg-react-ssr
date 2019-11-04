@@ -1,4 +1,4 @@
 export interface Argv {
-  appName?: string,
+  appName: string
   PORT?: Number
 }

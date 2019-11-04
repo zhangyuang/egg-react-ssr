@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
 import yargs from 'yargs'
+import init from './init'
 import { Optional } from './interface/option'
 import { Argv } from './interface/argv'
-import init from './init'
 
 yargs
   .command('init [appName]', 'init the program', {}, async (argv: Argv) => {
