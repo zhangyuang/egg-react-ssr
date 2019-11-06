@@ -18,8 +18,8 @@ const clientRender = async (): Promise<void> => {
         routes.map((item: RouteItem) => {
           const ActiveComponent = item.Component()
           const Layout = ActiveComponent.Layout || defaultLayout
+          const WrappedComponent = getWrappedComponent(ActiveComponent)
           return <Route exact={item.exact} key={item.path} path={item.path} render={() => {
-            const WrappedComponent = getWrappedComponent(ActiveComponent)
             return <Layout><WrappedComponent /></Layout>
           }} />
         })
