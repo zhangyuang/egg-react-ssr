@@ -3,9 +3,11 @@
 
 import React from 'react'
 import { renderToString } from 'react-dom/server'
-import path from 'path'
+import { resolve } from 'path'
+import Shell from 'shelljs'
 
 let config:any
+const isDev = process.env.NODE_ENV === 'development'
 
 try {
   config = require('../../../config/config.ssr')
@@ -20,12 +22,12 @@ if (!process.env.FC_FUNC_CODE_PATH) {
   const nodeExternals = require('webpack-node-externals')
   serverConfig = require('../../../build/webpack.config.server')
   serverConfig.entry = {
-    Layout: path.resolve(__dirname, '../../../web/layout')
+    Layout: resolve(__dirname, '../../../web/layout')
   }
-  serverConfig.output.path = path.resolve(__dirname, '../dist')
+  serverConfig.output.path = resolve(__dirname, '../dist')
   serverConfig.externals = nodeExternals({
     whitelist: /\.(css|less|sass|scss)$/,
-    modulesDir: path.resolve(__dirname, '../../') // 保证寻找第三方模块的node_modules是当前应用的node_modules
+    modulesDir: resolve(__dirname, '../../') // 保证寻找第三方模块的node_modules是当前应用的node_modules
   })
 }
 
@@ -34,6 +36,10 @@ const reactToStream = (Component: React.FunctionComponent, props: object) => {
 }
 
 const renderLayout = async () => {
+  if (isDev) {
+    Shell.rm('-rf', resolve(__dirname, '../dist/Layout.server.js'))
+    delete require.cache[resolve(__dirname, '../dist/Layout.server.js')]
+  }
   let Layout
   try {
     // serverless 场景我们从事先构建好的应用目录下的dist文件夹中读取layout
