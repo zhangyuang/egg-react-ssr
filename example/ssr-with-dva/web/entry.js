@@ -32,8 +32,8 @@ const clientRender = () => {
           Routes.map(({ path, exact, Component }) => {
             const ActiveComponent = Component()
             const Layout = ActiveComponent.Layout || defaultLayout
+            const WrappedComponent = getWrappedComponent(ActiveComponent)
             return <Route exact={exact} key={path} path={path} render={() => {
-              const WrappedComponent = getWrappedComponent(ActiveComponent)
               return <Layout><WrappedComponent store={store} /></Layout>
             }} />
           })

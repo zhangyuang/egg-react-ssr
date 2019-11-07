@@ -1,18 +1,16 @@
+import { promisify } from 'util'
+import { exec } from 'child_process'
 import https from 'https'
 import path from 'path'
+import { Optional } from '../interface/option'
 import fs from 'fs'
 import nunjucks from 'nunjucks'
 import webpack from 'webpack'
-// @ts-ignore
 import download from 'download-git-repo'
-import { promisify } from 'util'
-import { exec } from 'child_process'
-import { Optional } from '../interface/option'
 
+const tsUrl = 'https://registry.npm.taobao.org/ssr-with-js'
+const jsUrl = 'https://registry.npm.taobao.org/ssr-with-ts'
 const webpackWithPromise = promisify(webpack)
-
-const tsUrl = 'https://raw.githubusercontent.com/zhusjfaker/egg-react-ssr/backup/example/ssr-with-ts/package.json'
-const jsUrl = 'https://raw.githubusercontent.com/ykfe/egg-react-ssr/master/example/ssr-with-js/package.json'
 
 const processError = (err: string) => {
   if (err) {
@@ -32,13 +30,17 @@ const resolveApp = (source: string) => {
 
 const getWithPromise = (url: string): Promise<any> => {
   return new Promise((resolve, reject) => {
+    const timer = setTimeout(() => {
+      reject('url request timeout:' + url)
+    }, 5000)
     let data: string = ''
-    https.get(url, res => {
+    https.get(url,res => {
+      clearTimeout(timer)
       res.on('data', (chunk: Buffer) => { data += chunk.toString() })
       res.on('end', () => {
         resolve(JSON.parse(data))
       })
-    }).on('error', () => reject())
+    }).on('error', (err) => reject(err))
   })
 }
 
@@ -53,10 +55,14 @@ async function getVersionEffective (option: Optional): Promise<boolean> {
   if (fs.existsSync(resolveApp('./cache'))) {
     const url = option.language === 'typescript' ? tsUrl : jsUrl
     const language = option.language === 'javascript' ? 'js' : 'ts'
-    const { version } = await getWithPromise(url)
-    const localVersion = require(resolveApp(`./cache/example/ssr-with-${language}/package.json`)).version.trim()
-    // 如果版本一样就不用更新
-    return version.trim() === localVersion
+    try {
+      const { 'dist-tags': { latest } } = await getWithPromise(url)
+      const localVersion = require(resolveApp(`./cache/example/ssr-with-${language}/package.json`)).version.trim()
+      // 如果版本一样就不用更新
+      return latest === localVersion
+    } catch (error) {
+      return true
+    }
   }
   return false
 }
