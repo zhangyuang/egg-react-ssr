@@ -3,13 +3,7 @@ import React from 'react'
 import { renderToNodeStream } from 'react-dom/server'
 import { Stream } from 'stream'
 
-let config: any
-
-try {
-  config = require('../../../config/config.ssr')
-} catch (error) {
-  //
-}
+const config: any = require('../../../config/config.ssr')
 
 const reactToStream = (Component: React.FunctionComponent, props: object): Stream => {
   return renderToNodeStream(React.createElement(Component, props))
