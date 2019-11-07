@@ -17,7 +17,7 @@ yargs
     const { dev } = require('./clientRender')
     await dev(yargs.argv)
   })
-  .command('build', 'start clientRender', {}, async () => {
+  .command('build', 'start clientBuild', {}, async () => {
     process.env.NODE_ENV = 'production'
     const { build } = require('./clientRender')
     await build()
