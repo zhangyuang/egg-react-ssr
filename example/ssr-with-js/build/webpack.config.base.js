@@ -37,9 +37,7 @@ const webpackModule = {
               ],
               require.resolve('@babel/preset-react')
             ],
-            plugins: [
-              require.resolve('@babel/plugin-transform-runtime')
-            ]
+            plugins: []
           }
         },
         {

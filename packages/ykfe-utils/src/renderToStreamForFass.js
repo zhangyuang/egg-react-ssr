@@ -6,7 +6,7 @@ const renderToStreamForFaas = async (ctx, config) => {
   const serverJs = config.serverJs
 
   if (config.type !== 'ssr') {
-    const str = await renderLayoutForFass()
+    const str = await renderLayoutForFass(ctx)
     return str
   }
 

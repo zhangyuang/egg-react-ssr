@@ -9,14 +9,17 @@ const reactToStream = (Component: React.FunctionComponent, props: object): Strea
   return renderToNodeStream(React.createElement(Component, props))
 }
 
-const renderLayout = async () => {
+const renderLayout = async (ctx: any) => {
   let Layout
   try {
     Layout = require('../../../dist/Layout.server').default
   } catch (error) {
     //
   }
-  const props = {
+
+  const props = ctx ? {
+    layoutData: ctx
+  } : {
     layoutData: {
       app: {
         config: config

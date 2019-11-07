@@ -30,7 +30,7 @@ const reactToStream = (Component: React.FunctionComponent, props: object) => {
   return renderToNodeStream(React.createElement(Component, props))
 }
 
-const renderLayout = async () => {
+const renderLayout = async (ctx: any) => {
   const layoutPath = resolve(__dirname, '../dist/Layout.server.js')
   if (isDev) {
     Shell.rm('-rf', layoutPath)
@@ -45,7 +45,9 @@ const renderLayout = async () => {
     Layout = require(layoutPath).default
   }
 
-  const props = {
+  const props = ctx ? {
+    layoutData: ctx
+  } : {
     layoutData: {
       app: {
         config: config

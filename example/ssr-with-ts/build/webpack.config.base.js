@@ -36,9 +36,7 @@ const webpackModule = {
               ],
               ['react-app', { 'flow': false, 'typescript': true }]
             ],
-            plugins: [
-              require.resolve('@babel/plugin-transform-runtime')
-            ]
+            plugins: []
           }
         },
         {
