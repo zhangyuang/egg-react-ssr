@@ -24,17 +24,18 @@ const reactToStream = (Component: React.FunctionComponent, props: object) => {
 }
 
 const renderLayout = async () => {
+  const layoutPath = resolve(__dirname, '../dist/Layout.server.js')
   if (isDev) {
-    Shell.rm('-rf', resolve(__dirname, '../dist/Layout.server.js'))
-    delete require.cache[resolve(__dirname, '../dist/Layout.server.js')]
+    Shell.rm('-rf', layoutPath)
+    delete require.cache[layoutPath]
   }
   let Layout
   try {
-    Layout = require('../dist/Layout.server').default
+    Layout = require(layoutPath).default
   } catch (error) {
     // 首次读取失败我们先调用webpack api构建一遍在ykcli/dist的目录下再读取
     await webpackWithPromise(serverConfig)
-    Layout = require('../dist/Layout.server').default
+    Layout = require(layoutPath).default
   }
 
   const props = {

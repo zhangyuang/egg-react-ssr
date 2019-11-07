@@ -28,7 +28,6 @@ export async function updateCli (): Promise<void> {
     }
 
   } catch (error) {
-    console.log(error)
     console.log('\x1b[91m' + `获取最新版本失败本次创建将使用本地版本${localVersion}，若版本较旧请手动安装最新版本npm i -g yk-cli@latest或连接代理重试`)
   }
 }

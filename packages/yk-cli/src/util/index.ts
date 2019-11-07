@@ -6,7 +6,8 @@ import { Optional } from '../interface/option'
 import fs from 'fs'
 import nunjucks from 'nunjucks'
 import webpack from 'webpack'
-import download from 'download-git-repo'
+
+const download = require('download-git-repo')
 
 const tsUrl = 'https://registry.npm.taobao.org/ssr-with-js'
 const jsUrl = 'https://registry.npm.taobao.org/ssr-with-ts'
