@@ -1,4 +1,3 @@
-import { renderLayout } from 'yk-cli'
 
 const renderToStream = async (ctx, config) => {
   const baseDir = config.baseDir || process.cwd()
@@ -7,6 +6,7 @@ const renderToStream = async (ctx, config) => {
   const runtime = config.runtime
 
   if (config.type !== 'ssr') {
+    const renderLayout = require('yk-cli/lib/renderLayout').default
     const str = await renderLayout()
     return str
   }
