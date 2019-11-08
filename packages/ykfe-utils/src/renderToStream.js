@@ -1,6 +1,6 @@
 const renderToStream = async (ctx, config) => {
   const baseDir = config.baseDir || process.cwd()
-  const isLocal = config.env === 'local'
+  const isLocal = process.env.NODE_ENV === 'development'
   const serverJs = config.serverJs
 
   if (config.type !== 'ssr') {

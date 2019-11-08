@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { resolve } from 'path'
+import { resolve, join } from 'path'
 import Shell from 'shelljs'
 import { renderToNodeStream } from 'react-dom/server'
 // @ts-ignore
@@ -15,10 +15,12 @@ try {
   config = require('../../../config/config.default')
 }
 
+const paths = require('../../../build/paths')
 const serverConfig = require('../../../build/webpack.config.server')
 const isDev = process.env.NODE_ENV === 'development'
+
 serverConfig.entry = {
-  Layout: resolve(__dirname, '../../../web/layout')
+  Layout: join(paths.appSrc, './layout')
 }
 serverConfig.output.path = resolve(__dirname, '../dist')
 serverConfig.externals = nodeExternals({

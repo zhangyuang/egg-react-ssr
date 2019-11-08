@@ -1,7 +1,6 @@
 'use strict'
 
 const paths = require('./paths')
-const path = require('path')
 // style files regexes
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent')
@@ -98,7 +97,7 @@ module.exports = {
   mode: process.env.NODE_ENV,
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, '../web')
+      '@': paths.appSrc
     },
     extensions: paths.moduleFileExtensions
       .map(ext => `.${ext}`)

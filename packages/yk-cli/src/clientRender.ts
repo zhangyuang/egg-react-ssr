@@ -2,6 +2,7 @@
 import { mkdir } from 'shelljs'
 import webpack from 'webpack'
 import fs from 'fs'
+import { join } from 'path'
 import { webpackWithPromise } from './util'
 import { Argv } from './interface/argv'
 
@@ -61,6 +62,7 @@ const dev = async (argv?: Argv) => {
 }
 
 const build = async () => {
+  const outputPath = clientConfig.output.path
   const stream = await renderLayout()
   ora.start()
   const stats: any = await webpackWithPromise(clientConfig)
@@ -74,12 +76,12 @@ const build = async () => {
   }))
   let writeStream
   try {
-    fs.statSync(cwd + '/dist/index.html')
-    writeStream = fs.createWriteStream(cwd + '/dist/index.html')
+    fs.statSync(join(outputPath, './index.html'))
+    writeStream = fs.createWriteStream(join(outputPath, './index.html'))
     stream.pipe(writeStream)
   } catch (error) {
-    mkdir(cwd + '/dist')
-    writeStream = fs.createWriteStream(cwd + '/dist/index.html')
+    mkdir(join(outputPath))
+    writeStream = fs.createWriteStream(join(outputPath, './index.html'))
     stream.pipe(writeStream)
   }
   ora.succeed()
