@@ -22,7 +22,7 @@ serverConfig.entry = {
 }
 serverConfig.output.path = resolve(__dirname, '../dist')
 serverConfig.externals = nodeExternals({
-  whitelist: /\.(css|less|sass|scss)$/,
+  whitelist: [/\.(css|less|sass|scss)$/, /^antd.*?css/],
   modulesDir: resolve(__dirname, '../../') // 保证寻找第三方模块的node_modules是当前应用的node_modules
 })
 
