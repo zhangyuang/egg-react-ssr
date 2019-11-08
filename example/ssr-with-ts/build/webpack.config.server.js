@@ -17,7 +17,8 @@ module.exports = merge(baseConfig, {
   },
   target: 'node',
   externals: nodeExternals({
-    whitelist: /\.(css|less|sass|scss)$/
+    whitelist: /\.(css|less|sass|scss)$/,
+    modulesDir: paths.appNodeModules
   }),
   output: {
     path: paths.appBuild,

@@ -1,11 +1,10 @@
 {
   "name": "ssr-with-js",
-  "version": "2.1.2",
+  "version": "2.1.4",
   "dependencies": {
     "egg": "^2.21.0",
     "egg-scripts": "^2.11.0",
     "egg-static": "^2.2.0",
-    "koa-router": "^7.4.0",
     "react": "16.8.3",
     "react-dom": "16.8.3",
     "react-router-dom": "^5.0.0",
