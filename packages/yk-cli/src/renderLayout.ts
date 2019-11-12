@@ -7,16 +7,17 @@ import { renderToNodeStream } from 'react-dom/server'
 import nodeExternals from 'webpack-node-externals'
 import { webpackWithPromise } from './util'
 
+const cwd = process.env.BASE_DIR || process.cwd()
 let config: any
 try {
-  config = require('../../../config/config.ssr')
+  config = require(cwd + '/config/config.ssr')
 } catch (error) {
   // 兼容以前的版本，没有config.ssr取config.default
-  config = require('../../../config/config.default')
+  config = require(cwd + '/config/config.default')
 }
 
-const paths = require('../../../build/paths')
-const serverConfig = require('../../../build/webpack.config.server')
+const paths = require(cwd + '/build/paths')
+const serverConfig = require(cwd + '/build/webpack.config.server')
 const isDev = process.env.NODE_ENV === 'development'
 
 serverConfig.entry = {
