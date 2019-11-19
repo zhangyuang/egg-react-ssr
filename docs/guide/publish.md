@@ -31,10 +31,23 @@ pm2 有以下的几个非常给力的能力:
 $ npm install -g pm2
 ```
 
+- 编写启动文件app.js
+
+```
+const egg = require('egg')
+
+const workers = Number(process.argv[2] || require('os').cpus().length)
+egg.startCluster({
+  workers,
+  baseDir: __dirname
+})
+
+```
+
 - 使用 pm2 部署简单的项目
 
 ```
-$ pm2 start app.js --name "egg-react-cli" -i 0 --watch
+$ EGG_SERVER_ENV=prod pm2 start app.js --name "egg-react-ssr" -i 0 --watch
 
 pm2 start: 使用pm2启动 app.js
 -i 0: 使用最大进程数启动
