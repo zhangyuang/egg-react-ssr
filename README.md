@@ -12,14 +12,14 @@
 
 - 小：实现方式简洁，生产环境构建出来的bundle为同等复杂度的next.js项目的0.4倍，生成文件数量相比于next.js减少非常多
 - 全：支持HMR，支持本地开发以及生产环境CSR/SSR两种渲染模式无缝切换，支持定制组件的渲染模式，同时支持TypeScript版本
-- 美：基于[React](https://reactjs.org/)和[Eggjs](https://eggjs.org/)框架，拥有强大的插件生态，配置非黑盒，且一切关键位置皆可通过config.default.js来配置
+- 美：基于[React](https://reactjs.org/)和[Eggjs](https://eggjs.org/)框架，拥有强大的插件生态，配置非黑盒，且一切关键位置皆可通过config.ssr.js来配置
 
 在使用这个项目的公司
 
 <table><tr>
 <td align="center"><a href="https://www.youku.com"><img src="https://img.alicdn.com/tfs/TB17DTuXkH0gK0jSZPiXXavapXa-680-133.svg" width="100px;" alt="优酷"/><br /><sub><b>优酷视频 
 </b></sub></a></td>
-<td align="center"><a href="https://vmall.vmate.com/shop"><img src="https://img.alicdn.com/tfs/TB17p6Vhbj1gK0jSZFOXXc7GpXa-512-512.png" width="100px;" alt="vmate 积分商城"/><br />
+<td align="center"><a href="https://campaign.vmate.com/diwalilightup"><img src="https://img.alicdn.com/tfs/TB17p6Vhbj1gK0jSZFOXXc7GpXa-512-512.png" width="100px;" alt="vmate 积分商城"/><br />
   <a href="https://job.alibaba.com/zhaopin/position_detail.htm?trace=qrcode_share&positionCode=GP524819"><sub><b>Vmate短视频
 </b></a></td>
 <td align="center"><a href="https://enjoysales.paat.com/"><img src="https://img.alicdn.com/tfs/TB1Ma0BiEY1gK0jSZFMXXaWcVXa-836-836.png" width="100px;" alt="火炽星原CRM"/><br />
@@ -213,8 +213,6 @@ module.exports = {
 │   └── router.js // egg路由文件，无特殊需求不需要修改内容
 ├── app.js // egg 启动入口文件
 ├── build // webpack配置目录
-│   ├── env.js
-│   ├── jest
 │   ├── paths.js
 │   ├── util.js
 │   ├── webpack.config.base.js // 通用的webpack配置
@@ -223,9 +221,9 @@ module.exports = {
 ├── config // egg 配置文件目录
 │   ├── config.daily.js
 │   ├── config.default.js
+│   ├── config.ssr.js
 │   ├── config.local.js
 │   ├── config.prod.js
-│   ├── config.staging.js
 │   ├── plugin.js
 │   └── plugin.local.js
 ├── dist // build生成静态资源文件目录
