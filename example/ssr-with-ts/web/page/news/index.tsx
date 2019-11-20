@@ -1,7 +1,9 @@
 import React from 'react'
 import './index.less'
-
-const mockData = {
+interface MockData {
+  [index: number]: string;
+}
+const mockData:MockData = {
   1: `Racket-on-Chez continues to improve. Snapshot builds are currently available at pre.racket-lang.org, and we expect that Racket-on-Chez will be included as a download option in the next release.`,
   2: `This means anyone with more than three devices connected doesn't have to worry right this instant. That will change, however, when it comes time to replace one of your current devices or if you add another device to your collection. At that point, you will have to make a decision.`,
   3: `World's most mysterious text is finally cracked: Bristol academic deciphers lost language of 600-year-old Voynich manuscript to reveal astrological sex tips, herbal remedies and other pagan beliefs`,
@@ -13,11 +15,11 @@ interface Match {
   params: Params
 }
 interface Params {
-  id?: string
+  id: number
 }
 interface Ctx {
   match: Match,
-  params?: Params
+  params: Params
 }
 interface Props {
   newsDetail: string
