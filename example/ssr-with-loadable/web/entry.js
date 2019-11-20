@@ -15,9 +15,7 @@ const clientRender = async () => {
           const activeComponent = Component()
           const WrappedComponent = getWrappedComponent(activeComponent)
           const Layout = WrappedComponent.Layout || defaultLayout
-          return <Route exact={exact} key={path} path={path} render={() => {
-            return <Layout><WrappedComponent /></Layout>
-          }} />
+          return <Route exact={exact} key={path} path={path} render={() => <Layout><WrappedComponent /></Layout>} />
         })
       }
     </BrowserRouter>

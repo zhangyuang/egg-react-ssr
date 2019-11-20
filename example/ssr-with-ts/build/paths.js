@@ -5,7 +5,7 @@ const fs = require('fs')
 
 // Make sure any symlinks in the project folder are resolved:
 // https://github.com/facebook/create-react-app/issues/637
-const appDirectory = fs.realpathSync(__dirname)
+const appDirectory = fs.realpathSync(process.cwd())
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath)
 
 const envPublicUrl = process.env.PUBLIC_URL
@@ -29,12 +29,15 @@ const moduleFileExtensions = [
 
 // config after eject: we're in ./config/
 module.exports = {
-  appPath: resolveApp('../'),
-  appBuild: resolveApp('../output'),
-  appSrc: resolveApp('../web'),
-  entry: resolveApp('../web/entry'),
+  dotenv: resolveApp('.env'),
+  appPath: resolveApp('.'),
+  appBuild: resolveApp('output'),
+  appPublic: resolveApp('app/public'),
+  appPackageJson: resolveApp('package.json'),
+  appSrc: resolveApp('web'),
+  entry: resolveApp('web/entry'),
   appNodeModules: resolveApp('node_modules'),
-  publicUrl: getPublicUrl(resolveApp('../package.json')),
+  publicUrl: getPublicUrl(resolveApp('package.json')),
   resolveApp: resolveApp
 }
 

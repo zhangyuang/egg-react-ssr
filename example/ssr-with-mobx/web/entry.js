@@ -22,9 +22,7 @@ const clientRender = async () => {
             const ActiveComponent = Component()
             const Layout = ActiveComponent.Layout || defaultLayout
             const WrappedComponent = getWrappedComponent(ActiveComponent)
-            return <Route exact={exact} key={path} path={path} render={() => {
-              return <Layout><WrappedComponent store={store} /></Layout>
-            }} />
+            return <Route exact={exact} key={path} path={path} render={() => <Layout><WrappedComponent store={store} /></Layout>} />
           })
         }
       </BrowserRouter>
