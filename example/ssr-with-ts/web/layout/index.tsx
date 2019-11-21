@@ -13,14 +13,12 @@ const commonNode = (props: LayoutProps) => (
     : null
 )
 
-
-
 interface LayoutProps {
   layoutData?: Context,
   children?: JSX.Element | null
 }
 
-const Layout: SFC<LayoutProps> = (props:LayoutProps) : JSX.Element | null => {
+const Layout: SFC<LayoutProps> = (props: LayoutProps): JSX.Element | null => {
   if (__isBrowser__) {
     return commonNode(props)
   } else {
@@ -34,7 +32,7 @@ const Layout: SFC<LayoutProps> = (props:LayoutProps) : JSX.Element | null => {
           <meta name='theme-color' content='#000000' />
           <title>React App</title>
           {
-            injectCss && injectCss.map((item: string) => <link rel='stylesheet' href={item} key={item} />)
+             injectCss && injectCss.map((item: string) => <link rel='stylesheet' href={item} key={item} />)
           }
         </head>
         <body>
