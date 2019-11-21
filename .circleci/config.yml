@@ -29,6 +29,7 @@ jobs:
             - node_modules/
             - ./packages/yk-cli/node_modules/
             - ./example/ssr-with-js/node_modules/
+            - ./example/ssr-with-ts/node_modules/
           key: v1-ssr-{{ .Branch }}-{{ checksum "package.json" }}
       - persist_to_workspace:
           root: ~/project
