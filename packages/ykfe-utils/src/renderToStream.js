@@ -2,8 +2,12 @@ const renderToStream = async (ctx, config) => {
   const baseDir = config.baseDir || process.cwd()
   const isLocal = process.env.NODE_ENV === 'development'
   const serverJs = config.serverJs
-
-  if (config.type !== 'ssr') {
+  let csr
+  if (ctx.request && ctx.request.query) {
+    // 兼容express和koa的query获取
+    csr = ctx.request.query.csr
+  }
+  if (config.type !== 'ssr' || csr) {
     const renderLayout = require('yk-cli/lib/renderLayout').default
     const str = await renderLayout(ctx)
     return str

@@ -124,9 +124,15 @@ const Layout = (props) => {
 }
 ```
 
-### 渲染模式无缝切换
+### 如何切换渲染模式
 
-在本地开发时，你可以同时启动ssr/csr两种渲染模式查看区别，在生产环境时，你可以通过设置config中的type属性来切换不同的渲染模式，在流量较大时可以降级为csr应用
+在本地开发时，你可以同时启动ssr/csr两种渲染模式查看区别，在生产环境时，你可以通过设置config中的type属性来切换不同的渲染模式或者通过query来切换，在流量较大时可以降级为csr渲染模式
+
+```
+$ open http://localhost:7001/ 以SSR模式渲染应用
+$ open http://localhost:8000/ 本地开发环境以CSR模式渲染应用
+$ open http://localhost:7001/?csr=true 生产环境迅速切换为CSR模式渲染或者通过config.type来设置渲染模式
+```
 
 ### 特性
 
