@@ -1,14 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, StaticRouter, Route } from 'react-router-dom'
-import defaultLayout from './layout'
 import { Context } from 'midway'
-
 import { RouteItem } from './interface/route'
+import defaultLayout from './layout'
+
 const { routes } = require('../config/config.ssr')
 const { getWrappedComponent, getComponent } = require('ykfe-utils')
-const clientRender = async (): Promise<void> => {
 
+const clientRender = async (): Promise<void> => {
   // 客户端渲染||hydrate
   ReactDOM[window.__USE_SSR__ ? 'hydrate' : 'render'](
     <BrowserRouter>
@@ -16,7 +16,7 @@ const clientRender = async (): Promise<void> => {
         // 使用高阶组件getWrappedComponent使得csr首次进入页面以及csr/ssr切换路由时调用getInitialProps
         routes.map((item: RouteItem) => {
           const ActiveComponent = item.Component()
-          const Layout  = ActiveComponent.Layout || defaultLayout 
+          const Layout = ActiveComponent.Layout || defaultLayout
           const WrappedComponent = getWrappedComponent(ActiveComponent)
           return <Route exact={item.exact} key={item.path} path={item.path} render={() => {
             return <Layout><WrappedComponent /></Layout>
