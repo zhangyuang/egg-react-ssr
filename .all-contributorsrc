@@ -85,6 +85,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "c690554125",
+      "name": "Cheng Zhongmin",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/13865568?v=4",
+      "profile": "https://github.com/c690554125",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
