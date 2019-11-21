@@ -7,7 +7,6 @@ import { Context } from 'midway'
 import { RouteItem } from './interface/route'
 const { routes } = require('../config/config.ssr')
 const { getWrappedComponent, getComponent } = require('ykfe-utils')
-
 const clientRender = async (): Promise<void> => {
 
   // 客户端渲染||hydrate
@@ -17,7 +16,7 @@ const clientRender = async (): Promise<void> => {
         // 使用高阶组件getWrappedComponent使得csr首次进入页面以及csr/ssr切换路由时调用getInitialProps
         routes.map((item: RouteItem) => {
           const ActiveComponent = item.Component()
-          const Layout : any = ActiveComponent.Layout || defaultLayout
+          const Layout  = ActiveComponent.Layout || defaultLayout 
           const WrappedComponent = getWrappedComponent(ActiveComponent)
           return <Route exact={item.exact} key={item.path} path={item.path} render={() => {
             return <Layout><WrappedComponent /></Layout>

@@ -1,4 +1,5 @@
 {
+  "info":"此文件仅用于配置IDE在检查web下ts语法时的规则，不用于实际构建",
   "compilerOptions": {
     "esModuleInterop": true,
     "lib": [
