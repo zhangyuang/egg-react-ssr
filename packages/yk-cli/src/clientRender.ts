@@ -36,7 +36,7 @@ const dev = async (argv?: Argv) => {
     headers: {
       'access-control-allow-origin': '*'
     },
-    before(app: any) {
+    before (app: any) {
       app.get('/', async (req: any, res: any) => {
         const stream = await renderLayout()
         stream.pipe(res, { end: false })
@@ -45,7 +45,7 @@ const dev = async (argv?: Argv) => {
         })
       })
     },
-    after(app: any) {
+    after (app: any) {
       app.get(/^\//, async (req: any, res: any) => {
         res.write('<!DOCTYPE html>')
         const stream = await renderLayout()
