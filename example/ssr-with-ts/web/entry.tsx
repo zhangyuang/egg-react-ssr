@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter, StaticRouter, Route } from 'react-router-dom'
+import { BrowserRouter, StaticRouter, Route, Switch } from 'react-router-dom'
 import { Context } from 'midway'
 import { RouteItem } from './interface/route'
 import defaultLayout from './layout'
@@ -12,6 +12,7 @@ const clientRender = async (): Promise<void> => {
   // 客户端渲染||hydrate
   ReactDOM[window.__USE_SSR__ ? 'hydrate' : 'render'](
     <BrowserRouter>
+    <Switch>
       {
         // 使用高阶组件getWrappedComponent使得csr首次进入页面以及csr/ssr切换路由时调用getInitialProps
         routes.map((item: RouteItem) => {
@@ -23,6 +24,7 @@ const clientRender = async (): Promise<void> => {
           }} />
         })
       }
+    </Switch>
     </BrowserRouter>
     , document.getElementById('app'))
   if (process.env.NODE_ENV === 'development' && module.hot) {

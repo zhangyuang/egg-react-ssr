@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter, StaticRouter, Route } from 'react-router-dom'
+import { BrowserRouter, StaticRouter, Route, Switch } from 'react-router-dom'
 import defaultLayout from '@/layout'
 import { getWrappedComponent, getComponent } from 'ykfe-utils'
 import { routes as Routes } from '../config/config.ssr'
@@ -9,15 +9,17 @@ const clientRender = async () => {
   // 客户端渲染||hydrate
   ReactDOM[window.__USE_SSR__ ? 'hydrate' : 'render'](
     <BrowserRouter>
-      {
+      <Switch>
+        {
         // 使用高阶组件getWrappedComponent使得csr首次进入页面以及csr/ssr切换路由时调用getInitialProps
-        Routes.map(({ path, exact, Component }) => {
-          const ActiveComponent = Component()
-          const Layout = ActiveComponent.Layout || defaultLayout
-          const WrappedComponent = getWrappedComponent(ActiveComponent)
-          return <Route exact={exact} key={path} path={path} render={() => <Layout><WrappedComponent /></Layout>} />
-        })
-      }
+          Routes.map(({ path, exact, Component }) => {
+            const ActiveComponent = Component()
+            const Layout = ActiveComponent.Layout || defaultLayout
+            const WrappedComponent = getWrappedComponent(ActiveComponent)
+            return <Route exact={exact} key={path} path={path} render={() => <Layout><WrappedComponent /></Layout>} />
+          })
+        }
+      </Switch>
     </BrowserRouter>
     , document.getElementById('app'))
 
