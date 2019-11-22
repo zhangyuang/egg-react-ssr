@@ -117,7 +117,7 @@ export default OnlyCsr(Page)
       const stream = await renderToStream(ctx, config)
       ctx.body = stream
     } catch (error) {
-      ctx.logger.error(`Page Controller renderToStream Error ${error}`)
+      ctx.logger.error(`Page Controller renderToStream Error Error`, error)
     }
   }
 ```

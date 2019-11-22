@@ -18,7 +18,7 @@ export class Page {
       this.ctx.res.write('<!DOCTYPE html>')
       this.ctx.body = stream
     } catch (error) {
-      this.ctx.logger.error(`Page Controller renderToStream Error ${error}`)
+      this.ctx.logger.error(`Page Controller renderToStream Error`, error)
     }
   }
 
@@ -38,7 +38,7 @@ export class User {
       this.ctx.status = 200
       this.ctx.body = 'hello user'
     } catch (error) {
-      this.ctx.logger.error(`Page Controller renderToStream Error ${error}`)
+      this.ctx.logger.error(`Page Controller renderToStream Error`, error)
     }
   }
 
