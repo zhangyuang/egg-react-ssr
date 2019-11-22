@@ -14,7 +14,7 @@
 - 全：支持HMR，支持本地开发以及生产环境CSR/SSR两种渲染模式无缝切换，支持定制组件的渲染模式，同时支持TypeScript版本
 - 美：基于[React](https://reactjs.org/)和[Eggjs](https://eggjs.org/)框架，拥有强大的插件生态，配置非黑盒，且一切关键位置皆可通过config.ssr.js来配置
 
-在使用这个项目的公司
+`正在使用这个项目的公司(应用), 如果您正在使用但名单中没有列出来的话请提issue，欢迎推广分享`
 
 <table><tr>
 <td align="center"><a href="https://www.youku.com"><img src="https://img.alicdn.com/tfs/TB17DTuXkH0gK0jSZPiXXavapXa-680-133.svg" width="100px;" alt="优酷"/><br /><sub><b>优酷视频 
