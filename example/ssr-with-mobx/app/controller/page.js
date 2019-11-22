@@ -15,7 +15,7 @@ class PageController extends Controller {
       ctx.res.write('<!DOCTYPE html>')
       ctx.body = stream
     } catch (error) {
-      ctx.logger.error(`Page Controller renderToStream Error ${error}`)
+      ctx.logger.error(`Page Controller renderToStream Error`, error)
     }
   }
 }
