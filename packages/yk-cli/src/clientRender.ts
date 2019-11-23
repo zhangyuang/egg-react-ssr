@@ -2,16 +2,17 @@
 import { mkdir } from 'shelljs'
 import webpack from 'webpack'
 import fs from 'fs'
-import { join } from 'path'
+import { join, resolve } from 'path'
 import { webpackWithPromise } from './util'
 import { Argv } from './interface/argv'
 
 const WebpackDevServer = require('webpack-dev-server')
 const ora = require('ora')('正在构建')
-const cwd = process.env.BASE_DIR || process.cwd()
+const cwd = process.cwd()
+const baseDir = process.env.BASE_DIR || '.'
 const runtime = process.env.RUNTIME
 const renderLayout = runtime === 'serverless' ? require('./renderLayoutForFass').default : require('./renderLayout').default
-const clientConfig = require(cwd + '/build/webpack.config.client')
+const clientConfig = require(resolve(cwd, baseDir, './build/webpack.config.client'))
 
 process.on && process.on('message', async data => {
   if (data.msg === 'start dev') {

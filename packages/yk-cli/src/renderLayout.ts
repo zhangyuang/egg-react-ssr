@@ -7,18 +7,20 @@ import { renderToNodeStream } from 'react-dom/server'
 import nodeExternals from 'webpack-node-externals'
 import { webpackWithPromise } from './util'
 
-const cwd = process.env.BASE_DIR || process.cwd()
+const cwd = process.cwd()
+const baseDir = process.env.BASE_DIR || '.'
+const paths = require(resolve(cwd,baseDir, './build/paths'))
+const serverConfig = require(resolve(cwd,baseDir, './build/webpack.config.server'))
+const isDev = process.env.NODE_ENV === 'development'
+
 let config: any
 try {
-  config = require(cwd + '/config/config.ssr')
+  // config文件必须位于根目录
+  config = require(resolve(cwd,'./config/config.ssr'))
 } catch (error) {
   // 兼容以前的版本，没有config.ssr取config.default
-  config = require(cwd + '/config/config.default')
+  config = require(resolve(cwd,'./config/config.default'))
 }
-
-const paths = require(cwd + '/build/paths')
-const serverConfig = require(cwd + '/build/webpack.config.server')
-const isDev = process.env.NODE_ENV === 'development'
 
 serverConfig.entry = {
   Layout: join(paths.appSrc, './layout')
