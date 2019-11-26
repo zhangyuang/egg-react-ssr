@@ -39,6 +39,7 @@ const dev = async (argv?: Argv) => {
     },
     before (app: any) {
       app.get('/', async (req: any, res: any) => {
+        res.write('<!DOCTYPE html>')
         const stream = await renderLayout()
         stream.pipe(res, { end: false })
         stream.on('end', () => {
