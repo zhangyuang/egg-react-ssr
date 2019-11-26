@@ -25,7 +25,7 @@ class PageStore {
     @observable news = []
 
     constructor (state) {
-      this.news = (state && state.pageStore && state.pageStore.news) || []
+      this.news = state ? state.pageStore.news : []
     }
 
     @action

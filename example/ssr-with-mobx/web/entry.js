@@ -8,10 +8,11 @@ import { Provider, useStaticRendering } from 'mobx-react'
 import initStore from './store'
 
 const clientRender = async () => {
-  const store = initStore({
+  const store = window.store || initStore({
     __isBrowser__: __isBrowser__,
-    initialState: window.__INITIAL_DATA__ || {}
+    initialState: window.__INITIAL_DATA__
   })
+  window.store = store
   // 客户端渲染||hydrate
   ReactDOM[window.__USE_SSR__ ? 'hydrate' : 'render'](
     <Provider store={store}>
