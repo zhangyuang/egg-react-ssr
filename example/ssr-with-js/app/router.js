@@ -7,4 +7,5 @@ module.exports = app => {
   config.routes.map(route => {
     router.get(`${route.path}`, controller[route.controller][route.handler])
   })
+  router.get('/api/getIndexData', controller.api.index)
 }
