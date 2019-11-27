@@ -1,10 +1,10 @@
-import { provide } from 'midway';
-import { IApiService, IApiResult } from '../interface';
+import { provide } from 'midway'
+import { IApiService, IApiResult } from '../interface'
 
 @provide('ApiService')
 export class ApiService implements IApiService {
 
-  index(): Promise<IApiResult> {
+  index (): Promise<IApiResult> {
     return Promise.resolve({
       news: [
         {
