@@ -37,6 +37,9 @@ const dev = async (argv?: Argv) => {
     headers: {
       'access-control-allow-origin': '*'
     },
+    proxy: {
+      '/api': 'http://localhost:7001'
+    },
     before (app: any) {
       app.get('/', async (req: any, res: any) => {
         res.write('<!DOCTYPE html>')

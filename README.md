@@ -127,11 +127,11 @@ const Layout = (props) => {
 ### 如何切换渲染模式
 
 在本地开发时，你可以同时启动ssr/csr两种渲染模式查看区别，在生产环境时，你可以通过设置config中的type属性来切换不同的渲染模式或者通过query来切换，在流量较大时可以降级为csr渲染模式
+参考文档[如何切换渲染模式](http://ykfe.net/guide/faq.html#%E5%A6%82%E4%BD%95%E5%88%87%E6%8D%A2%E6%B8%B2%E6%9F%93%E6%A8%A1%E5%BC%8F)
 
 ```
 $ open http://localhost:7001/ 以SSR模式渲染应用
-$ open http://localhost:8000/ 本地开发环境以CSR模式渲染应用
-$ open http://localhost:7001/?csr=true 生产环境迅速切换为CSR模式渲染或者通过config.type来设置渲染模式
+$ open http://localhost:7001/?csr=true 切换为CSR模式渲染或者通过config.type来设置渲染模式
 ```
 
 ### 特性
@@ -265,10 +265,10 @@ $ npm run ssr
 $ npm run csr 
 ```
 
-3）同时启动csr和ssr方式。
+3）同时启动csr和ssr服务。
 
 ```
-$ npm start // 启动监听7001端口，建议使用方式，同时启动服务端渲染 + 客户端hydrate
+$ npm start // 启动监听7001端口，本地开发建议以本方式启动应用，同时启动服务端渲染 + 客户端hydrate
 ```
 
 4）配套的脚本
