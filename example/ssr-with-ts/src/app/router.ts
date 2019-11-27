@@ -8,5 +8,4 @@ module.exports = function (app: any) {
     console.log(`\x1B[32m ${route.path}=>${route.controller}.${route.handler} \x1B[39m `)
     router.get(`${route.path}`, app.generateController(`${route.controller}.${route.handler}`))
   })
-
 }
