@@ -1,4 +1,4 @@
-import { controller, provide, inject, Context } from 'midway'
+import { controller, provide, inject, Context, get } from 'midway'
 import { IApiService } from '../../interface'
 @provide()
 @controller('/api')
@@ -7,6 +7,7 @@ export class Api {
     ctx: Context
     @inject('ApiService')
     service: IApiService
+    @get('/getIndexData')
     async index() {
         try {
             // Page为webpack打包的chunkName，项目默认的entry为Page
