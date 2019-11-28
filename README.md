@@ -334,4 +334,9 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 欢迎直接扫码加入钉钉群
 <img src="https://img.alicdn.com/tfs/TB1X1CsnET1gK0jSZFrXXcNCXXa-750-990.jpg" width="300">
 
+## 捐赠
 
+如果您觉得本项目对您有帮助，可以考虑请我们喝一杯咖啡☕️
+<div style="display:flex"><img src="https://gw.alicdn.com/tfs/TB1X1vRouT2gK0jSZFvXXXnFXXa-600-900.jpg" width="200" height="270">
+<img src="https://gw.alicdn.com/tfs/TB1BtPToxz1gK0jSZSgXXavwpXa-1242-1686.jpg" width="200" height="270">
+</div>
