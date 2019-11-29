@@ -7,6 +7,7 @@ const mockData = {
   4: `After a successful test in Mexico City, fast-food chain Burger King will begin delivering food to drivers caught in traffic in Los Angeles in what they have dubbed The Traffic Jam Whopper.`,
   5: `Product advertisement and promotion on YouTube is a function of the dedicated audience (or influence) of the individual (influencer) anchoring the advertising or promotion.`
 }
+
 const getData = async (id) => {
   return Promise.resolve(mockData[id])
 }

@@ -1,10 +1,10 @@
-import { action, observable, runInAction } from 'mobx'
+import { action, observable } from 'mobx'
 
 const getData = async () => {
   return Promise.resolve([
     {
       id: '1',
-      title: 'Racket v7.3 Release Notes'
+      title: '11Racket v7.3 Release Notes'
     },
     {
       id: '2',
@@ -28,12 +28,9 @@ class PageStore {
       this.news = state ? state.pageStore.news : []
     }
 
-    @action
-    async getData () {
+    @action getData = async ()=> {
       const news = await getData()
-      runInAction(() => {
-        this.news = news
-      })
+      this.news = news
     }
 }
 
