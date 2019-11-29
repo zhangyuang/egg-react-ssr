@@ -69,7 +69,6 @@ const dev = async (argv?: Argv) => {
 
 const build = async () => {
   const outputPath = clientConfig.output.path
-  const stream = await renderLayout()
   ora.start()
   const stats: any = await webpackWithPromise(clientConfig)
   console.log(stats.toString({
@@ -80,8 +79,10 @@ const build = async () => {
     version: true,
     warnings: false
   }))
+  const stream = await renderLayout()
   let writeStream
   try {
+      // 如果当前没有dist目录则创建目录
     fs.statSync(join(outputPath, './index.html'))
     writeStream = fs.createWriteStream(join(outputPath, './index.html'))
     stream.pipe(writeStream)
