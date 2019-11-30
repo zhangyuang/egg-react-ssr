@@ -2,13 +2,12 @@ import { promisify } from 'util'
 import { exec } from 'child_process'
 import https from 'https'
 import path from 'path'
-import { Optional } from '../interface/option'
 import fs from 'fs'
 import nunjucks from 'nunjucks'
 import webpack from 'webpack'
+import { Optional } from '../interface/option'
 
 const download = require('download-git-repo')
-
 const tsUrl = 'https://registry.npm.taobao.org/ssr-with-js'
 const jsUrl = 'https://registry.npm.taobao.org/ssr-with-ts'
 const webpackWithPromise = promisify(webpack)
