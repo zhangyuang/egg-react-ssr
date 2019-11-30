@@ -1,6 +1,5 @@
 import ora from 'ora'
 import { execWithPromise, getWithPromise, resolveApp } from './util/index'
-
 const url = 'https://registry.npm.taobao.org/yk-cli'
 /**
  * 判断NPM包自动更新
@@ -18,7 +17,6 @@ export async function updateCli (): Promise<void> {
     if (latest !== localVersion) {
       const spinner = ora('发现本地版本较旧,尝试更新yk-cli脚手架')
       spinner.start()
-      console.log(execWithPromise.toString())
       const { stdout } = await execWithPromise(`npm i -g --registry=https://registry.npm.taobao.org yk-cli@${latest}`)
       console.log(stdout, `更新完毕... 请您重新执行 ykcli init`)
       spinner.succeed()

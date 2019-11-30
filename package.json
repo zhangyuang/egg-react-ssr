@@ -36,10 +36,6 @@
   "engines": {
     "node": ">=8"
   },
-  "jest": {
-    "coverageDirectory": "./coverage/",
-    "collectCoverage": true
-  },
   "standard": {
     "parser": "babel-eslint",
     "ignore": [

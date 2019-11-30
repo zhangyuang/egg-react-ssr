@@ -6,7 +6,6 @@
       ],
       "declaration": true,
       "jsx": "react",
-      "moduleResolution": "node",
       "declarationDir": "./types/",
       "sourceMap": true,
       "outDir": "./bin/",
