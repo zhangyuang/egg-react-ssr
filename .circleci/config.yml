@@ -50,13 +50,6 @@ jobs:
           at: ~/project
       - run: npm run test:unit
 
-  test:coverage:
-    <<: *defaults
-    steps:
-      - attach_workspace:
-          at: ~/project
-      - run: npm run test:coverage
-
   test:e2e:
     <<: *defaults
     steps:
@@ -83,10 +76,6 @@ workflows:
       - test:unit:
           requires:
             - install
-      - test:coverage:
-          requires:
-            - install
-            - test:unit
       - test:e2e:
           requires:
             - install
