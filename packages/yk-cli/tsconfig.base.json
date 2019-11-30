@@ -10,6 +10,7 @@
       "sourceMap": true,
       "outDir": "./bin/",
       "strict": true,
+      "moduleResolution": "node",
       "resolveJsonModule": true,
       "moduleResolution": "node",
       "esModuleInterop": true,
