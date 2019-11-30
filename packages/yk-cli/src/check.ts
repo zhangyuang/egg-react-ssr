@@ -26,6 +26,7 @@ export function checkRepeat (option: Optional): Promise<void> {
         console.log(`原文件已经成功删除...`)
         resolve()
       } else process.exit()
-    } else resolve()
+    }
+    resolve()
   }).catch(err => processError(err))
 }
