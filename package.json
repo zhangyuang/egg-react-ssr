@@ -12,7 +12,7 @@
     "lint:fix": "standard --fix && tslint -c tslint.json -p . --fix",
     "test": "node ./test/scripts/preInstall.js && npm run test:unit && npm run test:coverage && npm run test:e2e",
     "test:coverage": "codecov",
-    "test:unit": "NODE_ENV=test jest --coverage",
+    "test:unit": "jest --coverage",
     "test:e2e": "NODE_ENV=production node ./test/e2e/startServer.js",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs && npm run publish",
