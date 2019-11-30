@@ -1,4 +1,4 @@
-import { action, observable, runInAction } from 'mobx'
+import { action, observable } from 'mobx'
 
 const mockData = {
   1: `Racket-on-Chez continues to improve. Snapshot builds are currently available at pre.racket-lang.org, and we expect that Racket-on-Chez will be included as a download option in the next release.`,
@@ -7,6 +7,7 @@ const mockData = {
   4: `After a successful test in Mexico City, fast-food chain Burger King will begin delivering food to drivers caught in traffic in Los Angeles in what they have dubbed The Traffic Jam Whopper.`,
   5: `Product advertisement and promotion on YouTube is a function of the dedicated audience (or influence) of the individual (influencer) anchoring the advertising or promotion.`
 }
+
 const getData = async (id) => {
   return Promise.resolve(mockData[id])
 }
@@ -21,9 +22,7 @@ class NewsStore {
     @action
     async getData (id) {
       const detail = await getData(id)
-      runInAction(() => {
-        this.detail = detail
-      })
+      this.detail = detail
     }
 }
 

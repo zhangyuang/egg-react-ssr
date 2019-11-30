@@ -1,5 +1,8 @@
+import { useStaticRendering } from 'mobx-react'
 import PageStore from './page'
 import NewsStore from './news'
+
+useStaticRendering(!__isBrowser__)
 
 class Store {
   constructor (options) {
@@ -9,15 +12,4 @@ class Store {
   }
 }
 
-let store = null
-
-function initializeStore (options) {
-  const isServer = !options.__isBrowser__
-
-  if (isServer || store === null) {
-    store = new Store(options)
-  }
-
-  return store
-}
-export default initializeStore
+export default Store

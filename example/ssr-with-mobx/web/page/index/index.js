@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import './index.less'
 import { inject, observer } from 'mobx-react'
+import './index.less'
 
 function Page (props) {
   return (
@@ -21,12 +21,12 @@ function Page (props) {
   )
 }
 
-Page.getInitialProps = async ({ store }) => {
-  await store.pageStore.getData()
-}
-
 const mapStateToProps = ({ store }) => ({
   news: store.pageStore.news
 })
+
+Page.getInitialProps = async ({ store }) => {
+  return store.pageStore.getData()
+}
 
 export default inject(mapStateToProps)(observer(Page))
