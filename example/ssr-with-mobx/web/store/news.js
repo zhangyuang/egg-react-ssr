@@ -1,4 +1,4 @@
-import { action, observable, runInAction } from 'mobx'
+import { action, observable } from 'mobx'
 
 const mockData = {
   1: `Racket-on-Chez continues to improve. Snapshot builds are currently available at pre.racket-lang.org, and we expect that Racket-on-Chez will be included as a download option in the next release.`,
@@ -22,9 +22,7 @@ class NewsStore {
     @action
     async getData (id) {
       const detail = await getData(id)
-      runInAction(() => {
-        this.detail = detail
-      })
+      this.detail = detail
     }
 }
 

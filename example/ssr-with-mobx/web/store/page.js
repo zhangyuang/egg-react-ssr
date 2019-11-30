@@ -4,7 +4,7 @@ const getData = async () => {
   return Promise.resolve([
     {
       id: '1',
-      title: '11Racket v7.3 Release Notes'
+      title: 'Racket v7.3 Release Notes'
     },
     {
       id: '2',

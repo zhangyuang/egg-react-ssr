@@ -2,7 +2,7 @@ import { useStaticRendering } from 'mobx-react'
 import PageStore from './page'
 import NewsStore from './news'
 
-// useStaticRendering(!__isBrowser__)
+useStaticRendering(!__isBrowser__)
 
 class Store {
   constructor (options) {
