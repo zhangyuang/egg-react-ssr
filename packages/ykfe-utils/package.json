@@ -6,22 +6,13 @@
   "module": "es/index.js",
   "sideEffects": false,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "watch:es": "NODE_ENV=production BABEL_ENV=es babel src --out-dir es --watch",
-    "watch:lib": "NODE_ENV=production BABEL_ENV=lib babel src --out-dir lib --watch",
-    "watch": "concurrently \"npm run watch:es\" \"npm run watch:lib \""
+    "build": "rm -rf ./lib ./es && concurrently \"tsc -p ./tsconfig.cjs.json --sourceMap false\" \" tsc -p ./tsconfig.es6.json --sourceMap false\"",
+    "dev": "concurrently \"tsc -w -p ./tsconfig.cjs.json \" \"tsc -w -p ./tsconfig.es6.json \""
   },
   "author": "",
   "devDependencies": {
-    "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.4",
-    "@babel/plugin-proposal-class-properties": "^7.4.4",
-    "@babel/plugin-transform-runtime": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "@babel/preset-react": "^7.0.0",
-    "@babel/runtime": "^7.5.5",
-    "babel-plugin-add-module-exports": "^1.0.2",
-    "concurrently": "^4.1.1"
+    "concurrently": "^4.1.1",
+    "typescript": "^3.7.2"
   },
   "dependencies": {
     "react": "^16.8.6",
