@@ -3,30 +3,44 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter, StaticRouter, Route } from 'react-router-dom'
 import defaultLayout from '@/layout'
 import { getWrappedComponent, getComponent } from 'ykfe-utils'
-import { routes as Routes } from '../config/config.ssr'
 import { Provider } from 'mobx-react'
+import { routes as Routes } from '../config/config.ssr'
 import Store from './store'
 
-const clientRender = async () => {
-  const store = new Store({
-    initialState: window.__INITIAL_DATA__
-  })
+const createStore = () => new Store({
+  initStore: window.__INITIAL_DATA__
+})
 
+const storeContext = React.createContext(null)
+
+const StoreProvider = ({ children }) => {
+  const store = createStore()
+  return <storeContext.Provider value={store}>{children}</storeContext.Provider>
+}
+
+export const useStore = () => {
+  const store = React.useContext(storeContext)
+  if (!store) {
+    // this is especially useful in TypeScript so you don't need to be checking for null all the time
+    throw new Error('useStore must be used within a StoreProvider.')
+  }
+  return store
+}
+const clientRender = async () => {
   ReactDOM[window.__USE_SSR__ ? 'hydrate' : 'render'](
-    <Provider store={store}>
-    <BrowserRouter>
+    <StoreProvider>
+      <BrowserRouter>
         {
         // 使用高阶组件getWrappedComponent使得csr首次进入页面以及csr/ssr切换路由时调用getInitialProps
           Routes.map(({ path, exact, Component }, key) => {
             const ActiveComponent = Component()
             const Layout = ActiveComponent.Layout || defaultLayout
             const WrappedComponent = getWrappedComponent(ActiveComponent)
-            return    <Route exact={exact} key ={path}path={path} render={() => <Layout><WrappedComponent store={store} /></Layout>} />
-           
+            return <Route exact={exact} key={path}path={path} render={() => <Layout><WrappedComponent /></Layout>} />
           })
         }
       </BrowserRouter>
-      </Provider>
+    </StoreProvider>
     , document.getElementById('app'))
 
   if (process.env.NODE_ENV === 'development' && module.hot) {

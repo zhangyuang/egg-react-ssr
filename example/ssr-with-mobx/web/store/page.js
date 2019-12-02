@@ -4,7 +4,7 @@ const getData = async () => {
   return Promise.resolve([
     {
       id: '1',
-      title: '11Racket v7.3 Release Notes'
+      title: '1Racket v7.3 Release Notes'
     },
     {
       id: '2',
@@ -28,7 +28,7 @@ class PageStore {
       this.news = state ? state.pageStore.news : []
     }
 
-    @action getData = async ()=> {
+    @action getData = async () => {
       const news = await getData()
       this.news = news
     }
