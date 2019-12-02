@@ -28,11 +28,11 @@ const resolveApp = (source: string) => {
   return path.resolve(__dirname, `../../${source}`)
 }
 
-const getWithPromise = (url: string): Promise<any> => {
+const getWithPromise = (url: string, timeout?: number): Promise<any> => {
   return new Promise((resolve, reject) => {
     const timer = setTimeout(() => {
       reject('url request timeout:' + url)
-    }, 5000)
+    }, timeout || 5000)
     let data: string = ''
     https.get(url,res => {
       clearTimeout(timer)
