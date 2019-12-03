@@ -7,7 +7,7 @@ import { renderToNodeStream } from 'react-dom/server'
 import nodeExternals from 'webpack-node-externals'
 import { webpackWithPromise } from './util'
 
-const cwd = process.cwd()
+const cwd: string = process.env.BASE_CWD || process.cwd()
 const baseDir = process.env.BASE_DIR || '.'
 const paths = require(resolve(cwd,baseDir, './build/paths'))
 const serverConfig = require(resolve(cwd,baseDir, './build/webpack.config.server'))
@@ -34,7 +34,6 @@ serverConfig.externals = nodeExternals({
 const reactToStream = (Component: React.FunctionComponent, props: object) => {
   return renderToNodeStream(React.createElement(Component, props))
 }
-
 const renderLayout = async (ctx: any) => {
   const layoutPath = resolve(__dirname, '../dist/Layout.server.js')
   if (isDev) {

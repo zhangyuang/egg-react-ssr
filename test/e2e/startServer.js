@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
 const egg = require('egg')
-const path = require('path')
+const { resolve } = require('path')
 const { exec, fork, spawn } = require('child_process')
 const { promisify } = require('util')
 const execWithPromise = promisify(exec)
-const baseDir = process.env.BASE_DIR = path.resolve(__dirname, '../../example/ssr-with-js/')
-
+const baseDir = process.env.BASE_DIR = resolve(__dirname, '../../example/ssr-with-js/')
+const cwd = process.cwd()
 egg.startCluster({
   baseDir: baseDir,
   port: 7001,
@@ -14,9 +14,10 @@ egg.startCluster({
 }, async () => {
   try {
     await execWithPromise('cd ./example/ssr-with-js && npm run build:server')
-    const child = fork('./example/ssr-with-js/node_modules/yk-cli/lib/clientRender', {
+    process.env.BASE_CWD = resolve(cwd, './example/ssr-with-js')
+    const child = fork('./packages/yk-cli/src/clientRender', {
       env: Object.assign(process.env, {
-        baseDir: './example/ssr-with-js'
+        BASE_CWD: resolve(cwd, './example/ssr-with-js')
       })
     })
     child.send({
