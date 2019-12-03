@@ -17,9 +17,9 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - v2-1-ssr-{{ .Branch }}-{{ checksum "package.json" }}
-            - v2-1-ssr-{{ .Branch }}-
-            - v2-1-ssr-
+            - v2-2-ssr-{{ .Branch }}-{{ checksum "package.json" }}
+            - v2-2-ssr-{{ .Branch }}-
+            - v2-2-ssr-
       - run:
           command: |
             npm install --registry=https://registry.npm.taobao.org/
@@ -28,7 +28,7 @@ jobs:
           paths:
             - node_modules/
             - ./packages/yk-cli/node_modules/
-          key: v2-1-ssr-{{ .Branch }}-{{ checksum "package.json" }}
+          key: v2-2-ssr-{{ .Branch }}-{{ checksum "package.json" }}
       - persist_to_workspace:
           root: ~/project
           paths:
