@@ -8,8 +8,8 @@ import webpack from 'webpack'
 import { Optional } from '../interface/option'
 
 const download = require('download-git-repo')
-const tsUrl = 'https://registry.npm.taobao.org/ssr-with-js'
-const jsUrl = 'https://registry.npm.taobao.org/ssr-with-ts'
+const jsUrl = 'https://registry.npm.taobao.org/ssr-with-js'
+const tsUrl = 'https://registry.npm.taobao.org/ssr-with-ts'
 const webpackWithPromise = promisify(webpack)
 
 const processError = (err: string) => {
