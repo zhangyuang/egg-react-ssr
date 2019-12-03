@@ -27,6 +27,7 @@ jobs:
       - save_cache:
           paths:
             - node_modules/
+            - ./packages/yk-cli/node_modules/
           key: v2-2-ssr-{{ .Branch }}-{{ checksum "package.json" }}
       - persist_to_workspace:
           root: ~/project
