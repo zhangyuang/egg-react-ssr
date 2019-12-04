@@ -1,6 +1,13 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
+let _this = null
+const popStateFn = () => {
+  if(_this && _this.getInitialProps) {
+    _this.getInitialProps()
+  }
+}
+
 function GetInitialProps (WrappedComponent) {
   class GetInitialPropsClass extends Component {
     constructor (props) {
@@ -14,9 +21,8 @@ function GetInitialProps (WrappedComponent) {
     componentDidMount () {
       const props = this.props
       if (window.__USE_SSR__) {
-        window.onpopstate = () => {
-          this.getInitialProps()
-        }
+        _this = this
+        window.addEventListener('popstate', popStateFn)
       }
       const getProps = !window.__USE_SSR__ || (props.history && props.history.action === 'PUSH')
       if (getProps) {
