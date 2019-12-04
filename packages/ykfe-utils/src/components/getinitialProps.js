@@ -1,6 +1,13 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
+// 维护一个this指针，用于切换页面时切换
+let _this = null
+// 维护一个指针不变的触发函数
+const popState = () => {
+  _this && this.getInitialProps  && this.getInitialProps()
+}
+
 function GetInitialProps (WrappedComponent) {
   class GetInitialPropsClass extends Component {
     constructor (props) {
@@ -14,9 +21,10 @@ function GetInitialProps (WrappedComponent) {
     componentDidMount () {
       const props = this.props
       if (window.__USE_SSR__) {
-        window.onpopstate = () => {
-          this.getInitialProps()
-        }
+        // 修改this
+        // 使用addEventListener来绑定事件，防止和第三方库冲突，并确保在react-router的popstate后执行。
+        _this = this
+        window.addEventListener('popstate', popState)
       }
       const getProps = !window.__USE_SSR__ || (props.history && props.history.action === 'PUSH')
       if (getProps) {
