@@ -18,5 +18,5 @@ export interface Optional {
   store?: string
 
     /** 项目语言 */
-  language?: 'typescript' | 'javascript'
+  language: 'typescript' | 'javascript'
 }

@@ -9,6 +9,7 @@ jest.mock('ora')
 jest.spyOn(process, 'exit').mockImplementation(() => {
   throw new Error('process exit')
 })
+jest.spyOn(console, 'log')
 
 jest.mock('../package.json', () => ({ version: '1.0.0' }))
 

@@ -7,6 +7,7 @@ jest.mock('inquirer', () => ({
     delete: true
   }))
 }))
+jest.spyOn(console, 'log')
 
 const inquirer = require('inquirer')
 beforeAll(() => {
@@ -15,7 +16,8 @@ beforeAll(() => {
 
 test('hope checkRepeat can be invoke', async () => {
   await checkRepeat({
-    appName: 'app'
+    appName: 'app',
+    language: 'javascript'
   })
   expect(inquirer.prompt).toBeCalled()
   fs.stat('./app', err => {
