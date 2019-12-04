@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom'
 
 let _this = null
 const popStateFn = () => {
+  // 使用popStateFn保存函数防止addEventListener重复注册
   if (_this && _this.getInitialProps) {
     _this.getInitialProps()
   }
@@ -21,7 +22,7 @@ function GetInitialProps (WrappedComponent) {
     componentDidMount () {
       const props = this.props
       if (window.__USE_SSR__) {
-        _this = this
+        _this = this // 修正_this指向，保证_this指向当前渲染的页面组件
         window.addEventListener('popstate', popStateFn)
       }
       const getProps = !window.__USE_SSR__ || (props.history && props.history.action === 'PUSH')
