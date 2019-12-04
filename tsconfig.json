@@ -5,8 +5,8 @@
       "lib": [
         "esnext"
       ],
-      "allowJs": true,
       "jsx": "react",
+      "declaration": true,
       "declarationDir": "./types/",
       "sourceMap": true,
       "strict": true,

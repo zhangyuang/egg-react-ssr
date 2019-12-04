@@ -18,6 +18,7 @@ jest.mock('../src/util/index', () => ({
 }))
 
 test('hope cacheManage can move project directory to the true appName', async () => {
+  // 本地没有缓存的情况应该下载仓库并且移动到指定的目录中
   await cacheMange({
     appName: 'app',
     language: 'javascript'
