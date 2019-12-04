@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom'
 let _this = null
 // 维护一个指针不变的触发函数
 const popState = () => {
-  _this && this.getInitialProps  && this.getInitialProps()
+  _this && _this.getInitialProps  && _this.getInitialProps()
 }
 
 function GetInitialProps (WrappedComponent) {
