@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom'
 
 let _this = null
 const popStateFn = () => {
-  if(_this && _this.getInitialProps) {
+  if (_this && _this.getInitialProps) {
     _this.getInitialProps()
   }
 }
