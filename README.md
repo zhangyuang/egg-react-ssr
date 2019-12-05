@@ -19,7 +19,7 @@
 <table><tr>
 <td align="center"><a target="_blank" href="https://www.youku.com"><img src="https://img.alicdn.com/tfs/TB17DTuXkH0gK0jSZPiXXavapXa-680-133.svg" width="100px;" alt="优酷"/><br /><sub><b>优酷视频 
 </b></sub></a></td>
-<td align="center"><a target="_blank" href="https://campaign.vmate.com/diwalilightup"><img src="https://img.alicdn.com/tfs/TB17p6Vhbj1gK0jSZFOXXc7GpXa-512-512.png" width="100px;" alt="vmate 积分商城"/><br />
+<td align="center"><a target="_blank" href="https://campaign.vmate.com/vrbollywood"><img src="https://img.alicdn.com/tfs/TB17p6Vhbj1gK0jSZFOXXc7GpXa-512-512.png" width="100px;" alt="vmate 积分商城"/><br />
   <a target="_blank" href="https://job.alibaba.com/zhaopin/position_detail.htm?trace=qrcode_share&positionCode=GP524819"><sub><b>Vmate短视频
 </b></a></td>
 <td align="center"><a target="_blank" href="https://enjoysales.paat.com/"><img src="https://img.alicdn.com/tfs/TB1Ma0BiEY1gK0jSZFMXXaWcVXa-836-836.png" width="100px;" alt="火炽星原CRM"/><br />
@@ -339,7 +339,9 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 
 ## 捐赠
 
-如果您觉得本项目对您有帮助，可以考虑请我们喝一杯咖啡☕️
+如果您觉得本项目对您有帮助，可以考虑请我们喝一杯咖啡☕️这笔捐赠不会用于私人用途将用于团队建设
 <div style="display:flex"><img src="https://gw.alicdn.com/tfs/TB1X1vRouT2gK0jSZFvXXXnFXXa-600-900.jpg" width="200" height="270">
 <img src="https://gw.alicdn.com/tfs/TB1BtPToxz1gK0jSZSgXXavwpXa-1242-1686.jpg" width="200" height="270">
 </div>
+
+[捐赠者名单](http://ykfe.net/guide/donate.html)如有遗漏请提issue
