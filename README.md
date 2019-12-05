@@ -339,7 +339,9 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 
 ## 捐赠
 
-如果您觉得本项目对您有帮助，可以考虑请我们喝一杯咖啡☕️
+如果您觉得本项目对您有帮助，可以考虑请我们喝一杯咖啡☕️这笔捐赠不会用于私人用途将用于团队建设
 <div style="display:flex"><img src="https://gw.alicdn.com/tfs/TB1X1vRouT2gK0jSZFvXXXnFXXa-600-900.jpg" width="200" height="270">
 <img src="https://gw.alicdn.com/tfs/TB1BtPToxz1gK0jSZSgXXavwpXa-1242-1686.jpg" width="200" height="270">
 </div>
+
+[捐赠者名单](http://ykfe.net/guide/donate.html)如有遗漏请提issue
