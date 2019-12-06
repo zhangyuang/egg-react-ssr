@@ -103,11 +103,21 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "ivc369",
+      "name": "Menteceso",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/16490377?v=4",
+      "profile": "https://ivc.me",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
   "projectName": "egg-react-ssr",
   "projectOwner": "ykfe",
   "repoType": "github",
-  "repoHost": "https://github.com"
+  "repoHost": "https://github.com",
+  "skipCi": true
 }
