@@ -1,9 +1,8 @@
 export interface RouteItem {
   path: string,
   exact?: boolean,
-  Component (): Component
+  Component: Component
 }
-
-export interface Component {
-  Layout?: new () => React.Component<object, object>
+interface Component {
+  (): React.FunctionComponent
 }
