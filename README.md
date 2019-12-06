@@ -53,7 +53,7 @@ $ open http://localhost:7001
 
 在写法上统一csr和ssr，采用next类似的静态的getInitialProps作为数据获取方法
 
-```
+```js
 function Page(props) {
   return <div> {props.name} </div>
 }
@@ -132,9 +132,9 @@ const Layout = (props) => {
 在本地开发时，你可以同时启动ssr/csr两种渲染模式查看区别，在生产环境时，你可以通过设置config中的type属性来切换不同的渲染模式或者通过query来切换，在流量较大时可以降级为csr渲染模式
 参考文档[如何切换渲染模式](http://ykfe.net/guide/faq.html#%E5%A6%82%E4%BD%95%E5%88%87%E6%8D%A2%E6%B8%B2%E6%9F%93%E6%A8%A1%E5%BC%8F)
 
-```
-$ open http://localhost:7001/ 以SSR模式渲染应用
-$ open http://localhost:7001/?csr=true 切换为CSR模式渲染或者通过config.type来设置渲染模式
+```bash
+$ open http://localhost:7001/          # 以SSR模式渲染应用
+$ open http://localhost:7001/?csr=true # 切换为CSR模式渲染或者通过config.type来设置渲染模式
 ```
 
 ### 特性
@@ -213,21 +213,21 @@ module.exports = {
 
 目录结构保持了Egg的方式，以app和config目录为主。将前端React相关代码放到web目录下，webpack打包相关文件位于build目录。整体来看，目录不多，层级不深，属于刚刚好那种。
 
-```
+```bash
 ├── README.md
-├── app // egg核心目录
+├── app # egg核心目录
 │   ├── controller
 │   ├── extend
 │   ├── middleware
-│   └── router.js // egg路由文件，无特殊需求不需要修改内容
-├── app.js // egg 启动入口文件
-├── build // webpack配置目录
+│   └── router.js # egg路由文件，无特殊需求不需要修改内容
+├── app.js # egg 启动入口文件
+├── build # webpack配置目录
 │   ├── paths.js
 │   ├── util.js
-│   ├── webpack.config.base.js // 通用的webpack配置
-│   ├── webpack.config.client.js // webpack客户端打包配置
-│   └── webpack.config.server.js // webpack服务端打包配置
-├── config // egg 配置文件目录
+│   ├── webpack.config.base.js # 通用的webpack配置
+│   ├── webpack.config.client.js # webpack客户端打包配置
+│   └── webpack.config.server.js # webpack服务端打包配置
+├── config # egg 配置文件目录
 │   ├── config.daily.js
 │   ├── config.default.js
 │   ├── config.ssr.js
@@ -235,15 +235,15 @@ module.exports = {
 │   ├── config.prod.js
 │   ├── plugin.js
 │   └── plugin.local.js
-├── dist // build生成静态资源文件目录
-│   ├── Page.server.js // 服务端打包后文件(即打包后的serverRender方法)
-│   └── static // 前端打包后静态资源目录
-└── web // 前端文件目录
+├── dist # build生成静态资源文件目录
+│   ├── Page.server.js # 服务端打包后文件(即打包后的serverRender方法)
+│   └── static # 前端打包后静态资源目录
+└── web # 前端文件目录
     ├── assets
     │   └── common.less
-    ├── entry.js // webpack打包入口文件，分环境导出不同配置
+    ├── entry.js # webpack打包入口文件，分环境导出不同配置
     ├── layout
-    │   ├── index.js // 页面布局
+    │   ├── index.js # 页面布局
     │   └── index.less
     └── page
         ├── index
@@ -270,16 +270,16 @@ $ npm run csr
 
 3）同时启动csr和ssr服务。
 
-```
-$ npm start // 启动监听7001端口，本地开发建议以本方式启动应用，同时启动服务端渲染 + 客户端hydrate
+```bash
+$ npm start # 启动监听7001端口，本地开发建议以本方式启动应用，同时启动服务端渲染 + 客户端hydrate
 ```
 
 4）配套的脚本
 
-```
-$ npm run prod // 模拟SSR应用生产环境
-$ npm run build // 打包服务端以及客户端资源文件
-$ npm run analyze // 可视化分析客户端打包的资源详情
+```bash
+$ npm run prod    # 模拟SSR应用生产环境
+$ npm run build   # 打包服务端以及客户端资源文件
+$ npm run analyze # 可视化分析客户端打包的资源详情
 ```
 
 ## Changelog
