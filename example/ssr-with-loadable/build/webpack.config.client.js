@@ -11,8 +11,8 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const baseConfig = require('./webpack.config.base')
 const paths = require('./paths')
 const publicPath = '/'
-const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false'
 const isDev = process.env.NODE_ENV === 'development'
+const shouldUseSourceMap = isDev || process.env.GENERATE_SOURCEMAP
 const devtool = isDev ? 'cheap-module-source-map' : (shouldUseSourceMap ? 'source-map' : false)
 const optimization = {
   runtimeChunk: true,

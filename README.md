@@ -19,7 +19,7 @@
 <table><tr>
 <td align="center"><a target="_blank" href="https://www.youku.com"><img src="https://img.alicdn.com/tfs/TB17DTuXkH0gK0jSZPiXXavapXa-680-133.svg" width="100px;" alt="优酷"/><br /><sub><b>优酷视频 
 </b></sub></a></td>
-<td align="center"><a target="_blank" href="https://campaign.vmate.com/diwalilightup"><img src="https://img.alicdn.com/tfs/TB17p6Vhbj1gK0jSZFOXXc7GpXa-512-512.png" width="100px;" alt="vmate 积分商城"/><br />
+<td align="center"><a target="_blank" href="https://campaign.vmate.com/vrbollywood"><img src="https://img.alicdn.com/tfs/TB17p6Vhbj1gK0jSZFOXXc7GpXa-512-512.png" width="100px;" alt="vmate 积分商城"/><br />
   <a target="_blank" href="https://job.alibaba.com/zhaopin/position_detail.htm?trace=qrcode_share&positionCode=GP524819"><sub><b>Vmate短视频
 </b></a></td>
 <td align="center"><a target="_blank" href="https://enjoysales.paat.com/"><img src="https://img.alicdn.com/tfs/TB1Ma0BiEY1gK0jSZFMXXaWcVXa-836-836.png" width="100px;" alt="火炽星原CRM"/><br />
@@ -47,13 +47,30 @@ $ open http://localhost:7001
 
 ## 功能/特性
 
-`这个项目骨架的特色是写法简单，功能强大，一切都是组件，支持 SSR/CSR 两种渲染模式无缝切换`
+这个项目骨架的特色是写法简单，功能强大，一切都是组件，支持 SSR/CSR 两种渲染模式无缝切换。
+
+更多功能/特性如下：
+- [x] 基于cra脚手架开发，由cra开发的React App可无缝迁移，如果你熟悉cra的配置，上手成本几乎为0
+- [x] 小而美，相比于beidou，next.js这样的高度封装方案，我们的实现原理和开发模式一目了然
+- [x] 同时支持SSR以及CSR两种开发模式,本地开发环境以及线上环境皆可无缝切换两种渲染模式
+- [x] 统一前端路由与服务端路由，无需重复编写路由文件配置
+- [x] 支持切换路由时自动获取数据
+- [x] 支持本地开发HMR
+- [x] 稳定性经过线上大规模应用验证，可提供性能优化方案
+- [x] 支持tree shaking，优化构建bundle大小以及数量
+- [x] 支持csr/ssr自定义layout，无需通过path来手动区分
+- [x] 抛弃传统模版引擎，拥抱 React 组件，使用JSX来作为模版
+- [x] 配套结合[antd](https://github.com/ykfe/egg-react-ssr/tree/master/example/ssr-with-antd)的example的实现
+- [x] 配套结合[react-loadable](https://github.com/ykfe/egg-react-ssr/tree/master/example/ssr-with-loadable)做路由分割的example的实现
+- [x] 配套结合[dva](https://github.com/ykfe/egg-react-ssr/tree/master/example/ssr-with-dva)做数据管理的example的实现
+- [x] 配套阿里云serverless [FC](https://github.com/ykfe/ssr-with-fc)版本的实现
+- [x] 配套[TypeScript](https://github.com/ykfe/egg-react-ssr/tree/dev/example/ssr-with-ts)版本的实现 
 
 ### 写法
 
 在写法上统一csr和ssr，采用next类似的静态的getInitialProps作为数据获取方法
 
-```
+```js
 function Page(props) {
   return <div> {props.name} </div>
 }
@@ -132,28 +149,10 @@ const Layout = (props) => {
 在本地开发时，你可以同时启动ssr/csr两种渲染模式查看区别，在生产环境时，你可以通过设置config中的type属性来切换不同的渲染模式或者通过query来切换，在流量较大时可以降级为csr渲染模式
 参考文档[如何切换渲染模式](http://ykfe.net/guide/faq.html#%E5%A6%82%E4%BD%95%E5%88%87%E6%8D%A2%E6%B8%B2%E6%9F%93%E6%A8%A1%E5%BC%8F)
 
+```bash
+$ open http://localhost:7001/          # 以SSR模式渲染应用
+$ open http://localhost:7001/?csr=true # 切换为CSR模式渲染或者通过config.type来设置渲染模式
 ```
-$ open http://localhost:7001/ 以SSR模式渲染应用
-$ open http://localhost:7001/?csr=true 切换为CSR模式渲染或者通过config.type来设置渲染模式
-```
-
-### 特性
-
-- [x] 基于cra脚手架开发，由cra开发的React App可无缝迁移，如果你熟悉cra的配置，上手成本几乎为0
-- [x] 小而美，相比于beidou，next.js这样的高度封装方案，我们的实现原理和开发模式一目了然
-- [x] 同时支持SSR以及CSR两种开发模式,本地开发环境以及线上环境皆可无缝切换两种渲染模式
-- [x] 统一前端路由与服务端路由，无需重复编写路由文件配置
-- [x] 支持切换路由时自动获取数据
-- [x] 支持本地开发HMR
-- [x] 稳定性经过线上大规模应用验证，可提供性能优化方案
-- [x] 支持tree shaking，优化构建bundle大小以及数量
-- [x] 支持csr/ssr自定义layout，无需通过path来手动区分
-- [x] 抛弃传统模版引擎，拥抱 React 组件，使用JSX来作为模版
-- [x] 配套结合[antd](https://github.com/ykfe/egg-react-ssr/tree/master/example/ssr-with-antd)的example的实现
-- [x] 配套结合[react-loadable](https://github.com/ykfe/egg-react-ssr/tree/master/example/ssr-with-loadable)做路由分割的example的实现
-- [x] 配套结合[dva](https://github.com/ykfe/egg-react-ssr/tree/master/example/ssr-with-dva)做数据管理的example的实现
-- [x] 配套阿里云serverless [FC](https://github.com/ykfe/ssr-with-fc)版本的实现
-- [x] 配套[TypeScript](https://github.com/ykfe/egg-react-ssr/tree/dev/example/ssr-with-ts)版本的实现 
 
 ## 执行环境
 
@@ -213,21 +212,21 @@ module.exports = {
 
 目录结构保持了Egg的方式，以app和config目录为主。将前端React相关代码放到web目录下，webpack打包相关文件位于build目录。整体来看，目录不多，层级不深，属于刚刚好那种。
 
-```
+```bash
 ├── README.md
-├── app // egg核心目录
+├── app # egg核心目录
 │   ├── controller
 │   ├── extend
 │   ├── middleware
-│   └── router.js // egg路由文件，无特殊需求不需要修改内容
-├── app.js // egg 启动入口文件
-├── build // webpack配置目录
+│   └── router.js # egg路由文件，无特殊需求不需要修改内容
+├── app.js # egg 启动入口文件
+├── build # webpack配置目录
 │   ├── paths.js
 │   ├── util.js
-│   ├── webpack.config.base.js // 通用的webpack配置
-│   ├── webpack.config.client.js // webpack客户端打包配置
-│   └── webpack.config.server.js // webpack服务端打包配置
-├── config // egg 配置文件目录
+│   ├── webpack.config.base.js # 通用的webpack配置
+│   ├── webpack.config.client.js # webpack客户端打包配置
+│   └── webpack.config.server.js # webpack服务端打包配置
+├── config # egg 配置文件目录
 │   ├── config.daily.js
 │   ├── config.default.js
 │   ├── config.ssr.js
@@ -235,15 +234,15 @@ module.exports = {
 │   ├── config.prod.js
 │   ├── plugin.js
 │   └── plugin.local.js
-├── dist // build生成静态资源文件目录
-│   ├── Page.server.js // 服务端打包后文件(即打包后的serverRender方法)
-│   └── static // 前端打包后静态资源目录
-└── web // 前端文件目录
+├── dist # build生成静态资源文件目录
+│   ├── Page.server.js # 服务端打包后文件(即打包后的serverRender方法)
+│   └── static # 前端打包后静态资源目录
+└── web # 前端文件目录
     ├── assets
     │   └── common.less
-    ├── entry.js // webpack打包入口文件，分环境导出不同配置
+    ├── entry.js # webpack打包入口文件，分环境导出不同配置
     ├── layout
-    │   ├── index.js // 页面布局
+    │   ├── index.js # 页面布局
     │   └── index.less
     └── page
         ├── index
@@ -270,16 +269,16 @@ $ npm run csr
 
 3）同时启动csr和ssr服务。
 
-```
-$ npm start // 启动监听7001端口，本地开发建议以本方式启动应用，同时启动服务端渲染 + 客户端hydrate
+```bash
+$ npm start # 启动监听7001端口，本地开发建议以本方式启动应用，同时启动服务端渲染 + 客户端hydrate
 ```
 
 4）配套的脚本
 
-```
-$ npm run prod // 模拟SSR应用生产环境
-$ npm run build // 打包服务端以及客户端资源文件
-$ npm run analyze // 可视化分析客户端打包的资源详情
+```bash
+$ npm run prod    # 模拟SSR应用生产环境
+$ npm run build   # 打包服务端以及客户端资源文件
+$ npm run analyze # 可视化分析客户端打包的资源详情
 ```
 
 ## Changelog
@@ -304,12 +303,14 @@ $ npm run analyze // 可视化分析客户端打包的资源详情
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
 <table>
   <tr>
     <td align="center"><a href="https://github.com/zhangyuang"><img src="https://avatars3.githubusercontent.com/u/17424434?v=4" width="100px;" alt="LeonCheung"/><br /><sub><b>LeonCheung</b></sub></a><br /><a href="https://github.com/ykfe/egg-react-ssr/commits?author=zhangyuang" title="Code">💻</a></td>
     <td align="center"><a href="http://i5ting.com"><img src="https://avatars3.githubusercontent.com/u/3118295?v=4" width="100px;" alt="狼叔"/><br /><sub><b>狼叔</b></sub></a><br /><a href="https://github.com/ykfe/egg-react-ssr/commits?author=i5ting" title="Code">💻</a></td>
-     <td align="center"><a href="https://github.com/jerryYuX"><img src="https://avatars2.githubusercontent.com/u/33367577?v=4" width="100px;" alt="jerryYu"/><br /><sub><b>jerryYu</b></sub></a><br /><a href="https://github.com/ykfe/egg-react-ssr/commits?author=jerryYuX" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/jerryYuX"><img src="https://avatars2.githubusercontent.com/u/33367577?v=4" width="100px;" alt="jerryYu"/><br /><sub><b>jerryYu</b></sub></a><br /><a href="https://github.com/ykfe/egg-react-ssr/commits?author=jerryYuX" title="Code">💻</a></td>
+     <td align="center"><a href="https://github.com/ivc369"><img src="https://avatars0.githubusercontent.com/u/16490377?v=4" width="100px;" alt="Menteceso"/><br /><sub><b>Menteceso</b></sub></a><br /><a href="https://github.com/ykfe/egg-react-ssr/commits?author=ivc369" title="Documentation">📖</a></td>
     <td align="center"><a href="http://www.lessing.online/xx-blog/"><img src="https://avatars2.githubusercontent.com/u/21156871?v=4" width="100px;" alt="Xu Zhiyong"/><br /><sub><b>Xu Zhiyong</b></sub></a><br /><a href="https://github.com/ykfe/egg-react-ssr/issues?q=author%3AJohnieXu" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/jxycbjhc"><img src="https://avatars0.githubusercontent.com/u/16661897?v=4" width="100px;" alt="snoy"/><br /><sub><b>snoy</b></sub></a><br /><a href="https://github.com/ykfe/egg-react-ssr/commits?author=jxycbjhc" title="Documentation">📖</a></td>
     <td align="center"><a href="http://zxy.im"><img src="https://avatars2.githubusercontent.com/u/15117664?v=4" width="100px;" alt="zhaoxingyue"/><br /><sub><b>zhaoxingyue</b></sub></a><br /><a href="https://github.com/ykfe/egg-react-ssr/commits?author=zhaoxingyue" title="Documentation">📖</a></td>
@@ -317,12 +318,14 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/robert7git"><img src="https://avatars2.githubusercontent.com/u/6889441?v=4" width="100px;" alt="robert.xu"/><br /><sub><b>robert.xu</b></sub></a><br /><a href="https://github.com/ykfe/egg-react-ssr/commits?author=robert7git" title="Code">💻</a></td>
-      <td align="center"><a href="https://github.com/zhusjfaker"><img src="https://avatars1.githubusercontent.com/u/31839470?v=4" width="100px;" alt="zhushijie"/><br /><sub><b>zhushijie</b></sub></a><br /><a href="https://github.com/ykfe/egg-react-ssr/commits?author=zhusjfaker" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/c690554125"><img src="https://avatars3.githubusercontent.com/u/13865568?v=4" width="100px;" alt="Cheng Zhongmin"/><br /><sub><b>Cheng Zhongmin</b></sub></a><br /><a href="https://github.com/ykfe/egg-react-ssr/issues?q=author%3Ac690554125" title="Bug reports">🐛</a></td>
+        <td align="center"><a href="https://github.com/zhusjfaker"><img src="https://avatars1.githubusercontent.com/u/31839470?v=4" width="100px;" alt="zhushijie"/><br /><sub><b>zhushijie</b></sub></a><br /><a href="https://github.com/ykfe/egg-react-ssr/commits?author=zhusjfaker" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/JohannLai"><img src="https://avatars0.githubusercontent.com/u/10769405?v=4" width="100px;" alt="JohannLai"/><br /><sub><b>JohannLai</b></sub></a><br /><a href="https://github.com/ykfe/egg-react-ssr/issues?q=author%3AJohannLai" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
