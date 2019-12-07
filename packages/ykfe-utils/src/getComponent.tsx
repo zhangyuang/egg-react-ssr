@@ -7,7 +7,7 @@ interface RouteItem {
   Component: Component
 }
 interface Component {
-  (): () => Element
+  (): () => JSX.Element
 }
 
 function NotFound () {
