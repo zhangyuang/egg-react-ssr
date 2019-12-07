@@ -3,6 +3,7 @@ import { renderToString }from 'react-dom/server'
 import getComponent from '../src/getComponent'
 
 describe('getComponent can return true component', () => {
+  const { createElement } = React
   const Page = () => {
     return (
     <div>Page</div>
@@ -27,14 +28,14 @@ describe('getComponent can return true component', () => {
   ]
   test('get Page Component', () => {
     const activeComponent = getComponent(Routes,'/')()
-    expect(renderToString(activeComponent)).toEqual('<div>Page</div>')
+    expect(renderToString(createElement(activeComponent))).toEqual('<div data-reactroot="">Page</div>')
   })
   test('get News Component', async () => {
     const activeComponent = getComponent(Routes,'/news/1')()
-    expect(renderToString(activeComponent)).toEqual('<div>News</div>')
+    expect(renderToString(createElement(activeComponent))).toEqual('<div data-reactroot="">News</div>')
   })
   test('get 404 Component', () => {
     const activeComponent = getComponent(Routes,'/404')()
-    expect(renderToString(activeComponent)).toEqual('<div>路由查询404</div>')
+    expect(renderToString(createElement((activeComponent)))).toEqual('<div data-reactroot="">路由查询404</div>')
   })
 })

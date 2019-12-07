@@ -1,4 +1,5 @@
 // @ts-nocheck
+
 import React from 'react'
 import PropTypes from 'prop-types'
 const ALL_INITIALIZERS = []
@@ -94,8 +95,9 @@ function resolve (obj) {
 function render (loaded, props, Layout) {
   const Loadable = resolve(loaded)
   return (
-    Layout ? ({...props} as Loadable as Layout) / >
-    (/Layout> : <Loadable {...props} / as) >
+    Layout ? <Layout>
+      <Loadable {...props} />
+    </Layout> : <Loadable {...props} />
   )
 }
 
@@ -135,6 +137,13 @@ function createLoadableComponent (loadFn, options) {
       }
     })
   }
+  let _this = null
+  const popStateFn = () => {
+    // 使用popStateFn保存函数防止addEventListener重复注册
+    if (_this && _this.getInitialProps) {
+      _this.getInitialProps()
+    }
+  }
 
   return class LoadableComponent extends React.Component {
     constructor (props) {
@@ -167,10 +176,9 @@ function createLoadableComponent (loadFn, options) {
 
     async componentDidMount () {
       const props = this.props
-      if (window.__USESSR__) {
-        window.onpopstate = () => {
-          this.getInitialProps()
-        }
+      if (window.__USE_SSR__) {
+        _this = this // 修正_this指向，保证_this指向当前渲染的页面组件
+        window.addEventListener('popstate', popStateFn)
       }
       const getProps = !window.__USESSR__ || (props.history && props.history.action === 'PUSH')
       if (getProps) {

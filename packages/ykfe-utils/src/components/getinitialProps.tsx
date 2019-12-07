@@ -19,7 +19,7 @@ function GetInitialProps (WrappedComponent) {
       }
     }
 
-    componentDidMount () {
+    async componentDidMount () {
       const props = this.props
       if (window.__USE_SSR__) {
         _this = this // 修正_this指向，保证_this指向当前渲染的页面组件
@@ -27,7 +27,7 @@ function GetInitialProps (WrappedComponent) {
       }
       const getProps = !window.__USE_SSR__ || (props.history && props.history.action === 'PUSH')
       if (getProps) {
-        this.getInitialProps()
+        await this.getInitialProps()
       }
     }
 
