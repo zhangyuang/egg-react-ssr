@@ -16,7 +16,7 @@ function OnlyCsr (WrappedComponent) {
     }
 
     render () {
-      return this.state.isCsr ? ({ ...this.props } as WrappedComponent) / > : /> as div
+      return this.state.isCsr ? <WrappedComponent {...this.props}></WrappedComponent> : <div></div>
     }
   }
   for (const key in WrappedComponent) {

@@ -8,10 +8,12 @@ jest.mock('../src/util/index', () => ({
   resolveApp: jest.requireActual('../src/util').resolveApp
 }))
 jest.mock('ora')
+
+console.log = jest.fn()
+
 jest.spyOn(process, 'exit').mockImplementation(() => {
   throw new Error('process exit')
 })
-jest.spyOn(console, 'log')
 
 jest.mock('../package.json', () => ({ version: '1.0.0' }))
 

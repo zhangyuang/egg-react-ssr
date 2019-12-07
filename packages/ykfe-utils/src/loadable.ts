@@ -1,4 +1,4 @@
-
+// @ts-nocheck
 import React from 'react'
 import PropTypes from 'prop-types'
 const ALL_INITIALIZERS = []
@@ -94,9 +94,8 @@ function resolve (obj) {
 function render (loaded, props, Layout) {
   const Loadable = resolve(loaded)
   return (
-    Layout ? <Layout>
-      <Loadable {...props} />
-    </Layout> : <Loadable {...props} />
+    Layout ? ({...props} as Loadable as Layout) / >
+    (/Layout> : <Loadable {...props} / as) >
   )
 }
 
@@ -155,7 +154,7 @@ function createLoadableComponent (loadFn, options) {
       loadable: PropTypes.shape({
         report: PropTypes.func.isRequired
       })
-    };
+    }
 
     static preload () {
       return init()
@@ -261,7 +260,7 @@ function createLoadableComponent (loadFn, options) {
       this.setState({ error: null, loading: true, timedOut: false })
       res = loadFn(opts.loader)
       this._loadModule()
-    };
+    }
 
     render () {
       if (this.state.loading || this.state.error) {
@@ -298,13 +297,13 @@ Loadable.Map = LoadableMap
 class Capture extends React.Component {
   static propTypes = {
     report: PropTypes.func.isRequired
-  };
+  }
 
   static childContextTypes = {
     loadable: PropTypes.shape({
       report: PropTypes.func.isRequired
     }).isRequired
-  };
+  }
 
   getChildContext () {
     return {

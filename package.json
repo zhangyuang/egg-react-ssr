@@ -67,6 +67,7 @@
     "lerna": "^3.8.0",
     "nightwatch": "^1.2.1",
     "pre-commit": "^1.2.2",
+    "react-dom": "^16.12.0",
     "standard": "^12.0.1",
     "ts-jest": "^24.0.2",
     "ts-node": "^8.5.4",
@@ -75,5 +76,7 @@
     "typescript": "^3.7.2",
     "vuepress": "^0.14.8"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@types/react-test-renderer": "^16.9.1"
+  }
 }
