@@ -25,7 +25,7 @@
 // yk-cli/renderLayout.js
 const renderLayout = async () => {
   let Layout
-  // 我们调用webpack的api来用应用目录下的webpack配置来编译layout组件，使其可以在Node环境中运行
+  // 我们调用webpack的api来应用目录下的webpack配置来编译layout组件，使其可以在Node环境中运行
   try {
     // serverless 场景我们从事先构建好的应用目录下的dist文件夹中读取layout
     Layout = isServerless ? require('../../../dist/Layout.server').default : require('../dist/Layout.server').default
@@ -36,7 +36,7 @@ const renderLayout = async () => {
     Layout = require('../dist/Layout.server').default
   }
 
-  // 此时props.children 为 undefined 我们只需要传染一个空的layout骨架即可
+  // 此时props.children 为 undefined 我们只需要传递一个空的layout骨架即可
   const props = {
     layoutData: {
       app: {
@@ -189,4 +189,4 @@ if (config.type !== 'ssr') {
 * 过于黑盒，里面的逻辑略显复杂，使用者不知道自己的页面究竟是怎么渲染出来的
 * 灵活性差，拼接的内容皆来自于锚点与config中的 `key-value` 的互相对应，一旦想要新增一个config配置，renderToStream 也得随之添加对应的锚点
 
-而我们新的版本将这块逻辑迁移到 `layout` 组件中进行使用者可以灵活决定页面的元素。并且此时让 `renderToStream` 中的逻辑变得十分简洁。保证每一个第三方模块中的方法做的事情都十分简单
+而我们新的版本将这块逻辑迁移到 `layout` 组件中进行，使用者可以灵活决定页面的元素。并且此时让 `renderToStream` 中的逻辑变得十分简洁。保证每一个第三方模块中的方法做的事情都十分简单
