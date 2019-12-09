@@ -14,8 +14,8 @@
     "test:unit": "jest --coverage && codecov",
     "test:e2e": "NODE_ENV=production ts-node ./test/e2e/startServer.js",
     "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs && npm run publish",
-    "publish": "surge ./docs/.vuepress/dist ykfe.surge.sh --domain ykfe.net"
+    "docs:build": "vuepress build docs",
+    "publish": "npm run docs:build && surge ./docs/.vuepress/dist ykfe.surge.sh --domain ykfe.net"
   },
   "repository": {
     "type": "git",
