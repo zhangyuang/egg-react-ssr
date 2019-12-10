@@ -1,4 +1,7 @@
-const renderToStream = async (ctx, config) => {
+import { Context }from 'midway'
+import { Config }from './interface/config'
+
+const renderToStream = async (ctx: Context, config: Config) => {
   const baseDir = config.baseDir || process.cwd()
   const isLocal = process.env.NODE_ENV === 'development'
   const serverJs = config.serverJs
@@ -24,7 +27,7 @@ const renderToStream = async (ctx, config) => {
   }
 
   if (!global.serverStream || isLocal) {
-    global.serverStream = typeof serverJs === 'string' ? require(serverJs).default : serverJs
+    globalserverStream = typeof serverJs === 'string' ? require(serverJs).default : serverJs
   }
 
   const serverRes = await global.serverStream(ctx)
