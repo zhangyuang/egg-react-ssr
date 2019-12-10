@@ -1,3 +1,5 @@
+简体中文 | [English](./README_en-US.md)
+
 # Egg + React + SSR 应用骨架
 
 <a href="https://circleci.com/gh/ykfe"><img src="https://img.shields.io/circleci/build/github/ykfe/egg-react-ssr/dev.svg" alt="Build Status"></a>
