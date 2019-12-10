@@ -38,14 +38,14 @@ Here we provide a CLI tool to initialize your project:
 
 ```bash
 $ npm install yk-cli -g
-$ ykcli init <Your Project Name>
+$ ykcli init <Your Project Name> 
 $ cd <Your Project Name>
 $ npm i
 $ npm start
 $ open http://localhost:7001
 ```
 
-When running `ykcli init`, you are able to choose JavaScript or TypeScript.
+When running `ykcli init`, you can choose JavaScript or TypeScript create the app.
 
 ## Features
 
@@ -70,7 +70,7 @@ More features:
 
 ### Usage
 
-Both CSR and SSR are unified in usage and take the static `getInitialProps` (similar to Next.js) method for data acquisition.
+Both CSR and SSR are unified in usage and use the static method called `getInitialProps` (similar to Next.js) to fetch data.
 
 ```js
 function Page(props) {
@@ -89,9 +89,9 @@ export default Page;
 #### Explanation
 
 - `render` is a React function for rendering the view.
-- `getInitalProps` is the method to get data and set the return value to the component state.
-	+ CSR is implemented via HOC (High-order Component).
-	+ SSR is executed by Node.js.
+- `getInitialProps` is the function in which we can fetch data and set the return value to the component state.
+	+ CSR: The function is implemented via HOC (High-order Component).
+	+ SSR: The function is executed by Node.js.
 
 Running `npm run csr` or `npm run ssr` is the simplest isomorphic rendering method to distinguish between CSR and SSR. When a page is on the very first loading, `getInitialProps` will only be loaded on the server side. Only if the router switches (i.e. by `<Link />` component or API), will the client executes `getInitialProps`.
 
@@ -106,7 +106,7 @@ Parameters of `getInitialProps` are as follows:
 
 ```js
 const commonNode = props =>
-	// In order to support SSR and CSR simultaneously, please keep this conditional statement.
+	// In order to support SSR and CSR concurrently, please keep this conditional statement.
 	// If there is nothing in your layout, use `props.children ? <div>{ props.children }</div> : ''`
   props.children ? (
     <div className='normal'>
@@ -158,7 +158,7 @@ const Layout = props => {
 
 ### How to change rendering mode
 
-During development, run SSR and CSR simultaneously to learn about their differences. In production, switch between two modes by setting `config.type` or using URI query. Besides, we can choose to downgrade the mode to CSR in heavy network traffic.
+During development, run SSR and CSR concurrently to learn about their differences. In production, switch between two modes by setting `config.type` or using URI query. Besides, we can choose to downgrade the mode to CSR in heavy network traffic.
 
 Refer to this doc: [How to change the rendering mode](http://ykfe.net/guide/faq.html#%E5%A6%82%E4%BD%95%E5%88%87%E6%8D%A2%E6%B8%B2%E6%9F%93%E6%A8%A1%E5%BC%8F).
 
@@ -282,10 +282,10 @@ Run the following command and listen on port 8000 (similar to the traditional CR
 $ npm run csr
 ```
 
-### Run SSR and CSR simultaneously
+### Run SSR and CSR concurrently
 
 ```bash
-$ npm start # start listening port on 7001 (running SSR + CSR hydrate simultaneously)
+$ npm start # start listening port on 7001 (running SSR + CSR hydrate concurrently)
 ```
 
 ### Companion Script
