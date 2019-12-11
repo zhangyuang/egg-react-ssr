@@ -45,7 +45,7 @@ $ npm start
 $ open http://localhost:7001
 ```
 
-When running `ykcli init`, you can choose JavaScript or TypeScript create the app.
+When running `ykcli init`, you can choose JavaScript or TypeScript to create the app.
 
 ## Features
 
@@ -56,7 +56,7 @@ More features:
 - [x] Lightweight and elegant. Compared to highly encapsulated libraries like Beidou and Next.js, our design philosophy are clearer.
 - [x] SSR/CSR support; We can switch between SSR and CSR seamlessly in development or in production.
 - [x] Frontend router and server-side router are unified to prevent rewriting the same routes.
-- [x] Getting data automatically when switching route.
+- [x] The app will automatically fetch data when switching routes.
 - [x] HMR support in development.
 - [x] Stability has been tested on large-scale online apps and we can provide performance optimization solutions.
 - [x] It supports tree shaking and optimizes bundle size.
@@ -70,7 +70,7 @@ More features:
 
 ### Usage
 
-Both CSR and SSR are unified in usage and use the static method called `getInitialProps` (similar to Next.js) to fetch data.
+Both CSR and SSR are unified in terms of usage such as using the static method called `getInitialProps` (similar to Next.js) to fetch data.
 
 ```js
 function Page(props) {
@@ -355,7 +355,7 @@ Welcome to join our DingTalk group by scanning the QR Code below.
 <img src="https://img.alicdn.com/tfs/TB1X1CsnET1gK0jSZFrXXcNCXXa-750-990.jpg" width="300">
 
 ## Sponsors
-If this project is helpful to you, consider buying us a coffee. The sponsors will be used for team building instead of self consumption.
+If this project is helpful to you, consider buying us a coffee. Your funds will be used for team building instead of self consumption.
 
 If you are not on our __[Sponsor List](http://ykfe.net/guide/donate.html)__, please create an [issue](https://github.com/ykfe/egg-react-ssr/issues) for that.
 
