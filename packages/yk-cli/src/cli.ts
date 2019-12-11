@@ -6,9 +6,10 @@ import { Optional } from './interface/option'
 import { Argv } from './interface/argv'
 
 yargs
-  .command('init [appName]', 'init the program', {}, async (argv: Argv) => {
+  .command('init [appName]', 'init the program', {}, async (argv: yargs.Arguments<Argv>) => {
     const option: Optional = {
-      appName: argv.appName || 'app'
+      appName: argv.appName || 'app',
+      language: 'javascript'
     }
     await init(option)
   })
