@@ -53,10 +53,9 @@ module.exports = {
                 'ts',
                 'serverless',
                 'faq',
-                'update',
-                'donate'
+                'update'
               ],
-            },
+            }
           ]
         }
       },

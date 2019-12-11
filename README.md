@@ -1,3 +1,5 @@
+简体中文 | [English](./README_en-US.md)
+
 # Egg + React + SSR 应用骨架
 
 <a href="https://circleci.com/gh/ykfe"><img src="https://img.shields.io/circleci/build/github/ykfe/egg-react-ssr/dev.svg" alt="Build Status"></a>
@@ -339,12 +341,3 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 虽然我们已经尽力检查了一遍应用，但仍有可能有疏漏的地方，如果你在使用过程中发现任何问题或者建议，欢迎提[issue](https://github.com/ykfe/egg-react-ssr/issues)或者[PR](https://github.com/ykfe/egg-react-ssr/pulls)
 欢迎直接扫码加入钉钉群
 <img src="https://img.alicdn.com/tfs/TB1X1CsnET1gK0jSZFrXXcNCXXa-750-990.jpg" width="300">
-
-## 捐赠
-
-如果您觉得本项目对您有帮助，可以考虑请我们喝一杯咖啡☕️这笔捐赠不会用于私人用途将用于团队建设
-<div style="display:flex"><img src="https://gw.alicdn.com/tfs/TB1X1vRouT2gK0jSZFvXXXnFXXa-600-900.jpg" width="200" height="270">
-<img src="https://gw.alicdn.com/tfs/TB1BtPToxz1gK0jSZSgXXavwpXa-1242-1686.jpg" width="200" height="270">
-</div>
-
-[捐赠者名单](http://ykfe.net/guide/donate.html)如有遗漏请提issue
