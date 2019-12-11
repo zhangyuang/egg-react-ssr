@@ -1,6 +1,6 @@
 import shell from 'shelljs'
 import { execSync } from 'child_process'
-import { getWithPromise, getVersionEffective, resolveApp } from '../src/util'
+import { getWithPromise, getVersionEffective, resolveApp, renderTemplate } from '../src/util'
 
 describe('test getWithPromise', () => {
   test('hope getWithPromise can get true result', async () => {
@@ -53,5 +53,24 @@ describe('test getVersionEffective with cache', () => {
   })
   afterEach(() => {
     shell.rm('-rf', resolveApp('./cache'))
+  })
+})
+
+describe('test renderTemplate', () => {
+  beforeAll(() => {
+    shell.touch(resolveApp('./template.json.nj'))
+    execSync(`echo {\\"appName\\": \\"{{appName}}\\" } > ${resolveApp('./template.json.nj')}`)
+  })
+  test('renderTemplate can generate the true file after rendering', () => {
+    renderTemplate(resolveApp('./template.json.nj'), resolveApp('./template.json'), {
+      appName: 'yk-cli',
+      language: 'javascript'
+    })
+    const appName = require(resolveApp('./template.json')).appName
+    expect(appName).toEqual('yk-cli')
+  })
+  afterAll(() => {
+    shell.rm(resolveApp('./template.json.nj'))
+    shell.rm(resolveApp('./template.json'))
   })
 })

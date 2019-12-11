@@ -1,7 +1,9 @@
 import { updateCli } from '../src/update'
 
 jest.mock('../src/util/index', () => ({
-  execWithPromise: jest.fn(() => Promise.resolve()),
+  execWithPromise: jest.fn(() => Promise.resolve({
+    stdout: 'stdout'
+  })),
   getWithPromise: jest.requireActual('../src/util').getWithPromise,
   resolveApp: jest.requireActual('../src/util').resolveApp
 }))
@@ -13,9 +15,10 @@ jest.spyOn(console, 'log')
 
 jest.mock('../package.json', () => ({ version: '1.0.0' }))
 
-const ora = require('ora')
+const spinner = require('ora')
 
 test('hope update cli can be invoke', async () => {
   await updateCli()
-  expect(ora).toBeCalled()
+  expect(spinner.start).toBeCalled()
+  expect(spinner.succeed).toBeCalled()
 })
