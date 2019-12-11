@@ -45,7 +45,7 @@ $ npm start
 $ open http://localhost:7001
 ```
 
-When running `ykcli init`, you can choose JavaScript or TypeScript create the app.
+When running `ykcli init`, you can choose JavaScript or TypeScript to create the app.
 
 ## Features
 
@@ -56,7 +56,7 @@ More features:
 - [x] Lightweight and elegant. Compared to highly encapsulated libraries like Beidou and Next.js, our design philosophy are clearer.
 - [x] SSR/CSR support; We can switch between SSR and CSR seamlessly in development or in production.
 - [x] Frontend router and server-side router are unified to prevent rewriting the same routes.
-- [x] Getting data automatically when switching route.
+- [x] The app will automatically fetch data when switching routes.
 - [x] HMR support in development.
 - [x] Stability has been tested on large-scale online apps and we can provide performance optimization solutions.
 - [x] It supports tree shaking and optimizes bundle size.
@@ -70,7 +70,7 @@ More features:
 
 ### Usage
 
-Both CSR and SSR are unified in usage and use the static method called `getInitialProps` (similar to Next.js) to fetch data.
+Both CSR and SSR are unified in terms of usage such as using the static method called `getInitialProps` (similar to Next.js) to fetch data.
 
 ```js
 function Page(props) {
@@ -323,7 +323,8 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://github.com/zhangyuang"><img src="https://avatars3.githubusercontent.com/u/17424434?v=4" width="100px;" alt="LeonCheung"/><br /><sub><b>LeonCheung</b></sub></a><br /><a href="https://github.com/ykfe/egg-react-ssr/commits?author=zhangyuang" title="Code">💻</a></td>
     <td align="center"><a href="http://i5ting.com"><img src="https://avatars3.githubusercontent.com/u/3118295?v=4" width="100px;" alt="狼叔"/><br /><sub><b>狼叔</b></sub></a><br /><a href="https://github.com/ykfe/egg-react-ssr/commits?author=i5ting" title="Code">💻</a></td>
-     <td align="center"><a href="https://github.com/jerryYuX"><img src="https://avatars2.githubusercontent.com/u/33367577?v=4" width="100px;" alt="jerryYu"/><br /><sub><b>jerryYu</b></sub></a><br /><a href="https://github.com/ykfe/egg-react-ssr/commits?author=jerryYuX" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/jerryYuX"><img src="https://avatars2.githubusercontent.com/u/33367577?v=4" width="100px;" alt="jerryYu"/><br /><sub><b>jerryYu</b></sub></a><br /><a href="https://github.com/ykfe/egg-react-ssr/commits?author=jerryYuX" title="Code">💻</a></td>
+     <td align="center"><a href="https://github.com/ivc369"><img src="https://avatars0.githubusercontent.com/u/16490377?v=4" width="100px;" alt="Menteceso"/><br /><sub><b>Menteceso</b></sub></a><br /><a href="https://github.com/ykfe/egg-react-ssr/commits?author=ivc369" title="Documentation">📖</a></td>
     <td align="center"><a href="http://www.lessing.online/xx-blog/"><img src="https://avatars2.githubusercontent.com/u/21156871?v=4" width="100px;" alt="Xu Zhiyong"/><br /><sub><b>Xu Zhiyong</b></sub></a><br /><a href="https://github.com/ykfe/egg-react-ssr/issues?q=author%3AJohnieXu" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/jxycbjhc"><img src="https://avatars0.githubusercontent.com/u/16661897?v=4" width="100px;" alt="snoy"/><br /><sub><b>snoy</b></sub></a><br /><a href="https://github.com/ykfe/egg-react-ssr/commits?author=jxycbjhc" title="Documentation">📖</a></td>
     <td align="center"><a href="http://zxy.im"><img src="https://avatars2.githubusercontent.com/u/15117664?v=4" width="100px;" alt="zhaoxingyue"/><br /><sub><b>zhaoxingyue</b></sub></a><br /><a href="https://github.com/ykfe/egg-react-ssr/commits?author=zhaoxingyue" title="Documentation">📖</a></td>
@@ -331,8 +332,8 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/robert7git"><img src="https://avatars2.githubusercontent.com/u/6889441?v=4" width="100px;" alt="robert.xu"/><br /><sub><b>robert.xu</b></sub></a><br /><a href="https://github.com/ykfe/egg-react-ssr/commits?author=robert7git" title="Code">💻</a></td>
-      <td align="center"><a href="https://github.com/zhusjfaker"><img src="https://avatars1.githubusercontent.com/u/31839470?v=4" width="100px;" alt="zhushijie"/><br /><sub><b>zhushijie</b></sub></a><br /><a href="https://github.com/ykfe/egg-react-ssr/commits?author=zhusjfaker" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/c690554125"><img src="https://avatars3.githubusercontent.com/u/13865568?v=4" width="100px;" alt="Cheng Zhongmin"/><br /><sub><b>Cheng Zhongmin</b></sub></a><br /><a href="https://github.com/ykfe/egg-react-ssr/issues?q=author%3Ac690554125" title="Bug reports">🐛</a></td>
+        <td align="center"><a href="https://github.com/zhusjfaker"><img src="https://avatars1.githubusercontent.com/u/31839470?v=4" width="100px;" alt="zhushijie"/><br /><sub><b>zhushijie</b></sub></a><br /><a href="https://github.com/ykfe/egg-react-ssr/commits?author=zhusjfaker" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/JohannLai"><img src="https://avatars0.githubusercontent.com/u/10769405?v=4" width="100px;" alt="JohannLai"/><br /><sub><b>JohannLai</b></sub></a><br /><a href="https://github.com/ykfe/egg-react-ssr/issues?q=author%3AJohannLai" title="Bug reports">🐛</a></td>
   </tr>
 </table>
@@ -354,7 +355,7 @@ Welcome to join our DingTalk group by scanning the QR Code below.
 <img src="https://img.alicdn.com/tfs/TB1X1CsnET1gK0jSZFrXXcNCXXa-750-990.jpg" width="300">
 
 ## Sponsors
-If this project is helpful to you, consider buying us a coffee. The sponsors will be used for team building instead of self consumption.
+If this project is helpful to you, consider buying us a coffee. Your funds will be used for team building instead of self consumption.
 
 If you are not on our __[Sponsor List](http://ykfe.net/guide/donate.html)__, please create an [issue](https://github.com/ykfe/egg-react-ssr/issues) for that.
 
