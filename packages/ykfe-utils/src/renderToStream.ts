@@ -5,6 +5,7 @@ import { Global }from './interface/global'
 declare const global: Global
 
 const renderToStream = async (ctx: Context, config: Config) => {
+  console.log('xx')
   const baseDir = config.baseDir || process.cwd()
   const isLocal = process.env.NODE_ENV === 'development'
   const serverJs = config.serverJs
@@ -39,4 +40,4 @@ const renderToStream = async (ctx: Context, config: Config) => {
 }
 
 export default renderToStream
-module.exports = renderToStream
+// module.exports = renderToStream
