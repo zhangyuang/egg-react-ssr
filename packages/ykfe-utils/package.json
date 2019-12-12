@@ -1,16 +1,18 @@
 {
   "name": "ykfe-utils",
   "version": "2.5.2",
-  "description": "",
+  "description": "utils for ykfe",
   "main": "lib/index.js",
   "module": "es/index.js",
   "sideEffects": false,
+  "types": "types/index.d.ts",
   "scripts": {
     "build": "rm -rf ./lib ./es && concurrently \"tsc -p ./tsconfig.cjs.json --sourceMap false\" \" tsc -p ./tsconfig.es6.json --sourceMap false\"",
     "dev": "concurrently \"tsc -w -p ./tsconfig.cjs.json \" \"tsc -w -p ./tsconfig.es6.json \""
   },
-  "author": "",
+  "author": "zhangyuang",
   "devDependencies": {
+    "@types/node": "^12.12.17",
     "@types/react": "^16.9.15",
     "@types/react-router": "^5.1.3",
     "@types/react-router-dom": "^5.1.3",

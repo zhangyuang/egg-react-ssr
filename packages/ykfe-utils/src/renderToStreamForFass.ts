@@ -1,5 +1,8 @@
 import renderLayoutForFass from 'yk-cli/es/renderLayoutForFass'
 import ReactDOMServer from 'react-dom/server'
+import { Global }from './interface/global'
+
+declare const global: Global
 
 const renderToStreamForFaas = async (ctx, config) => {
   const isLocal = config.env === 'local'

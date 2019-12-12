@@ -9,8 +9,17 @@ const popStateFn = () => {
   }
 }
 
+interface IProps {
+  history: {
+    action: string
+  }
+}
+interface IState {
+  getProps: boolean,
+  extraProps: Object
+}
 function GetInitialProps (WrappedComponent) {
-  class GetInitialPropsClass extends Component {
+  class GetInitialPropsClass extends Component<IProps, IState> {
     constructor (props) {
       super(props)
       this.state = {

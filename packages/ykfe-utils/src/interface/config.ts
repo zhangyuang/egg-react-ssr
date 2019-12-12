@@ -1,5 +1,6 @@
+import { Context } from 'midway'
 export interface Config {
   baseDir?: string
   type?: string
-    serverJs: string | (ctx: Context) => React.ReactElement
+  serverJs: (ctx: Context) => React.ReactElement | string
 }
