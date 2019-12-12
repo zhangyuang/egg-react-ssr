@@ -1,11 +1,10 @@
 {
   "name": "yk-cli",
-  "version": "2.8.16",
+  "version": "2.8.17",
   "description": "ykcli for ssr",
   "main": "./lib/index.js",
   "module": "./es/index.js",
   "sideEffects": false,
-  "types": "types/index.d.ts",
   "scripts": {
     "build": "rm -rf ./lib ./es && concurrently \"tsc -p ./tsconfig.cjs.json --sourceMap false\" \" tsc -p ./tsconfig.es6.json --sourceMap false\"",
     "start": "node --inspect=19229 ./lib/index.js",

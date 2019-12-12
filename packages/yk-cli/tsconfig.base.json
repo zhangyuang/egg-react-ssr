@@ -2,11 +2,10 @@
     "compilerOptions": {
       "target": "esnext",
       "lib": [
-        "esnext",
+        "esnext"
       ],
       "declaration": true,
       "jsx": "react",
-      "declarationDir": "./types/",
       "sourceMap": true,
       "outDir": "./bin/",
       "strict": true,
