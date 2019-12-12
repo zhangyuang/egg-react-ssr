@@ -1,6 +1,6 @@
 
 const Controller = require('egg').Controller
-const renderToStream = require('ykfe-utils/lib/renderToStream')
+const renderToStream = require('ykfe-utils/lib/renderToStream').default
 const ssrConfig = require('../../config/config.ssr')
 
 class PageController extends Controller {
