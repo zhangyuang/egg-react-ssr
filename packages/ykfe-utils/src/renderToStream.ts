@@ -39,3 +39,4 @@ const renderToStream = async (ctx: Context, config: Config) => {
 }
 
 export default renderToStream
+module.exports = renderToStream

@@ -5,9 +5,8 @@
   "main": "lib/index.js",
   "module": "es/index.js",
   "sideEffects": false,
-  "types": "types/index.d.ts",
   "scripts": {
-    "build": "rm -rf ./lib ./es && concurrently \"tsc -p ./tsconfig.cjs.json --sourceMap false\" \" tsc -p ./tsconfig.es6.json --sourceMap false\"",
+    "build": "rm -rf ./lib ./es && concurrently \"tsc -p ./tsconfig.cjs.json --sourceMap false && ts-add-module-exports\" \" tsc -p ./tsconfig.es6.json --sourceMap false\"",
     "dev": "concurrently \"tsc -w -p ./tsconfig.cjs.json \" \"tsc -w -p ./tsconfig.es6.json \""
   },
   "author": "zhangyuang",
@@ -18,6 +17,7 @@
     "@types/react-router-dom": "^5.1.3",
     "concurrently": "^4.1.1",
     "midway": "^1.15.0",
+    "ts-add-module-exports": "^1.0.0",
     "typescript": "^3.7.2"
   },
   "dependencies": {
