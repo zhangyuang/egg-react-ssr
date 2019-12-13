@@ -1,7 +1,7 @@
 import { controller, get, provide, inject, Context } from 'midway'
+import { IApiService } from '../../interface'
 const renderToStream = require('ykfe-utils/lib/renderToStream')
 const ssrConfig = require('../../../config/config.ssr')
-import { IApiService } from '../../interface'
 
 @provide()
 @controller('/')

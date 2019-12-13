@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+      "target": "ESNext",
+      "lib": [
+        "esnext",
+        "DOM"
+      ],
+      "declaration": true,
+      "jsx": "react",
+      "sourceMap": true,
+      "strict": true,
+      "moduleResolution": "node",
+      "resolveJsonModule": true,
+      "esModuleInterop": true,
+      "rootDir": "./src",
+      "outDir": "check",
+      "declarationDir": "types",
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true /* Enables experimental support for emitting type metadata for decorators. */
+    },
+    "include": [
+      "src"
+    ]
+  }

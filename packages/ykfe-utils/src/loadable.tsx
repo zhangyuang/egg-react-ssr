@@ -1,3 +1,4 @@
+// @ts-nocheck
 
 import React from 'react'
 import PropTypes from 'prop-types'
@@ -136,6 +137,13 @@ function createLoadableComponent (loadFn, options) {
       }
     })
   }
+  let _this = null
+  const popStateFn = () => {
+    // 使用popStateFn保存函数防止addEventListener重复注册
+    if (_this && _this.getInitialProps) {
+      _this.getInitialProps()
+    }
+  }
 
   return class LoadableComponent extends React.Component {
     constructor (props) {
@@ -155,7 +163,7 @@ function createLoadableComponent (loadFn, options) {
       loadable: PropTypes.shape({
         report: PropTypes.func.isRequired
       })
-    };
+    }
 
     static preload () {
       return init()
@@ -168,10 +176,9 @@ function createLoadableComponent (loadFn, options) {
 
     async componentDidMount () {
       const props = this.props
-      if (window.__USESSR__) {
-        window.onpopstate = () => {
-          this.getInitialProps()
-        }
+      if (window.__USE_SSR__) {
+        _this = this // 修正_this指向，保证_this指向当前渲染的页面组件
+        window.addEventListener('popstate', popStateFn)
       }
       const getProps = !window.__USESSR__ || (props.history && props.history.action === 'PUSH')
       if (getProps) {
@@ -261,7 +268,7 @@ function createLoadableComponent (loadFn, options) {
       this.setState({ error: null, loading: true, timedOut: false })
       res = loadFn(opts.loader)
       this._loadModule()
-    };
+    }
 
     render () {
       if (this.state.loading || this.state.error) {
@@ -298,13 +305,13 @@ Loadable.Map = LoadableMap
 class Capture extends React.Component {
   static propTypes = {
     report: PropTypes.func.isRequired
-  };
+  }
 
   static childContextTypes = {
     loadable: PropTypes.shape({
       report: PropTypes.func.isRequired
     }).isRequired
-  };
+  }
 
   getChildContext () {
     return {

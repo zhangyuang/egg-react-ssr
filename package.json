@@ -47,7 +47,8 @@
       "**/es/",
       "packages/ykfe-utils/src/loadable.js",
       "**/node_modules/**",
-      "**/output/**"
+      "**/output/**",
+      "jest.setup.js"
     ],
     "global": [
       "__isBrowser__",
@@ -58,15 +59,21 @@
   },
   "homepage": "https://github.com/ykfe/egg-react-ssr#readme",
   "devDependencies": {
+    "@types/enzyme": "^3.10.4",
     "@types/jest": "^24.0.18",
     "babel-eslint": "^10.0.2",
     "chromedriver": "^79.0.0",
     "codecov": "^3.5.0",
     "egg": "^2.23.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
     "jest": "^24.9.0",
     "lerna": "^3.8.0",
     "nightwatch": "^1.2.1",
     "pre-commit": "^1.2.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-router-dom": "^5.1.2",
     "standard": "^12.0.1",
     "ts-jest": "^24.0.2",
     "ts-node": "^8.5.4",
