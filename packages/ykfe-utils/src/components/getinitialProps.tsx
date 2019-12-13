@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
-let _this = null
+let _this: any = null
 const popStateFn = () => {
   // 使用popStateFn保存函数防止addEventListener重复注册
   if (_this && _this.getInitialProps) {
@@ -18,9 +18,9 @@ interface IState {
   getProps: boolean,
   extraProps: Object
 }
-function GetInitialProps (WrappedComponent) {
+function GetInitialProps (WrappedComponent: React.FC) {
   class GetInitialPropsClass extends Component<IProps, IState> {
-    constructor (props) {
+    constructor (props: IProps) {
       super(props)
       this.state = {
         extraProps: {},

@@ -1,23 +1,34 @@
 {
   "name": "ykfe-utils",
-  "version": "2.5.2",
+  "version": "2.6.0-beta.0",
   "description": "utils for ykfe",
   "main": "lib/index.js",
   "module": "es/index.js",
   "sideEffects": false,
   "scripts": {
-    "build": "rm -rf ./lib ./es && concurrently \"tsc -p ./tsconfig.cjs.json --sourceMap false && ts-add-module-exports\" \" tsc -p ./tsconfig.es6.json --sourceMap false\"",
-    "dev": "concurrently \"tsc -w -p ./tsconfig.cjs.json \" \"tsc -w -p ./tsconfig.es6.json \""
+    "check": "tsc",
+    "watch:es": "NODE_ENV=production BABEL_ENV=es babel src --out-dir es --watch --extensions '.ts,.tsx'",
+    "watch:lib": "NODE_ENV=production BABEL_ENV=lib babel src --out-dir lib --watch --extensions '.ts,.tsx'",
+    "watch": "concurrently \"npm run watch:es\" \"npm run watch:lib \""
   },
   "author": "zhangyuang",
   "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/plugin-transform-runtime": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.7.4",
+    "@babel/runtime": "^7.5.5",
     "@types/node": "^12.12.17",
     "@types/react": "^16.9.15",
     "@types/react-dom": "^16.9.4",
+    "@types/react-router-dom": "^5.1.3",
+    "babel-plugin-add-module-exports": "^1.0.2",
     "concurrently": "^4.1.1",
     "midway": "^1.15.0",
-    "ts-add-module-exports": "^1.0.0",
-    "typescript": "^3.7.2"
+    "typescript": "^3.7.3"
   },
   "dependencies": {
     "react": "^16.8.6",

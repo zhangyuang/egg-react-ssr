@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-      "target": "ES2015",
+      "target": "ESNext",
       "lib": [
         "esnext",
         "DOM"
@@ -8,7 +8,6 @@
       "declaration": true,
       "jsx": "react",
       "sourceMap": true,
-      "outDir": "./bin/",
       "strict": true,
       "moduleResolution": "node",
       "resolveJsonModule": true,
