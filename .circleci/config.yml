@@ -18,9 +18,6 @@ jobs:
       - restore_cache:
           keys:
             - v2-4.1-ssr-{{ .Branch }}-{{ checksum "package.json" }}
-            - v2-4.1-ssr-{{ .Branch }}-{{ checksum "./packages/yk-cli/package.json" }}
-            - v2-4.1-ssr-{{ .Branch }}-{{ checksum "./packages/ykfe-utils/package.json" }}
-            - v2-4.1-ssr-{{ .Branch }}-
             - v2-4.1-ssr
       - run:
           command: |
@@ -30,12 +27,8 @@ jobs:
           paths:
             - node_modules/
             - ./packages/yk-cli/node_modules/
-          keys:
-            - v2-4.1-ssr-{{ .Branch }}-{{ checksum "package.json" }}
-            - v2-4.1-ssr-{{ .Branch }}-{{ checksum "./packages/yk-cli/package.json" }}
-            - v2-4.1-ssr-{{ .Branch }}-{{ checksum "./packages/ykfe-utils/package.json" }}
-            - v2-4.1-ssr-{{ .Branch }}-
-            - v2-4.1-ssr
+            - ./packages/ykfe-utils/node_modules/
+          key: v2-4.1-ssr-{{ .Branch }}-{{ checksum "package.json" }}
       - persist_to_workspace:
           root: ~/project
           paths:
