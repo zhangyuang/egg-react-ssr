@@ -82,7 +82,5 @@
     "typescript": "^3.7.2",
     "vuepress": "^0.14.8"
   },
-  "dependencies": {
-    "@types/react-test-renderer": "^16.9.1"
-  }
+  "dependencies": {}
 }
