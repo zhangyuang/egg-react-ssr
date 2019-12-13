@@ -17,10 +17,10 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - v2-3-ssr-{{ .Branch }}-{{ checksum "package.json" }}
-            - v2-3-ssr-{{ .Branch }}-{{ checksum "./packages/yk-cli/package.json" }}
-            - v2-3-ssr-{{ .Branch }}-
-            - v2-3-ssr-
+            - v2-4.1-ssr-{{ .Branch }}-{{ checksum "package.json" }}
+            - v2-4.1-ssr-{{ .Branch }}-{{ checksum "./packages/yk-cli/package.json" }}
+            - v2-4.1-ssr-{{ .Branch }}-{{ checksum "./packages/ykfe-utils/package.json" }}
+            - v2-4.1-ssr-{{ .Branch }}-
       - run:
           command: |
             npm install --registry=https://registry.npm.taobao.org/
@@ -29,7 +29,11 @@ jobs:
           paths:
             - node_modules/
             - ./packages/yk-cli/node_modules/
-          key: v2-2-ssr-{{ .Branch }}-{{ checksum "package.json" }}
+          keys:
+            - v2-4.1-ssr-{{ .Branch }}-{{ checksum "package.json" }}
+            - v2-4.1-ssr-{{ .Branch }}-{{ checksum "./packages/yk-cli/package.json" }}
+            - v2-4.1-ssr-{{ .Branch }}-{{ checksum "./packages/ykfe-utils/package.json" }}
+            - v2-4.1-ssr-{{ .Branch }}-
       - persist_to_workspace:
           root: ~/project
           paths:
