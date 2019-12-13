@@ -21,6 +21,7 @@ jobs:
             - v2-4.1-ssr-{{ .Branch }}-{{ checksum "./packages/yk-cli/package.json" }}
             - v2-4.1-ssr-{{ .Branch }}-{{ checksum "./packages/ykfe-utils/package.json" }}
             - v2-4.1-ssr-{{ .Branch }}-
+            - v2-4.1-ssr
       - run:
           command: |
             npm install --registry=https://registry.npm.taobao.org/
@@ -34,6 +35,7 @@ jobs:
             - v2-4.1-ssr-{{ .Branch }}-{{ checksum "./packages/yk-cli/package.json" }}
             - v2-4.1-ssr-{{ .Branch }}-{{ checksum "./packages/ykfe-utils/package.json" }}
             - v2-4.1-ssr-{{ .Branch }}-
+            - v2-4.1-ssr
       - persist_to_workspace:
           root: ~/project
           paths:
