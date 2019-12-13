@@ -1,9 +1,5 @@
-export interface RouteItem {
-  path: string,
-  exact?: boolean,
-  Component (): Component
-}
+import { RouteItem } from 'ykfe-utils'
 
-export interface Component {
-  Layout?: new () => React.Component<object, object>
+export interface RouteItem extends RouteItem {
+
 }

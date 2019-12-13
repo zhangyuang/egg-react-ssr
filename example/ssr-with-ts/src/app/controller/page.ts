@@ -1,7 +1,9 @@
 import { controller, get, provide, inject, Context } from 'midway'
-const renderToStream = require('ykfe-utils/lib/renderToStream')
-const ssrConfig = require('../../../config/config.ssr')
+import { Config } from 'ykfe-utils'
+import renderToStream from 'ykfe-utils/lib/renderToStream'
 import { IApiService } from '../../interface'
+
+const ssrConfig: Config = require('../../../config/config.ssr')
 
 @provide()
 @controller('/')
@@ -19,8 +21,8 @@ export class Page {
       this.ctx.type = 'text/html'
       this.ctx.status = 200
       this.ctx.apiService = this.service.index // 将service挂载到上下文对象
-      Object.assign(this.ctx.app.config, ssrConfig)
-      const stream = await renderToStream(this.ctx, this.ctx.app.config)
+      const config = Object.assign(this.ctx.app.config, ssrConfig)
+      const stream = await renderToStream(this.ctx, config)
       this.ctx.res.write('<!DOCTYPE html>')
       this.ctx.body = stream
     } catch (error) {

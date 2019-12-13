@@ -1,9 +1,9 @@
-
 module.exports = function (api) {
   const isEs = process.env.BABEL_ENV === 'es'
   api.cache(true)
 
   const presets = [
+    '@babel/preset-typescript',
     [
       '@babel/preset-env',
       {

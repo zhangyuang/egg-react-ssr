@@ -9,7 +9,7 @@ export interface Optional {
   tool?: string
 
     /** 应用名称 */
-  appName?: string
+  appName: string
 
     /** 样式预处理 */
   style?: 'less' | 'sass' | 'css'

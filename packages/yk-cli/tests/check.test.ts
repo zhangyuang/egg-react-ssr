@@ -7,7 +7,7 @@ jest.mock('inquirer', () => ({
     delete: true
   }))
 }))
-jest.spyOn(console, 'log')
+console.log = jest.fn()
 
 const inquirer = require('inquirer')
 beforeAll(() => {

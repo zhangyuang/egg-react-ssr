@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
+import { FC } from '../interface/fc'
 
-let _this = null
+let _this: any = null
 const popStateFn = () => {
   // 使用popStateFn保存函数防止addEventListener重复注册
   if (_this && _this.getInitialProps) {
@@ -9,9 +10,19 @@ const popStateFn = () => {
   }
 }
 
-function GetInitialProps (WrappedComponent) {
-  class GetInitialPropsClass extends Component {
-    constructor (props) {
+interface IProps {
+  history: {
+    action: string
+  }
+}
+interface IState {
+  getProps: boolean,
+  extraProps: Object
+}
+
+function GetInitialProps (WrappedComponent: FC) {
+  class GetInitialPropsClass extends Component<IProps, IState> {
+    constructor (props: IProps) {
       super(props)
       this.state = {
         extraProps: {},
@@ -19,7 +30,7 @@ function GetInitialProps (WrappedComponent) {
       }
     }
 
-    componentDidMount () {
+    async componentDidMount () {
       const props = this.props
       if (window.__USE_SSR__) {
         _this = this // 修正_this指向，保证_this指向当前渲染的页面组件
@@ -27,7 +38,7 @@ function GetInitialProps (WrappedComponent) {
       }
       const getProps = !window.__USE_SSR__ || (props.history && props.history.action === 'PUSH')
       if (getProps) {
-        this.getInitialProps()
+        await this.getInitialProps()
       }
     }
 

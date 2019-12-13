@@ -1,4 +1,10 @@
-const renderToStream = async (ctx, config) => {
+import { Context }from 'midway'
+import { Config }from './interface/config'
+import { Global }from './interface/global'
+
+declare const global: Global
+
+const renderToStream = async (ctx: Context, config: Config) => {
   const baseDir = config.baseDir || process.cwd()
   const isLocal = process.env.NODE_ENV === 'development'
   const serverJs = config.serverJs
@@ -18,7 +24,7 @@ const renderToStream = async (ctx, config) => {
     global.renderToNodeStream = require(baseDir + '/node_modules/react-dom/server').renderToNodeStream
   }
 
-  if (isLocal) {
+  if (isLocal && typeof serverJs === 'string') {
     // 本地开发环境下每次刷新的时候清空require服务端文件的缓存，保证服务端与客户端渲染结果一致
     delete require.cache[serverJs]
   }

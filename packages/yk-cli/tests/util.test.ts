@@ -21,6 +21,7 @@ describe('test getVersionEffective without cache', () => {
 // 本地没有cache的情况应该返回false
   test('no cahe can return false', async () => {
     const data = await getVersionEffective({
+      appName: 'app',
       language: 'javascript'
     })
     expect(data).toEqual(false)
@@ -37,6 +38,7 @@ describe('test getVersionEffective with cache', () => {
     execSync(`echo '{"version":"1.0.0"}' > ${resolveApp(`./cache/example/ssr-with-js/package.json`)}`)
     // 缓存过期应该返回false
     const data = await getVersionEffective({
+      appName: 'app',
       language: 'javascript'
     })
     expect(data).toEqual(false)
@@ -47,6 +49,7 @@ describe('test getVersionEffective with cache', () => {
     const { 'dist-tags': { latest } } = await getWithPromise('https://registry.npm.taobao.org/ssr-with-js')
     execSync(`echo '{"version": "${latest}"}' > ${resolveApp(`./cache/example/ssr-with-js/package.json`)}`)
     const data = await getVersionEffective({
+      appName: 'app',
       language: 'javascript'
     })
     expect(data).toEqual(true)
