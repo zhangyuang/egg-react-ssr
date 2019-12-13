@@ -71,6 +71,8 @@ es
 
 lib
 
+check
+
 tests_output
 
 **/cache/
@@ -82,5 +84,3 @@ package-lock.json
 dist
 
 output
-
-**/types/

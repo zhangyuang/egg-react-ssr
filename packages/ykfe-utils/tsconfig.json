@@ -13,6 +13,8 @@
       "resolveJsonModule": true,
       "esModuleInterop": true,
       "rootDir": "./src",
+      "outDir": "check",
+      "declarationDir": "types",
       "experimentalDecorators": true,
       "emitDecoratorMetadata": true /* Enables experimental support for emitting type metadata for decorators. */
     },

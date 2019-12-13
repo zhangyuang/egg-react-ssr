@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
+import { FC } from '../interface/fc'
 
 let _this: any = null
 const popStateFn = () => {
@@ -18,7 +19,8 @@ interface IState {
   getProps: boolean,
   extraProps: Object
 }
-function GetInitialProps (WrappedComponent: React.FC) {
+
+function GetInitialProps (WrappedComponent: FC) {
   class GetInitialPropsClass extends Component<IProps, IState> {
     constructor (props: IProps) {
       super(props)

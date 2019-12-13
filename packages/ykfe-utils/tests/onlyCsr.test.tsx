@@ -6,10 +6,7 @@ import React from 'react'
 import { mount } from 'enzyme'
 import { renderToString }from 'react-dom/server'
 import onlyCsr from '../src/components/onlyCsr'
-
-interface FC extends React.FunctionComponent {
-  getInitialProps?: () => Promise<any>
-}
+import { FC } from '../src/interface/fc'
 
 describe('test onlyCsr', () => {
   const { createElement } = React
