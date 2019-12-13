@@ -84,3 +84,5 @@ package-lock.json
 dist
 
 output
+
+**/types
