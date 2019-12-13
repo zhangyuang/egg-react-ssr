@@ -2,6 +2,7 @@
 
 import yargs from 'yargs'
 import init from './init'
+import { processError }from './util'
 import { Optional } from './interface/option'
 import { Argv } from './interface/argv'
 
@@ -11,7 +12,11 @@ yargs
       appName: argv.appName || 'app',
       language: 'javascript'
     }
-    await init(option)
+    try {
+      await init(option)
+    } catch (error) {
+      processError(error)
+    }
   })
   .command('dev', 'start clientRender', {}, async () => {
     process.env.NODE_ENV = 'development'

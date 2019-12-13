@@ -1,6 +1,15 @@
 import shell from 'shelljs'
 import { execSync } from 'child_process'
-import { getWithPromise, getVersionEffective, resolveApp, renderTemplate } from '../src/util'
+import { getWithPromise, getVersionEffective, resolveApp, renderTemplate, processError } from '../src/util'
+// @ts-ignore
+const mockExit = jest.spyOn(process, 'exit').mockImplementation(() => {
+  //
+})
+
+test('processError can exit process', () => {
+  processError('error')
+  expect(process.exit).toBeCalled()
+})
 
 describe('test getWithPromise', () => {
   test('hope getWithPromise can get true result', async () => {
