@@ -1,6 +1,7 @@
 import shell from 'shelljs'
 import { execSync } from 'child_process'
 import { getWithPromise, getVersionEffective, resolveApp, renderTemplate, processError } from '../src/util'
+
 // @ts-ignore
 const mockExit = jest.spyOn(process, 'exit').mockImplementation(() => {
   //
@@ -19,9 +20,17 @@ describe('test getWithPromise', () => {
   test('hope timeout error can be invoke', async () => {
     // 请求超时应该报错
     try {
-      await getWithPromise('https://registry.npm.taobao.org/ssr-with-js', 0)
+      await getWithPromise('https://registry.npm.taobao.org/ssr-with-js', 1)
     } catch (error) {
       expect(error).toContain('url request timeout')
+    }
+  })
+  test('request error url should reject', async () => {
+    // 请求错误地址应该报错
+    try {
+      await getWithPromise('https://encrypte1d.google.com/')
+    } catch (error) {
+      expect(error.code).toEqual('ENOTFOUND')
     }
   })
 })
@@ -43,7 +52,7 @@ describe('test getVersionEffective with cache', () => {
     shell.mkdir('-p', resolveApp('./cache/example/ssr-with-js'))
     shell.touch(resolveApp(`./cache/example/ssr-with-js/package.json`))
   })
-  test('cahe expire can return false', async () => {
+  test('cahe expired should return false', async () => {
     execSync(`echo '{"version":"1.0.0"}' > ${resolveApp(`./cache/example/ssr-with-js/package.json`)}`)
     // 缓存过期应该返回false
     const data = await getVersionEffective({
@@ -52,11 +61,18 @@ describe('test getVersionEffective with cache', () => {
     })
     expect(data).toEqual(false)
   })
-  test('cahe not expire can return true', async () => {
-    shell.touch(resolveApp(`./cache/example/ssr-with-js/package.json`))
+  test('cahe not expire should return true', async () => {
     // 缓存没过期应该返回true
     const { 'dist-tags': { latest } } = await getWithPromise('https://registry.npm.taobao.org/ssr-with-js')
     execSync(`echo '{"version": "${latest}"}' > ${resolveApp(`./cache/example/ssr-with-js/package.json`)}`)
+    const data = await getVersionEffective({
+      appName: 'app',
+      language: 'javascript'
+    })
+    expect(data).toEqual(true)
+  })
+  test('throw error should return true', async () => {
+    // 执行报错应该返回true
     const data = await getVersionEffective({
       appName: 'app',
       language: 'javascript'

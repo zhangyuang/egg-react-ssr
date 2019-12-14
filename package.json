@@ -8,6 +8,7 @@
     "example": "example"
   },
   "scripts": {
+    "bootstrap": "npm i && lerna bootstrap && node ./test/scripts/preInstall.js",
     "lint": "tslint -c tslint.json -p . && standard",
     "lint:fix": "standard --fix && tslint -c tslint.json -p . --fix",
     "test": "node ./test/scripts/preInstall.js && npm run test:unit && npm run test:e2e",

@@ -40,7 +40,9 @@ const getWithPromise = (url: string, timeout?: number): Promise<any> => {
       res.on('end', () => {
         resolve(JSON.parse(data))
       })
-    }).on('error', (err) => reject(err))
+    }).on('error', (err) => {
+      reject(err)
+    })
   })
 }
 
