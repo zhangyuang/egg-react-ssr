@@ -107,7 +107,7 @@ Parameters of `getInitialProps` are as follows:
 ```js
 const commonNode = props =>
 	// In order to support SSR and CSR concurrently, please keep this conditional statement.
-	// If there is nothing in your layout, use `props.children ? <div>{ props.children }</div> : ''`
+	// If there is nothing in your layout, use `props.children ? { props.children } : ''`
   props.children ? (
     <div className='normal'>
       <h1 className='title'>
