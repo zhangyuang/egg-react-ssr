@@ -354,12 +354,12 @@ Welcome to join our DingTalk group by scanning the QR Code below.
 
 <img src="https://img.alicdn.com/tfs/TB1X1CsnET1gK0jSZFrXXcNCXXa-750-990.jpg" width="300">
 
-## Sponsors
+<!-- ## Sponsors
 If this project is helpful to you, consider buying us a coffee. Your funds will be used for team building instead of self consumption.
 
 If you are not on our __[Sponsor List](http://ykfe.net/guide/donate.html)__, please create an [issue](https://github.com/ykfe/egg-react-ssr/issues) for that.
 
 <div style="display:flex"><img src="https://gw.alicdn.com/tfs/TB1X1vRouT2gK0jSZFvXXXnFXXa-600-900.jpg" width="200" height="270">
 <img src="https://gw.alicdn.com/tfs/TB1BtPToxz1gK0jSZSgXXavwpXa-1242-1686.jpg" width="200" height="270">
-</div>
+</div> -->
 
