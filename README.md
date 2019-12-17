@@ -62,6 +62,7 @@ $ open http://localhost:7001
 - [x] 支持tree shaking，优化构建bundle大小以及数量
 - [x] 支持csr/ssr自定义layout，无需通过path来手动区分
 - [x] 抛弃传统模版引擎，拥抱 React 组件，使用JSX来作为模版
+- [x] 独创[最佳发布实践](http://ykfe.net/guide/deploy.html)，让你更新页面无需重启应用机器
 - [x] 配套结合[antd](https://github.com/ykfe/egg-react-ssr/tree/master/example/ssr-with-antd)的example的实现
 - [x] 配套结合[react-loadable](https://github.com/ykfe/egg-react-ssr/tree/master/example/ssr-with-loadable)做路由分割的example的实现
 - [x] 配套结合[dva](https://github.com/ykfe/egg-react-ssr/tree/master/example/ssr-with-dva)做数据管理的example的实现
@@ -206,7 +207,7 @@ module.exports = {
     `<script src='/static/js/vendor.chunk.js'></script>`,
     `<script src='/static/js/Page.chunk.js'></script>`
   ], // 客户端需要加载的静态资源文件表
-  serverJs: resolvePath(`dist/Page.server.js`): string|function // 打包后的server端的bundle文件路径, 接受直接传入require后的function
+  serverJs: resolvePath(`dist/Page.server.js`): string|function // 打包后的server端的bundle文件路径支持传入CDN地址, 接受直接传入require后的function
 }
 ```
 
