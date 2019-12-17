@@ -12,6 +12,7 @@
       "moduleResolution": "node",
       "resolveJsonModule": true,
       "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true,
       "rootDir": "./src",
       "experimentalDecorators": true,
       "emitDecoratorMetadata": true /* Enables experimental support for emitting type metadata for decorators. */

@@ -52,35 +52,46 @@ const clientRender = async () => {
 
 ```js
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter,RouteComponentProps } from 'react-router-dom'
+import { FC } from '../interface/fc'
 
-function GetInitialProps (WrappedComponent) {
-  class GetInitialPropsClass extends Component {
-    constructor (props) {
+let _this: any = null
+const popStateFn = () => {
+  // 使用popStateFn保存函数防止addEventListener重复注册
+  if (_this && _this.getInitialProps) {
+    _this.getInitialProps()
+  }
+}
+
+interface IState {
+  getProps: boolean,
+  extraProps: Object
+}
+
+function GetInitialProps (WrappedComponent: FC): React.ComponentClass {
+  class GetInitialPropsClass extends Component<RouteComponentProps<{}>, IState> {
+    constructor (props: RouteComponentProps) {
       super(props)
       this.state = {
         extraProps: {},
         getProps: false
       }
     }
-    componentDidMount () {
-        // 这里的props是withRouter这个高阶组件传递的props，主要包含一些路由信息比如match, params
+
+    async componentDidMount () {
       const props = this.props
-      if (window.__USESSR__) {
-          // 如果当前是SSR应用，当前端路由回退时调用getInitialProps方法，之所以要这么做，是因为首次进入页面props.history.action的值就是POP，所以没办法通过值为POP来判断当前是不是回退操作
-          // 得借助于window.onpopstate方法
-        window.onpopstate = () => {
-          this.getInitialProps()
-        }
+      if (window.__USE_SSR__) {
+        _this = this // 修正_this指向，保证_this指向当前渲染的页面组件
+        window.addEventListener('popstate', popStateFn)
       }
-      // !window.__USESSR__代表如果是CSR应用，每次didMount时都会调用getInitialProps方法，|| 后面的语句意思是，当前是SSR应用，当路由进行PUSH操作时调用getInitialProps方法
-      const getProps = !window.__USESSR__ || (props.history && props.history.action === 'PUSH')
+      const getProps = !window.__USE_SSR__ || (props.history && props.history.action === 'PUSH')
       if (getProps) {
-        this.getInitialProps()
+        await this.getInitialProps()
       }
     }
 
     async getInitialProps () {
+      // csr首次进入页面以及csr/ssr切换路由时才调用getInitialProps
       const props = this.props
       const extraProps = WrappedComponent.getInitialProps ? await WrappedComponent.getInitialProps(props) : {}
       this.setState({
@@ -88,15 +99,17 @@ function GetInitialProps (WrappedComponent) {
         getProps: true
       })
     }
+
     render () {
       // 只有在首次进入页面需要将window.__INITIAL_DATA__作为props，路由切换时不需要
-      return <WrappedComponent {...Object.assign({}, this.state.getProps ? {} : window.__INITIAL_DATA__, this.state.extraProps)} />
+      return <WrappedComponent {...Object.assign({}, this.props, this.state.getProps ? {} : window.__INITIAL_DATA__, this.state.extraProps)} />
     }
   }
   return withRouter(GetInitialPropsClass)
 }
 
 export default GetInitialProps
+
 ```
 
 总结一下GetInitialProps做的事情，为了保证SSR／CSR应用每次进行前端路由切换时都会调用getInitialProps方法，并将获取的数据作为props注入到要渲染的组件。且CSR应用首次进入页面时也会调用getInitialProps方法，SSR应用之所以不需要调用，是因为这块数据获取的操作我们已经在服务端完成了，这时候只要把服务端注入到window.__INITIAL_DATA__的数据作为组件的props传入即可。

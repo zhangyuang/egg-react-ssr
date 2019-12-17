@@ -50,10 +50,11 @@ module.exports = {
                 'optimize',
                 'dev',
                 'publish',
+                'deploy',
                 'ts',
                 'serverless',
                 'faq',
-                'update'
+                // 'update'
               ],
             }
           ]
