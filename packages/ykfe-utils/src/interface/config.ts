@@ -10,6 +10,6 @@ export interface Config {
   injectCss: string[]
 }
 
-interface ServerJs {
+export interface ServerJs {
   (ctx: Context): React.ReactElement
 }
