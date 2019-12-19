@@ -18,7 +18,8 @@
 
 `正在使用这个项目的公司(应用), 如果您正在使用但名单中没有列出来的话请提issue，欢迎推广分享`
 
-<table><tr>
+<table>
+<tr>
 <td align="center"><a target="_blank" href="https://www.youku.com"><img src="https://img.alicdn.com/tfs/TB17DTuXkH0gK0jSZPiXXavapXa-680-133.svg" width="100px;" alt="优酷"/><br /><sub><b>优酷视频 
 </b></sub></a></td>
 <td align="center"><a target="_blank" href="https://campaign.vmate.com/vrbollywood"><img src="https://img.alicdn.com/tfs/TB17p6Vhbj1gK0jSZFOXXc7GpXa-512-512.png" width="100px;" alt="vmate 积分商城"/><br />
@@ -30,7 +31,10 @@
 <td align="center"><a href="https://www.niuniuda.com/mall" target="_blank"><img src="https://img.alicdn.com/tfs/TB1df_8pBr0gK0jSZFnXXbRRXXa-160-60.png" width="100px;" alt="牛牛搭"/><br />
 <a href="https://www.niuniuda.com/mall" target="_blank"><sub><b>牛牛搭
 </b></a></td>
-</tr></table>
+<td align="center"><a href="https://help.seewo.com/test/vey11MEgri" target="_blank"><img src="https://img.alicdn.com/tfs/TB11Xo3q4v1gK0jSZFFXXb0sXXa-350-55.png" width="100px;" alt="cvte"/><br /><a href="https://help.seewo.com/test/vey11MEgri" target="_blank"><sub><b>希沃帮助中心
+</b></a></td>
+</tr>
+</table>
 
 ## 快速入门
 
