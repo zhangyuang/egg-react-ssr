@@ -1,6 +1,6 @@
 {
   "name": "ssr-with-ts",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "description": "ykfe",
   "dependencies": {
     "egg-scripts": "^2.10.0",
