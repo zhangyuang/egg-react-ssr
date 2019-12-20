@@ -40,6 +40,10 @@ function GetInitialProps (WrappedComponent: FC): React.ComponentClass {
     async getInitialProps () {
       // csr首次进入页面以及csr/ssr切换路由时才调用getInitialProps
       const props = this.props
+      if (WrappedComponent.preload) {
+        // react-loadable 情况
+        WrappedComponent = (await WrappedComponent.preload()).default
+      }
       const extraProps = WrappedComponent.getInitialProps ? await WrappedComponent.getInitialProps(props) : {}
       this.setState({
         extraProps,

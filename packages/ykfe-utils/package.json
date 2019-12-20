@@ -1,6 +1,6 @@
 {
   "name": "ykfe-utils",
-  "version": "2.7.0",
+  "version": "2.7.3",
   "description": "utils for ykfe",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -32,7 +32,10 @@
     "typescript": "^3.7.3"
   },
   "dependencies": {
+    "@types/lodash.clonedeepwith": "^4.5.6",
     "axios": "^0.19.0",
+    "lodash.clonedeepwith": "^4.5.0",
+    "path-to-regexp": "^6.1.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",
