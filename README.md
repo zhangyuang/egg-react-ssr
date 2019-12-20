@@ -51,6 +51,38 @@ $ open http://localhost:7001
 
 在执行 `ykcli init` 的时候，可以选择javascript或typescript语言，非常方便。
 
+## npm scripts
+
+1）启动服务
+
+启动监听7001端口，此端口同时用于服务端渲染以及客户端渲染，通过query或者config来指定渲染模式
+
+```bash
+$ npm start # 建议以本方式启动应用，同时启动服务端渲染 + 客户端hydrate
+```
+
+2）只启动服务端渲染，此时仅服务端直出html，没有与客户端混合的步骤
+
+```bash
+$ npm run ssr 
+```
+
+3）只启动客户端渲染
+
+仅限于本地开发使用，启动监听8000端口，只启动客户端渲染，相当于传统的cra脚手架开发模式
+
+```bash
+$ npm run csr 
+```
+
+4）配套的脚本
+
+```bash
+$ npm run prod    # 使用egg-scripts启动应用模拟SSR应用生产环境
+$ npm run build   # 打包服务端以及客户端资源文件
+$ npm run analyze # 可视化分析客户端打包的资源详情
+```
+
 ## 功能/特性
 
 这个项目骨架的特色是写法简单，功能强大，一切都是组件，支持 SSR/CSR 两种渲染模式无缝切换。
@@ -255,38 +287,6 @@ module.exports = {
     └── page
         ├── index
         └── news
-```
-
-## npm scripts
-
-1）启动服务端渲染
-
-启动监听7001端口，只启动服务端渲染，此时仅服务端直出html，没有与客户端混合的步骤
-
-```
-$ npm run ssr 
-```
-
-2）启动客户端渲染
-
-启动监听8000端口，只启动客户端渲染，相当于传统的cra脚手架开发模式
-
-```
-$ npm run csr 
-```
-
-3）同时启动csr和ssr服务。
-
-```bash
-$ npm start # 启动监听7001端口，本地开发建议以本方式启动应用，同时启动服务端渲染 + 客户端hydrate
-```
-
-4）配套的脚本
-
-```bash
-$ npm run prod    # 模拟SSR应用生产环境
-$ npm run build   # 打包服务端以及客户端资源文件
-$ npm run analyze # 可视化分析客户端打包的资源详情
 ```
 
 ## Changelog
