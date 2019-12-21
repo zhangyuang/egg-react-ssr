@@ -51,6 +51,7 @@ module.exports = {
                 'dev',
                 'publish',
                 'deploy',
+                'loadable',
                 'ts',
                 'serverless',
                 'faq',
