@@ -31,7 +31,7 @@
 <td align="center"><a href="https://www.niuniuda.com/mall" target="_blank"><img src="https://img.alicdn.com/tfs/TB1df_8pBr0gK0jSZFnXXbRRXXa-160-60.png" width="100px;" alt="牛牛搭"/><br />
 <a href="https://www.niuniuda.com/mall" target="_blank"><sub><b>牛牛搭
 </b></a></td>
-<td align="center"><a href="https://help.seewo.com/test/vey11MEgri" target="_blank"><img src="https://img.alicdn.com/tfs/TB11Xo3q4v1gK0jSZFFXXb0sXXa-350-55.png" width="100px;" alt="cvte"/><br /><a href="https://help.seewo.com/test/vey11MEgri" target="_blank"><sub><b>希沃帮助中心
+<td align="center"><a href="https://help.seewo.com/" target="_blank"><img src="https://img.alicdn.com/tfs/TB11Xo3q4v1gK0jSZFFXXb0sXXa-350-55.png" width="100px;" alt="cvte"/><br /><a href="https://help.seewo.com/" target="_blank"><sub><b>希沃帮助中心
 </b></a></td>
 </tr>
 </table>
