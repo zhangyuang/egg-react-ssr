@@ -19,16 +19,21 @@ This is the most lightweight and elegant SSR (server-side rendering) app boilerp
 Companies(applications) using this project are as follows. If you are using this project but not on the list, please create an [issue](https://github.com/ykfe/egg-react-ssr/issues) for that, and welcome to share [this project](https://github.com/ykfe/egg-react-ssr).
 
 <table><tr>
-<td align="center"><a target="_blank" href="https://www.youku.com"><img src="https://img.alicdn.com/tfs/TB17DTuXkH0gK0jSZPiXXavapXa-680-133.svg" width="100px;" alt="优酷"/><br /><sub><b>优酷视频 
+<td align="center"><a target="_blank" href="https://www.youku.com"><img src="https://img.alicdn.com/tfs/TB17DTuXkH0gK0jSZPiXXavapXa-680-133.svg" width="100px;" alt="优酷"/><br /><sub><b>youku
 </b></sub></a></td>
 <td align="center"><a target="_blank" href="https://campaign.vmate.com/diwalilightup"><img src="https://img.alicdn.com/tfs/TB17p6Vhbj1gK0jSZFOXXc7GpXa-512-512.png" width="100px;" alt="vmate 积分商城"/><br />
-  <a target="_blank" href="https://job.alibaba.com/zhaopin/position_detail.htm?trace=qrcode_share&positionCode=GP524819"><sub><b>Vmate短视频
+  <a target="_blank" href="https://job.alibaba.com/zhaopin/position_detail.htm?trace=qrcode_share&positionCode=GP524819"><sub><b>Vmate short video
 </b></a></td>
 <td align="center"><a target="_blank" href="https://enjoysales.paat.com/"><img src="https://img.alicdn.com/tfs/TB1Ma0BiEY1gK0jSZFMXXaWcVXa-836-836.png" width="100px;" alt="火炽星原CRM"/><br />
-<a target="_blank" href="https://enjoysales.paat.com/"><sub><b>火炽星原CRM
+<a target="_blank" href="https://enjoysales.paat.com/"><sub><b>paat CRM
 </b></a></td>
 <td align="center"><a href="https://www.niuniuda.com/mall" target="_blank"><img src="https://img.alicdn.com/tfs/TB1df_8pBr0gK0jSZFnXXbRRXXa-160-60.png" width="100px;" alt="牛牛搭"/><br />
-<a href="https://www.niuniuda.com/mall" target="_blank"><sub><b>牛牛搭
+<a href="https://www.niuniuda.com/mall" target="_blank"><sub><b>niu niu constructed
+</b></a></td>
+<td align="center"><a href="https://help.seewo.com/" target="_blank"><img src="https://img.alicdn.com/tfs/TB11Xo3q4v1gK0jSZFFXXb0sXXa-350-55.png" width="100px;" alt="cvte"/><br /><a href="https://help.seewo.com/" target="_blank"><sub><b>seeowo help
+</b></a></td>
+<td align="center"><a href="https://wecard.qq.com/index/" target="_blank"><img src="https://img.alicdn.com/tfs/TB1pTZGrFT7gK0jSZFpXXaTkpXa-164-164.jpg" width="100px;" alt="腾讯微卡"/><br />
+<a href="https://wecard.qq.com/index/" target="_blank"><sub><b>Tecent wecard
 </b></a></td>
 </tr></table>
 
