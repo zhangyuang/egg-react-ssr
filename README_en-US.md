@@ -1,6 +1,6 @@
 English | [简体中文](./README.md)
 
-# Egg + React + SSR App Skeleton
+# Egg + React + SSR App Boilerplate
 
 <a href="https://circleci.com/gh/ykfe"><img src="https://img.shields.io/circleci/build/github/ykfe/egg-react-ssr/dev.svg" alt="Build Status"></a>
 <a href="https://codecov.io/gh/ykfe/egg-react-ssr"><img src="https://codecov.io/gh/ykfe/egg-react-ssr/branch/dev/graph/badge.svg" alt="Coverage Status"></a>
@@ -10,10 +10,10 @@ English | [简体中文](./README.md)
 <a href="https://github.com/ykfe/egg-react-ssr"><img src="https://img.shields.io/npm/l/vue.svg" alt="License"></a>
 <img src="https://img.shields.io/badge/node-%3E=8-green.svg" alt="Node">
 
-This is the most lightweight and elegant SSR (server-side rendering) app skeleton with the following characteristics:
+This is the most lightweight and elegant SSR (server-side rendering) app boilerplate with the following advantages:
 
 - **Lightweight**: Concise implementation; The bundle size in production is about 40% compared to Nest.js project; Significantly less generated files than Next.js.
-- **Extensive**: HMR support; Seamless switching between CSR and SSR in development or in production; Custom component rendering mode; TypeScript support.
+- **Versatile**: HMR support; Seamless switching between CSR and SSR in development or in production; Custom component rendering mode; TypeScript support.
 - **Elegant**: Based on React and Egg.js and their strong plugin ecosystem; Non-black-box configuration; All crucial steps can be configured via `config.ssr.js`.
 
 Companies(applications) using this project are as follows. If you are using this project but not on the list, please create an [issue](https://github.com/ykfe/egg-react-ssr/issues) for that, and welcome to share [this project](https://github.com/ykfe/egg-react-ssr).
@@ -49,7 +49,7 @@ When running `ykcli init`, you can choose JavaScript or TypeScript to create the
 
 ## Features
 
-Let me introduce some awesome features in our app skeleton: simple to use, powerful functionality, everything is a component, seamless switching between CSR and SSR.
+Let me introduce some awesome features in our app boilerplate: simple to use, powerful functionality, everything is a component, seamless switching between CSR and SSR.
 
 More features:
 - [x] App developed by [CRA](https://github.com/facebook/create-react-app) can be migrated seamlessly. If you are familiar with CRA, the start-up cost is almost 0.
