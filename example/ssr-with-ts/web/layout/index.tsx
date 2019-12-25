@@ -7,7 +7,7 @@ import './index.less'
 import { Context } from 'midway'
 
 const commonNode = (props: LayoutProps) => (
-  // 为了同时兼容ssr/csr请保留此判断，如果你的layout没有内容请使用 props.children ? <div>{ props.children }</div> : ''
+  // 为了同时兼容ssr/csr请保留此判断，如果你的layout没有内容请使用 props.children ?  props.children  : ''
   props.children
     ? <div className='normal'><h1 className='title'><Link to='/'>Egg + React + SSR</Link><div className='author'>by ykfe</div></h1>{props.children}</div>
     : null
@@ -22,8 +22,8 @@ const Layout: SFC<LayoutProps> = (props: LayoutProps): JSX.Element | null => {
   if (__isBrowser__) {
     return commonNode(props)
   } else {
-    const { serverData } = props.layoutData!
-    const { injectCss, injectScript } = props.layoutData!.app.config
+    const { serverData } = props.layoutData! // tslint:disable-line
+    const { injectCss, injectScript } = props.layoutData!.app.config // tslint:disable-line
     return (
       <html lang='en'>
         <head>

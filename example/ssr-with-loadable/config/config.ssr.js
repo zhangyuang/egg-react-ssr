@@ -14,7 +14,7 @@ module.exports = {
     {
       path: '/news/:id',
       exact: true,
-      Component: () => (__isBrowser__ ? require('ykfe-utils/lib/loadable')({
+      Component: () => (__isBrowser__ ? require('react-loadable')({
         loader: () => import(/* webpackChunkName: "news" */ '@/page/news'),
         loading: function Loading () {
           return React.createElement('div')

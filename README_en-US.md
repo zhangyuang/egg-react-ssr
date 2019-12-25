@@ -4,7 +4,7 @@ English | [简体中文](./README.md)
 
 <a href="https://circleci.com/gh/ykfe"><img src="https://img.shields.io/circleci/build/github/ykfe/egg-react-ssr/dev.svg" alt="Build Status"></a>
 <a href="https://codecov.io/gh/ykfe/egg-react-ssr"><img src="https://codecov.io/gh/ykfe/egg-react-ssr/branch/dev/graph/badge.svg" alt="Coverage Status"></a>
-<a href="https://npm.taobao.org/package/yk-cli"><img src="https://npm.taobao.org/badge/d/yk-cli.svg" alt="download"></a>
+<a href="https://npmcharts.com/compare/yk-cli"><img src="https://img.shields.io/npm/dt/yk-cli" alt="download"></a>
 <a href="https://standardjs.com"><img src="https://img.shields.io/badge/code_style-standard-brightgreen.svg" alt="standardjs"></a>
 <a href="https://github.com/facebook/jest"><img src="https://img.shields.io/badge/tested_with-jest-99424f.svg" alt="License"></a>
 <a href="https://github.com/ykfe/egg-react-ssr"><img src="https://img.shields.io/npm/l/vue.svg" alt="License"></a>
@@ -107,7 +107,7 @@ Parameters of `getInitialProps` are as follows:
 ```js
 const commonNode = props =>
 	// In order to support SSR and CSR concurrently, please keep this conditional statement.
-	// If there is nothing in your layout, use `props.children ? <div>{ props.children }</div> : ''`
+	// If there is nothing in your layout, use `props.children ? { props.children } : ''`
   props.children ? (
     <div className='normal'>
       <h1 className='title'>
@@ -354,12 +354,12 @@ Welcome to join our DingTalk group by scanning the QR Code below.
 
 <img src="https://img.alicdn.com/tfs/TB1X1CsnET1gK0jSZFrXXcNCXXa-750-990.jpg" width="300">
 
-## Sponsors
+<!-- ## Sponsors
 If this project is helpful to you, consider buying us a coffee. Your funds will be used for team building instead of self consumption.
 
 If you are not on our __[Sponsor List](http://ykfe.net/guide/donate.html)__, please create an [issue](https://github.com/ykfe/egg-react-ssr/issues) for that.
 
 <div style="display:flex"><img src="https://gw.alicdn.com/tfs/TB1X1vRouT2gK0jSZFvXXXnFXXa-600-900.jpg" width="200" height="270">
 <img src="https://gw.alicdn.com/tfs/TB1BtPToxz1gK0jSZSgXXavwpXa-1242-1686.jpg" width="200" height="270">
-</div>
+</div> -->
 

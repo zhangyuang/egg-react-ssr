@@ -1,6 +1,6 @@
 {
   "name": "ssr-with-ts",
-  "version": "2.0.10",
+  "version": "2.1.3",
   "description": "ykfe",
   "dependencies": {
     "egg-scripts": "^2.10.0",
@@ -9,7 +9,7 @@
     "react-dom": "^16.10.2",
     "react-router-dom": "^5.1.2",
     "yk-cli": "^2.6.0",
-    "ykfe-utils": "^2.1.2"
+    "ykfe-utils": "^2.6.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
@@ -56,7 +56,7 @@
     "node": ">=10.16.0"
   },
   "scripts": {
-    "prod": "rimraf dist && npm run build && egg-scripts start --title=egg-server-ssr-with-ts --framework=midway --ts",
+    "prod": "rimraf dist && npm run build && NODE_ENV=production egg-scripts start --title=egg-server-ssr-with-ts --framework=midway --ts",
     "stop": "egg-scripts stop --title=egg-server-ssr-with-ts",
     "start": "concurrently \"npm run ssr\" \"npm run csr\"",
     "clean": "midway-bin clean && rimraf output",

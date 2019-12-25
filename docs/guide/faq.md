@@ -28,7 +28,7 @@ class Page {
 }
 ```
 
-3. 如果某个组件调用的库一定要使用浏览器对象才能得到结果，那么只能将该组件放到客户端进行render了，参考[OnlyCsr](./faq.md#如何让某一个组件只在客户端进行渲染)
+3. 如果某个组件调用的库一定要使用浏览器对象才能得到结果，那么只能将该组件放到客户端进行render了，参考[onlyCsr](./faq.md#如何让某一个组件只在客户端进行渲染)
 
 <span style="color: red">注: 不要想着在服务端去访问客户端对象，这意味着你 or 开发第三方模块的人对React SSR的理解不够, 虽然这一开始会导致一定的错误，但对于你去理解SSR的执行机制以及分清楚Server/Client两端的区别帮助很大</span>
 
@@ -73,9 +73,9 @@ class Page {
 使用ykfe-utils提供的高阶组件OnlyCsr
 
 ```js
-import { OnlyCsr } from 'ykfe-utils'
+import { onlyCsr } from 'ykfe-utils'
 
-export default OnlyCsr(Page)
+export default onlyCsr(Page)
 ```
 
 ## 刷新8000端口为什么会导致404

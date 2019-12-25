@@ -4,7 +4,7 @@
 
 <a href="https://circleci.com/gh/ykfe"><img src="https://img.shields.io/circleci/build/github/ykfe/egg-react-ssr/dev.svg" alt="Build Status"></a>
 <a href="https://codecov.io/gh/ykfe/egg-react-ssr"><img src="https://codecov.io/gh/ykfe/egg-react-ssr/branch/dev/graph/badge.svg" alt="Coverage Status"></a>
-<a href="https://npm.taobao.org/package/yk-cli"><img src="https://npm.taobao.org/badge/d/yk-cli.svg" alt="download"></a>
+<a href="https://npmcharts.com/compare/yk-cli"><img src="https://img.shields.io/npm/dt/yk-cli" alt="download"></a>
 <a href="https://standardjs.com"><img src="https://img.shields.io/badge/code_style-standard-brightgreen.svg" alt="standardjs"></a>
 <a href="https://github.com/facebook/jest"><img src="https://img.shields.io/badge/tested_with-jest-99424f.svg" alt="License"></a>
 <a href="https://github.com/ykfe/egg-react-ssr"><img src="https://img.shields.io/npm/l/vue.svg" alt="License"></a>
@@ -18,7 +18,8 @@
 
 `正在使用这个项目的公司(应用), 如果您正在使用但名单中没有列出来的话请提issue，欢迎推广分享`
 
-<table><tr>
+<table>
+<tr>
 <td align="center"><a target="_blank" href="https://www.youku.com"><img src="https://img.alicdn.com/tfs/TB17DTuXkH0gK0jSZPiXXavapXa-680-133.svg" width="100px;" alt="优酷"/><br /><sub><b>优酷视频 
 </b></sub></a></td>
 <td align="center"><a target="_blank" href="https://campaign.vmate.com/vrbollywood"><img src="https://img.alicdn.com/tfs/TB17p6Vhbj1gK0jSZFOXXc7GpXa-512-512.png" width="100px;" alt="vmate 积分商城"/><br />
@@ -30,7 +31,10 @@
 <td align="center"><a href="https://www.niuniuda.com/mall" target="_blank"><img src="https://img.alicdn.com/tfs/TB1df_8pBr0gK0jSZFnXXbRRXXa-160-60.png" width="100px;" alt="牛牛搭"/><br />
 <a href="https://www.niuniuda.com/mall" target="_blank"><sub><b>牛牛搭
 </b></a></td>
-</tr></table>
+<td align="center"><a href="https://help.seewo.com/" target="_blank"><img src="https://img.alicdn.com/tfs/TB11Xo3q4v1gK0jSZFFXXb0sXXa-350-55.png" width="100px;" alt="cvte"/><br /><a href="https://help.seewo.com/" target="_blank"><sub><b>希沃帮助中心
+</b></a></td>
+</tr>
+</table>
 
 ## 快速入门
 
@@ -47,6 +51,38 @@ $ open http://localhost:7001
 
 在执行 `ykcli init` 的时候，可以选择javascript或typescript语言，非常方便。
 
+## npm scripts
+
+1）启动服务
+
+启动监听7001端口，此端口同时用于服务端渲染以及客户端渲染，通过query或者config来指定渲染模式
+
+```bash
+$ npm start # 建议以本方式启动应用，同时启动服务端渲染 + 客户端hydrate
+```
+
+2）只启动服务端渲染，此时仅服务端直出html，没有与客户端混合的步骤
+
+```bash
+$ npm run ssr 
+```
+
+3）只启动客户端渲染
+
+仅限于本地开发使用，启动监听8000端口，只启动客户端渲染，相当于传统的cra脚手架开发模式
+
+```bash
+$ npm run csr 
+```
+
+4）配套的脚本
+
+```bash
+$ npm run prod    # 使用egg-scripts启动应用模拟SSR应用生产环境
+$ npm run build   # 打包服务端以及客户端资源文件
+$ npm run analyze # 可视化分析客户端打包的资源详情
+```
+
 ## 功能/特性
 
 这个项目骨架的特色是写法简单，功能强大，一切都是组件，支持 SSR/CSR 两种渲染模式无缝切换。
@@ -54,6 +90,7 @@ $ open http://localhost:7001
 更多功能/特性如下：
 - [x] 基于cra脚手架开发，由cra开发的React App可无缝迁移，如果你熟悉cra的配置，上手成本几乎为0
 - [x] 小而美，相比于beidou，next.js这样的高度封装方案，我们的实现原理和开发模式一目了然
+- [x] 推荐使用egg作为Node.js框架但并不强制，事实上你可以发现几乎无需做任何修改即可迁移到koa,nest.js等框架
 - [x] 同时支持SSR以及CSR两种开发模式,本地开发环境以及线上环境皆可无缝切换两种渲染模式
 - [x] 统一前端路由与服务端路由，无需重复编写路由文件配置
 - [x] 支持切换路由时自动获取数据
@@ -62,6 +99,7 @@ $ open http://localhost:7001
 - [x] 支持tree shaking，优化构建bundle大小以及数量
 - [x] 支持csr/ssr自定义layout，无需通过path来手动区分
 - [x] 抛弃传统模版引擎，拥抱 React 组件，使用JSX来作为模版
+- [x] 独创[最佳发布实践](http://ykfe.net/guide/deploy.html)，让你更新页面无需重启应用机器
 - [x] 配套结合[antd](https://github.com/ykfe/egg-react-ssr/tree/master/example/ssr-with-antd)的example的实现
 - [x] 配套结合[react-loadable](https://github.com/ykfe/egg-react-ssr/tree/master/example/ssr-with-loadable)做路由分割的example的实现
 - [x] 配套结合[dva](https://github.com/ykfe/egg-react-ssr/tree/master/example/ssr-with-dva)做数据管理的example的实现
@@ -106,7 +144,7 @@ getInitialProps入参对象的属性如下：
 
 ``` js
 const commonNode = props => (
-  // 为了同时兼容ssr/csr请保留此判断，如果你的layout没有内容请使用 props.children ? <div>{ props.children }</div> : ''
+  // 为了同时兼容ssr/csr请保留此判断，如果你的layout没有内容请使用 props.children ? { props.children } : ''
   props.children
     ? <div className='normal'><h1 className='title'><Link to='/'>Egg + React + SSR</Link><div className='author'>by ykfe</div></h1>{props.children}</div>
     : ''
@@ -206,7 +244,7 @@ module.exports = {
     `<script src='/static/js/vendor.chunk.js'></script>`,
     `<script src='/static/js/Page.chunk.js'></script>`
   ], // 客户端需要加载的静态资源文件表
-  serverJs: resolvePath(`dist/Page.server.js`): string|function // 打包后的server端的bundle文件路径, 接受直接传入require后的function
+  serverJs: resolvePath(`dist/Page.server.js`): string|function // 打包后的server端的bundle文件路径支持传入CDN地址, 接受直接传入require后的function
 }
 ```
 
@@ -249,38 +287,6 @@ module.exports = {
     └── page
         ├── index
         └── news
-```
-
-## npm scripts
-
-1）启动服务端渲染
-
-启动监听7001端口，只启动服务端渲染，此时仅服务端直出html，没有与客户端混合的步骤
-
-```
-$ npm run ssr 
-```
-
-2）启动客户端渲染
-
-启动监听8000端口，只启动客户端渲染，相当于传统的cra脚手架开发模式
-
-```
-$ npm run csr 
-```
-
-3）同时启动csr和ssr服务。
-
-```bash
-$ npm start # 启动监听7001端口，本地开发建议以本方式启动应用，同时启动服务端渲染 + 客户端hydrate
-```
-
-4）配套的脚本
-
-```bash
-$ npm run prod    # 模拟SSR应用生产环境
-$ npm run build   # 打包服务端以及客户端资源文件
-$ npm run analyze # 可视化分析客户端打包的资源详情
 ```
 
 ## Changelog

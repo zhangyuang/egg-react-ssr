@@ -84,3 +84,5 @@ dist
 output
 
 **/types/
+
+.serverBundle
