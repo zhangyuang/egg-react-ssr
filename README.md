@@ -1,6 +1,6 @@
 简体中文 | [English](./README_en-US.md)
 
-# Egg + React + SSR 应用骨架
+# Egg + React + SSR 应用模板
 
 <a href="https://circleci.com/gh/ykfe"><img src="https://img.shields.io/circleci/build/github/ykfe/egg-react-ssr/dev.svg" alt="Build Status"></a>
 <a href="https://codecov.io/gh/ykfe/egg-react-ssr"><img src="https://codecov.io/gh/ykfe/egg-react-ssr/branch/dev/graph/badge.svg" alt="Coverage Status"></a>
@@ -10,7 +10,7 @@
 <a href="https://github.com/ykfe/egg-react-ssr"><img src="https://img.shields.io/npm/l/vue.svg" alt="License"></a>
 <img src="https://img.shields.io/badge/node-%3E=8-green.svg" alt="Node">
 
-最小而美的服务端渲染应用骨架，特点
+最小而美的服务端渲染应用模板，特点
 
 - 小：实现方式简洁，生产环境构建出来的bundle为同等复杂度的next.js项目的0.4倍，生成文件数量相比于next.js减少非常多
 - 全：支持HMR，支持本地开发以及生产环境CSR/SSR两种渲染模式无缝切换，支持定制组件的渲染模式，同时支持TypeScript版本
@@ -91,7 +91,7 @@ $ npm run analyze # 可视化分析客户端打包的资源详情
 
 ## 功能/特性
 
-这个项目骨架的特色是写法简单，功能强大，一切都是组件，支持 SSR/CSR 两种渲染模式无缝切换。
+该模板特色为：写法简单、功能强大、一切都是组件、支持 SSR/CSR 两种渲染模式无缝切换。
 
 更多功能/特性如下：
 - [x] 基于cra脚手架开发，由cra开发的React App可无缝迁移，如果你熟悉cra的配置，上手成本几乎为0
