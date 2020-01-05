@@ -78,6 +78,10 @@ import { onlyCsr } from 'ykfe-utils'
 export default onlyCsr(Page)
 ```
 
+## 如何引入antd
+
+建议直接使用官方写好的example[ssr-with-antd](https://github.com/ykfe/egg-react-ssr/tree/dev/example/ssr-with-antd), 详细原理查看[PR](https://github.com/ykfe/egg-react-ssr/pull/32)
+
 ## 刷新8000端口为什么会导致404
 
 8000端口启动的是CSR(客户端渲染)应用，并且此时我们使用的是history路由模式，这里我们首先要明白前端路由和后端路由有什么区别
