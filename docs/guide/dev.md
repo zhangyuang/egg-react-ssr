@@ -22,7 +22,7 @@
 
 查看package.json
 
-``` js
+```bash
 "start": "rimraf dist && concurrently \"npm run ssr\" \" npm run csr \"",
 "ssr": "concurrently \"egg-bin dev\" \"cross-env NODE_ENV=development webpack --watch --config ./build/webpack.config.server.js\"",
 "csr": "cross-env NODE_ENV=development ykcli dev",

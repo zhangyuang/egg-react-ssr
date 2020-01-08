@@ -27,13 +27,13 @@ pm2 有以下的几个非常给力的能力:
 
 - 安装pm2
 
-```
+```bash
 $ npm install -g pm2
 ```
 
 - 编写启动文件app.js
 
-```
+```js
 const egg = require('egg')
 
 const workers = Number(process.argv[2] || require('os').cpus().length)
@@ -46,7 +46,7 @@ egg.startCluster({
 
 - 使用 pm2 部署简单的项目
 
-```
+```bash
 $ EGG_SERVER_ENV=prod pm2 start app.js --name "egg-react-ssr" -i 0 --watch
 
 pm2 start: 使用pm2启动 app.js
@@ -57,7 +57,7 @@ pm2 start: 使用pm2启动 app.js
 
 - 查看pm2部署
 
-```
+```bash
 $ pm2 ls
 
 ┌───────────────┬────┬─────────┬──────┬───────┬────────┬─────────┬────────┬─────┬───────────┬──────┬──────────┐
@@ -78,7 +78,7 @@ $ pm2 ls
 
 在服务器上生成git ssh公钥(本地机器和服务器操作一样)，并添加到 git 上。这样服务器中clone项目也不需要输入密码。
 
-```
+```bash
 $ git config --global user.name "yourname"
 $ git config --global user.email "yourmail@mail.com"
 $ ssh-keygen -t rsa -C "yourmail@mail.com"
@@ -90,7 +90,7 @@ $ ssh-keygen -t rsa -C "yourmail@mail.com"
 
 查看生成的ssh公钥:
 
-```
+```bash
 $ ls ~/.ssh/
 authorized_keys id_rsa          id_rsa.pub      known_hosts
 ```
@@ -99,13 +99,13 @@ authorized_keys id_rsa          id_rsa.pub      known_hosts
 
 将ssh公钥拷贝到服务器:
 
-```
+```bash
 $ scp ~/.ssh/id_rsa.pub username@ip:用户主目录/.ssh/authorized_keys
 ```
 
 ### pm2 配置文件 ecosystem.json
 
-```
+```json
 {
   /**
    * Deployment section
@@ -136,19 +136,19 @@ $ scp ~/.ssh/id_rsa.pub username@ip:用户主目录/.ssh/authorized_keys
 
 ### 执行部署
 
-```
+```bash
 $ pm2 deploy ecosystem.json yourprojectname setup
 ```
 
 上面命令是将项目从 github 中克隆到指定 path 中，需要注意一下的是，pm2 将目录结构分为 :
 
-```
+```bash
 |current | shared |source |
 ```
 
 克隆好之后执行安装和启动
 
-```
+```bash
 $ pm2 deploy ecosystem.json yourprojectname
 ```
 
@@ -160,13 +160,13 @@ nginx 作为负载和代理服务可以实现在服务器上的静态资源托�
 
 - install
 
-```
+```bash
 $ sudo yum install nginx
 ```
 
 ### nginx 托管静态资源
 
-```
+```js
 server {
     listen       80;
     server_name  yourServerName;
@@ -186,7 +186,7 @@ server {
 
 ### nginx 开机自启
 
-```
+```bash
 $ systemctl enable nginx
 $ systemctl restart nginx
 ```
@@ -197,7 +197,7 @@ nginx 文件首行默认用户为 nginx，需要修改为当前用户名。
 
 ### 本地代理某端口的服务
 
-```
+```js
 location / {
     proxy_pass http://127.0.0.1:7001;
     proxy_hide_header 'x-frame-options';
@@ -208,6 +208,6 @@ location / {
 
 ### 启动
 
-```
+```bash
 $ sudo nginx -c /usr/local/etc/nginx/nginx.conf
 ```

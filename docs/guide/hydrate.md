@@ -4,7 +4,7 @@
 
 ## 执行流程
 
-相较于传统的前后端异构的服务端渲染模式，在服务端直出html后，前端只需要用js找到DOM节点绑定事件后，一个基本的应用便开发完成了。但如果使用React/Vue这种基于vdom的框架，我们没办法通过这种方式来绑定事件，这里我们必须借助官方的API来做这件事。这里我们用到了ReactDOM.hydrate这个API传统的CSR应用都是调用ReactDOM.render。下面我们来介绍一下客户端需要做哪些事情，以及这个API到底干了什么。
+相较于传统的前后端异构的服务端渲染模式，在服务端直出html后，前端只需要用js找到DOM节点绑定事件后，一个基本的应用便开发完成了。但如果使用React/Vue这种基于vdom的框架，我们没办法通过这种方式来绑定事件，这里我们必须借助官方的API来做这件事。这里我们用到了ReactDOM.hydrate这个API，传统的CSR应用都是调用ReactDOM.render。下面我们来介绍一下客户端需要做哪些事情，以及这个API到底干了什么。
 
 ```js
 import React from 'react'
@@ -38,13 +38,13 @@ const clientRender = async () => {
 }
 ```
 
-1. 首先我们判断了当前页面是否使用了服务端渲染，使用window.__USESSR__属性来判断，使用了SSR的应用会在服务端吐出来的html中注入这个属性。根据不同的结果判断使用render方法还是hydrate的方法来处理我们的组件，此处是为了兼容ssr/csr两种渲染模式。  
+1. 首先我们判断了当前页面是否使用了服务端渲染，使用window.__USESSR__属性来判断，使用了SSR的应用会在服务端吐出来的html中注入这个属性。根据不同的结果判断使用render方法还是hydrate的方法来处理我们的组件，此处是为了兼容ssr/csr两种渲染模式。
 
-2. 接着我们使用了BrowserRouter来包裹客户端渲染的组件，此处是为了能够使用前端路由跳转来切换页面。  
+2. 接着我们使用了BrowserRouter来包裹客户端渲染的组件，此处是为了能够使用前端路由跳转来切换页面。
 
-3. 接着我们遍历了config配置中的路由表, 首先我们调用Component方法来获取到真实的class组件, 然后与服务端一致，判断组件有没有自己特殊的layout需求，如果有就用组件自己的layout不用默认的  
+3. 接着我们遍历了config配置中的路由表, 首先我们调用Component方法来获取到真实的class组件, 然后与服务端一致，判断组件有没有自己特殊的layout需求，如果有就用组件自己的layout不用默认的
 
-4. 这里我们用react-router的route组件来渲染我们自己的组件  
+4. 这里我们用react-router的route组件来渲染我们自己的组件
 
 5. 这里我们写了一个GetinitialProps的高阶组件，用来隐藏此处的细节，为了使csr/ssr的使用方式和表现形式一致，现在我们来看看GetinitialProps这个HOC到底干了什么
 

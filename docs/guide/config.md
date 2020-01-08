@@ -168,7 +168,7 @@ server 构建配置中，需要注意以下几个点：
 
 1. 在整个输出模块里新增target选项
 
-```
+```js
 // 告诉webpack当前环境是 Node 环境，可以使用 Node.js require 加载 chunk。
 target："node"
 ```
@@ -177,7 +177,7 @@ target："node"
 
 这里使用 `webpack-node-externals` 模块来将依赖外置。意思是什么呢，如果我们的代码中包含`require('react')`这样的代码，在打包的时候，不会将React的源码和你的代码打包在一起，而是保留`require` 语句在你构建后的代码中。在传统的CSR项目中，我们可能会开启此选项来让React/Vue/Jquery 这些基本上永远不会更新的库以script标签的形式从外部引入注入为全局变量，而不是将他们的代码打包到业务代码中，将浏览器缓存的功能发挥出来。
 
-这里我们更进一步，使用nodeExternals将所有的node_modules的模块都不打包，一个是因为这样构建出来的bundle更小，服务端执行速度更快。一个是因为我们的运行环境就存在 node_modules 文件夹，所以不需要将其打包在服务端bundle中，在请求来的时候，再从node_modules中加载相应模块即可。  
+这里我们更进一步，使用nodeExternals将所有的node_modules的模块都不打包，一个是因为这样构建出来的bundle更小，服务端执行速度更快。一个是因为我们的运行环境就存在 node_modules 文件夹，所以不需要将其打包在服务端bundle中，在请求来的时候，再从node_modules中加载相应模块即可。
 
 whitelist白名单选项的作用是，在白名单中的文件仍需要webpack去处理它。由于Node.js环境直接require一个css文件会报错，所以这些样式文件我们仍需要用webpack去处理，将它从js文件中剥离出来，成为一个单独的样式文件
 
