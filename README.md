@@ -1,6 +1,6 @@
 简体中文 | [English](./README_en-US.md)
 
-# Egg + React + SSR 应用模板
+# Egg + React + SSR boilerplate
 
 <a href="https://circleci.com/gh/ykfe"><img src="https://img.shields.io/circleci/build/github/ykfe/egg-react-ssr/dev.svg" alt="Build Status"></a>
 <a href="https://codecov.io/gh/ykfe/egg-react-ssr"><img src="https://codecov.io/gh/ykfe/egg-react-ssr/branch/dev/graph/badge.svg" alt="Coverage Status"></a>
@@ -12,7 +12,7 @@
 
 最小而美的服务端渲染应用模板，特点
 
-- 小：实现方式简洁，生产环境构建出来的bundle为同等复杂度的next.js项目的0.4倍，生成文件数量相比于next.js减少非常多
+- 小：实现方式简洁，生产环境构建出来的bundle为同等复杂度的next.js项目的0.7倍，生成文件数量相比于next.js减少非常多
 - 全：支持HMR，支持本地开发以及生产环境CSR/SSR两种渲染模式无缝切换，支持定制组件的渲染模式，同时支持TypeScript版本
 - 美：基于[React](https://reactjs.org/)和[Eggjs](https://eggjs.org/)框架，拥有强大的插件生态，配置非黑盒，且一切关键位置皆可通过config.ssr.js来配置
 
