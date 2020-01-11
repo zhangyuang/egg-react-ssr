@@ -5,6 +5,7 @@ export interface Config {
   type?: string
   serverJs: ServerJs | string
   env?: string
+  isCDN?: string
   routes: RouteItem[]
   injectScript: string[]
   injectCss: string[]
