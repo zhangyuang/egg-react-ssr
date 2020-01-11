@@ -348,6 +348,10 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 
 [MIT](LICENSE)
 
+## PPT
+
+如果你想了解本应用的设计思路，欢迎下载查看本人在2020.1.11日在北京NodeParty上所做的分享[PPT](https://github.com/zhangyuang/2020-NodeParty-PPT)，其中讨论了需要关注的一些问题的设计思路和解决方案的选取
+
 ## 答疑群
 
 虽然我们已经尽力检查了一遍应用，但仍有可能有疏漏的地方，如果你在使用过程中发现任何问题或者建议，欢迎提[issue](https://github.com/ykfe/egg-react-ssr/issues)或者[PR](https://github.com/ykfe/egg-react-ssr/pulls)
