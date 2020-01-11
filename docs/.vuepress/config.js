@@ -54,7 +54,8 @@ module.exports = {
                 'loadable',
                 'ts',
                 'serverless',
-                'faq',
+                'thinking',
+                'faq'
                 // 'update'
               ],
             }

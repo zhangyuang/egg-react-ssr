@@ -52,11 +52,11 @@ const getServerBundle = async (cdn: string, path: string) => {
 const renderToStream = async (ctx: Context, config: Config) => {
   const baseDir = config.baseDir || process.cwd()
   const isLocal = process.env.NODE_ENV === 'development' || config.env === 'local' // 标志非正式环境
-  const isCDN = config.isCDN
+  const useCDN = config.useCDN
   let serverJs = config.serverJs
   let version
   let serverJsPath: string = ''
-  if (isCDN) {
+  if (useCDN) {
     try {
       version = (/\d+(\.\d+)+/.exec(serverJs as string) as string[])[0] // cdn地址必须带有版本号
       serverJsPath = resolveDir(`./.serverBundle/server${version}.js`)
@@ -68,9 +68,9 @@ const renderToStream = async (ctx: Context, config: Config) => {
 
   if (isLocal && typeof serverJs === 'string') {
     // 本地开发环境(预发环境|测试环境)下每次刷新的时候清空require服务端文件的缓存，保证服务端与客户端渲染结果一致
-    isCDN ? delete require.cache[serverJsPath] : delete require.cache[serverJs]
+    useCDN ? delete require.cache[serverJsPath] : delete require.cache[serverJs]
   }
-  if (isCDN) {
+  if (useCDN) {
     try {
       try {
         fs.statSync(serverJsPath)
