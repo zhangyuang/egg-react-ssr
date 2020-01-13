@@ -348,9 +348,9 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 
 [MIT](LICENSE)
 
-## PPT
+## NodeParty 分享
 
-如果你想了解本应用的设计思路，欢迎下载查看本人在2020.1.11日在北京NodeParty上所做的分享[PPT](https://github.com/zhangyuang/2020-NodeParty-PPT)，其中讨论了需要关注的一些问题的设计思路和解决方案的选取
+如果你想了解本应用的设计思路，欢迎下载查看本人在2020.1.11日在北京NodeParty上所做的分享[PPT](https://github.com/ykfe/egg-react-ssr/wiki/2020-NodeParty-%E5%88%86%E4%BA%AB)，其中讨论了需要关注的一些问题的设计思路和解决方案的选取
 
 ## 答疑群
 
