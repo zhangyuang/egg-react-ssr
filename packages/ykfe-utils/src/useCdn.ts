@@ -18,7 +18,7 @@ const getServerBundle = async (cdn: string, path: string): Promise<ServerJs> => 
   return serverJs
 }
 
-const useCdn = async (serverJs: string): Promise<ServerJs> => {
+const useCdn = async (serverJs: string, isLocal: boolean): Promise<ServerJs> => {
   let version
   let serverJsPath: string = ''
   let _serverJs
@@ -28,11 +28,13 @@ const useCdn = async (serverJs: string): Promise<ServerJs> => {
   } catch (error) {
     console.log('请检查cdn地址是否符合规范并带有版本号', error)
   }
+
   delete require.cache[serverJsPath]
+
   try {
     try {
       fs.statSync(serverJsPath)
-      if (global.isLocal) {
+      if (isLocal) {
         // 本地开发环境每次都从cdn拉取文件
         _serverJs = await getServerBundle(serverJs, serverJsPath)
       }
@@ -40,7 +42,7 @@ const useCdn = async (serverJs: string): Promise<ServerJs> => {
         // 首次访问本地没有对应的serverJsPath的情况需要从cdn拉取文件
       _serverJs = await getServerBundle(serverJs, serverJsPath)
     }
-    if (!global.isLocal) {
+    if (!isLocal) {
         // 正式环境直接require serverBundle
       console.log('\x1B[32m get serverBundle from local file', serverJsPath)
       _serverJs = require(serverJsPath).default

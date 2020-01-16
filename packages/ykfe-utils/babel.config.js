@@ -16,6 +16,7 @@ module.exports = function (api) {
     '@babel/preset-react'
   ]
   const plugins = [
+    '@babel/plugin-proposal-optional-chaining',
     ['@babel/plugin-proposal-class-properties', { loose: true }],
     '@babel/plugin-transform-runtime',
     'add-module-exports'
