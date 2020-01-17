@@ -40,12 +40,12 @@ const renderToStream = async (ctx: Context, config: Config) => {
   let key: string = 'default'
 
   if (isLocal || !global.serverStream[key]) {
-    key = typeof _serverJs === 'string' && _serverJs
+    key = typeof _serverJs === 'string' ? _serverJs : 'default'
     global.serverStream[key] = typeof _serverJs === 'string' ? require(_serverJs).default : _serverJs
   }
 
-  const serverComponent = await global.serverStream(ctx)
-  const stream = global.renderToNodeStream[key](serverComponent)
+  const serverComponent = await global.serverStream[key](ctx)
+  const stream = global.renderToNodeStream(serverComponent)
 
   return stream
 }
