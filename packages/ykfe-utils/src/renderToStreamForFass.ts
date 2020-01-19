@@ -9,6 +9,7 @@ declare const global: Global
 const renderToStreamForFaas = async (ctx: Context, config: Config) => {
   const isLocal = config.env === 'local'
   const serverJs = config.serverJs
+  let SEVER_JS = serverJs
 
   if (config.type !== 'ssr') {
     const str = await renderLayoutForFass(ctx)
@@ -20,12 +21,8 @@ const renderToStreamForFaas = async (ctx: Context, config: Config) => {
     delete require.cache[serverJs]
   }
 
-  if (!global.serverStream || isLocal) {
-    global.serverStream = typeof serverJs === 'string' ? require('@/' + serverJs).default : serverJs
-  }
-
-  const serverRes = await global.serverStream(ctx)
-  const stream = ReactDOMServer.renderToNodeStream(serverRes)
+  const serverComponent = typeof SEVER_JS === 'string' ? await require('@/' + serverJs).default(ctx) : SEVER_JS(ctx)
+  const stream = ReactDOMServer.renderToNodeStream(serverComponent)
   return stream
 }
 
