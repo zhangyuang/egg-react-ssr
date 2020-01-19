@@ -13,15 +13,6 @@ const paths = require(resolve(cwd,baseDir, './build/paths'))
 const serverConfig = require(resolve(cwd,baseDir, './build/webpack.config.server'))
 const isDev = process.env.NODE_ENV === 'development'
 
-let config: any
-try {
-  // config文件必须位于根目录
-  config = require(resolve(cwd,'./config/config.ssr'))
-} catch (error) {
-  // 兼容以前的版本，没有config.ssr取config.default
-  config = require(resolve(cwd,'./config/config.default'))
-}
-
 serverConfig.entry = {
   Layout: join(paths.appSrc, './layout')
 }
@@ -34,7 +25,7 @@ serverConfig.externals = nodeExternals({
 const reactToStream = (Component: React.FunctionComponent, props: object) => {
   return renderToNodeStream(React.createElement(Component, props))
 }
-const renderLayout = async (ctx: any) => {
+const renderLayout = async (ctx: any, config = {}) => {
   const layoutPath = resolve(__dirname, '../dist/Layout.server.js')
   if (isDev) {
     Shell.rm('-rf', layoutPath)

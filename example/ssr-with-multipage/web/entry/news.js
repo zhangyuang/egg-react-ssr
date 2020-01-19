@@ -1,16 +1,11 @@
-// import { routes } from '../../config/config.ssr'
-const routes = require('../../config/config.ssr').routes.news;
+import { newsRoutes as Routes } from '../../config/config.news'
+import { clientRender, serverRender } from '../render'
 
-const clientRender = async () => {
-  const render = require('./clientRender').default
-  // return render(routes.filter(route => route.entry === 'news'))
-  return render(routes)
+export default __isBrowser__ ? (() => {
+  clientRender(Routes)
+  if (process.env.NODE_ENV === 'development' && module.hot) {
+    module.hot.accept()
+  }
+})() : async ctx => {
+  return serverRender(ctx, Routes)
 }
-
-const serverRender = async (ctx) => {
-  const render = require('./serverRender').default
-  // return render(ctx, routes.filter(route => route.entry === 'news'))
-  return render(ctx, routes)
-}
-
-export default __isBrowser__ ? clientRender() : serverRender

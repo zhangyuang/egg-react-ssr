@@ -16,8 +16,9 @@ const Layout = (props) => {
   if (__isBrowser__) {
     return commonNode(props)
   } else {
-    const { serverData, group } = props.layoutData
+    const { serverData } = props.layoutData
     const { injectCss, injectScript } = props.layoutData.app.config
+
     return (
       <html lang='en'>
         <head>
@@ -36,9 +37,6 @@ const Layout = (props) => {
               __html: `window.__USE_SSR__=true; window.__INITIAL_DATA__ =${serialize(serverData)};`
             }} />
           }
-          <script dangerouslySetInnerHTML={{
-            __html: `window.__GROUP__='${group || ''}';`
-          }} />
           <div dangerouslySetInnerHTML={{
             __html: injectScript && injectScript.join('')
           }} />

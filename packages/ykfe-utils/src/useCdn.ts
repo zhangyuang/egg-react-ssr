@@ -1,15 +1,12 @@
 import Shell from 'shelljs'
 import axios from 'axios'
 import fs from 'fs'
-import { resolve } from 'path'
-import { Global }from './interface/global'
+import { resolveDir,logGreen } from './utils'
 import { ServerJs }from './interface/config'
 
-const resolveDir = (path: string) => resolve(process.cwd(), path)
-
-declare const global: Global
 const getServerBundle = async (cdn: string, path: string): Promise<ServerJs> => {
-  console.log('\x1B[32m get serverBundle from CDN file', cdn)
+  logGreen(`get serverBundle from CDN file ${cdn}`)
+
   const res = await axios.get(cdn)
   const str = res.data
   Shell.mkdir(resolveDir('./.serverBundle'))
@@ -18,37 +15,44 @@ const getServerBundle = async (cdn: string, path: string): Promise<ServerJs> => 
   return serverJs
 }
 
-const useCdn = async (serverJs: string): Promise<ServerJs> => {
-  let version
+const getVersion = (str: string) => {
+  const arr = /\d+(\.\d+)+/.exec(str)
+  if (arr === null) {
+    throw new Error(str)
+  }
+  return arr[0]
+}
+
+const useCdn = async (serverJs: string, isLocal: boolean): Promise<ServerJs> => {
   let serverJsPath: string = ''
-  let _serverJs
+  let SEVER_JS
   try {
-    version = (/\d+(\.\d+)+/.exec(serverJs) as string[])[0] // cdn地址必须带有版本号
+    const version = getVersion(serverJs)
     serverJsPath = resolveDir(`./.serverBundle/server${version}.js`)
   } catch (error) {
-    console.log('请检查cdn地址是否符合规范并带有版本号', error)
+    console.log('请检查cdn地址是否符合规范', error)
   }
+
   delete require.cache[serverJsPath]
+
   try {
-    try {
-      fs.statSync(serverJsPath)
-      if (global.isLocal) {
-        // 本地开发环境每次都从cdn拉取文件
-        _serverJs = await getServerBundle(serverJs, serverJsPath)
-      }
-    } catch (error) {
-        // 首次访问本地没有对应的serverJsPath的情况需要从cdn拉取文件
-      _serverJs = await getServerBundle(serverJs, serverJsPath)
-    }
-    if (!global.isLocal) {
-        // 正式环境直接require serverBundle
-      console.log('\x1B[32m get serverBundle from local file', serverJsPath)
-      _serverJs = require(serverJsPath).default
+    fs.statSync(serverJsPath)
+    if (isLocal) {
+      // 本地开发环境每次都从cdn拉取文件
+      SEVER_JS = await getServerBundle(serverJs, serverJsPath)
     }
   } catch (error) {
-    console.log('error', error)
+    // 首次访问本地没有对应的serverJsPath的情况需要从cdn拉取文件
+    SEVER_JS = await getServerBundle(serverJs, serverJsPath)
   }
-  return _serverJs
+
+  if (!isLocal) {
+    // 正式环境直接require serverBundle
+    logGreen(`get serverBundle from local file ${serverJsPath}`)
+    SEVER_JS = require(serverJsPath).default
+  }
+
+  return SEVER_JS
 }
 
 export {
