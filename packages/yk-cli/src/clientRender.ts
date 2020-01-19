@@ -33,7 +33,7 @@ const dev = async (argv?: Argv) => {
     contentBase: cwd + '/dist',
     hot: true,
     port: PORT,
-    clientLogLevel: 'error',
+    clientLogLevel: 'warning',
     headers: {
       'access-control-allow-origin': '*'
     },

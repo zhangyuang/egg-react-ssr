@@ -9,26 +9,18 @@ const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin')
 const safePostCssParser = require('postcss-safe-parser')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const paths = require('./paths')
-const getEntrys = require('./util').getEntrys
+const { getEntry } = require('./util')
 const baseConfig = require('./webpack.config.base')
-const ssrConfig = require('../config/config.ssr')
 const publicPath = '/'
-const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false'
 const isDev = process.env.NODE_ENV === 'development'
+const shouldUseSourceMap = isDev || process.env.GENERATE_SOURCEMAP
 const devtool = isDev ? 'cheap-module-source-map' : (shouldUseSourceMap ? 'source-map' : false)
-const entrys = getEntrys(ssrConfig)
 
 const optimization = {
-  runtimeChunk: 'single',
+  runtimeChunk: true,
   splitChunks: {
     chunks: 'all',
-    name: false,
-    cacheGroups: {
-      vendors: {
-        test: /[\\/]node_modules[\\/]/,
-        name: 'vendor'
-      }
-    }
+    name: 'vendor'
   }
 }
 
@@ -97,10 +89,7 @@ if (process.env.npm_config_report === 'true') {
 
 module.exports = merge(baseConfig, {
   devtool: devtool,
-  entry: entrys.reduce((p, c) => ({
-    ...p,
-    [c]: ['@babel/polyfill', `${paths.entryPath}/${c}.js`]
-  }), {}),
+  entry: getEntry('client'),
   resolve: {
     alias: {
       // for this issue https://github.com/ykfe/egg-react-ssr/issues/36
@@ -113,7 +102,6 @@ module.exports = merge(baseConfig, {
     filename: 'static/js/[name].js',
     chunkFilename: 'static/js/[name].chunk.js',
     publicPath: publicPath,
-    hotUpdateChunkFilename: '[hash].hot-update.js',
     devtoolModuleFilenameTemplate: info =>
       path.resolve(info.absoluteResourcePath).replace(/\\/g, '/')
   },

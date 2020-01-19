@@ -6,5 +6,5 @@ module.exports = {
     prefix: '/',
     dir: resolvePath('../dist')
   },
-  baseDir: resolvePath('../'),
+  baseDir: resolvePath('../')
 }

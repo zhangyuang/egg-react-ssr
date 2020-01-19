@@ -1,11 +1,13 @@
+
 module.exports = {
-  routes: [
+  newsRoutes: [
     {
       path: '/news/:id',
       exact: true,
       Component: () => (require('@/page/news').default),
       controller: 'page',
-      handler: 'index'
+      handler: 'index',
+      entry: 'news'
     }
   ]
 }

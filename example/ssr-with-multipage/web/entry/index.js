@@ -1,13 +1,11 @@
-import { routes as Routes } from '../router/index.js'
+import { indexRoutes as Routes } from '../../config/config.index'
+import { clientRender, serverRender } from '../render'
 
-const clientRender = async () => {
-  const render = require('./clientRender').default
-  return render(Routes)
+export default __isBrowser__ ? (() => {
+  clientRender(Routes)
+  if (process.env.NODE_ENV === 'development' && module.hot) {
+    module.hot.accept()
+  }
+})() : async ctx => {
+  return serverRender(ctx, Routes)
 }
-
-const serverRender = async (ctx) => {
-  const render = require('./serverRender').default
-  return render(ctx, Routes)
-}
-
-export default __isBrowser__ ? clientRender() : serverRender

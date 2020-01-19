@@ -30,7 +30,6 @@ const moduleFileExtensions = [
 // config after eject: we're in ./config/
 module.exports = {
   appPath: resolveApp('.'),
-  routerPath: resolveApp('web/router'),
   entryPath: resolveApp('web/entry'),
   appBuild: resolveApp('dist'),
   appSrc: resolveApp('web'),

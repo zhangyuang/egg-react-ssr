@@ -1,25 +1,15 @@
 'use strict'
 
-const fs = require('fs')
-const path = require('path')
+const { getEntry } = require('ykfe-utils/lib/middwares')
+const { indexRoutes } = require('../config/config.index')
+const { newsRoutes } = require('../config/config.news')
 
 module.exports = app => {
   const { router, controller } = app
-
-  const root = path.resolve(process.cwd(), 'web/router')
-
-  fs.readdirSync(root).map((filename) => {
-    const { routes } = require(`${root}/${filename}`)
-    routes.map((route) => {
-      router.get(
-        `${route.path}`, 
-        async (ctx, next) => {
-          ctx.entry = filename.replace('.js' , '');
-          await next();
-        },
-        controller[route.controller][route.handler]
-      )
-    })
+  indexRoutes.map(route => {
+    router.get(`${route.path}`, getEntry({ entry: route.entry }), controller[route.controller][route.handler])
   })
-
+  newsRoutes.map(route => {
+    router.get(`${route.path}`, getEntry({ entry: route.entry }), controller[route.controller][route.handler])
+  })
 }

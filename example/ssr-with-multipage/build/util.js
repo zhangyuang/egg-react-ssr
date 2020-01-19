@@ -1,5 +1,6 @@
 const paths = require('./paths')
-const fs = require('fs');
+const fs = require('fs')
+const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const publicPath = paths.servedPath
 const shouldUseRelativeAssetPaths = publicPath === './'
@@ -43,30 +44,16 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
   return loaders
 }
 
-const getEntrys = (ssrConfig) => {
-  let routesFilename = [];
-  
-  try {
-    routesFilename = fs.readdirSync(paths.routerPath) 
-  } catch (error) {
-    routesFilename = [];
-  }
-  
-  let entrys = []
-  entrys = entrys.concat(
-    routesFilename
-      .filter((filename) => filename.indexOf('.js') > -1)
-      .map((filename) => filename.replace('.js', ''))
-  );
-  if (ssrConfig.routes) {
-    entrys = entrys.concat(
-      ssrConfig.routes.map((route) => route.entry || 'Page')
-    )
-  }
-  return [...new Set(entrys)]
+const getEntry = (type) => {
+  const entrys = fs.readdirSync(paths.entryPath)
+  let entry = {}
+  entrys.map(item => {
+    const fileName = item.replace(/\.(js|ts)/, '')
+    entry[fileName] = type === 'client' ? ['@babel/polyfill', path.join(paths.entryPath, fileName)] : path.join(paths.entryPath, item)
+  })
+  return entry
 }
-
 module.exports = {
   getStyleLoaders,
-  getEntrys
+  getEntry
 }

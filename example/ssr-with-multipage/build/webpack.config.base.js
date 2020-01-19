@@ -1,11 +1,8 @@
 'use strict'
 
 const paths = require('./paths')
-const path = require('path')
-const glob = require('glob-all');
 // style files regexes
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const PurifyCSSPlugin = require('purifycss-webpack');
 const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent')
 const getStyleLoaders = require('./util').getStyleLoaders
 
@@ -34,14 +31,12 @@ const webpackModule = {
               [
                 require.resolve('@babel/preset-env'),
                 {
-                  modules: 'false'
+                  modules: false
                 }
               ],
               require.resolve('@babel/preset-react')
             ],
-            plugins: [
-              require.resolve('@babel/plugin-transform-runtime')
-            ]
+            plugins: []
           }
         },
         {
@@ -102,7 +97,7 @@ module.exports = {
   mode: process.env.NODE_ENV,
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, '../web')
+      '@': paths.appSrc
     },
     extensions: paths.moduleFileExtensions
       .map(ext => `.${ext}`)
@@ -112,13 +107,6 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'static/css/[name].css',
       chunkFilename: 'static/css/[name].chunk.css'
-    }),
-    new PurifyCSSPlugin({
-      minimize: true,
-      paths: glob.sync([
-        // 要做CSS Tree Shaking的路径文件
-        path.resolve(__dirname, '../web/**/*.js')
-      ])
     })
   ],
   performance: false
