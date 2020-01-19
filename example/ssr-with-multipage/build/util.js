@@ -44,25 +44,29 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
 }
 
 const getEntrys = (ssrConfig) => {
-  let routesFilename = [];
+  // let routesFilename = [];
   
-  try {
-    routesFilename = fs.readdirSync(paths.routerPath) 
-  } catch (error) {
-    routesFilename = [];
-  }
+  // try {
+  //   routesFilename = fs.readdirSync(paths.routerPath) 
+  // } catch (error) {
+  //   routesFilename = [];
+  // }
   
-  let entrys = []
-  entrys = entrys.concat(
-    routesFilename
-      .filter((filename) => filename.indexOf('.js') > -1)
-      .map((filename) => filename.replace('.js', ''))
-  );
-  if (ssrConfig.routes) {
-    entrys = entrys.concat(
-      ssrConfig.routes.map((route) => route.entry || 'Page')
-    )
-  }
+  // let entrys = []
+  // entrys = entrys.concat(
+  //   routesFilename
+  //     .filter((filename) => filename.indexOf('.js') > -1)
+  //     .map((filename) => filename.replace('.js', ''))
+  // );
+
+  // let entrys = []
+  // if (ssrConfig.routes) {
+  //   entrys = entrys.concat(
+  //     ssrConfig.routes.map((route) => route.entry || 'Page')
+  //   )
+  // }
+
+  const entrys = Object.keys(ssrConfig.routes)
   return [...new Set(entrys)]
 }
 

@@ -1,25 +1,30 @@
 'use strict'
 
-const fs = require('fs')
-const path = require('path')
+const config = require('../config/config.ssr')
 
 module.exports = app => {
   const { router, controller } = app
 
-  const root = path.resolve(process.cwd(), 'web/router')
+  // config.routes.map(route => {
+  //   router.get(route.path, 
+  //     async (ctx, next) => {
+  //       ctx.entry = route.entry;
+  //       await next();
+  //     },
+  //     controller[route.controller][route.handler]
+  //   )
+  // })
 
-  fs.readdirSync(root).map((filename) => {
-    const { routes } = require(`${root}/${filename}`)
+  Object.keys(config.routes).map(entry => {
+    const routes = config.routes[entry]
     routes.map((route) => {
-      router.get(
-        `${route.path}`, 
+      router.get(route.path, 
         async (ctx, next) => {
-          ctx.entry = filename.replace('.js' , '');
+          ctx.entry = entry;
           await next();
         },
         controller[route.controller][route.handler]
       )
     })
   })
-
 }
