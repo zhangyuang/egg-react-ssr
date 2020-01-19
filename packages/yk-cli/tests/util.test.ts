@@ -1,6 +1,6 @@
 import shell from 'shelljs'
 import { execSync } from 'child_process'
-import { getWithPromise, getVersionEffective, resolveApp, renderTemplate, processError } from '../src/util'
+import { getWithPromise, getVersionEffective, resolveApp, processError } from '../src/util'
 
 // @ts-ignore
 const mockExit = jest.spyOn(process, 'exit').mockImplementation(() => {
@@ -84,21 +84,21 @@ describe('test getVersionEffective with cache', () => {
   })
 })
 
-describe('test renderTemplate', () => {
-  beforeAll(() => {
-    shell.touch(resolveApp('./template.json.nj'))
-    execSync(`echo {\\"appName\\": \\"{{appName}}\\" } > ${resolveApp('./template.json.nj')}`)
-  })
-  test('renderTemplate can generate the true file after rendering', () => {
-    renderTemplate(resolveApp('./template.json.nj'), resolveApp('./template.json'), {
-      appName: 'yk-cli',
-      language: 'javascript'
-    })
-    const appName = require(resolveApp('./template.json')).appName
-    expect(appName).toEqual('yk-cli')
-  })
-  afterAll(() => {
-    shell.rm(resolveApp('./template.json.nj'))
-    shell.rm(resolveApp('./template.json'))
-  })
-})
+// describe('test renderTemplate', () => {
+//   beforeAll(() => {
+//     shell.touch(resolveApp('./template.json.nj'))
+//     execSync(`echo {\\"appName\\": \\"{{appName}}\\" } > ${resolveApp('./template.json.nj')}`)
+//   })
+//   test('renderTemplate can generate the true file after rendering', () => {
+//     renderTemplate(resolveApp('./template.json.nj'), resolveApp('./template.json'), {
+//       appName: 'yk-cli',
+//       language: 'javascript'
+//     })
+//     const appName = require(resolveApp('./template.json')).appName
+//     expect(appName).toEqual('yk-cli')
+//   })
+//   afterAll(() => {
+//     shell.rm(resolveApp('./template.json.nj'))
+//     shell.rm(resolveApp('./template.json'))
+//   })
+// })
