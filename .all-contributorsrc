@@ -112,6 +112,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "qq1353709",
+      "name": "dydong",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/7944687?v=4",
+      "profile": "https://github.com/qq1353709",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
