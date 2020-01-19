@@ -30,7 +30,7 @@
     "babel-plugin-add-module-exports": "^1.0.2",
     "concurrently": "^4.1.1",
     "midway": "^1.15.0",
-    "typescript": "^3.7.3"
+    "typescript": "^3.7.5"
   },
   "dependencies": {
     "@types/lodash.clonedeepwith": "^4.5.6",

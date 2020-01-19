@@ -16,7 +16,6 @@ class PageController extends Controller {
         `<script src="/static/js/${entry}.chunk.js"></script>`
       ]
       const injectCss = [
-        `/static/css/vendor.chunk.css`,
         `/static/css/${entry}.chunk.css`
       ]
       const serverJs = `${dist}/${entry}.server.js`
