@@ -12,5 +12,5 @@ export interface Config {
 }
 
 export interface ServerJs {
-  (ctx: Context): React.ReactElement
+  (ctx: Context): Promise<React.ReactElement>
 }

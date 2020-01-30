@@ -32,7 +32,7 @@ const renderToStream = async (ctx: Context, config: Config) => {
     // for this issue https://github.com/ykfe/egg-react-ssr/issues/4
     global.renderToNodeStream = require(BASE_DIR + '/node_modules/react-dom/server').renderToNodeStream
   }
-  const serverComponent = typeof SEVER_JS === 'string' ? await require(SEVER_JS).default(ctx) : SEVER_JS(ctx)
+  const serverComponent = typeof SEVER_JS === 'string' ? await require(SEVER_JS).default(ctx) : await SEVER_JS(ctx)
   const stream = global.renderToNodeStream(serverComponent)
 
   return stream
