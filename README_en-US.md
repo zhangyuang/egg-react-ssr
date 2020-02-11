@@ -14,7 +14,7 @@ This is the most lightweight and elegant SSR (server-side rendering) app boilerp
 
 - **Lightweight**: Concise implementation; The bundle size in production is about 40% compared to Nest.js project; Significantly less generated files than Next.js.
 - **Versatile**: HMR support; Seamless switching between CSR and SSR in development or in production; Custom component rendering mode; TypeScript support.
-- **Elegant**: Based on React and Egg.js and their strong plugin ecosystem; Non-black-box configuration; All crucial steps can be configured via `config.ssr.js`.
+- **Elegant**: Based on React and Egg.js and their strong plugin ecosystem; Non-black-box configuration; It's easy to customize your program.
 
 Companies(applications) using this project are as follows. If you are using this project but not on the list, please create an [issue](https://github.com/ykfe/egg-react-ssr/issues) for that, and welcome to share [this project](https://github.com/ykfe/egg-react-ssr).
 
