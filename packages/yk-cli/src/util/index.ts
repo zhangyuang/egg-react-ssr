@@ -1,7 +1,6 @@
 import https from 'https'
 import path from 'path'
 import fs from 'fs'
-import webpack from 'webpack'
 import { promisify } from 'util'
 import { exec } from 'child_process'
 import { Optional } from '../interface/option'
@@ -9,7 +8,6 @@ import { Optional } from '../interface/option'
 const download = require('download-git-repo')
 const jsUrl = 'https://registry.npm.taobao.org/ssr-with-js'
 const tsUrl = 'https://registry.npm.taobao.org/ssr-with-ts'
-const webpackWithPromise = promisify(webpack)
 
 const processError = (err: string) => {
   if (err) {
@@ -69,7 +67,6 @@ async function getVersionEffective (option: Optional): Promise<boolean> {
 }
 
 export {
-  webpackWithPromise,
   getVersionEffective,
   processError,
   execWithPromise,

@@ -4,7 +4,7 @@ import { resolve } from 'path'
 import { renderToNodeStream } from 'react-dom/server'
 
 const isDev = process.env.NODE_ENV === 'development'
-const cwd = process.cwd()
+const cwd = process.env.BASE_CWD || process.cwd()
 
 const reactToStream = (Component: React.FunctionComponent, props: object) => {
   return renderToNodeStream(React.createElement(Component, props))

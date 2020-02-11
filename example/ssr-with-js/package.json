@@ -1,6 +1,6 @@
 {
   "name": "ssr-with-js",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "dependencies": {
     "egg": "^2.21.0",
     "egg-scripts": "^2.11.0",
@@ -58,7 +58,7 @@
     "webpack": "4.19.1",
     "webpack-bundle-analyzer": "^3.0.3",
     "webpack-cli": "^3.3.3",
-    "webpack-dev-server": "3.3.1",
+    "webpack-dev-server": "^3.3.1",
     "webpack-manifest-plugin": "^2.0.4",
     "webpack-merge": "^4.1.4",
     "webpack-node-externals": "^1.7.2"
