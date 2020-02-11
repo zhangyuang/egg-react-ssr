@@ -1,6 +1,6 @@
 {
   "name": "ykfe-utils",
-  "version": "2.7.7",
+  "version": "3.0.0",
   "description": "utils for ykfe",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -41,6 +41,6 @@
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",
     "shelljs": "^0.8.3",
-    "yk-cli": "^2.0.0"
+    "yk-cli": "^3.0.0"
   }
 }

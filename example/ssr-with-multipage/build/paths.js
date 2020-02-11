@@ -31,6 +31,7 @@ const moduleFileExtensions = [
 module.exports = {
   appPath: resolveApp('.'),
   entryPath: resolveApp('web/entry'),
+  layout: resolveApp('web/layout'),
   appBuild: resolveApp('dist'),
   appSrc: resolveApp('web'),
   appNodeModules: resolveApp('node_modules'),
