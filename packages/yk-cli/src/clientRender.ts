@@ -1,8 +1,6 @@
 // 本文件目的是以React jsx 为模版替换掉html-webpack-plugin以及传统模版引擎, 统一ssr/csr都使用React组件来作为页面的骨架和内容部分
-import { mkdir } from 'shelljs'
 import webpack from 'webpack'
-import fs from 'fs'
-import { join, resolve } from 'path'
+import { resolve } from 'path'
 import { webpackWithPromise } from './util'
 import { Argv } from './interface/argv'
 
@@ -68,7 +66,6 @@ const dev = async (argv?: Argv) => {
 }
 
 const build = async () => {
-  const outputPath = clientConfig.output.path
   ora.start()
   const stats: any = await webpackWithPromise(clientConfig)
   console.log(stats.toString({
@@ -79,18 +76,6 @@ const build = async () => {
     version: true,
     warnings: false
   }))
-  const stream = await renderLayout()
-  let writeStream
-  try {
-      // 如果当前没有dist目录则创建目录
-    fs.statSync(join(outputPath, './index.html'))
-    writeStream = fs.createWriteStream(join(outputPath, './index.html'))
-    stream.pipe(writeStream)
-  } catch (error) {
-    mkdir(join(outputPath))
-    writeStream = fs.createWriteStream(join(outputPath, './index.html'))
-    stream.pipe(writeStream)
-  }
   ora.succeed()
 }
 

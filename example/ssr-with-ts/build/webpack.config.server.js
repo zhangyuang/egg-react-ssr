@@ -13,12 +13,12 @@ const plugins = [
 module.exports = merge(baseConfig, {
   devtool: isDev ? 'eval-source-map' : '',
   entry: {
-    Page: paths.entry
+    Page: paths.entry,
+    Layout: paths.layout
   },
   target: 'node',
   externals: nodeExternals({
-    whitelist: /\.(css|less|sass|scss)$/,
-    modulesDir: paths.appNodeModules
+    whitelist: /\.(css|less|sass|scss)$/
   }),
   output: {
     path: paths.appBuild,
