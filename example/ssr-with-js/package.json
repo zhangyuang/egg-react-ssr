@@ -1,6 +1,6 @@
 {
   "name": "ssr-with-js",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "dependencies": {
     "egg": "^2.21.0",
     "egg-scripts": "^2.11.0",
@@ -9,7 +9,8 @@
     "react-dom": "16.8.3",
     "react-router-dom": "^5.0.0",
     "yk-cli": "^3.0.0",
-    "ykfe-utils": "^3.0.0"
+    "ykfe-utils": "^3.0.0",
+    "serialize-javascript": "^2.1.2"
   },
   "scripts": {
     "debug": "egg-bin debug",

@@ -1,6 +1,6 @@
 {
   "name": "ssr-with-ts",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "description": "ykfe",
   "dependencies": {
     "egg-scripts": "^2.10.0",
@@ -8,6 +8,7 @@
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-router-dom": "^5.1.2",
+    "serialize-javascript": "^2.1.2",
     "yk-cli": "^3.0.0",
     "ykfe-utils": "^3.0.0"
   },

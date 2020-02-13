@@ -8,7 +8,8 @@
     "react": "16.8.3",
     "react-dom": "16.8.3",
     "react-router-dom": "^5.0.0",
-    "ykfe-utils": "^2.7.3"
+    "ykfe-utils": "^2.7.3",
+    "serialize-javascript": "^2.1.2"
   },
   "scripts": {
     "debug": "egg-bin debug",
