@@ -251,7 +251,8 @@ module.exports = {
     `<script src='/static/js/vendor.chunk.js'></script>`,
     `<script src='/static/js/Page.chunk.js'></script>`
   ], // 客户端需要加载的静态资源文件表
-  serverJs: resolvePath(`dist/Page.server.js`): string|function // 打包后的server端的bundle文件路径支持传入CDN地址, 接受直接传入require后的function
+  serverJs: resolvePath(`dist/Page.server.js`): string|function, // 打包后的server端的bundle文件路径支持传入CDN地址, 接受直接传入require后的function
+  layout: resolvePath(`dist/Layout.server.js`): string|function // 打包后的server端的bundle文件路径支持传入CDN地址, 接受直接传入require后的function
 }
 ```
 

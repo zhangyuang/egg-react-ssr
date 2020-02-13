@@ -1,6 +1,6 @@
 {
   "name": "yk-cli",
-  "version": "3.0.2",
+  "version": "3.1.0",
   "description": "ykcli for ssr",
   "main": "./lib/index.js",
   "module": "./es/index.js",
@@ -32,6 +32,7 @@
     "@types/react-dom": "^16.8.4",
     "@types/shelljs": "^0.8.5",
     "@types/webpack": "^4.39.3",
+    "@types/webpack-dev-server": "^3.10.0",
     "@types/yargs": "^13.0.0",
     "concurrently": "^5.0.0",
     "typescript": "^3.7.5",

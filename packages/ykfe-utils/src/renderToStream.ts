@@ -1,4 +1,6 @@
 import { Context }from 'midway'
+import { getVersion } from './utils'
+import { renderLayout } from './renderLayout'
 import { useCdn } from './useCdn'
 import { Config }from './interface/config'
 import { Global }from './interface/global'
@@ -12,7 +14,9 @@ const renderToStream = async (ctx: Context, config: Config) => {
   let SEVER_JS = serverJs
 
   if (useCDN && typeof serverJs === 'string') {
-    SEVER_JS = await useCdn(serverJs, isLocal)
+    const version = getVersion(serverJs)
+    const filename = `serverBundle${version}`
+    SEVER_JS = await useCdn(serverJs, isLocal, filename)
   }
 
   if (isLocal && typeof SEVER_JS === 'string') {
@@ -23,7 +27,6 @@ const renderToStream = async (ctx: Context, config: Config) => {
   const csr = ctx.request?.query?.csr ? ctx.request.query.csr : false // 兼容express和koa的query获取
 
   if (config.type !== 'ssr' || csr) {
-    const renderLayout = require('yk-cli/lib/renderLayout').default
     const str = await renderLayout(ctx, config)
     return str
   }

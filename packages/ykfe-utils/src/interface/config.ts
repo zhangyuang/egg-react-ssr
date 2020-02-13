@@ -3,7 +3,8 @@ import { RouteItem } from './route'
 export interface Config {
   baseDir?: string
   type?: string
-  serverJs: ServerJs | string
+  serverJs: ServerJs | string,
+  layout: ServerJs | string
   env?: string
   useCDN?: string
   routes: RouteItem[]

@@ -16,13 +16,16 @@ class PageController extends Controller {
         `<script src="/static/js/${entry}.chunk.js"></script>`
       ]
       const injectCss = [
+        `/static/css/vendor.chunk.css`,
         `/static/css/${entry}.chunk.css`
       ]
       const serverJs = `${dist}/${entry}.server.js`
+      const layout = `${dist}/Layout.server.js`
       Object.assign(ctx.app.config, ssrConfig, {
         serverJs,
         injectCss,
-        injectScript
+        injectScript,
+        layout
       })
 
       const stream = await renderToStream(ctx, ctx.app.config)

@@ -15,23 +15,9 @@ const getServerBundle = async (cdn: string, path: string): Promise<ServerJs> => 
   return serverJs
 }
 
-const getVersion = (str: string) => {
-  const arr = /\d+(\.\d+)+/.exec(str)
-  if (arr === null) {
-    throw new Error(str)
-  }
-  return arr[0]
-}
-
-const useCdn = async (serverJs: string, isLocal: boolean): Promise<ServerJs> => {
-  let serverJsPath: string = ''
+const useCdn = async (serverJs: string, isLocal: boolean, filename: string): Promise<ServerJs> => {
+  const serverJsPath: string = resolveDir(`./.serverBundle/${filename}.js`)
   let SEVER_JS
-  try {
-    const version = getVersion(serverJs)
-    serverJsPath = resolveDir(`./.serverBundle/server${version}.js`)
-  } catch (error) {
-    console.log('请检查cdn地址是否符合规范', error)
-  }
 
   delete require.cache[serverJsPath]
 
@@ -56,5 +42,5 @@ const useCdn = async (serverJs: string, isLocal: boolean): Promise<ServerJs> => 
 }
 
 export {
-    useCdn
+  useCdn
 }

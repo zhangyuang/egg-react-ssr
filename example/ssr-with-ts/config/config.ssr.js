@@ -27,5 +27,7 @@ module.exports = {
     `<script src='/static/js/vendor.chunk.js'></script>`,
     `<script src='/static/js/Page.chunk.js'></script>`
   ], // 客户端需要加载的静态资源文件表
-  serverJs: resolvePath(`../output/Page.server.js`)
+  serverJs: resolvePath(`../output/Page.server.js`),
+  layout: resolvePath(`../output/Layout.server.js`),
+  useCDN: false
 }
