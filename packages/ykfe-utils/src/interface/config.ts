@@ -7,6 +7,7 @@ export interface Config {
   layout: ServerJs | string
   env?: string
   useCDN?: string
+  isRax?: boolean
   routes: RouteItem[]
   injectScript: string[]
   injectCss: string[]

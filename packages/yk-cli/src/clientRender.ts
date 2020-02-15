@@ -24,7 +24,7 @@ const dev = async (argv?: Argv) => {
     quiet: true,
     disableHostCheck: true,
     publicPath: clientConfig.output.publicPath || '/',
-    hotOnly: true,
+    // hotOnly: true,
     host: '0.0.0.0',
     sockPort: PORT,
     contentBase: cwd + '/dist',

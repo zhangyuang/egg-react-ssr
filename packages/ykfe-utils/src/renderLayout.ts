@@ -24,7 +24,7 @@ const renderLayout = async (ctx: Context, config: Config) => {
 
   const Layout = typeof LAYOUT_PATH === 'string' ? require(LAYOUT_PATH).default : LAYOUT_PATH
 
-  const stream = reactToStream(Layout, props)
+  const stream = reactToStream(Layout, props, config)
   return stream
 }
 
