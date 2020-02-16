@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Component, createElement } from 'rax'
 import { RouteComponentProps } from 'react-router-dom'
 import { FC } from '../interface/fc'
