@@ -12,9 +12,7 @@ const Page = (props) => {
           props.news && props.news.map(item => (
             <Div key={item.title}>
               <Div>文章标题: {item.title}</Div>
-              <Div className='toDetail' onClick={() => {
-                console.log('xx')
-              }}><Text>点击查看详情</Text></Div>
+              <Div className='toDetail'><Text>点击查看详情</Text></Div>
             </Div>
           ))
         }
