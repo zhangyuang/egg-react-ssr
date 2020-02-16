@@ -9,6 +9,7 @@
     "types": "concurrently \"tsc --outDir ./es\" \"tsc --outDir ./lib\" ",
     "watch:es": "NODE_ENV=production BABEL_ENV=es babel src --out-dir es --watch --extensions '.ts,.tsx'",
     "watch:lib": "NODE_ENV=production BABEL_ENV=lib babel src --out-dir lib --watch --extensions '.ts,.tsx'",
+    "build": "npm run types && concurrently \"npm run watch:es\" \"npm run watch:lib \"",
     "watch": "concurrently \"npm run watch:es\" \"npm run watch:lib \""
   },
   "author": "zhangyuang",
@@ -29,8 +30,7 @@
     "@types/shelljs": "^0.8.6",
     "babel-plugin-add-module-exports": "^1.0.2",
     "concurrently": "^4.1.1",
-    "midway": "^1.15.0",
-    "typescript": "^3.7.5"
+    "midway": "^1.15.0"
   },
   "dependencies": {
     "@types/lodash.clonedeepwith": "^4.5.6",

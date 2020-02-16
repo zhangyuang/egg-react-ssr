@@ -8,15 +8,18 @@
     "example": "example"
   },
   "scripts": {
+    "build": "lerna run build",
+    "watch": "lerna run watch",
+    "publish": "npm run build && lerna publish",
     "bootstrap": "npm i && lerna bootstrap && node ./test/scripts/preInstall.js",
-    "lint": "tslint -c tslint.json -p . && standard",
-    "lint:fix": "standard --fix && tslint -c tslint.json -p . --fix",
+    "lint": "tslint -c tslint.json -p ./tsconfig.json && standard",
+    "lint:fix": "standard --fix && tslint -c tslint.json -p ./tsconfig.json --fix",
     "test": "node ./test/scripts/preInstall.js && npm run test:unit && npm run test:e2e",
     "test:unit": "jest --coverage && codecov",
     "test:e2e": "NODE_ENV=production ts-node ./test/e2e/startServer.js",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
-    "publish": "npm run docs:build && surge ./docs/.vuepress/dist ykfe.surge.sh --domain ykfe.net"
+    "docs:publish": "npm run docs:build && surge ./docs/.vuepress/dist ykfe.surge.sh --domain ykfe.net"
   },
   "repository": {
     "type": "git",
