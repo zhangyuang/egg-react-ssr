@@ -103,7 +103,8 @@ module.exports = {
   mode: process.env.NODE_ENV,
   resolve: {
     alias: {
-      '@': paths.appSrc
+      '@': paths.appSrc,
+      'rax': require.resolve('rax')
     },
     extensions: paths.moduleFileExtensions
       .map(ext => `.${ext}`)

@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { withRouter, RouteComponentProps } from 'react-router-dom'
+import { Component, createElement } from 'rax'
+import { RouteComponentProps } from 'react-router-dom'
 import { FC } from '../interface/fc'
 
 let _this: any = null
@@ -15,8 +15,8 @@ interface IState {
   extraProps: Object
 }
 
-function GetInitialProps (WrappedComponent: FC): React.ComponentClass {
-  class GetInitialPropsClass extends Component<RouteComponentProps<{}>, IState> {
+function RaxGetInitialProps (WrappedComponent: FC): Component {
+  class GetInitialPropsClass extends Component <RouteComponentProps<{}>, IState > {
     constructor (props: RouteComponentProps) {
       super(props)
       this.state = {
@@ -53,10 +53,10 @@ function GetInitialProps (WrappedComponent: FC): React.ComponentClass {
 
     render () {
       // 只有在首次进入页面需要将window.__INITIAL_DATA__作为props，路由切换时不需要
-      return <WrappedComponent {...Object.assign({}, this.props, this.state.getProps ? {} : window.__INITIAL_DATA__, this.state.extraProps)} />
+      return createElement(WrappedComponent, { ...Object.assign({}, this.props, this.state.getProps ? {} : window.__INITIAL_DATA__, this.state.extraProps) })
     }
   }
-  return withRouter(GetInitialPropsClass)
+  return GetInitialPropsClass
 }
 
-export default GetInitialProps
+export default RaxGetInitialProps

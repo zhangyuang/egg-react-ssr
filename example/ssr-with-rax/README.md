@@ -21,3 +21,12 @@
 - [x] 配套结合[dva](https://github.com/ykfe/egg-react-ssr/tree/master/example/ssr-with-dva)做数据管理的example的实现
 - [x] 配套阿里云serverless [FC](https://github.com/ykfe/ssr-with-fc)版本的实现
 - [x] 配套[TypeScript](https://github.com/ykfe/egg-react-ssr/tree/dev/example/ssr-with-ts)版本的实现 
+
+# ssr-with-rax
+
+本example纯为端外h5页面服务，如果想用本example开发端内应用需要做适当调整
+1、移除构建配置的optimization，只能全部打包成一个文件
+
+## 遗留问题
+
+hmr方面由于使用了useRouter导致hmr时会报`useRouter can only be called once`的error

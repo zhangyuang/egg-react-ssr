@@ -1,7 +1,6 @@
 import React from 'react'
 import { matchPath } from 'react-router-dom'
 import { FC } from './interface/fc'
-import { Config } from './interface/config'
 import { RouteItem } from './interface/route'
 
 const NotFound: FC = () => {
