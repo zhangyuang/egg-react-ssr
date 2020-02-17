@@ -91,14 +91,5 @@
     "tslint-config-standard": "^8.0.1",
     "typescript": "^3.7.5",
     "vuepress": "^0.14.8"
-  },
-  "peerDependencies": {
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0"
-  },
-  "resolutions": {
-    "@types/react": "^16.9.5",
-    "@types/react-dom": "^16.9.5",
-    "@types/react-router-dom": "^5.1.3"
   }
 }
