@@ -2,6 +2,8 @@
 
 # Egg + React + SSR boilerplate
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/ykfe/egg-react-ssr.svg)](https://greenkeeper.io/)
+
 <a href="https://circleci.com/gh/ykfe"><img src="https://img.shields.io/circleci/build/github/ykfe/egg-react-ssr/dev.svg" alt="Build Status"></a>
 <a href="https://codecov.io/gh/ykfe/egg-react-ssr"><img src="https://codecov.io/gh/ykfe/egg-react-ssr/branch/dev/graph/badge.svg" alt="Coverage Status"></a>
 <a href="https://npmcharts.com/compare/yk-cli"><img src="https://img.shields.io/npm/dt/yk-cli" alt="download"></a>
