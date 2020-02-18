@@ -1,8 +1,6 @@
 import https from 'https'
 import path from 'path'
 import fs from 'fs'
-import nunjucks from 'nunjucks'
-import webpack from 'webpack'
 import { promisify } from 'util'
 import { exec } from 'child_process'
 import { Optional } from '../interface/option'
@@ -10,7 +8,6 @@ import { Optional } from '../interface/option'
 const download = require('download-git-repo')
 const jsUrl = 'https://registry.npm.taobao.org/ssr-with-js'
 const tsUrl = 'https://registry.npm.taobao.org/ssr-with-ts'
-const webpackWithPromise = promisify(webpack)
 
 const processError = (err: string) => {
   if (err) {
@@ -40,7 +37,9 @@ const getWithPromise = (url: string, timeout?: number): Promise<any> => {
       res.on('end', () => {
         resolve(JSON.parse(data))
       })
-    }).on('error', (err) => reject(err))
+    }).on('error', (err) => {
+      reject(err)
+    })
   })
 }
 
@@ -67,24 +66,7 @@ async function getVersionEffective (option: Optional): Promise<boolean> {
   return false
 }
 
-/**
- * 渲染 Nunjuncks
- *
- * @export
- * @param {string} template 模板路径
- * @param {string} file 写入文件
- * @param {Optional} content 写入内容
- */
-function renderTemplate (template: string, file: string, content: Optional): void {
-  if (fs.existsSync(template)) {
-    const templateContent = fs.readFileSync(template).toString()
-    const result = nunjucks.renderString(templateContent, content)
-    fs.writeFileSync(file, result)
-  }
-}
 export {
-  webpackWithPromise,
-  renderTemplate,
   getVersionEffective,
   processError,
   execWithPromise,

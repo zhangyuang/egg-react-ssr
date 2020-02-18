@@ -1,13 +1,13 @@
 {
   "name": "yk-cli",
-  "version": "2.8.17",
+  "version": "3.1.1",
   "description": "ykcli for ssr",
   "main": "./lib/index.js",
   "module": "./es/index.js",
   "sideEffects": false,
   "scripts": {
-    "build": "rm -rf ./lib ./es && concurrently \"tsc -p ./tsconfig.cjs.json --sourceMap false\" \" tsc -p ./tsconfig.es6.json --sourceMap false\"",
-    "dev": "concurrently \"tsc -w -p ./tsconfig.cjs.json \" \"tsc -w -p ./tsconfig.es6.json \""
+    "build": "concurrently \"tsc -p ./tsconfig.cjs.json --sourceMap false\" \" tsc -p ./tsconfig.es6.json --sourceMap false\"",
+    "watch": "concurrently \"tsc -w -p ./tsconfig.cjs.json \" \"tsc -w -p ./tsconfig.es6.json \""
   },
   "bin": {
     "ykcli": "./lib/cli.js"
@@ -19,28 +19,21 @@
   "dependencies": {
     "download-git-repo": "^2.0.0",
     "inquirer": "6.3.1",
-    "nunjucks": "^3.2.0",
     "ora": "^3.4.0",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "shelljs": "^0.8.3",
-    "webpack": "^4.39.1",
-    "webpack-dev-server": "^3.7.2",
-    "webpack-merge": "^4.2.2",
-    "webpack-node-externals": "^1.7.2",
     "yargs": "^13.2.4"
   },
   "devDependencies": {
     "@types/inquirer": "^6.0.3",
-    "@types/node": "^12.7.2",
-    "@types/nunjucks": "^3.1.1",
-    "@types/react": "^16.8.23",
-    "@types/react-dom": "^16.8.4",
     "@types/shelljs": "^0.8.5",
     "@types/webpack": "^4.39.3",
+    "@types/webpack-dev-server": "^3.10.0",
     "@types/yargs": "^13.0.0",
     "concurrently": "^5.0.0",
-    "typescript": "^3.5.2"
+    "webpack": "^4.41.5",
+    "webpack-dev-server": "^3.7.2"
   },
   "keywords": [],
   "author": "",

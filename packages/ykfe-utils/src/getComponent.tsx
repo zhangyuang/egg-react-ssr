@@ -1,13 +1,9 @@
 import React from 'react'
 import { matchPath } from 'react-router-dom'
+import { FC } from './interface/fc'
+import { RouteItem } from './interface/route'
 
-interface RouteItem {
-  path: string
-  exact?: boolean
-  Component: () => React.FC
-}
-
-function NotFound () {
+const NotFound: FC = () => {
   return (
     <div>路由查询404</div>
   )

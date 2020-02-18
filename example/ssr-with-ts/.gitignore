@@ -14,3 +14,4 @@ run/
 *.un~
 .tsbuildinfo
 .tsbuildinfo.*
+.serverBundle

@@ -1,4 +1,4 @@
-interface Window { 
-  __USE_SSR__: string
-  __INITIAL_DATA__?: any
+interface Window {
+    __USE_SSR__?:boolean
+    __INITIAL_DATA__?:any
 }

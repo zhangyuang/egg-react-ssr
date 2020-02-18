@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, RouteComponentProps } from 'react-router-dom'
 import { FC } from '../interface/fc'
 
 let _this: any = null
@@ -10,19 +10,14 @@ const popStateFn = () => {
   }
 }
 
-interface IProps {
-  history: {
-    action: string
-  }
-}
 interface IState {
   getProps: boolean,
   extraProps: Object
 }
 
-function GetInitialProps (WrappedComponent: FC) {
-  class GetInitialPropsClass extends Component<IProps, IState> {
-    constructor (props: IProps) {
+function GetInitialProps (WrappedComponent: FC): React.ComponentClass {
+  class GetInitialPropsClass extends Component<RouteComponentProps<{}>, IState> {
+    constructor (props: RouteComponentProps) {
       super(props)
       this.state = {
         extraProps: {},
@@ -45,6 +40,10 @@ function GetInitialProps (WrappedComponent: FC) {
     async getInitialProps () {
       // csr首次进入页面以及csr/ssr切换路由时才调用getInitialProps
       const props = this.props
+      if (WrappedComponent.preload) {
+        // react-loadable 情况
+        WrappedComponent = (await WrappedComponent.preload()).default
+      }
       const extraProps = WrappedComponent.getInitialProps ? await WrappedComponent.getInitialProps(props) : {}
       this.setState({
         extraProps,

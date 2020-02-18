@@ -2,29 +2,47 @@ import shell from 'shelljs'
 import fs from 'fs'
 import { checkRepeat } from '../src/check'
 
-jest.mock('inquirer', () => ({
-  prompt: jest.fn(() => Promise.resolve({
-    delete: true
-  }))
-}))
 console.log = jest.fn()
-
-const inquirer = require('inquirer')
-beforeAll(() => {
-  shell.mkdir('./app')
+jest.mock('inquirer', () => ({
+  prompt: jest.fn().mockReturnValueOnce({
+    delete: true
+  }).mockReturnValueOnce({
+    delete: false
+  })
+}))
+// @ts-ignore
+const mockExit = jest.spyOn(process, 'exit').mockImplementation(() => {
+  //
 })
 
-test('hope checkRepeat can be invoke', async () => {
-  await checkRepeat({
-    appName: 'app',
-    language: 'javascript'
+describe('test checkRepet', () => {
+  beforeEach(() => {
+    shell.mkdir('./app')
   })
-  expect(inquirer.prompt).toBeCalled()
-  fs.stat('./app', err => {
-    expect(err).not.toBe(undefined)
+  test('hope checkRepeat can be invoke', async () => {
+    const inquirer = require('inquirer')
+    await checkRepeat({
+      appName: 'app',
+      language: 'javascript'
+    })
+    expect(inquirer.prompt).toBeCalled()
+    fs.stat('./app', err => {
+      expect(err).not.toBe(undefined)
+    })
   })
-})
-
-afterAll(() => {
-  shell.rm('-rf', './app')
+  test('hope checkRepeat can be invoke', async () => {
+    const inquirer = require('inquirer')
+    await checkRepeat({
+      appName: 'app',
+      language: 'javascript'
+    })
+    expect(inquirer.prompt).toBeCalled()
+    expect(mockExit).toBeCalled()
+    fs.stat('./app', err => {
+      expect(err).not.toBe(undefined)
+    })
+  })
+  afterEach(() => {
+    shell.rm('-rf', './app')
+  })
 })

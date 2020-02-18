@@ -6,7 +6,7 @@
 
 我们提供了一个脚手架来让你快速创建应用
 
-```
+```bash
 $ npm install yk-cli -g
 $ ykcli init <Your Project Name>
 $ cd <Your Project Name>
@@ -19,7 +19,7 @@ $ open http://localhost:7001
 
 我们的应用提供多种启动方式供你选择，但本地开发最佳使用方式还是使用npm start来同时启动服务端渲染和客户端hydrate
 
-```
+```bash
 $ npm start
 $ npm run ssr // 启动监听7001端口，只启动服务端渲染，此时仅服务端直出html，没有与客户端混合的步骤
 $ npm run csr // 启动监听8000端口，只启动客户端渲染，相当于传统的cra脚手架开发模式
@@ -32,7 +32,7 @@ $ npm run analyze // 可视化分析客户端打包的资源详情
 
 以下是该应用的目录结果遵循egg的目录约定，同时新增web目录存放我们的前端组件代码
 
-```
+```js
 ├── README.md
 ├── app // egg核心目录
 │   ├── controller

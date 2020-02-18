@@ -28,5 +28,5 @@ export function checkRepeat (option: Optional): Promise<void> {
       } else process.exit()
     }
     resolve()
-  }).catch(err => processError(err))
+  })
 }

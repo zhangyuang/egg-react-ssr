@@ -11,15 +11,15 @@
 我们没有采用`html-webpack-plugin`这个插件来作为`csr`的页面模版，这个经典插件是根据传入的 `index.html` 来自动注入打包的静态资源。 但此方式缺点太多，一个是传统的模版引擎的语法实在是不人性化，比起`jsx`这种`带语法糖的手写 AST`的方法已经极其的落后，对前端工程师极度不友好，还得去专门学该模版引擎的语法造成心智负担。且灵活性太低，不能应对多变的业务需求。
 所以我们移除 `web/index.html` 文件 其功能由 `web/layout/index.js` 来代替
 
-## csr模式下自己diy模版的生成内容
+## csr模式下自己DIY模版的生成内容
 
-借助React官方Api我们可以将一个React组件编译为html字符串
+借助 React 官方 API 我们可以将一个 React 组件编译为 html 字符串
 
 ### 本地开发
 
 以下代码皆封装在[yk-cli](https://github.com/ykfe/egg-react-ssr/blob/dev/packages/yk-cli/src/renderLayout.ts) 当中，让用户无感知
-本地开发我们通过 `webpack-dev-server` 来创建一个服务，此时需要在访问根路由时返回正确的dom解构。
-我们首先将layout组件编译为string
+本地开发我们通过 `webpack-dev-server` 来创建一个服务，此时需要在访问根路由时返回正确的 dom 结构。
+我们首先将 layout 组件编译为 string
 
 ``` js
 // yk-cli/renderLayout.js
@@ -133,7 +133,7 @@ const Layout = (props) => {
 
 ### 生产环境
 
-生产环境我们直接将 `string` 写入 `dist/index.html` 文件，使得兼容 `csr` 
+生产环境我们直接将 `string` 写入 `dist/index.html` 文件，使得兼容 `csr`
 
 ``` js
 // ykcli/clientRender.js

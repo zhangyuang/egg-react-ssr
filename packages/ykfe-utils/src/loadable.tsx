@@ -302,7 +302,7 @@ function LoadableMap (opts) {
 
 Loadable.Map = LoadableMap
 
-class Capture extends React.Component {
+export class Capture extends React.Component {
   static propTypes = {
     report: PropTypes.func.isRequired
   }

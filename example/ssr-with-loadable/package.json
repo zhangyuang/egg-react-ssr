@@ -8,14 +8,15 @@
     "react": "16.8.3",
     "react-dom": "16.8.3",
     "react-router-dom": "^5.0.0",
-    "ykfe-utils": "^2.0.2"
+    "ykfe-utils": "^2.7.3",
+    "serialize-javascript": "^2.1.2"
   },
   "scripts": {
     "debug": "egg-bin debug",
     "start": "rimraf dist && concurrently \"npm run ssr\" \" npm run csr \"",
     "ssr": "concurrently \"egg-bin dev\" \"cross-env NODE_ENV=development webpack --watch --config ./build/webpack.config.server.js\"",
     "csr": "cross-env NODE_ENV=development ykcli dev",
-    "prod": "npm run build && eggctl start",
+    "prod": "npm run build && NODE_ENV=production eggctl start",
     "build:server": "cross-env NODE_ENV=production webpack --config build/webpack.config.server.js",
     "build:client": "cross-env NODE_ENV=production ykcli build",
     "build": "rimraf dist && ykcli build && npm run build:server",
@@ -50,8 +51,9 @@
     "postcss-loader": "3.0.0",
     "postcss-preset-env": "^6.0.5",
     "postcss-safe-parser": "4.0.1",
-    "rimraf": "^2.6.3",
     "react-dev-utils": "^8.0.0",
+    "react-loadable": "^5.5.0",
+    "rimraf": "^2.6.3",
     "terser-webpack-plugin": "^1.2.0",
     "url-loader": "1.1.1",
     "webpack": "4.19.1",

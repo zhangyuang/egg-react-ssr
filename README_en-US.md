@@ -1,6 +1,6 @@
 English | [简体中文](./README.md)
 
-# Egg + React + SSR App Skeleton
+# Egg + React + SSR App Boilerplate
 
 <a href="https://circleci.com/gh/ykfe"><img src="https://img.shields.io/circleci/build/github/ykfe/egg-react-ssr/dev.svg" alt="Build Status"></a>
 <a href="https://codecov.io/gh/ykfe/egg-react-ssr"><img src="https://codecov.io/gh/ykfe/egg-react-ssr/branch/dev/graph/badge.svg" alt="Coverage Status"></a>
@@ -10,25 +10,33 @@ English | [简体中文](./README.md)
 <a href="https://github.com/ykfe/egg-react-ssr"><img src="https://img.shields.io/npm/l/vue.svg" alt="License"></a>
 <img src="https://img.shields.io/badge/node-%3E=8-green.svg" alt="Node">
 
-This is the most lightweight and elegant SSR (server-side rendering) app skeleton with the following characteristics:
+This is the most lightweight and elegant SSR (server-side rendering) app boilerplate with the following advantages:
 
 - **Lightweight**: Concise implementation; The bundle size in production is about 40% compared to Nest.js project; Significantly less generated files than Next.js.
-- **Extensive**: HMR support; Seamless switching between CSR and SSR in development or in production; Custom component rendering mode; TypeScript support.
-- **Elegant**: Based on React and Egg.js and their strong plugin ecosystem; Non-black-box configuration; All crucial steps can be configured via `config.ssr.js`.
+- **Versatile**: HMR support; Seamless switching between CSR and SSR in development or in production; Custom component rendering mode; TypeScript support.
+- **Elegant**: Based on React and Egg.js and their strong plugin ecosystem; Non-black-box configuration; It's easy to customize your program.
 
 Companies(applications) using this project are as follows. If you are using this project but not on the list, please create an [issue](https://github.com/ykfe/egg-react-ssr/issues) for that, and welcome to share [this project](https://github.com/ykfe/egg-react-ssr).
 
 <table><tr>
-<td align="center"><a target="_blank" href="https://www.youku.com"><img src="https://img.alicdn.com/tfs/TB17DTuXkH0gK0jSZPiXXavapXa-680-133.svg" width="100px;" alt="优酷"/><br /><sub><b>优酷视频 
+<td align="center"><a target="_blank" href="https://www.youku.com"><img src="https://img.alicdn.com/tfs/TB17DTuXkH0gK0jSZPiXXavapXa-680-133.svg" width="100px;" alt="优酷"/><br /><sub><b>youku
 </b></sub></a></td>
 <td align="center"><a target="_blank" href="https://campaign.vmate.com/diwalilightup"><img src="https://img.alicdn.com/tfs/TB17p6Vhbj1gK0jSZFOXXc7GpXa-512-512.png" width="100px;" alt="vmate 积分商城"/><br />
-  <a target="_blank" href="https://job.alibaba.com/zhaopin/position_detail.htm?trace=qrcode_share&positionCode=GP524819"><sub><b>Vmate短视频
+  <a target="_blank" href="https://job.alibaba.com/zhaopin/position_detail.htm?trace=qrcode_share&positionCode=GP524819"><sub><b>Vmate short video
 </b></a></td>
 <td align="center"><a target="_blank" href="https://enjoysales.paat.com/"><img src="https://img.alicdn.com/tfs/TB1Ma0BiEY1gK0jSZFMXXaWcVXa-836-836.png" width="100px;" alt="火炽星原CRM"/><br />
-<a target="_blank" href="https://enjoysales.paat.com/"><sub><b>火炽星原CRM
+<a target="_blank" href="https://enjoysales.paat.com/"><sub><b>paat CRM
 </b></a></td>
 <td align="center"><a href="https://www.niuniuda.com/mall" target="_blank"><img src="https://img.alicdn.com/tfs/TB1df_8pBr0gK0jSZFnXXbRRXXa-160-60.png" width="100px;" alt="牛牛搭"/><br />
-<a href="https://www.niuniuda.com/mall" target="_blank"><sub><b>牛牛搭
+<a href="https://www.niuniuda.com/mall" target="_blank"><sub><b>niu niu constructed
+</b></a></td>
+<td align="center"><a href="https://help.seewo.com/" target="_blank"><img src="https://img.alicdn.com/tfs/TB11Xo3q4v1gK0jSZFFXXb0sXXa-350-55.png" width="100px;" alt="cvte"/><br /><a href="https://help.seewo.com/" target="_blank"><sub><b>seeowo help
+</b></a></td>
+<td align="center"><a href="https://wecard.qq.com/index/" target="_blank"><img src="https://img.alicdn.com/tfs/TB1pTZGrFT7gK0jSZFpXXaTkpXa-164-164.jpg" width="100px;" alt="腾讯微卡"/><br />
+<a href="https://wecard.qq.com/index/" target="_blank"><sub><b>Tecent Wecard
+</b></a></td>
+<td align="center"><a href="https://www.myweimai.com/#sectionOne" target="_blank"><img src="https://img.alicdn.com/tfs/TB16i3VrQT2gK0jSZPcXXcKkpXa-400-400.jpg" width="100px;" alt="微脉"/><br />
+<a href="https://www.myweimai.com/#sectionOne" target="_bvlank"><sub><b>weimai
 </b></a></td>
 </tr></table>
 
@@ -49,7 +57,7 @@ When running `ykcli init`, you can choose JavaScript or TypeScript to create the
 
 ## Features
 
-Let me introduce some awesome features in our app skeleton: simple to use, powerful functionality, everything is a component, seamless switching between CSR and SSR.
+Let me introduce some awesome features in our app boilerplate: simple to use, powerful functionality, everything is a component, seamless switching between CSR and SSR.
 
 More features:
 - [x] App developed by [CRA](https://github.com/facebook/create-react-app) can be migrated seamlessly. If you are familiar with CRA, the start-up cost is almost 0.
@@ -107,7 +115,7 @@ Parameters of `getInitialProps` are as follows:
 ```js
 const commonNode = props =>
 	// In order to support SSR and CSR concurrently, please keep this conditional statement.
-	// If there is nothing in your layout, use `props.children ? <div>{ props.children }</div> : ''`
+	// If there is nothing in your layout, use `props.children ? { props.children } : ''`
   props.children ? (
     <div className='normal'>
       <h1 className='title'>
@@ -354,12 +362,12 @@ Welcome to join our DingTalk group by scanning the QR Code below.
 
 <img src="https://img.alicdn.com/tfs/TB1X1CsnET1gK0jSZFrXXcNCXXa-750-990.jpg" width="300">
 
-## Sponsors
+<!-- ## Sponsors
 If this project is helpful to you, consider buying us a coffee. Your funds will be used for team building instead of self consumption.
 
 If you are not on our __[Sponsor List](http://ykfe.net/guide/donate.html)__, please create an [issue](https://github.com/ykfe/egg-react-ssr/issues) for that.
 
 <div style="display:flex"><img src="https://gw.alicdn.com/tfs/TB1X1vRouT2gK0jSZFvXXXnFXXa-600-900.jpg" width="200" height="270">
 <img src="https://gw.alicdn.com/tfs/TB1BtPToxz1gK0jSZSgXXavwpXa-1242-1686.jpg" width="200" height="270">
-</div>
+</div> -->
 

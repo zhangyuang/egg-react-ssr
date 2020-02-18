@@ -14,7 +14,7 @@ module.exports = {
     {
       path: '/news/:id',
       exact: true,
-      Component: () => (__isBrowser__ ? require('ykfe-utils/lib/loadable')({
+      Component: () => (__isBrowser__ ? require('react-loadable')({
         loader: () => import(/* webpackChunkName: "news" */ '@/page/news'),
         loading: function Loading () {
           return React.createElement('div')
@@ -34,5 +34,7 @@ module.exports = {
     `<script src='/static/js/vendor.chunk.js'></script>`,
     `<script src='/static/js/Page.chunk.js'></script>`
   ], // 客户端需要加载的静态资源文件表
-  serverJs: resolvePath(`dist/Page.server.js`)
+  serverJs: resolvePath(`dist/Page.server.js`),
+  layout: resolvePath(`../dist/Layout.server.js`),
+  useCDN: false
 }
