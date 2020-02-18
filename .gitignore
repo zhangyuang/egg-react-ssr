@@ -71,6 +71,8 @@ es
 
 lib
 
+check
+
 tests_output
 
 **/cache/
