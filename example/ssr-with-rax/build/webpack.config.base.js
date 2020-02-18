@@ -36,6 +36,7 @@ const webpackModule = {
               ]
             ],
             plugins: [
+              'babel-plugin-transform-jsx-to-html',
               [
                 require.resolve('@babel/plugin-transform-react-jsx'),
                 {
