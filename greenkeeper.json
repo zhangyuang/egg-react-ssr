@@ -1,0 +1,19 @@
+{
+  "groups": {
+    "default": {
+      "packages": [
+        "example/ssr-with-antd/package.json",
+        "example/ssr-with-dva/package.json",
+        "example/ssr-with-js/package.json",
+        "example/ssr-with-loadable/package.json",
+        "example/ssr-with-mobx/package.json",
+        "example/ssr-with-multipage/package.json",
+        "example/ssr-with-rax/package.json",
+        "example/ssr-with-ts/package.json",
+        "package.json",
+        "packages/yk-cli/package.json",
+        "packages/ykfe-utils/package.json"
+      ]
+    }
+  }
+}
