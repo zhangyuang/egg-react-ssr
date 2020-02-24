@@ -105,7 +105,7 @@ module.exports = {
   resolve: {
     alias: {
       '@': paths.appSrc,
-      'rax': require.resolve('rax')
+      rax: require.resolve('rax')
     },
     extensions: paths.moduleFileExtensions
       .map(ext => `.${ext}`)

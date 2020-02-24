@@ -11,7 +11,6 @@
     "rax-server-renderer": "^1.1.6",
     "rax-text": "^1.1.6",
     "serialize-javascript": "^2.1.2",
-    "yk-cli": "^3.0.0",
     "ykfe-utils": "^3.0.0"
   },
   "scripts": {
@@ -65,6 +64,7 @@
     "webpack-dev-server": "^3.3.1",
     "webpack-manifest-plugin": "^2.0.4",
     "webpack-merge": "^4.1.4",
-    "webpack-node-externals": "^1.7.2"
+    "webpack-node-externals": "^1.7.2",
+    "yk-cli": "^3.0.0"
   }
 }

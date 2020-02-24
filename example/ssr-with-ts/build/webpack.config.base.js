@@ -33,7 +33,7 @@ const webpackModule = {
                   modules: false
                 }
               ],
-              ['react-app', { 'flow': false, 'typescript': true }]
+              ['react-app', { flow: false, typescript: true }]
             ],
             plugins: []
           }

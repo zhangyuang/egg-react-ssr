@@ -46,7 +46,7 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
 
 const getEntry = (type) => {
   const entrys = fs.readdirSync(paths.entryPath)
-  let entry = {}
+  const entry = {}
   if (type !== 'client') {
     entry.layout = paths.layout
   }
