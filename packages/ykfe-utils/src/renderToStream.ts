@@ -37,7 +37,10 @@ const renderToStream = async (ctx: Context, config: Config) => {
   }
 
   const serverComponent = typeof SEVER_JS === 'string' ? await require(SEVER_JS).default(ctx) : await SEVER_JS(ctx)
-  const stream = global.renderToNodeStream(serverComponent)
+  // @ts-ignore
+  const stream = isRax ? global.renderToNodeStream(serverComponent, {
+    defaultUnit: 'rpx'
+  }) : global.renderToNodeStream(serverComponent)
 
   return stream
 }
