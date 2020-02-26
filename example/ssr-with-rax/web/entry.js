@@ -1,5 +1,5 @@
 import { createElement, render } from 'rax' // eslint-disable-line
-import { useRouter, withRouter } from 'rax-use-router'
+import { useRouter } from 'rax-use-router'
 import { getComponent, raxGetWrappedComponent } from 'ykfe-utils'
 import { createBrowserHistory } from 'history'
 import Layout from '@/layout'
@@ -7,13 +7,16 @@ import { routes } from '../config/config.ssr'
 
 function Component () {
   const raxRoutes = routes.map(item => {
-    const Component = withRouter(raxGetWrappedComponent(item.Component()))
+    const Component = raxGetWrappedComponent(item.Component())
     item.component = () => <Layout><Component /></Layout>
     return item
   })
+
+  const InitialComponent = raxGetWrappedComponent(getComponent(routes, window.location.pathname)())
   const config = {
     routes: raxRoutes,
-    history: createBrowserHistory()
+    history: createBrowserHistory(),
+    InitialComponent: <Layout><InitialComponent /></Layout>
   }
 
   const component = useRouter(config).component
