@@ -2,7 +2,7 @@
   "name": "egg-ssr-antd",
   "version": "2.0.0",
   "dependencies": {
-    "antd": "^3.21.4",
+    "antd": "^4.0.0",
     "egg": "^2.21.0",
     "egg-scripts": "^2.11.0",
     "egg-static": "^2.2.0",
