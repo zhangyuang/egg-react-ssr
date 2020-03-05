@@ -8,7 +8,7 @@ import { Global } from './interface/global'
 declare const global: Global
 
 const renderToStream = async (ctx: Context, config: Config) => {
-  const { useCDN, serverJs, baseDir, isRax } = config
+  const { useCDN, serverJs, baseDir, isRax, useReactToString } = config
   const BASE_DIR = baseDir || process.cwd()
   const isLocal = process.env.NODE_ENV === 'development' || config.env === 'local' // 标志非正式环境
   let SEVER_JS = serverJs
@@ -33,7 +33,11 @@ const renderToStream = async (ctx: Context, config: Config) => {
 
   if (!global.renderToNodeStream) {
     // for this issue https://github.com/ykfe/egg-react-ssr/issues/4
-    global.renderToNodeStream = isRax ? require(BASE_DIR + '/node_modules/rax-server-renderer').renderToString : require(BASE_DIR + '/node_modules/react-dom/server').renderToNodeStream
+    if (useReactToString) {
+      global.renderToNodeStream = require(BASE_DIR + '/node_modules/react-dom/server').renderToString
+    } else {
+      global.renderToNodeStream = isRax ? require(BASE_DIR + '/node_modules/rax-server-renderer').renderToString : require(BASE_DIR + '/node_modules/react-dom/server').renderToNodeStream
+    }
   }
 
   const serverComponent = typeof SEVER_JS === 'string' ? await require(SEVER_JS).default(ctx) : await SEVER_JS(ctx)

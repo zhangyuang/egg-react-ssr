@@ -8,6 +8,7 @@ export interface Config {
   env?: string
   useCDN?: string
   isRax?: boolean
+  useReactToString?: boolean
   routes: RouteItem[]
   injectScript: string[]
   injectCss: string[]
