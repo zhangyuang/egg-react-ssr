@@ -46,8 +46,13 @@ const renderToStream = async (ctx: Context, config: Config) => {
     defaultUnit: 'rpx'
   }) : global.renderToNodeStream(serverComponent)
 
-  const doctypeStream = new ReadableString('<!DOCTYPE html>')
-  return combineStream(doctypeStream, stream)
+  if (useReactToString || isRax) {
+    return '<!DOCTYPE html>' + stream
+  } else {
+    const doctypeStream = new ReadableString('<!DOCTYPE html>')
+     // @ts-ignore
+    return combineStream(doctypeStream, stream)
+  }
 }
 
 export default renderToStream
