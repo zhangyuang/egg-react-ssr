@@ -1,4 +1,5 @@
 import { resolve } from 'path'
+import { Readable, PassThrough } from 'stream'
 import React from 'react'
 import { renderToNodeStream } from 'react-dom/server'
 import { Config } from '../interface/config'
@@ -26,10 +27,39 @@ const getVersion = (str: string) => {
   }
 }
 
+class ReadableString extends Readable {
+  str: string
+  sent: boolean
+
+  constructor (str: string) {
+    super()
+    this.str = str
+    this.sent = false
+  }
+
+  _read () {
+    if (!this.sent) {
+      this.push(Buffer.from(this.str))
+      this.sent = true
+    } else {
+      this.push(null)
+    }
+  }
+}
+
+const combineStream = function () {
+  const writeableStream = new PassThrough()
+  Array.prototype.slice.call(arguments).forEach(readableStream => {
+    readableStream.pipe(writeableStream)
+  })
+  return writeableStream
+}
+
 export {
     resolveDir,
     logGreen,
     reactToStream,
-    getVersion
-
+    getVersion,
+    ReadableString,
+    combineStream
 }

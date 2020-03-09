@@ -23,7 +23,6 @@ export class Page {
       this.ctx.apiService = this.service.index // 将service挂载到上下文对象
       const config = Object.assign(this.ctx.app.config, ssrConfig)
       const stream = await renderToStream(this.ctx, config)
-      this.ctx.res.write('<!DOCTYPE html>')
       this.ctx.body = stream
     } catch (error) {
       this.ctx.logger.error(`Page Controller renderToStream Error`, error)

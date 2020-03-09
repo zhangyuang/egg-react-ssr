@@ -12,7 +12,6 @@ class PageController extends Controller {
       ctx.status = 200
       Object.assign(ctx.app.config, ssrConfig)
       const stream = await renderToStream(ctx, ctx.app.config)
-      ctx.res.write('<!DOCTYPE html>')
       ctx.body = stream
     } catch (error) {
       ctx.logger.error(`Page Controller renderToStream Error ${error}`)

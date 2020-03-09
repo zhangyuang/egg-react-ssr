@@ -1,5 +1,5 @@
 import { Context } from 'midway'
-import { getVersion } from './utils'
+import { getVersion, ReadableString, combineStream } from './utils'
 import { renderLayout } from './renderLayout'
 import { useCdn } from './useCdn'
 import { Config } from './interface/config'
@@ -46,7 +46,8 @@ const renderToStream = async (ctx: Context, config: Config) => {
     defaultUnit: 'rpx'
   }) : global.renderToNodeStream(serverComponent)
 
-  return stream
+  const doctypeStream = new ReadableString('<!DOCTYPE html>')
+  return combineStream(doctypeStream, stream)
 }
 
 export default renderToStream
