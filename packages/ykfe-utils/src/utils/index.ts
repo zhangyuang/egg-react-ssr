@@ -47,19 +47,10 @@ class ReadableString extends Readable {
   }
 }
 
-const combineStream = function () {
-  const writeableStream = new PassThrough()
-  Array.prototype.slice.call(arguments).forEach(readableStream => {
-    readableStream.pipe(writeableStream)
-  })
-  return writeableStream
-}
-
 export {
     resolveDir,
     logGreen,
     reactToStream,
     getVersion,
-    ReadableString,
-    combineStream
+    ReadableString
 }

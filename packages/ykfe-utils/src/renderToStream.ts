@@ -1,5 +1,6 @@
 import { Context } from 'midway'
-import { getVersion, ReadableString, combineStream } from './utils'
+import mergeStream from 'merge-stream'
+import { getVersion, ReadableString } from './utils'
 import { renderLayout } from './renderLayout'
 import { useCdn } from './useCdn'
 import { Config } from './interface/config'
@@ -51,7 +52,7 @@ const renderToStream = async (ctx: Context, config: Config) => {
   } else {
     const doctypeStream = new ReadableString('<!DOCTYPE html>')
      // @ts-ignore
-    return combineStream(doctypeStream, stream)
+    return mergeStream(doctypeStream, stream)
   }
 }
 
