@@ -1,7 +1,7 @@
 import { resolve } from 'path'
 import { Readable, PassThrough } from 'stream'
 import React from 'react'
-import { renderToNodeStream } from 'react-dom/server'
+import { renderToNodeStream, renderToString as reactRenderToString } from 'react-dom/server'
 import { Config } from '../interface/config'
 
 const { renderToString } = require('rax-server-renderer')
@@ -12,7 +12,11 @@ const logGreen = (text: string) => {
 }
 
 const reactToStream = (Component: React.FunctionComponent, props: object, config: Config) => {
-  return config.isRax ? renderToString(React.createElement(Component, props)) : renderToNodeStream(React.createElement(Component, props))
+  if (config.useReactToString) {
+    return reactRenderToString(React.createElement(Component, props))
+  } else {
+    return config.isRax ? renderToString(React.createElement(Component, props)) : renderToNodeStream(React.createElement(Component, props))
+  }
 }
 
 const getVersion = (str: string) => {
