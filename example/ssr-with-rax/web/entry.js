@@ -6,9 +6,9 @@ import Layout from '@/layout'
 import { routes } from '../config/config.ssr'
 
 function Component () {
-  const raxRoutes = routes.map(item => {
+  const raxRoutes = routes.map((item, index) => {
     const Component = raxGetWrappedComponent(item.Component())
-    item.component = () => <Layout><Component /></Layout>
+    item.component = () => <Layout key={`layout${index}`}><Component /></Layout>
     return item
   })
 
@@ -20,13 +20,12 @@ function Component () {
   }
 
   const component = useRouter(config).component
-  window.raxComponent = component
   return component
 }
 
 const clientRender = () => {
-  const DriverUniversal = require('driver-universal').default
-  render(<Component />, document.body, { driver: DriverUniversal, hydrate: true })
+  const DriverUniversal = require('driver-dom')
+  render(<Component />, document.getElementById('app'), { driver: DriverUniversal, hydrate: true })
   // hmr存在问题，先关掉，采用刷新的策略，有兴趣的同学可以帮忙修复
   // if (process.env.NODE_ENV === 'development' && module.hot) {
   //   module.hot.accept()
