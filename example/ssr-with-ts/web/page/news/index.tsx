@@ -1,7 +1,9 @@
 import React from 'react'
+import { RouteComponentProps } from 'react-router'
+import { Context } from 'midway'
 import './index.less'
 interface MockData {
-  [index: number]: string
+  [index: string]: string
 }
 const mockData: MockData = {
   1: `Racket-on-Chez continues to improve. Snapshot builds are currently available at pre.racket-lang.org, and we expect that Racket-on-Chez will be included as a download option in the next release.`,
@@ -11,16 +13,6 @@ const mockData: MockData = {
   5: `Product advertisement and promotion on YouTube is a function of the dedicated audience (or influence) of the individual (influencer) anchoring the advertising or promotion.`
 }
 
-interface Match {
-  params: Params
-}
-interface Params {
-  id: number
-}
-interface Ctx {
-  match: Match,
-  params: Params
-}
 interface Props {
   newsDetail: string
 }
@@ -32,8 +24,8 @@ const News: SFC<Props> = (props: Props) => {
   )
 }
 
-News.getInitialProps = (ctx: Ctx) => {
-  const newsId = __isBrowser__ ? ctx.match.params.id : ctx.params.id
+News.getInitialProps = (ctx) => {
+  const newsId = __isBrowser__ ? (ctx as RouteComponentProps<{id: string}>).match.params.id : (ctx as Context).request.path.split('/')[2]
   return Promise.resolve({
     newsDetail: mockData[newsId]
   })
