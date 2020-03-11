@@ -39,7 +39,6 @@ const dev = async (argv?: Argv) => {
     }
   })
   server.listen(PORT, '0.0.0.0', () => {
-    console.log(`Starting server on http://localhost:${PORT}`)
     process.send && process.send({ msg: 'start dev finish' })
   })
 }
