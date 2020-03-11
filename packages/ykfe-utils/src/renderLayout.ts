@@ -8,7 +8,8 @@ const renderLayout = async (ctx: Context, config: Config) => {
   const { useCDN, layout } = config
   const isLocal = process.env.NODE_ENV === 'development' || config.env === 'local' // 标志非正式环境
   const props = {
-    layoutData: ctx
+    layoutData: ctx,
+    ctx
   }
   let LAYOUT_PATH = layout
 
