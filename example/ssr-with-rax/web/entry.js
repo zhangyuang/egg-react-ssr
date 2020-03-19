@@ -1,6 +1,7 @@
 import { createElement, render } from 'rax' // eslint-disable-line
 import { useRouter } from 'rax-use-router'
-import { getComponent, raxGetWrappedComponent } from 'ykfe-utils'
+import { getComponent } from 'ykfe-utils'
+import raxGetWrappedComponent from 'ykfe-utils/lib/components/raxGetinitialProps'
 import { createBrowserHistory } from 'history'
 import Layout from '@/layout'
 import { routes } from '../config/config.ssr'
