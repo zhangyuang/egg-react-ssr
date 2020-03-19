@@ -15,7 +15,7 @@ export default (appInfo: MyEggAppInfo) => {
 
   ]
   config.static = {
-    dir: [path.join(appInfo.appDir, '/output'), path.join(appInfo.appDir, '/src/public')],
+    dir: [path.join(appInfo.appDir, '/output'), path.join(appInfo.appDir, '/src/app/public')],
     prefix: '/'
   }
   return config
