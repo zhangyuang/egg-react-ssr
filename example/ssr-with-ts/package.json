@@ -1,6 +1,6 @@
 {
   "name": "ssr-with-ts",
-  "version": "2.3.5",
+  "version": "2.3.7",
   "description": "ykfe",
   "dependencies": {
     "egg-scripts": "^2.10.0",
@@ -57,7 +57,6 @@
     "node": ">=10.16.0"
   },
   "scripts": {
-    "postinstall": "rimraf node_modules/*rax*",
     "prod": "npm run build && NODE_ENV=production egg-scripts start --title=egg-server-ssr-with-ts --framework=midway --ts",
     "stop": "egg-scripts stop --title=egg-server-ssr-with-ts",
     "start": "concurrently \"npm run ssr\" \"npm run csr\"",
