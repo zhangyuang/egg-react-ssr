@@ -16,8 +16,12 @@ const reactToStream = (Component: React.FunctionComponent, props: object, config
   if (config.useReactToString) {
     return reactRenderToString(React.createElement(Component, props))
   } else {
-    const renderToString = require(BASE_DIR + '/node_modules/rax-server-renderer').renderToString
-    return config.isRax ? renderToString(React.createElement(Component, props)) : renderToNodeStream(React.createElement(Component, props))
+    if (config.isRax) {
+      const renderToString = require(BASE_DIR + '/node_modules/rax-server-renderer').renderToString
+      return renderToString(React.createElement(Component, props))
+    } else {
+      return renderToNodeStream(React.createElement(Component, props))
+    }
   }
 }
 
