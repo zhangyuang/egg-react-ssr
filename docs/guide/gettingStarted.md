@@ -20,10 +20,8 @@ $ open http://localhost:7001
 我们的应用提供多种启动方式供你选择，但本地开发最佳使用方式还是使用npm start来同时启动服务端渲染和客户端hydrate
 
 ```bash
-$ npm start
-$ npm run ssr // 启动监听7001端口，只启动服务端渲染，此时仅服务端直出html，没有与客户端混合的步骤
-$ npm run csr // 启动监听8000端口，只启动客户端渲染，相当于传统的cra脚手架开发模式
-$ npm run prod // 模拟SSR应用生产环境
+$ npm start // 推荐以此方式启动应用
+$ npm run prod // 模拟SSR应用生产环境，如无特殊定制要求生产环境可以用该方式启动
 $ npm run build // 打包服务端以及客户端资源文件
 $ npm run analyze // 可视化分析客户端打包的资源详情
 ```

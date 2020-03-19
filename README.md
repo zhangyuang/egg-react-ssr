@@ -4,7 +4,7 @@
 
 <a href="https://circleci.com/gh/ykfe"><img src="https://img.shields.io/circleci/build/github/ykfe/egg-react-ssr/dev.svg" alt="Build Status"></a>
 <a href="https://codecov.io/gh/ykfe/egg-react-ssr"><img src="https://codecov.io/gh/ykfe/egg-react-ssr/branch/dev/graph/badge.svg" alt="Coverage Status"></a>
-<a href="https://npmcharts.com/compare/yk-cli"><img src="https://img.shields.io/npm/dt/yk-cli" alt="download"></a>
+<a href="https://npmcharts.com/compare/ykfe-utils"><img src="https://img.shields.io/npm/dt/ykfe-utils" alt="download"></a>
 <a href="https://standardjs.com"><img src="https://img.shields.io/badge/code_style-standard-brightgreen.svg" alt="standardjs"></a>
 <a href="https://github.com/facebook/jest"><img src="https://img.shields.io/badge/tested_with-jest-99424f.svg" alt="License"></a>
 <a href="https://github.com/ykfe/egg-react-ssr"><img src="https://img.shields.io/npm/l/vue.svg" alt="License"></a>
@@ -84,7 +84,7 @@ $ npm run csr
 4）配套的脚本
 
 ```bash
-$ npm run prod    # 使用egg-scripts启动应用模拟SSR应用生产环境
+$ npm run prod    # 使用egg-scripts模拟SSR应用生产环境，如无特殊定制要求生产环境可以用该方式启动
 $ npm run build   # 打包服务端以及客户端资源文件
 $ npm run analyze # 可视化分析客户端打包的资源详情
 ```
