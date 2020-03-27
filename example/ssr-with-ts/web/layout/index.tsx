@@ -39,7 +39,7 @@ const Layout: SFC<LayoutProps> = (props: LayoutProps): JSX.Element | null => {
           <div id='app'>{commonNode(props)}</div>
           {
             serverData && <script dangerouslySetInnerHTML={{
-              __html: `window.__USE_SSR__=true; window.__INITIAL_DATA__ =${serialize(serverData)}`
+              __html: `window.__USE_SSR__=true; window.__INITIAL_DATA__ ={"${props.layoutData!.req.url}":${serialize(serverData)}}` // tslint:disable-line
             }} />
           }
           <div dangerouslySetInnerHTML={{

@@ -1,6 +1,6 @@
 {
   "name": "ssr-with-js",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "dependencies": {
     "egg": "^2.21.0",
     "egg-scripts": "^2.11.0",

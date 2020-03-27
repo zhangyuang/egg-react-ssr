@@ -11,7 +11,7 @@ const popStateFn = () => {
 }
 
 interface IState {
-  getProps: boolean,
+  initialProps: any
   extraProps: Object
 }
 
@@ -21,7 +21,7 @@ function GetInitialProps (WrappedComponent: FC): React.ComponentClass {
       super(props)
       this.state = {
         extraProps: {},
-        getProps: false
+        initialProps: window.__INITIAL_DATA__ && window.__INITIAL_DATA__[location.pathname] // 使用pathname来防止不同页面的初始props冲突
       }
     }
 
@@ -29,9 +29,10 @@ function GetInitialProps (WrappedComponent: FC): React.ComponentClass {
       const props = this.props
       if (window.__USE_SSR__) {
         _this = this // 修正_this指向，保证_this指向当前渲染的页面组件
-        window.addEventListener('popstate', popStateFn)
+        window.addEventListener('popstate', popStateFn) // history.pushState和history.replaceState方法并不会触发popstate事件。因此需要另外判断当前action是否为push/replace
       }
-      const getProps = !window.__USE_SSR__ || (props.history && props.history.action === 'PUSH')
+      const getProps = !window.__USE_SSR__ || props.history && props.history.action === ('PUSH' || 'REPLACE')
+
       if (getProps) {
         await this.getInitialProps()
       }
@@ -46,14 +47,13 @@ function GetInitialProps (WrappedComponent: FC): React.ComponentClass {
       }
       const extraProps = WrappedComponent.getInitialProps ? await WrappedComponent.getInitialProps(props) : {}
       this.setState({
-        extraProps,
-        getProps: true
+        extraProps
       })
     }
 
     render () {
       // 只有在首次进入页面需要将window.__INITIAL_DATA__作为props，路由切换时不需要
-      return <WrappedComponent {...Object.assign({}, this.props, this.state.getProps ? {} : window.__INITIAL_DATA__, this.state.extraProps)} />
+      return <WrappedComponent {...Object.assign({}, this.props, window.__INITIAL_DATA__, this.state.initialProps, this.state.extraProps)} />
     }
   }
   return withRouter(GetInitialPropsClass)
