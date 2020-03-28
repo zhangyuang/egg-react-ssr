@@ -33,7 +33,7 @@ const Layout = (props) => {
           <div id='app'>{ commonNode(props) }</div>
           {
             serverData && <script dangerouslySetInnerHTML={{
-              __html: `window.__USE_SSR__=true; window.__INITIAL_DATA__ ={"${props.layoutData.req.url}":${serialize(serverData)}}` // 使用pathname作为组件初始化数据的隔离，防止props污染
+              __html: `window.__USE_SSR__=true; window.__INITIAL_DATA__ =${serialize(serverData)}` // 使用pathname作为组件初始化数据的隔离，防止props污染
             }} />
           }
           <div dangerouslySetInnerHTML={{

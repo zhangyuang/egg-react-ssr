@@ -2,16 +2,8 @@ import React, { Component } from 'react'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
 import { FC } from '../interface/fc'
 
-let _this: any = null
-const popStateFn = () => {
-  // 使用popStateFn保存函数防止addEventListener重复注册
-  if (_this && _this.getInitialProps) {
-    _this.getInitialProps()
-  }
-}
-
+let getProps = false
 interface IState {
-  initialProps: any
   extraProps: Object
 }
 
@@ -20,26 +12,22 @@ function GetInitialProps (WrappedComponent: FC): React.ComponentClass {
     constructor (props: RouteComponentProps) {
       super(props)
       this.state = {
-        extraProps: {},
-        initialProps: window.__INITIAL_DATA__ && window.__INITIAL_DATA__[location.pathname] // 使用pathname来防止不同页面的初始props冲突
+        extraProps: {}
+      }
+      if (!getProps) {
+        // csr渲染模式下无论是首次打开页面还是路由跳转都需要客户端需要调用getInitialProps
+        // 进行过history push或者reaplace操作之后，每次进行单页跳转客户端都需要调用getInitialProps
+        getProps = !window.__USE_SSR__ || props.history && props.history.action === ('PUSH' || 'REPLACE')
       }
     }
 
     async componentDidMount () {
-      const props = this.props
-      if (window.__USE_SSR__) {
-        _this = this // 修正_this指向，保证_this指向当前渲染的页面组件
-        window.addEventListener('popstate', popStateFn) // history.pushState和history.replaceState方法并不会触发popstate事件。因此需要另外判断当前action是否为push/replace
-      }
-      const getProps = !window.__USE_SSR__ || props.history && props.history.action === ('PUSH' || 'REPLACE')
-
       if (getProps) {
         await this.getInitialProps()
       }
     }
 
     async getInitialProps () {
-      // csr首次进入页面以及csr/ssr切换路由时才调用getInitialProps
       const props = this.props
       if (WrappedComponent.preload) {
         // react-loadable 情况
@@ -53,7 +41,7 @@ function GetInitialProps (WrappedComponent: FC): React.ComponentClass {
 
     render () {
       // 只有在首次进入页面需要将window.__INITIAL_DATA__作为props，路由切换时不需要
-      return <WrappedComponent {...Object.assign({}, this.props, window.__INITIAL_DATA__, this.state.initialProps, this.state.extraProps)} />
+      return <WrappedComponent {...Object.assign({}, this.props, getProps ? {} : window.__INITIAL_DATA__, this.state.extraProps)} />
     }
   }
   return withRouter(GetInitialPropsClass)

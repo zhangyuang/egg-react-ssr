@@ -14,7 +14,7 @@ const commonNode = (props: LayoutProps) => (
 )
 
 interface LayoutProps {
-  layoutData?: Context,
+  layoutData: Context,
   children?: JSX.Element | null
 }
 
@@ -22,8 +22,8 @@ const Layout: SFC<LayoutProps> = (props: LayoutProps): JSX.Element | null => {
   if (__isBrowser__) {
     return commonNode(props)
   } else {
-    const { serverData } = props.layoutData! // tslint:disable-line
-    const { injectCss, injectScript } = props.layoutData!.app.config // tslint:disable-line
+    const { serverData } = props.layoutData
+    const { injectCss, injectScript } = props.layoutData.app.config
     return (
       <html lang='en'>
         <head>
@@ -39,7 +39,7 @@ const Layout: SFC<LayoutProps> = (props: LayoutProps): JSX.Element | null => {
           <div id='app'>{commonNode(props)}</div>
           {
             serverData && <script dangerouslySetInnerHTML={{
-              __html: `window.__USE_SSR__=true; window.__INITIAL_DATA__ ={"${props.layoutData!.req.url}":${serialize(serverData)}}` // tslint:disable-line
+              __html: `window.__USE_SSR__=true; window.__INITIAL_DATA__ =${serialize(serverData)}` // tslint:disable-line
             }} />
           }
           <div dangerouslySetInnerHTML={{
