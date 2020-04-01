@@ -18,9 +18,7 @@ const clientRender = async (): Promise<void> => {
           const activeComponent = item.Component()
           const Layout = activeComponent.Layout || defaultLayout
           const WrappedComponent = getWrappedComponent(activeComponent)
-          return <Route exact={item.exact} key={item.path} path={item.path} render={() => {
-            return <Layout><WrappedComponent /></Layout>
-          }} />
+          return <Route exact={item.exact} key={item.path} path={item.path} render={() => <Layout key={window.location.pathname}><WrappedComponent /></Layout> } />
         })
       }
     </Switch>
