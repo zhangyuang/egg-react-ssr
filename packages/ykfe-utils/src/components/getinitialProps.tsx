@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
 import { FC } from '../interface/fc'
 
-let getProps = false
+let routerChanged = false
 interface IState {
   extraProps: Object
 }
@@ -14,15 +14,15 @@ function GetInitialProps (WrappedComponent: FC): React.ComponentClass {
       this.state = {
         extraProps: {}
       }
-      if (!getProps) {
+      if (!routerChanged) {
         // csr渲染模式下无论是首次打开页面还是路由跳转都需要客户端需要调用getInitialProps
         // 进行过history push或者reaplace操作之后，每次进行单页跳转客户端都需要调用getInitialProps
-        getProps = !window.__USE_SSR__ || props.history && props.history.action === ('PUSH' || 'REPLACE')
+        routerChanged = !window.__USE_SSR__ || props.history && /push|replace/i.test(props.history.action)
       }
     }
 
     async componentDidMount () {
-      if (getProps) {
+      if (routerChanged) {
         await this.getInitialProps()
       }
     }
