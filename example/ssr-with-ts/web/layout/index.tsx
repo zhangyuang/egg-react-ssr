@@ -22,8 +22,8 @@ const Layout: SFC<LayoutProps> = (props: LayoutProps): JSX.Element | null => {
   if (__isBrowser__) {
     return commonNode(props)
   } else {
-    const { serverData } = props.layoutData!
-    const { injectCss, injectScript } = props.layoutData!.app.config
+    const { serverData } = props.layoutData! // tslint:disable-line
+    const { injectCss, injectScript } = props.layoutData!.app.config // tslint:disable-line
     return (
       <html lang='en'>
         <head>

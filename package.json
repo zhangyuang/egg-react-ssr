@@ -87,7 +87,7 @@
     "standard": "^12.0.1",
     "ts-jest": "^24.0.2",
     "ts-node": "^8.5.4",
-    "tslint": "^5.17.0",
+    "tslint": "^6.0.0",
     "tslint-config-standard": "^8.0.1",
     "typescript": "^3.7.5",
     "vuepress": "^0.14.8"
