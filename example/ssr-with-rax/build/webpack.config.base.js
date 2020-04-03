@@ -22,7 +22,7 @@ const webpackModule = {
         },
         {
           test: /\.(js|mjs|jsx|ts|tsx)$/,
-          // exclude: /node_modules/,
+          exclude: /node_modules/,
           loader: require.resolve('babel-loader'),
           options: {
             cacheDirectory: true,
@@ -33,16 +33,10 @@ const webpackModule = {
                 {
                   modules: false
                 }
-              ]
-            ],
-            plugins: [
-              'babel-plugin-transform-jsx-to-html',
-              [
-                require.resolve('@babel/plugin-transform-react-jsx'),
-                {
-                  pragma: 'createElement'
-                }
-              ]
+              ],
+              ['@babel/preset-react', {
+                'pragma': 'createElement'
+              }]
             ]
           }
         },

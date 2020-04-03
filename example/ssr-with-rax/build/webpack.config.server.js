@@ -10,12 +10,46 @@ const plugins = [
     '__isBrowser__': false //eslint-disable-line
   })
 ]
+const webpackModule = {
+  strictExportPresence: true,
+  rules: [
+    { parser: { requireEnsure: false } },
+    {
+      oneOf: [
+        {
+          test: /\.(js|mjs|jsx|ts|tsx)$/,
+          exclude: /node_modules/,
+          loader: require.resolve('babel-loader'),
+          options: {
+            cacheDirectory: true,
+            cacheCompression: false,
+            presets: [
+              [
+                require.resolve('@babel/preset-env'),
+                {
+                  modules: false
+                }
+              ],
+              ['@babel/preset-react', {
+                'pragma': 'createElement'
+              }]
+            ],
+            plugins: [
+              'babel-plugin-transform-jsx-to-html'
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
 module.exports = merge(baseConfig, {
   devtool: isDev ? 'eval-source-map' : '',
   entry: {
     Page: paths.entry,
     Layout: paths.layout
   },
+  module: webpackModule,
   target: 'node',
   externals: nodeExternals({
     whitelist: /\.(css|less|sass|scss)$|^rax-+/
