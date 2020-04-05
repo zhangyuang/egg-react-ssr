@@ -2,7 +2,18 @@ import React, { Component } from 'react'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
 import { FC } from '../interface/fc'
 
+let _this: any = null
 let routerChanged = false
+
+const popStateFn = (e: PopStateEvent) => {
+  // historyPop的时候需要调用getInitialProps
+  routerChanged = true
+  // 使用popStateFn保存函数防止addEventListener重复注册,排除hashchange的情况
+  if (!location.hash && _this && _this.getInitialProps) {
+    _this.getInitialProps()
+  }
+}
+
 interface IState {
   extraProps: Object
 }
@@ -15,19 +26,23 @@ function GetInitialProps (WrappedComponent: FC): React.ComponentClass {
         extraProps: {}
       }
       if (!routerChanged) {
-        // csr渲染模式下无论是首次打开页面还是路由跳转都需要客户端需要调用getInitialProps
-        // 进行过history push或者reaplace操作之后，每次进行单页跳转客户端都需要调用getInitialProps
-        routerChanged = !window.__USE_SSR__ || (props.history && props.history.action !== 'POP')
+        routerChanged = !window.__USE_SSR__ || (props.history && props.history.action === 'PUSH')
+      }
+      if (window.__USE_SSR__) {
+        _this = this // 修正_this指向，保证_this指向当前渲染的页面组件
+        window.addEventListener('popstate', popStateFn)
       }
     }
 
     async componentDidMount () {
-      if (routerChanged) {
+      // history push的时候需要调用getInitialProps
+      if (this.props.history && this.props.history.action === 'PUSH') {
         await this.getInitialProps()
       }
     }
 
     async getInitialProps () {
+      // csr首次进入页面以及csr/ssr切换路由时才调用getInitialProps
       const props = this.props
       if (WrappedComponent.preload) {
         // react-loadable 情况
