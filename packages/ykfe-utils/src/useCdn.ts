@@ -19,15 +19,16 @@ const useCdn = async (serverJs: string, isLocal: boolean, filename: string): Pro
   const serverJsPath: string = resolveDir(`./.serverBundle/${filename}.js`)
   let SEVER_JS
 
-  delete require.cache[serverJsPath]
+  if (isLocal) {
+    delete require.cache[serverJsPath]
+  }
 
-  try {
-    fs.statSync(serverJsPath)
+  if (fs.existsSync(serverJsPath)) {
     if (isLocal) {
-      // 本地开发环境每次都从cdn拉取文件
+     // 本地开发环境每次都从cdn拉取文件
       SEVER_JS = await getServerBundle(serverJs, serverJsPath)
     }
-  } catch (error) {
+  } else {
     // 首次访问本地没有对应的serverJsPath的情况需要从cdn拉取文件
     SEVER_JS = await getServerBundle(serverJs, serverJsPath)
   }
