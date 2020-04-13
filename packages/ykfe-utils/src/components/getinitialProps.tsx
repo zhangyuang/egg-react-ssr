@@ -35,13 +35,15 @@ function GetInitialProps (WrappedComponent: FC): React.ComponentClass {
     }
 
     async componentDidMount () {
-      // history push的时候需要调用getInitialProps
-      if (this.props.history && this.props.history.action === 'PUSH') {
+      console.log('xx')
+      // csr 或者 history push的时候需要调用getInitialProps
+      if ((this.props.history && this.props.history.action !== 'POP' || !window.__USE_SSR__)) {
         await this.getInitialProps()
       }
     }
 
     async getInitialProps () {
+      console.log('hoc get')
       // csr首次进入页面以及csr/ssr切换路由时才调用getInitialProps
       const props = this.props
       if (WrappedComponent.preload) {
