@@ -35,7 +35,6 @@ function GetInitialProps (WrappedComponent: FC): React.ComponentClass {
     }
 
     async componentDidMount () {
-      console.log('xx')
       // csr 或者 history push的时候需要调用getInitialProps
       if ((this.props.history && this.props.history.action !== 'POP' || !window.__USE_SSR__)) {
         await this.getInitialProps()
