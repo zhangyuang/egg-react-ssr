@@ -17,18 +17,18 @@ process.on && process.on('message', async data => {
 })
 
 const dev = async (argv?: Argv) => {
-  const PORT = (argv && argv.PORT) || 8000
+  const PORT = (argv && argv.PORT) || process.env.FE_PORT || 8000
   const compiler = webpack(clientConfig)
   // @ts-ignore
   const server = new WebpackDevServer(compiler, {
     quiet: true,
     disableHostCheck: true,
     publicPath: clientConfig.output.publicPath || '/',
-    // hotOnly: true,
     host: '0.0.0.0',
     sockPort: PORT,
     contentBase: cwd + '/dist',
     hot: true,
+      // @ts-ignore
     port: PORT,
     clientLogLevel: 'warning',
     headers: {
