@@ -42,7 +42,6 @@ function GetInitialProps (WrappedComponent: FC): React.ComponentClass {
     }
 
     async getInitialProps () {
-      console.log('hoc get')
       // csr首次进入页面以及csr/ssr切换路由时才调用getInitialProps
       const props = this.props
       if (WrappedComponent.preload) {
