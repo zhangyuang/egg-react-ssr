@@ -13,7 +13,7 @@ footer: MIT Licensed | Copyright © 2019-present YKFE 版权所有
 ---
 
 
-<center style="fontSize: 14px; ">推荐使用<a href="https://umijs.org/zh/">UmiJS(最新版已经支持SSR以及PreRender)，实现方式与本骨架一致，两者不冲突，互相补位</a></center>
+<center style="fontSize: 14px; ">推荐使用我们开发的为<a href="https://github.com/ykfe/ssr">Serverless场景下打造的SSR框架，实现方式与本骨架一致，开箱即用两者不冲突，互相补位</a></center>
 
 ## Getting started
 

@@ -111,8 +111,11 @@ $ npm run analyze # 可视化分析客户端打包的资源详情
 - [x] 配套结合[dva](https://github.com/ykfe/egg-react-ssr/tree/master/example/ssr-with-dva)做数据管理的example的实现
 - [x] 配套结合[ssr-with-multipage](https://github.com/ykfe/egg-react-ssr/tree/dev/example/ssr-with-multipage)多页面应用的example
 - [x] 配套结合[Rax](https://github.com/ykfe/egg-react-ssr/tree/dev/example/ssr-with-rax)版本的实现
-- [x] 配套阿里云serverless [FC](https://github.com/ykfe/ssr-with-fc)版本的实现
 - [x] 配套[TypeScript](https://github.com/ykfe/egg-react-ssr/tree/dev/example/ssr-with-ts)版本的实现 
+
+## 结合Serverless
+
+我们在Serverless场景下的[SSR框架](https://github.com/ykfe/ssr)已经正式发布，如果你更喜欢平滑开箱即用体验的更高层次解决方案并且希望能够快速部署。推荐使用该框架进行开发。与本项目不冲突，互相补位
 
 ### 写法
 
