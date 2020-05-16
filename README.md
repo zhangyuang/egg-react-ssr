@@ -16,7 +16,7 @@
 - 全：支持HMR，支持本地开发以及生产环境CSR/SSR两种渲染模式无缝切换，支持定制组件的渲染模式，同时支持TypeScript版本
 - 美：基于[React](https://reactjs.org/)和[Eggjs](https://eggjs.org/)框架，拥有强大的插件生态，配置非黑盒，方便加入当前业务的个性化逻辑
 
-`正在使用这个项目的公司(应用), 如果您正在使用但名单中没有列出来的话请提issue，欢迎推广分享`
+正在使用这个项目的公司(应用), 如果您正在使用但名单中没有列出来的话请提issue，欢迎推广分享
 
 <table>
 <tr>
@@ -41,6 +41,8 @@
 </b></a></td>
 </tr>
 </table>
+
+如果是Serverless环境，推荐同样写法但基于Serverless端渲染规范的实现 https://github.com/ykfe/ssr
 
 ## 快速入门
 
