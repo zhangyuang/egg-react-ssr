@@ -28,7 +28,7 @@ const dev = async (argv?: Argv) => {
     sockPort: PORT,
     contentBase: cwd + '/dist',
     hot: true,
-      // @ts-ignore
+    // @ts-ignore
     port: PORT,
     clientLogLevel: 'warning',
     headers: {
@@ -38,6 +38,7 @@ const dev = async (argv?: Argv) => {
       '/api': 'http://localhost:7001'
     }
   })
+  // @ts-ignore
   server.listen(PORT, '0.0.0.0', () => {
     process.send && process.send({ msg: 'start dev finish' })
   })
