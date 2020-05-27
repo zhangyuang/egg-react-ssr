@@ -7,7 +7,7 @@ module.exports = function (api) {
     [
       '@babel/preset-env',
       {
-        modules: isEs ? 'false' : 'auto',
+        modules: isEs ? false : 'auto',
         targets: {
           ie: '9'
         }
