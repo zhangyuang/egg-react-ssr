@@ -29,7 +29,7 @@ const renderToStream = async (ctx: Context, config: Config) => {
 
   if (config.type !== 'ssr' || csr) {
     const str = await renderLayout(ctx, config)
-    return str
+    return '<!DOCTYPE html>' + str
   }
 
   if (!global.renderToNodeStream) {
