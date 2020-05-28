@@ -28,8 +28,10 @@ const renderToStream = async (ctx: Context, config: Config) => {
   const csr = ctx.request?.query?.csr ? ctx.request.query.csr : false // 兼容express和koa的query获取
 
   if (config.type !== 'ssr' || csr) {
-    const str = await renderLayout(ctx, config)
-    return '<!DOCTYPE html>' + str
+    const stream = await renderLayout(ctx, config)
+    const doctypeStream = new ReadableString('<!DOCTYPE html>')
+    // @ts-ignore
+    return mergeStream(doctypeStream, stream)
   }
 
   if (!global.renderToNodeStream) {
