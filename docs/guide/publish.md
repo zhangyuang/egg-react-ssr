@@ -8,6 +8,11 @@
 
 egg 提供了从部署、进程守护、监控、问题排查等一系列的解决方案。详情见[egg 部署文档](https://eggjs.org/zh-cn/core/deployment.html)
 
+划重点:
+
+1、如果你没有任何服务端应用部署运维经验，直接生产环境执行 `sudo npm run prod` 即可或选择集成度更高的Serverless场景下的[SSR框架](https://github.com/ykfe/ssr)使用。  
+2、如果你有相关经验建议使用 `egg-scripts` 部署 而不是 `pm2`。原因见[文档](https://eggjs.org/zh-cn/faq.html#%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86%E4%B8%BA%E4%BB%80%E4%B9%88%E6%B2%A1%E6%9C%89%E9%80%89%E5%9E%8B-pm2)
+
 ## pm2 部署
 
 pm2 是一个带有负载均衡功能的应用的进程管理器。当你要把你的独立代码利用全部的服务器上的所有 CPU 核数，并保证进程永远都是存活状态和 0 秒的重载，那么 PM2 是很完美的选择。详细可参考[官方的部署文档示例](http://pm2.keymetrics.io/docs/usage/deployment/)，[github项目地址](https://github.com/Unitech/pm2)。
