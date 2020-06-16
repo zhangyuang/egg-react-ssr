@@ -46,7 +46,7 @@ Here we provide a CLI tool to initialize your project:
 
 ```bash
 $ npm install yk-cli -g
-$ ykcli init <Your Project Name> 
+$ ykcli init <Your Project Name>
 $ cd <Your Project Name>
 $ npm i
 $ npm start
@@ -60,6 +60,7 @@ When running `ykcli init`, you can choose JavaScript or TypeScript to create the
 Let me introduce some awesome features in our app boilerplate: simple to use, powerful functionality, everything is a component, seamless switching between CSR and SSR.
 
 More features:
+
 - [x] App developed by [CRA](https://github.com/facebook/create-react-app) can be migrated seamlessly. If you are familiar with CRA, the start-up cost is almost 0.
 - [x] Lightweight and elegant. Compared to highly encapsulated libraries like Beidou and Next.js, our design philosophy are clearer.
 - [x] SSR/CSR support; We can switch between SSR and CSR seamlessly in development or in production.
@@ -68,7 +69,7 @@ More features:
 - [x] HMR support in development.
 - [x] Stability has been tested on large-scale online apps and we can provide performance optimization solutions.
 - [x] It supports tree shaking and optimizes bundle size.
-- [x] Custom CSR/SSR layout support; There is no need to separate them manually by *path*.
+- [x] Custom CSR/SSR layout support; There is no need to separate them manually by _path_.
 - [x] Abandon traditional template engines; Embrace React components and use JSX as the template system.
 - [x] Extension with [Antd](https://github.com/ykfe/egg-react-ssr/tree/master/example/ssr-with-antd).
 - [x] Extension with [react-loadable](https://github.com/ykfe/egg-react-ssr/tree/master/example/ssr-with-loadable) for route splitting.
@@ -82,93 +83,99 @@ Both CSR and SSR are unified in terms of usage such as using the static method c
 
 ```js
 function Page(props) {
-  return <div> {props.name} </div>;
+  return <div> {props.name} </div>
 }
 
-Page.getInitialProps = async ctx => {
+Page.getInitialProps = async (ctx) => {
   return Promise.resolve({
-    name: "Egg + React + SSR"
-  });
-};
+    name: 'Egg + React + SSR',
+  })
+}
 
-export default Page;
+export default Page
 ```
 
 #### Explanation
 
 - `render` is a React function for rendering the view.
-- `getInitialProps` is the function in which we can fetch data and set the return value to the component state.
-	+ CSR: The function is implemented via HOC (High-order Component).
-	+ SSR: The function is executed by Node.js.
+- `getInitialProps` is the function in which we can fetch data and set the return value to the component state. + CSR: The function is implemented via HOC (High-order Component). + SSR: The function is executed by Node.js.
 
 Running `npm run csr` or `npm run ssr` is the simplest isomorphic rendering method to distinguish between CSR and SSR. When a page is on the very first loading, `getInitialProps` will only be loaded on the server side. Only if the router switches (i.e. by `<Link />` component or API), will the client executes `getInitialProps`.
 
 Parameters of `getInitialProps` are as follows:
 
 - **ctx**: An object used to contain request context of Node.js app, and will only be obtained in SSR.
-- **Router Props**: An object contains router infomation like *pathname*, *params*, *history*, etc. Learn more about [react-router](https://reacttraining.com/react-router/).
+- **Router Props**: An object contains router infomation like _pathname_, _params_, _history_, etc. Learn more about [react-router](https://reacttraining.com/react-router/).
 
 ### Everything is a component
 
-*html*, *meta* and other tags in our basic page template are generated using JSX, keeping you from using tedious template engine syntax.
+_html_, _meta_ and other tags in our basic page template are generated using JSX, keeping you from using tedious template engine syntax.
 
 ```js
-const commonNode = props =>
-	// In order to support SSR and CSR concurrently, please keep this conditional statement.
-	// If there is nothing in your layout, use `props.children ? { props.children } : ''`
+const commonNode = (props) =>
+  // In order to support SSR and CSR concurrently, please keep this conditional statement.
+  // If there is nothing in your layout, use `props.children ? { props.children } : ''`
   props.children ? (
-    <div className='normal'>
-      <h1 className='title'>
-        <Link to='/'>Egg + React + SSR</Link>
-        <div className='author'>by ykfe</div>
+    <div className="normal">
+      <h1 className="title">
+        <Link to="/">Egg + React + SSR</Link>
+        <div className="author">by ykfe</div>
       </h1>
       {props.children}
     </div>
   ) : (
-    ""
-  );
+    ''
+  )
 
-const Layout = props => {
+const Layout = (props) => {
   if (__isBrowser__) {
-    return commonNode(props);
+    return commonNode(props)
   } else {
-    const { serverData } = props.layoutData;
-    const { injectCss, injectScript } = props.layoutData.app.config;
+    const { serverData } = props.layoutData
+    const { injectCss, injectScript } = props.layoutData.app.config
     return (
-      <html lang='en'>
+      <html lang="en">
         <head>
-          <meta charSet='utf-8' />
-          <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no' />
-          <meta name='theme-color' content='#000000' />
+          <meta charSet="utf-8" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+          />
+          <meta name="theme-color" content="#000000" />
           <title>React App</title>
-          {injectCss && injectCss.map(item => <link rel='stylesheet' href={item} key={item} />)}
+          {injectCss &&
+            injectCss.map((item) => (
+              <link rel="stylesheet" href={item} key={item} />
+            ))}
         </head>
         <body>
-          <div id='app'>{commonNode(props)}</div>
+          <div id="app">{commonNode(props)}</div>
           {serverData && (
             <script
               dangerouslySetInnerHTML={{
-                __html: `window.__USE_SSR__=true; window.__INITIAL_DATA__ =${serialize(serverData)}`
+                __html: `window.__USE_SSR__=true; window.__INITIAL_DATA__ =${serialize(
+                  serverData
+                )}`,
               }}
             />
           )}
           <div
             dangerouslySetInnerHTML={{
-              __html: injectScript && injectScript.join("")
+              __html: injectScript && injectScript.join(''),
             }}
           />
         </body>
       </html>
-    );
+    )
   }
-};
+}
 ```
 
 ### How to change rendering mode
 
 During development, run SSR and CSR concurrently to learn about their differences. In production, switch between two modes by setting `config.type` or using URI query. Besides, we can choose to downgrade the mode to CSR in heavy network traffic.
 
-Refer to this doc: [How to change the rendering mode](http://ykfe.net/guide/faq.html#%E5%A6%82%E4%BD%95%E5%88%87%E6%8D%A2%E6%B8%B2%E6%9F%93%E6%A8%A1%E5%BC%8F).
+Refer to this doc: [How to change the rendering mode](http://ykfe.surge.sh/guide/faq.html#%E5%A6%82%E4%BD%95%E5%88%87%E6%8D%A2%E6%B8%B2%E6%9F%93%E6%A8%A1%E5%BC%8F).
 
 ```bash
 $ open http://localhost:7001/          # use SSR
@@ -177,9 +184,12 @@ $ open http://localhost:7001/?csr=true # use CSR by URI query (or config.type)
 
 ## Execution Environment
 
-### Node.js 
+### Node.js
+
 Node.js version on your server should be 7.6 or higher for the sake of `async/await` syntax.
-### Browser  
+
+### Browser
+
 React supports **all popular browsers**, including **IE 9 and above**, although some polyfills are required for older browsers such as IE 9 and IE 10. Therefore, you may need to import [Polyfill](https://reactjs.org/docs/javascript-environment-requirements.html).
 
 ## Execution Progresss
@@ -231,9 +241,10 @@ module.exports = {
 ```
 
 ## Directory Structure
+
 The directory structure maintains the style of Egg, such as the `app` and `config` directories. First put the related files of React into the `web` directory, then put the relevant files of webpack build into the `build` directory. On the whole, the directory is reasonable and not complex.
 
-```bash 
+```bash
 ├── README.md
 ├── app    # Egg core directory
 │   ├── controller
@@ -298,7 +309,7 @@ $ npm start # start listening port on 7001 (running SSR + CSR hydrate concurrent
 
 ### Companion Script
 
-```bash 
+```bash
 $ npm run prod     # simulate production environment of SSR app
 $ npm run build    # build resource files from server and client
 $ npm run analyze  # visualize and analyze the client build
@@ -365,9 +376,8 @@ Welcome to join our DingTalk group by scanning the QR Code below.
 <!-- ## Sponsors
 If this project is helpful to you, consider buying us a coffee. Your funds will be used for team building instead of self consumption.
 
-If you are not on our __[Sponsor List](http://ykfe.net/guide/donate.html)__, please create an [issue](https://github.com/ykfe/egg-react-ssr/issues) for that.
+If you are not on our __[Sponsor List](http://ykfe.surge.sh/guide/donate.html)__, please create an [issue](https://github.com/ykfe/egg-react-ssr/issues) for that.
 
 <div style="display:flex"><img src="https://gw.alicdn.com/tfs/TB1X1vRouT2gK0jSZFvXXXnFXXa-600-900.jpg" width="200" height="270">
 <img src="https://gw.alicdn.com/tfs/TB1BtPToxz1gK0jSZSgXXavwpXa-1242-1686.jpg" width="200" height="270">
 </div> -->
-

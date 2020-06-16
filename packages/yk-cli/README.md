@@ -1,6 +1,6 @@
 # yk-cli
 
-用于快速创建一个Egg + React + SSR 应用的脚手架
+用于快速创建一个 Egg + React + SSR 应用的脚手架
 
 ## Getting Start
 
@@ -17,4 +17,4 @@ $ open http://localhost:7001
 
 ## Guide
 
-更详细的使用说明请查看[官方文档](http://ykfe.net)
+更详细的使用说明请查看[官方文档](http://ykfe.surge.sh)

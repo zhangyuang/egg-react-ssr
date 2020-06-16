@@ -12,11 +12,11 @@
 
 最小而美的服务端渲染应用模板，特点
 
-- 小：实现方式简洁，生产环境构建出来的bundle为同等复杂度的next.js项目的0.7倍，生成文件数量相比于next.js减少非常多
-- 全：支持HMR，支持本地开发以及生产环境CSR/SSR两种渲染模式无缝切换，支持定制组件的渲染模式，同时支持TypeScript版本
+- 小：实现方式简洁，生产环境构建出来的 bundle 为同等复杂度的 next.js 项目的 0.7 倍，生成文件数量相比于 next.js 减少非常多
+- 全：支持 HMR，支持本地开发以及生产环境 CSR/SSR 两种渲染模式无缝切换，支持定制组件的渲染模式，同时支持 TypeScript 版本
 - 美：基于[React](https://reactjs.org/)和[Eggjs](https://eggjs.org/)框架，拥有强大的插件生态，配置非黑盒，方便加入当前业务的个性化逻辑
 
-正在使用这个项目的公司(应用), 如果您正在使用但名单中没有列出来的话请提issue，欢迎推广分享
+正在使用这个项目的公司(应用), 如果您正在使用但名单中没有列出来的话请提 issue，欢迎推广分享
 
 <table>
 <tr>
@@ -42,7 +42,7 @@
 </tr>
 </table>
 
-如果是Serverless环境，推荐同样写法但基于Serverless端渲染规范的实现 https://github.com/ykfe/ssr
+如果是 Serverless 环境，推荐同样写法但基于 Serverless 端渲染规范的实现 https://github.com/ykfe/ssr
 
 ## 快速入门
 
@@ -57,30 +57,30 @@ $ npm start
 $ open http://localhost:7001
 ```
 
-在执行 `ykcli init` 的时候，可以选择javascript或typescript语言，非常方便。
+在执行 `ykcli init` 的时候，可以选择 javascript 或 typescript 语言，非常方便。
 
 ## npm scripts
 
 1）启动服务
 
-启动监听7001端口，此端口同时用于服务端渲染以及客户端渲染，通过query或者config来指定渲染模式
+启动监听 7001 端口，此端口同时用于服务端渲染以及客户端渲染，通过 query 或者 config 来指定渲染模式
 
 ```bash
 $ npm start # 建议以本方式启动应用，同时启动服务端渲染 + 客户端hydrate
 ```
 
-2）只启动服务端渲染，此时仅服务端直出html，没有与客户端混合的步骤
+2）只启动服务端渲染，此时仅服务端直出 html，没有与客户端混合的步骤
 
 ```bash
-$ npm run ssr 
+$ npm run ssr
 ```
 
 3）启动客户端渲染
 
-仅限于本地开发使用，启动监听8000端口，只启动客户端渲染，相当于传统的cra脚手架开发模式
+仅限于本地开发使用，启动监听 8000 端口，只启动客户端渲染，相当于传统的 cra 脚手架开发模式
 
 ```bash
-$ npm run csr 
+$ npm run csr
 ```
 
 4）配套的脚本
@@ -96,32 +96,33 @@ $ npm run analyze # 可视化分析客户端打包的资源详情
 该模板特色为：写法简单、功能强大、一切都是组件、支持 SSR/CSR 两种渲染模式无缝切换。
 
 更多功能/特性如下：
-- [x] 基于cra脚手架开发，由cra开发的React App可无缝迁移，如果你熟悉cra的配置，上手成本几乎为0
-- [x] 小而美，相比于beidou，next.js这样的高度封装方案，我们的实现原理和开发模式一目了然
-- [x] 推荐使用egg作为Node.js框架但并不强制，事实上你可以发现几乎无需做任何修改即可迁移到koa,nest.js等框架
-- [x] 同时支持SSR以及CSR两种开发模式,本地开发环境以及线上环境皆可无缝切换两种渲染模式
+
+- [x] 基于 cra 脚手架开发，由 cra 开发的 React App 可无缝迁移，如果你熟悉 cra 的配置，上手成本几乎为 0
+- [x] 小而美，相比于 beidou，next.js 这样的高度封装方案，我们的实现原理和开发模式一目了然
+- [x] 推荐使用 egg 作为 Node.js 框架但并不强制，事实上你可以发现几乎无需做任何修改即可迁移到 koa,nest.js 等框架
+- [x] 同时支持 SSR 以及 CSR 两种开发模式,本地开发环境以及线上环境皆可无缝切换两种渲染模式
 - [x] 统一前端路由与服务端路由，无需重复编写路由文件配置
 - [x] 支持切换路由时自动获取数据
-- [x] 支持本地开发HMR
+- [x] 支持本地开发 HMR
 - [x] 稳定性经过线上大规模应用验证，可提供性能优化方案
-- [x] 支持tree shaking，优化构建bundle大小以及数量
-- [x] 支持csr/ssr自定义layout，无需通过path来手动区分
-- [x] 抛弃传统模版引擎，拥抱 React 组件，使用JSX来作为模版
-- [x] 独创[最佳发布实践](http://ykfe.net/guide/deploy.html)，让你更新页面无需重启应用机器
-- [x] 配套结合[antd](https://github.com/ykfe/egg-react-ssr/tree/master/example/ssr-with-antd)的example的实现
-- [x] 配套结合[react-loadable](https://github.com/ykfe/egg-react-ssr/tree/master/example/ssr-with-loadable)做路由分割的example的实现
-- [x] 配套结合[dva](https://github.com/ykfe/egg-react-ssr/tree/master/example/ssr-with-dva)做数据管理的example的实现
-- [x] 配套结合[ssr-with-multipage](https://github.com/ykfe/egg-react-ssr/tree/dev/example/ssr-with-multipage)多页面应用的example
+- [x] 支持 tree shaking，优化构建 bundle 大小以及数量
+- [x] 支持 csr/ssr 自定义 layout，无需通过 path 来手动区分
+- [x] 抛弃传统模版引擎，拥抱 React 组件，使用 JSX 来作为模版
+- [x] 独创[最佳发布实践](http://ykfe.surge.sh/guide/deploy.html)，让你更新页面无需重启应用机器
+- [x] 配套结合[antd](https://github.com/ykfe/egg-react-ssr/tree/master/example/ssr-with-antd)的 example 的实现
+- [x] 配套结合[react-loadable](https://github.com/ykfe/egg-react-ssr/tree/master/example/ssr-with-loadable)做路由分割的 example 的实现
+- [x] 配套结合[dva](https://github.com/ykfe/egg-react-ssr/tree/master/example/ssr-with-dva)做数据管理的 example 的实现
+- [x] 配套结合[ssr-with-multipage](https://github.com/ykfe/egg-react-ssr/tree/dev/example/ssr-with-multipage)多页面应用的 example
 - [x] 配套结合[Rax](https://github.com/ykfe/egg-react-ssr/tree/dev/example/ssr-with-rax)版本的实现
-- [x] 配套[TypeScript](https://github.com/ykfe/egg-react-ssr/tree/dev/example/ssr-with-ts)版本的实现 
+- [x] 配套[TypeScript](https://github.com/ykfe/egg-react-ssr/tree/dev/example/ssr-with-ts)版本的实现
 
-## 结合Serverless
+## 结合 Serverless
 
-我们在Serverless场景下的[SSR框架](https://github.com/ykfe/ssr)已经正式发布，如果你更喜欢平滑开箱即用体验的更高层次解决方案并且希望能够快速部署。推荐使用该框架进行开发。与本项目不冲突，互相补位
+我们在 Serverless 场景下的[SSR 框架](https://github.com/ykfe/ssr)已经正式发布，如果你更喜欢平滑开箱即用体验的更高层次解决方案并且希望能够快速部署。推荐使用该框架进行开发。与本项目不冲突，互相补位
 
 ### 写法
 
-在写法上统一csr和ssr，采用next类似的静态的getInitialProps作为数据获取方法
+在写法上统一 csr 和 ssr，采用 next 类似的静态的 getInitialProps 作为数据获取方法
 
 ```js
 function Page(props) {
@@ -130,7 +131,7 @@ function Page(props) {
 
 Page.getInitialProps = async (ctx) => {
   return Promise.resolve({
-    name: 'Egg + React + SSR'
+    name: 'Egg + React + SSR',
   })
 }
 
@@ -139,29 +140,36 @@ export default Page
 
 具体说明如下。
 
-- render是React的视图渲染方法
-- getInitialProps是获取数据方法，将返回值赋值给组件状态
-    - csr通过高阶组件实现
-    - ssr通过Node执行
+- render 是 React 的视图渲染方法
+- getInitialProps 是获取数据方法，将返回值赋值给组件状态
+  - csr 通过高阶组件实现
+  - ssr 通过 Node 执行
 
-在运行时，通过`npm run csr`和`npm run ssr`来进行区分，是目前最简单的同构渲染方案。当页面初始化加载时，getInitialProps只会加载在服务端。只有当路由跳转（Link组件跳转或 API 方法跳转）时，客户端才会执行getInitialProps。
+在运行时，通过`npm run csr`和`npm run ssr`来进行区分，是目前最简单的同构渲染方案。当页面初始化加载时，getInitialProps 只会加载在服务端。只有当路由跳转（Link 组件跳转或 API 方法跳转）时，客户端才会执行 getInitialProps。
 
-getInitialProps入参对象的属性如下：
+getInitialProps 入参对象的属性如下：
 
-- ctx: Node应用请求的上下文(仅在SSR阶段可以获取)
-- Router Props: 包含路由对象属性，包括pathname以及Router params history 等对象，详细信息参考react-router文档
+- ctx: Node 应用请求的上下文(仅在 SSR 阶段可以获取)
+- Router Props: 包含路由对象属性，包括 pathname 以及 Router params history 等对象，详细信息参考 react-router 文档
 
 ### 一切皆组件
 
-我们的页面基础模版 html，meta 等标签皆使用JSX来生成，避免你去使用繁琐的模版引擎语法
+我们的页面基础模版 html，meta 等标签皆使用 JSX 来生成，避免你去使用繁琐的模版引擎语法
 
-``` js
-const commonNode = props => (
+```js
+const commonNode = (props) =>
   // 为了同时兼容ssr/csr请保留此判断，如果你的layout没有内容请使用 props.children ? { props.children } : ''
-  props.children
-    ? <div className='normal'><h1 className='title'><Link to='/'>Egg + React + SSR</Link><div className='author'>by ykfe</div></h1>{props.children}</div>
-    : ''
-)
+  props.children ? (
+    <div className="normal">
+      <h1 className="title">
+        <Link to="/">Egg + React + SSR</Link>
+        <div className="author">by ykfe</div>
+      </h1>
+      {props.children}
+    </div>
+  ) : (
+    ''
+  )
 
 const Layout = (props) => {
   if (__isBrowser__) {
@@ -170,26 +178,36 @@ const Layout = (props) => {
     const { serverData } = props.layoutData
     const { injectCss, injectScript } = props.layoutData.app.config
     return (
-      <html lang='en'>
+      <html lang="en">
         <head>
-          <meta charSet='utf-8' />
-          <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no' />
-          <meta name='theme-color' content='#000000' />
+          <meta charSet="utf-8" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+          />
+          <meta name="theme-color" content="#000000" />
           <title>React App</title>
-          {
-            injectCss && injectCss.map(item => <link rel='stylesheet' href={item} key={item} />)
-          }
+          {injectCss &&
+            injectCss.map((item) => (
+              <link rel="stylesheet" href={item} key={item} />
+            ))}
         </head>
         <body>
-          <div id='app'>{ commonNode(props) }</div>
-          {
-            serverData && <script dangerouslySetInnerHTML={{
-              __html: `window.__USE_SSR__=true; window.__INITIAL_DATA__ =${serialize(serverData)}`
-            }} />
-          }
-          <div dangerouslySetInnerHTML={{
-            __html: injectScript && injectScript.join('')
-          }} />
+          <div id="app">{commonNode(props)}</div>
+          {serverData && (
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `window.__USE_SSR__=true; window.__INITIAL_DATA__ =${serialize(
+                  serverData
+                )}`,
+              }}
+            />
+          )}
+          <div
+            dangerouslySetInnerHTML={{
+              __html: injectScript && injectScript.join(''),
+            }}
+          />
         </body>
       </html>
     )
@@ -199,8 +217,8 @@ const Layout = (props) => {
 
 ### 如何切换渲染模式
 
-在本地开发时，你可以同时启动ssr/csr两种渲染模式查看区别，在生产环境时，你可以通过设置config中的type属性来切换不同的渲染模式或者通过query来切换，在流量较大时可以降级为csr渲染模式
-参考文档[如何切换渲染模式](http://ykfe.net/guide/faq.html#%E5%A6%82%E4%BD%95%E5%88%87%E6%8D%A2%E6%B8%B2%E6%9F%93%E6%A8%A1%E5%BC%8F)
+在本地开发时，你可以同时启动 ssr/csr 两种渲染模式查看区别，在生产环境时，你可以通过设置 config 中的 type 属性来切换不同的渲染模式或者通过 query 来切换，在流量较大时可以降级为 csr 渲染模式
+参考文档[如何切换渲染模式](http://ykfe.surge.sh/guide/faq.html#%E5%A6%82%E4%BD%95%E5%88%87%E6%8D%A2%E6%B8%B2%E6%9F%93%E6%A8%A1%E5%BC%8F)
 
 ```bash
 $ open http://localhost:7001/          # 以SSR模式渲染应用
@@ -209,17 +227,16 @@ $ open http://localhost:7001/?csr=true # 切换为CSR模式渲染或者通过con
 
 ## 执行环境
 
-- 服务器Node.js >= 7.6， 为了原生的使用async/await语法
-- 浏览器版本大于等于IE9, React支持到IE9，但为了更好的在IE下使用，你可能需要引入[Polyfill](https://reactjs.org/docs/javascript-environment-requirements.html)
+- 服务器 Node.js >= 7.6， 为了原生的使用 async/await 语法
+- 浏览器版本大于等于 IE9, React 支持到 IE9，但为了更好的在 IE 下使用，你可能需要引入[Polyfill](https://reactjs.org/docs/javascript-environment-requirements.html)
 
 ## 执行流程
 
 ![](https://gw.alicdn.com/tfs/TB11BwkX8Gw3KVjSZFDXXXWEpXa-2050-1502.jpg)
 
-
 ### 配置
 
-为了足够灵活使用，这里我们将一些关键项提供可配置的选项，可根据实际需要来配置，如无特殊必要，使用默认配置即可。服务端渲染相关配置信息我们放在config.ssr.js，在这里我们建议不要将配置放在egg的配置文件当中，避免前端bundle中包含后端配置文件信息
+为了足够灵活使用，这里我们将一些关键项提供可配置的选项，可根据实际需要来配置，如无特殊必要，使用默认配置即可。服务端渲染相关配置信息我们放在 config.ssr.js，在这里我们建议不要将配置放在 egg 的配置文件当中，避免前端 bundle 中包含后端配置文件信息
 
 ```js
 // config/config.ssr
@@ -264,7 +281,7 @@ module.exports = {
 
 ## 目录结构
 
-目录结构保持了Egg的方式，以app和config目录为主。将前端React相关代码放到web目录下，webpack打包相关文件位于build目录。整体来看，目录不多，层级不深，属于刚刚好那种。
+目录结构保持了 Egg 的方式，以 app 和 config 目录为主。将前端 React 相关代码放到 web 目录下，webpack 打包相关文件位于 build 目录。整体来看，目录不多，层级不深，属于刚刚好那种。
 
 ```bash
 ├── README.md
@@ -309,7 +326,7 @@ module.exports = {
 
 ## 与其他方案的对比
 
-- 与[easy-team](https://github.com/ykfe/egg-react-ssr/wiki/与easy-team实现方案的对比)方案的对比  
+- 与[easy-team](https://github.com/ykfe/egg-react-ssr/wiki/与easy-team实现方案的对比)方案的对比
 - 与[next.js](https://github.com/ykfe/egg-react-ssr/wiki/与next.js实现方案的对比)方案的对比
 
 ## 本地如何调试源码
@@ -349,6 +366,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
@@ -359,7 +377,7 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 
 ## NodeParty 分享
 
-如果你想了解本应用的设计思路，欢迎下载查看本人在2020.1.11日在北京NodeParty上所做的分享[PPT](https://github.com/ykfe/egg-react-ssr/wiki/2020-NodeParty-%E5%88%86%E4%BA%AB)，其中讨论了需要关注的一些问题的设计思路和解决方案的选取
+如果你想了解本应用的设计思路，欢迎下载查看本人在 2020.1.11 日在北京 NodeParty 上所做的分享[PPT](https://github.com/ykfe/egg-react-ssr/wiki/2020-NodeParty-%E5%88%86%E4%BA%AB)，其中讨论了需要关注的一些问题的设计思路和解决方案的选取
 
 ## 答疑群
 

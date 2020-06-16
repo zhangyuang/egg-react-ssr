@@ -20,7 +20,7 @@
     "test:e2e": "NODE_ENV=production ts-node ./test/e2e/startServer.js",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
-    "docs:publish": "npm run docs:build && surge ./docs/.vuepress/dist ykfe.surge.sh --domain ykfe.net"
+    "docs:publish": "npm run docs:build && surge ./docs/.vuepress/dist ykfe.surge.sh"
   },
   "repository": {
     "type": "git",
