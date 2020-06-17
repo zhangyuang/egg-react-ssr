@@ -10,7 +10,7 @@
     "react-dom": "16.8.3",
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.0",
-    "ykfe-utils": "^2.0.2",
+    "ykfe-utils": "^3.0.0",
     "serialize-javascript": "^2.1.2"
   },
   "scripts": {
@@ -32,9 +32,11 @@
   ],
   "devDependencies": {
     "@babel/core": "^7.4.4",
+    "@babel/plugin-transform-runtime": "^7.10.1",
     "@babel/polyfill": "^7.4.4",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
+    "@babel/runtime": "^7.10.2",
     "babel-loader": "8.0.4",
     "browserslist": "^4.6.3",
     "concurrently": "^4.1.0",
@@ -53,17 +55,17 @@
     "postcss-loader": "3.0.0",
     "postcss-preset-env": "^6.0.5",
     "postcss-safe-parser": "4.0.1",
-    "rimraf": "^2.6.3",
     "react-dev-utils": "^8.0.0",
+    "rimraf": "^2.6.3",
     "terser-webpack-plugin": "^1.2.0",
     "url-loader": "1.1.1",
     "webpack": "4.19.1",
     "webpack-bundle-analyzer": "^3.0.3",
     "webpack-cli": "^3.3.3",
-    "webpack-dev-server": "3.3.1",
+    "webpack-dev-server": "^3.3.1",
     "webpack-manifest-plugin": "^2.0.4",
     "webpack-merge": "^4.1.4",
     "webpack-node-externals": "^1.7.2",
-    "yk-cli": "^2.0.0"
+    "yk-cli": "^3.0.0"
   }
 }
