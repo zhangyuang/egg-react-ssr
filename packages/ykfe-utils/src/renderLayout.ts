@@ -1,5 +1,5 @@
 
-import { Context }from 'midway'
+import { Context } from 'midway'
 import { useCdn } from './useCdn'
 import { reactToStream, getVersion } from './utils'
 import { Config } from './interface/config'
