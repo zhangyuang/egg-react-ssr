@@ -2,6 +2,7 @@ import { Context } from 'midway'
 import { RouteItem } from './route'
 export interface Config {
   baseDir?: string
+  baseName?: string
   type?: string
   serverJs: ServerJs | string,
   layout: ServerJs | string
