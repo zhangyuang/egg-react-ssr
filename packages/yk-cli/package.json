@@ -12,10 +12,6 @@
   "bin": {
     "ykcli": "./lib/cli.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ykfe/yk-cli.git"
-  },
   "dependencies": {
     "download-git-repo": "^2.0.0",
     "inquirer": "6.3.1",
@@ -38,7 +34,7 @@
   "keywords": [],
   "author": "",
   "bugs": {
-    "url": "https://github.com/ykfe/yk-cli/issues"
+    "url": "https://github.com/ykfe"
   },
-  "homepage": "https://github.com/ykfe/yk-cli#readme"
+  "homepage": "https://github.com/ykfe"
 }
