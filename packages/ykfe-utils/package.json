@@ -9,7 +9,10 @@
     "types": "concurrently \"tsc --outDir ./es\" \"tsc --outDir ./lib\" ",
     "watch:es": "NODE_ENV=production BABEL_ENV=es babel src --out-dir es --watch --extensions '.ts,.tsx'",
     "watch:lib": "NODE_ENV=production BABEL_ENV=lib babel src --out-dir lib --watch --extensions '.ts,.tsx'",
-    "watch": "concurrently \"npm run watch:es\" \"npm run watch:lib \""
+    "watch": "concurrently \"npm run watch:es\" \"npm run watch:lib \"",
+    "build:es": "NODE_ENV=production BABEL_ENV=es babel src --out-dir es --extensions '.ts,.tsx'",
+    "build:lib": "NODE_ENV=production BABEL_ENV=lib babel src --out-dir lib --extensions '.ts,.tsx'",
+    "build": "npm run build:es && npm run build:lib"
   },
   "author": "zhangyuang",
   "dependencies": {

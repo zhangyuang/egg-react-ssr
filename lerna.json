@@ -2,6 +2,13 @@
   "packages": [
     "packages/*"
   ],
-  "npmClient": "npm",
-  "version": "3.2.0"
+  "version": "3.6.14",
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "ignoreChanges": [
+    "**/src",
+    "**/*.md",
+    "**/*.test.ts",
+    "**/*.e2e.ts"
+  ]
 }

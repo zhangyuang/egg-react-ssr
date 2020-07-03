@@ -1,5 +1,9 @@
 {
   "name": "egg-react-ssr",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "version": "2.0.0",
   "description": "The Best Scheme for Server Side Rendering",
   "main": "index.js",
@@ -8,10 +12,10 @@
     "example": "example"
   },
   "scripts": {
+    "clean": "rm -rf packages/**/lib packages/**/es && lerna clean",
+    "watch": "lerna run watch:cjs --stream --parallel",
     "build": "lerna run build --stream --parallel",
-    "watch": "lerna run watch --stream --parallel",
     "publish": "npm run build && lerna publish",
-    "clean": "lerna clean --yes && rm -rf ./packages/**/package-lock.json",
     "bootstrap": "npm i && lerna bootstrap && node ./test/scripts/preInstall.js",
     "lint": "tslint -c tslint.json -p ./tsconfig.json && standard",
     "lint:fix": "standard --fix && tslint -c tslint.json -p ./tsconfig.json --fix",
