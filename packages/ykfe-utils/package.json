@@ -15,6 +15,11 @@
     "build": "npm run build:es && npm run build:lib"
   },
   "author": "zhangyuang",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ykfe/ykfe-utils.git"
+  },
+  "homepage": "https://github.com/ykfe/ykfe-utils#readme",
   "dependencies": {
     "@types/merge-stream": "^1.1.2",
     "axios": "^0.19.0",
