@@ -75,9 +75,9 @@ $ npm start # 建议以本方式启动应用，同时启动服务端渲染 + 客
 $ npm run ssr
 ```
 
-3）启动客户端渲染
+3）启动客户端静态资源编译
 
-仅限于本地开发使用，启动监听 8000 端口，只启动客户端渲染，相当于传统的 cra 脚手架开发模式
+仅限于本地开发使用，启动监听 8000 端口托管前端静态资源，相当于传统的 cra 脚手架开发模式
 
 ```bash
 $ npm run csr
@@ -145,7 +145,7 @@ export default Page
   - csr 通过高阶组件实现
   - ssr 通过 Node 执行
 
-在运行时，通过`npm run csr`和`npm run ssr`来进行区分，是目前最简单的同构渲染方案。当页面初始化加载时，getInitialProps 只会加载在服务端。只有当路由跳转（Link 组件跳转或 API 方法跳转）时，客户端才会执行 getInitialProps。
+在运行时，通过`config.type`来进行区分，是目前最简单的同构渲染方案。当页面初始化加载时，getInitialProps 只会加载在服务端。只有当路由跳转（Link 组件跳转或 API 方法跳转）时，客户端才会执行 getInitialProps。
 
 getInitialProps 入参对象的属性如下：
 
