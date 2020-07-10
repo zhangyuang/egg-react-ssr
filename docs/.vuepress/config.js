@@ -2,9 +2,9 @@ module.exports = {
   title: 'Egg + React + SSR 服务端渲染',
   head: [
     ['link', { rel: 'icon', href: 'https://avatars1.githubusercontent.com/u/50347314?s=200&v=4' }],
-    ['meta', { name: 'keywords', itemprop: 'keywords', content: '服务端渲染, React, Egg, SSR, ReactSSR'}],
-    ['meta', { property: 'og:title', content: 'Egg + React + SSR 服务端渲染'}],
-    ['meta', { property: 'og:description', content: 'Egg + React + SSR 服务端渲染, 最小而美的服务端渲染应用骨架'}],
+    ['meta', { name: 'keywords', itemprop: 'keywords', content: '服务端渲染, React, Egg, SSR, ReactSSR' }],
+    ['meta', { property: 'og:title', content: 'Egg + React + SSR 服务端渲染' }],
+    ['meta', { property: 'og:description', content: 'Egg + React + SSR 服务端渲染, 最小而美的服务端渲染应用骨架' }],
     ['script', {}, `var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
@@ -19,8 +19,8 @@ module.exports = {
       description: '最小而美的服务端渲染应用骨架',
     },
     '/en/': {
-       // 英文版，待补充
-       lang: 'en-US'
+      // 英文版，待补充
+      lang: 'en-US'
     }
   },
   themeConfig: {
@@ -28,7 +28,6 @@ module.exports = {
       '/': {
         nav: [
           { text: '指南', link: '/guide/' },
-          { text: '配置', link: '/config/' },
           { text: 'Github', link: 'https://github.com/ykfe/egg-react-ssr' },
         ],
         selectText: '选择语言',
