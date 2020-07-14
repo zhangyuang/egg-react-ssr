@@ -23,6 +23,8 @@ function Page (props) {
 
 Page.getInitialProps = async ({ store }) => {
   await store.dispatch({ type: 'page/getData' })
+  const { page } = store.getState();
+  return { page };
 }
 
 const mapStateToProps = (state) => ({
