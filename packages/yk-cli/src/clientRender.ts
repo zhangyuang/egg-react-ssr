@@ -55,7 +55,7 @@ const build = async () => {
     version: true,
     warnings: false
   }, clientConfig.stats)))
-  ora.succeed()
+  ora.succeed('构建成功')
 }
 
 module.exports = {
