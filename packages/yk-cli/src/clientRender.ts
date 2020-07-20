@@ -47,14 +47,14 @@ const dev = async (argv?: Argv) => {
 const build = async () => {
   ora.start()
   const stats: any = await webpackWithPromise(clientConfig)
-  console.log(stats.toString({
+  console.log(stats.toString(Object.assign({
     assets: true,
     colors: true,
     hash: true,
     timings: true,
     version: true,
     warnings: false
-  }))
+  }, clientConfig.stats)))
   ora.succeed()
 }
 
