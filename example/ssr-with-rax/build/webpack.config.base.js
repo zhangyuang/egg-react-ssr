@@ -93,7 +93,8 @@ const webpackModule = {
 module.exports = {
   stats: {
     children: false,
-    entrypoints: false
+    entrypoints: false,
+    moduleTrace: false
   },
   mode: process.env.NODE_ENV,
   resolve: {
