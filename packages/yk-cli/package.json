@@ -1,6 +1,6 @@
 {
   "name": "yk-cli",
-  "version": "3.6.18",
+  "version": "3.6.19",
   "description": "ykcli for ssr",
   "main": "./lib/index.js",
   "module": "./es/index.js",
