@@ -31,7 +31,6 @@ const dev = async (argv?: Argv) => {
       warnings: false,
       entrypoints: false
     },
-    quiet: true,
     disableHostCheck: true,
     publicPath: clientConfig.output.publicPath || '/',
     host: '0.0.0.0',
