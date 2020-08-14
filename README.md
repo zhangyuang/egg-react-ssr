@@ -287,7 +287,7 @@ module.exports = {
 // build/webpack.config.client.js
 
 module.epxorts = {
-  devServerConfig: {
+  devServer: {
     // custom webpack-dev-server config
   }
 }

@@ -46,7 +46,7 @@ const dev = async (argv?: Argv) => {
     proxy: {
       '/api': 'http://localhost:7001'
     }
-  }, clientConfig.devServerConfig))
+  }, clientConfig.devServer))
   // @ts-ignore
   server.listen(PORT, '0.0.0.0', (err) => {
     if (err) {
