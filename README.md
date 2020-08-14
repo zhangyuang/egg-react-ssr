@@ -234,7 +234,7 @@ $ open http://localhost:7001/?csr=true # 切换为CSR模式渲染或者通过con
 
 ![](https://gw.alicdn.com/tfs/TB11BwkX8Gw3KVjSZFDXXXWEpXa-2050-1502.jpg)
 
-### 配置
+### 运行配置
 
 为了足够灵活使用，这里我们将一些关键项提供可配置的选项，可根据实际需要来配置，如无特殊必要，使用默认配置即可。服务端渲染相关配置信息我们放在 config.ssr.js，在这里我们建议不要将配置放在 egg 的配置文件当中，避免前端 bundle 中包含后端配置文件信息
 
@@ -277,6 +277,21 @@ module.exports = {
   serverJs: resolvePath(`dist/Page.server.js`): string|function, // 打包后的server端的bundle文件路径支持传入CDN地址, 接受直接传入require后的function
   layout: resolvePath(`dist/Layout.server.js`): string|function // 打包后的server端的bundle文件路径支持传入CDN地址, 接受直接传入require后的function
 }
+```
+
+### 开发配置
+
+修改默认 `webpack-dev-server的配置`
+
+```js
+// build/webpack.config.client.js
+
+module.epxorts = {
+  devServerConfig: {
+    // custom webpack-dev-server config
+  }
+}
+
 ```
 
 ## 目录结构
