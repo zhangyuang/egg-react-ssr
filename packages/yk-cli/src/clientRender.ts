@@ -20,7 +20,7 @@ const dev = async (argv?: Argv) => {
   const PORT = (argv && argv.PORT) || process.env.FE_PORT || 8000
   const compiler = webpack(clientConfig)
   // @ts-ignore
-  const server = new WebpackDevServer(compiler, {
+  const server = new WebpackDevServer(compiler, Object.assign({
     stats: {
       assets: true, // 添加资源信息
       cachedAssets: false, // 显示缓存的资源（将其设置为 `false` 则仅显示输出的文件）
@@ -45,8 +45,8 @@ const dev = async (argv?: Argv) => {
     },
     proxy: {
       '/api': 'http://localhost:7001'
-    }
-  })
+    },
+  }, clientConfig.devServerConfig))
   // @ts-ignore
   server.listen(PORT, '0.0.0.0', (err) => {
     if (err) {
