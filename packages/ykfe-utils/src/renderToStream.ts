@@ -1,10 +1,11 @@
 import { Context } from 'midway'
-import mergeStream from 'merge-stream'
 import { getVersion, ReadableString } from './utils'
 import { renderLayout } from './renderLayout'
 import { useCdn } from './useCdn'
 import { Config } from './interface/config'
 import { Global } from './interface/global'
+
+const mergeStream = require('merge-stream')
 
 declare const global: Global
 
