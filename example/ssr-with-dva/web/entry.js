@@ -11,7 +11,7 @@ import models from './models'
 const initDva = (options) => {
   const app = dva(options)
   models.forEach(m => app.model(m))
-  app.router(() => {})
+  app.router(() => { })
   app.start()
   return app
 }
@@ -58,14 +58,14 @@ const serverRender = async ctx => {
   ctx.store = store
   const ActiveComponent = getComponent(Routes, ctx.path)()
   const Layout = ActiveComponent.Layout || defaultLayout
-  ActiveComponent.getInitialProps ? await ActiveComponent.getInitialProps(ctx) : {} // eslint-disable-line
+  const componentData = ActiveComponent.getInitialProps ? await ActiveComponent.getInitialProps(ctx) : {} // eslint-disable-line
   const storeState = store.getState()
-  ctx.serverData = storeState
-
+  const mergeData = Object.assign({}, componentData, storeState)
+  ctx.serverData = mergeData
   app.router(() => (
-    <StaticRouter location={ctx.req.url} context={storeState}>
+    <StaticRouter location={ctx.req.url} context={mergeData}>
       <Layout layoutData={ctx}>
-        <ActiveComponent {...storeState} />
+        <ActiveComponent {...mergeData} />
       </Layout>
     </StaticRouter>
   ))
