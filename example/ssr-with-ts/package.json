@@ -1,6 +1,6 @@
 {
   "name": "ssr-with-ts",
-  "version": "2.3.14",
+  "version": "2.3.16",
   "description": "ykfe",
   "dependencies": {
     "midway": "^1.0.0",
@@ -56,7 +56,7 @@
     "node": ">=10.16.0"
   },
   "scripts": {
-    "prod": "npm run build && NODE_ENV=production node server.js",
+    "prod": "npm run build && NODE_ENV=production egg-scripts start --title=egg-server-ssr-with-ts --framework=midway --ts",
     "start": "concurrently \"npm run ssr\" \"npm run csr\"",
     "ssr": "concurrently \"cross-env NODE_ENV=development midway-bin dev --ts\" \"cross-env NODE_ENV=development webpack --watch --config ./build/webpack.config.server.js\"",
     "csr": "cross-env NODE_ENV=development ykcli dev",
