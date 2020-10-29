@@ -46,7 +46,7 @@
 
 ## 快速入门
 
-我们使用 [create-ssr-app](https://github.com/zhangyuang/create-ssr-app) 来快速的创建项目, 支持创建 (js|ts|antd|dva) 等多种应用模版
+我们使用 [create-ssr-app](https://github.com/zhangyuang/create-ssr-app) 来快速的创建项目, 支持创建集成了 `(js|ts|antd|dva)` 等多种功能的应用模版
 
 ```
 $ npm init ssr-app my-ssr-project --template=ssr-with-js
@@ -54,8 +54,6 @@ $ cd my-ssr-project
 $ npm install
 $ npm start
 ```
-
-在执行 `ykcli init` 的时候，可以选择 javascript 或 typescript 语言，非常方便。
 
 ## npm scripts
 
