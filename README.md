@@ -46,17 +46,7 @@
 
 ## 快速入门
 
-我们使用[create-ssr-app](https://github.com/zhangyuang/create-ssr-app)来快速的创建项目, 支持创建多种应用模版
-
-```js
-const templateMap: TemplateMap = {
-  'spa': 'https://github.com/ykfe/ssr/tree/dev/example/spa',
-  'ssr-with-js': 'https://github.com/ykfe/egg-react-ssr/tree/dev/example/ssr-with-js',
-  'ssr-with-ts': 'https://github.com/ykfe/egg-react-ssr/tree/dev/example/ssr-with-ts',
-  'ssr-with-antd': 'https://github.com/ykfe/egg-react-ssr/tree/dev/example/ssr-with-antd',
-  'ssr-with-dva': 'https://github.com/ykfe/egg-react-ssr/tree/dev/example/ssr-with-dva'
-}
-```
+我们使用 [create-ssr-app](https://github.com/zhangyuang/create-ssr-app) 来快速的创建项目, 支持创建(js|ts|antd|dva)等多种应用模版
 
 ```
 $ npm init ssr-app my-ssr-project --template=ssr-with-js
