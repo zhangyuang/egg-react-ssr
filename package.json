@@ -15,7 +15,6 @@
     "clean": "rm -rf packages/**/lib packages/**/es && lerna clean",
     "watch": "lerna run watch:cjs --stream --parallel",
     "build": "lerna run build --stream --parallel",
-    "publish": "npm run build && lerna publish",
     "bootstrap": "npm i && lerna bootstrap && node ./test/scripts/preInstall.js",
     "lint": "tslint -c tslint.json -p ./tsconfig.json && standard",
     "lint:fix": "standard --fix && tslint -c tslint.json -p ./tsconfig.json --fix",
