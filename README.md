@@ -46,7 +46,7 @@
 
 ## 快速入门
 
-我们使用 [create-ssr-app](https://github.com/zhangyuang/create-ssr-app) 来快速的创建项目, 支持创建(js|ts|antd|dva)等多种应用模版
+我们使用 [create-ssr-app](https://github.com/zhangyuang/create-ssr-app) 来快速的创建项目, 支持创建 (js|ts|antd|dva) 等多种应用模版
 
 ```
 $ npm init ssr-app my-ssr-project --template=ssr-with-js
