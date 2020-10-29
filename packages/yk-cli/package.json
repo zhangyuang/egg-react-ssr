@@ -13,12 +13,11 @@
     "ykcli": "./lib/cli.js"
   },
   "dependencies": {
-    "download-git-repo": "^2.0.0",
-    "inquirer": "6.3.1",
-    "ora": "^3.4.0",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "shelljs": "^0.8.3",
+    "webpack": "^4.41.5",
+    "webpack-dev-server": "^3.7.2",
     "yargs": "^13.2.4"
   },
   "devDependencies": {
@@ -27,9 +26,7 @@
     "@types/webpack": "^4.39.3",
     "@types/webpack-dev-server": "^3.10.0",
     "@types/yargs": "^13.0.0",
-    "concurrently": "^5.0.0",
-    "webpack": "^4.41.5",
-    "webpack-dev-server": "^3.7.2"
+    "concurrently": "^5.0.0"
   },
   "keywords": [],
   "author": "",

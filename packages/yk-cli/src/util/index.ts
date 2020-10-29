@@ -5,7 +5,6 @@ import { promisify } from 'util'
 import { exec } from 'child_process'
 import { Optional } from '../interface/option'
 
-const download = require('download-git-repo')
 const jsUrl = 'https://registry.npm.taobao.org/ssr-with-js'
 const tsUrl = 'https://registry.npm.taobao.org/ssr-with-ts'
 
@@ -17,8 +16,6 @@ const processError = (err: string) => {
 }
 
 const execWithPromise = promisify(exec)
-
-const downloadWithPromise = promisify(download)
 
 const resolveApp = (source: string) => {
   // 以根目录为基准
@@ -70,7 +67,6 @@ export {
   getVersionEffective,
   processError,
   execWithPromise,
-  downloadWithPromise,
   getWithPromise,
   resolveApp
 }

@@ -46,15 +46,23 @@
 
 ## 快速入门
 
-这里我们提供了一个脚手架，方便你创建快速项目。
+我们使用[create-ssr-app](https://github.com/zhangyuang/create-ssr-app)来快速的创建项目, 支持创建多种应用模版
+
+```js
+const templateMap: TemplateMap = {
+  'spa': 'https://github.com/ykfe/ssr/tree/dev/example/spa',
+  'ssr-with-js': 'https://github.com/ykfe/egg-react-ssr/tree/dev/example/ssr-with-js',
+  'ssr-with-ts': 'https://github.com/ykfe/egg-react-ssr/tree/dev/example/ssr-with-ts',
+  'ssr-with-antd': 'https://github.com/ykfe/egg-react-ssr/tree/dev/example/ssr-with-antd',
+  'ssr-with-dva': 'https://github.com/ykfe/egg-react-ssr/tree/dev/example/ssr-with-dva'
+}
+```
 
 ```
-$ npm install yk-cli -g
-$ ykcli init <Your Project Name>
-$ cd <Your Project Name>
-$ npm i
+$ npm init ssr-app my-ssr-project --template=ssr-with-js
+$ cd my-ssr-project
+$ npm install
 $ npm start
-$ open http://localhost:7001
 ```
 
 在执行 `ykcli init` 的时候，可以选择 javascript 或 typescript 语言，非常方便。

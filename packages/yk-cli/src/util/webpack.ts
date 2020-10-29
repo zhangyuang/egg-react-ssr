@@ -4,5 +4,5 @@ import webpack from 'webpack'
 const webpackWithPromise = promisify(webpack)
 
 export {
-    webpackWithPromise
+  webpackWithPromise
 }
