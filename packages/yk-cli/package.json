@@ -1,6 +1,6 @@
 {
   "name": "yk-cli",
-  "version": "3.7.0",
+  "version": "3.7.1",
   "description": "ykcli for ssr",
   "main": "./lib/index.js",
   "module": "./es/index.js",
@@ -13,9 +13,9 @@
     "ykcli": "./lib/cli.js"
   },
   "dependencies": {
+    "ora": "^3.4.0",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
-    "ora": "^3.4.0",
     "shelljs": "^0.8.3",
     "yargs": "^13.2.4"
   },
