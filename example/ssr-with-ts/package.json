@@ -3,6 +3,7 @@
   "version": "2.3.16",
   "description": "ykfe",
   "dependencies": {
+    "egg-scripts": "^2.13.0",
     "midway": "^1.0.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
