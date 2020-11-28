@@ -71,3 +71,5 @@ dist/
 package-lock.json
 
 .serverBundle
+.prettierrc
+.prettierignore
