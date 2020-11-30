@@ -31,7 +31,7 @@
 
 ![](https://img.alicdn.com/tfs/TB1ZuCe3Hr1gK0jSZFDXXb9yVXa-2610-1078.jpg)  
 
-5.页面搭建完毕后，点击右上角发布按钮一键发布。  
+5.页面搭建完毕后，点击右上角发布按钮一键发布，即可立即生效。  
 
 ![](https://gw.alicdn.com/tfs/TB1999b3UH1gK0jSZSyXXXtlpXa-2928-1186.jpg)  
 
