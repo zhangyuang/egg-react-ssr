@@ -11,23 +11,23 @@ const clientRender = async () => {
     <BrowserRouter>
       <Switch>
         {// 使用高阶组件getWrappedComponent使得csr首次进入页面以及csr/ssr切换路由时调用getInitialProps
-        Routes.map(({ path, exact, Component }) => {
-          const ActiveComponent = Component()
-          const Layout = ActiveComponent.Layout || defaultLayout
-          const WrappedComponent = getWrappedComponent(ActiveComponent)
-          return (
-            <Route
-              exact={exact}
-              key={path}
-              path={path}
-              render={() => (
-                <Layout key={window.location.pathname}>
-                  <WrappedComponent />
-                </Layout>
-              )}
-            />
-          )
-        })}
+          Routes.map(({ path, exact, Component }) => {
+            const ActiveComponent = Component()
+            const Layout = ActiveComponent.Layout || defaultLayout
+            const WrappedComponent = getWrappedComponent(ActiveComponent)
+            return (
+              <Route
+                exact={exact}
+                key={path}
+                path={path}
+                render={() => (
+                  <Layout key={window.location.pathname}>
+                    <WrappedComponent />
+                  </Layout>
+                )}
+              />
+            )
+          })}
       </Switch>
     </BrowserRouter>,
     document.getElementById('app')

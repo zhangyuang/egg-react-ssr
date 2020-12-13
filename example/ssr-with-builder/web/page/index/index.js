@@ -4,7 +4,7 @@ import { builder, BuilderComponent } from '@builder.io/react'
 import '@builder.io/widgets'
 import { buildKey } from '../../../config/config.ssr'
 builder.init(buildKey)
-function Page(props) {
+function Page (props) {
   const { builderPage } = props
   return (
     <div className='normal'>
