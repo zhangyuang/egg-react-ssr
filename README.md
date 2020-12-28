@@ -41,7 +41,7 @@
 </b></a></td>
 </tr>
 <tr>
-<td align="center"><a href="https://syzs.qq.com/" target="_blank"><img    src="docs/image/syzs.jpg" width="100px;" alt="腾讯手游助手"/><br />
+<td align="center"><a href="https://syzs.qq.com/" target="_blank"><img   src="docs/image/syzs.png" width="100px;" alt="腾讯手游助手"/><br />
 <a href="https://syzs.qq.com/" target="_bvlank"><sub><b>腾讯手游助手
 </b></a></td>
 </tr>
@@ -53,7 +53,7 @@
 
 我们使用 [create-ssr-app](https://github.com/zhangyuang/create-ssr-app) 来快速的创建项目, 支持创建集成了 `(js|ts|antd|dva)` 等多种功能的应用模版
 
-```
+```bash
 $ npm init ssr-app my-ssr-project --template=ssr-with-js
 $ cd my-ssr-project
 $ npm install
