@@ -40,6 +40,11 @@
 <a href="https://www.myweimai.com/#sectionOne" target="_bvlank"><sub><b>微脉
 </b></a></td>
 </tr>
+<tr>
+<td align="center"><a href="https://syzs.qq.com/" target="_blank"><img    src="docs/image/syzs.jpg" width="100px;" alt="腾讯手游助手"/><br />
+<a href="https://syzs.qq.com/" target="_bvlank"><sub><b>腾讯手游助手
+</b></a></td>
+</tr>
 </table>
 
 如果是 Serverless 环境，推荐同样写法但基于 Serverless 端渲染规范的实现 https://github.com/ykfe/ssr
