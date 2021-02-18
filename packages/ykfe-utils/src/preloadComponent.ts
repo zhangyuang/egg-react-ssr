@@ -19,5 +19,5 @@ const preloadComponent = async (Routes: RouteItem[], config?: Config) => {
 }
 
 export {
-    preloadComponent
+  preloadComponent
 }

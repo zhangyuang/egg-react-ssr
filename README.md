@@ -44,11 +44,21 @@
 <td align="center"><a href="https://syzs.qq.com/" target="_blank"><img   src="docs/image/syzs.png" width="100px;" alt="腾讯手游助手"/><br />
 <a href="https://syzs.qq.com/" target="_bvlank"><sub><b>腾讯手游助手
 </b></a></td>
+<td align="center"><a href="https://kcmall.b2bwings.com/home" target="_blank"><img   src="https://res.wx.qq.com/op_res/RM2YwzcAHcqxuj5HUPJK_XIYrYmlGPaSUuFGjG_qkIKonlxkVEyn4Sy_nkUWwgpkQzOXtuImQZW50yfHbFXbDQ
+" width="100px;" alt="国家现代农业科技创新中心"/><br />
+<a href="https://kcmall.b2bwings.com/home" target="_bvlank"><sub><b>国家现代农业科技创新中心
+</b></a></td>
 </tr>
 </table>
 
-如果是 Serverless 环境，推荐同样写法但基于 Serverless 端渲染规范的实现 https://github.com/ykfe/ssr
+如果你更喜欢开箱即用的体验且希望借助 Serverless 能力一键部署应用。推荐同样写法但基于 Serverless 端渲染规范的实现 https://github.com/ykfe/ssr  
+它具备以下特性
 
+- 🌱　极易定制：前端支持 React/Vue 等现代Web框架；
+- 🚀　开箱即用：内置 10+ 脚手架配套扩展，如Antd、TS、Hooks等；
+- 🧲　插件驱动：基于插件架构，用户更加专注于业务逻辑；
+- 💯　Serverless优先：一键发布到各种Serverless平台，也支持传统Web Server，比如Egg、Midway、Nest等。
+- 🛡　高可用场景，可无缝从SSR降级到CSR，最佳容灾方案。
 ## 快速入门
 
 我们使用 [create-ssr-app](https://github.com/zhangyuang/create-ssr-app) 来快速的创建项目, 支持创建集成了 `(js|ts|antd|dva)` 等多种功能的应用模版
