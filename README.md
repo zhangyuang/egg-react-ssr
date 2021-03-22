@@ -48,6 +48,10 @@
 " width="100px;" alt="国家现代农业科技创新中心"/><br />
 <a href="https://kcmall.b2bwings.com/home" target="_bvlank"><sub><b>国家现代农业科技创新中心
 </b></a></td>
+<td align="center"><a href="https://www.gszq.com/" target="_blank"><img src="https://www.gszq.com/static/media/icon-slogan.4d1c7974.png
+" width="100px;" alt="国盛证券"/><br />
+<a href="https://www.gszq.com/" target="_bvlank"><sub><b>国盛证券
+</b></a></td>
 </tr>
 </table>
 
