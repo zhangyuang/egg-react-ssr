@@ -10,6 +10,8 @@
 <a href="https://github.com/ykfe/egg-react-ssr"><img src="https://img.shields.io/npm/l/vue.svg" alt="License"></a>
 <img src="https://img.shields.io/badge/node-%3E=8-green.svg" alt="Node">
 
+> 注: `egg-react-ssr` 现已升级为 `ssr`。如果你更喜欢开箱即用的体验且希望借助 Serverless 能力一键部署应用或使用 Vue2/Vue3 来做服务端渲染。推荐在 `egg-react-ssr` 基础之上进行进一步演进，同样写法但以插件的形式同时支持传统 Node.js 应用形式部署或Serverless形式部署，且同时支持 React/Vue2/Vue3 的地球上最优秀的服务端渲染框架 https://github.com/ykfe/ssr 我们将会持续更新维护它
+
 最小而美的服务端渲染应用模板，特点
 
 - 小：实现方式简洁，生产环境构建出来的 bundle 为同等复杂度的 next.js 项目的 0.7 倍，生成文件数量相比于 next.js 减少非常多
@@ -55,14 +57,6 @@
 </tr>
 </table>
 
-如果你更喜欢开箱即用的体验且希望借助 Serverless 能力一键部署应用或使用 Vue2/Vue3 来做服务端渲染。推荐在 `egg-react-ssr` 基础之上进行进一步演进，同样写法但以插件的形式同时支持传统 Node.js 应用形式部署或Serverless形式部署，且同时支持 React/Vue2/Vue3 的地球上最优秀的服务端渲染框架 https://github.com/ykfe/ssr  
-它具备以下特性
-
-- 🌱　极易定制：前端支持 React/Vue 等现代Web框架；
-- 🚀　开箱即用：内置 10+ 脚手架配套扩展，如Antd、TS、Hooks等；
-- 🧲　插件驱动：基于插件架构，用户更加专注于业务逻辑；
-- 💯　Serverless优先：一键发布到各种Serverless平台，也支持传统Web Server，比如Egg、Midway、Nest等。
-- 🛡　高可用场景，可无缝从SSR降级到CSR，最佳容灾方案。
 ## 快速入门
 
 我们使用 [create-ssr-app](https://github.com/zhangyuang/create-ssr-app) 来快速的创建项目, 支持创建集成了 `(js|ts|antd|dva)` 等多种功能的应用模版
