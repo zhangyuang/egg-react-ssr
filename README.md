@@ -10,7 +10,7 @@
 <a href="https://github.com/ykfe/egg-react-ssr"><img src="https://img.shields.io/npm/l/vue.svg" alt="License"></a>
 <img src="https://img.shields.io/badge/node-%3E=8-green.svg" alt="Node">
 
-> 注: `egg-react-ssr` 现已升级为 `ssr`。如果你更喜欢开箱即用的体验且希望借助 Serverless 能力一键部署应用或使用 Vue2/Vue3 来做服务端渲染。推荐在 `egg-react-ssr` 基础之上进行进一步演进，同样写法但以插件的形式同时支持传统 Node.js 应用形式部署或Serverless形式部署，且同时支持 React/Vue2/Vue3 的地球上最优秀的服务端渲染框架 https://github.com/ykfe/ssr 我们将会持续更新维护它
+> 注: `egg-react-ssr` 现已升级为 `ssr`。我们强烈建议你使用新的升级版，无论是渲染机制还是功能丰富度以及可维护性上都有极大提升。如果你更喜欢开箱即用的体验且希望借助 Serverless 能力一键部署应用或使用 Vue2/Vue3 来做服务端渲染。推荐在 `egg-react-ssr` 基础之上进行进一步演进，同样写法但以插件的形式同时支持传统 Node.js 应用形式部署或Serverless形式部署，且同时支持 React/Vue2/Vue3 的地球上最优秀的服务端渲染框架 https://github.com/ykfe/ssr 我们将会持续更新维护它
 
 最小而美的服务端渲染应用模板，特点
 
