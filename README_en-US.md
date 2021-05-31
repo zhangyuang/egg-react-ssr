@@ -38,6 +38,10 @@ Companies(applications) using this project are as follows. If you are using this
 <td align="center"><a href="https://www.myweimai.com/#sectionOne" target="_blank"><img src="https://img.alicdn.com/tfs/TB16i3VrQT2gK0jSZPcXXcKkpXa-400-400.jpg" width="100px;" alt="微脉"/><br />
 <a href="https://www.myweimai.com/#sectionOne" target="_bvlank"><sub><b>weimai
 </b></a></td>
+<td align="center"><a href="https://www.66tools.com/" target="_blank"><img src="https://cdn.66tools.com/extension/chrome_qrcode_avatar.png
+" width="100px;" alt="The Quick QR Code"/><br />
+<a href="https://www.66tools.com/" target="_bvlank"><sub><b>The Quick QR Code
+</b></a></td>
 </tr></table>
 
 ## Quick Start

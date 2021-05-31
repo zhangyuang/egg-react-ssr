@@ -54,6 +54,10 @@
 " width="100px;" alt="国盛证券"/><br />
 <a href="https://www.gszq.com/" target="_bvlank"><sub><b>国盛证券
 </b></a></td>
+<td align="center"><a href="https://www.66tools.com/" target="_blank"><img src="https://cdn.66tools.com/extension/chrome_qrcode_avatar.png
+" width="100px;" alt="极速二维码"/><br />
+<a href="https://www.66tools.com/" target="_bvlank"><sub><b>极速二维码
+</b></a></td>
 </tr>
 </table>
 
