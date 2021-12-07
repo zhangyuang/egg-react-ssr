@@ -10,7 +10,7 @@
 <a href="https://github.com/ykfe/egg-react-ssr"><img src="https://img.shields.io/npm/l/vue.svg" alt="License"></a>
 <img src="https://img.shields.io/badge/node-%3E=8-green.svg" alt="Node">
 
-> 注: 出于功能丰富度以及可维护性考虑，不再建议使用 `egg-react-ssr`。现推荐使用最新的 `ssr` 框架能够同时支持在 React, Vue2/3 场景下使用。我们强烈建议你使用新的升级版，无论是渲染机制还是功能丰富度以及可维护性上都有极大提升并经过多个大型线上项目验证。如果你更喜欢开箱即用的体验且希望借助 Serverless 能力一键部署应用或使用 Vue2/Vue3 来做服务端渲染。项目链接 https://github.com/ykfe/ssr 官方文档 http://doc.ssr-fc.com/ 我们将会持续更新维护它
+> 注: 出于功能丰富度以及可维护性考虑，不再建议使用 `egg-react-ssr`。现推荐使用最新的 `ssr` 框架能够同时支持在 React, Vue2/3 场景下使用且支持使用 Vite。我们强烈建议你使用新的升级版，无论是渲染机制还是功能丰富度以及可维护性上都有极大提升并经过多个大型线上项目验证。如果你更喜欢开箱即用的体验且希望借助 Serverless 能力一键部署应用或使用 Vue2/Vue3 来做服务端渲染。项目链接 https://github.com/zhangyuang/ssr 官方文档 http://doc.ssr-fc.com/ 我们将会持续更新维护它
 
 最小而美的服务端渲染应用模板，特点
 
@@ -123,7 +123,6 @@ $ npm run analyze # 可视化分析客户端打包的资源详情
 - [x] 支持 tree shaking，优化构建 bundle 大小以及数量
 - [x] 支持 csr/ssr 自定义 layout，无需通过 path 来手动区分
 - [x] 抛弃传统模版引擎，拥抱 React 组件，使用 JSX 来作为模版
-- [x] 独创[最佳发布实践](http://ykfe.surge.sh/guide/deploy.html)，让你更新页面无需重启应用机器
 - [x] 配套结合[antd](https://github.com/ykfe/egg-react-ssr/tree/master/example/ssr-with-antd)的 example 的实现
 - [x] 配套结合[react-loadable](https://github.com/ykfe/egg-react-ssr/tree/master/example/ssr-with-loadable)做路由分割的 example 的实现
 - [x] 配套结合[dva](https://github.com/ykfe/egg-react-ssr/tree/master/example/ssr-with-dva)做数据管理的 example 的实现
